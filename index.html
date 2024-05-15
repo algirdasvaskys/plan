@@ -43,4 +43,29 @@ img_windowsBingLogo.png" alt="Bing" ></a>
 </div>
 </body>
 
+  <head>
+   <title>QR Code Example</title>
+   <style>
+      #qrcode {
+         position: fixed;
+         bottom: 20px;
+         right: 20px;
+      }
+   </style>
+   <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+   <h1></h1>
+
+   <div id="qrcode"></div>
+
+   <script>
+      var qrCodeDiv = document.getElementById("qrcode");
+      var qrCode = new QRCode(qrCodeDiv, {
+         text: "https://algirdasvaskys.github.io/plan/",
+         width: 128,
+         height: 128
+      });
+   </script>
+</body>
 </html>
