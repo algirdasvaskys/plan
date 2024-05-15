@@ -3,15 +3,59 @@
 <html>
 <head>
   <title>test &amp; Installation</title>
-<!-- Lyrics -->
-  <div class="lyrics">
-    <p>But tell me, did you sail across the sun?</p>
-    <p>Did you make it to the Milky Way to see the lights all faded</p>
-    <p>And that Heaven is overrated?</p>
-    <p>And tell me, did you fall for a shooting star?</p>
-    <p>One without a permanent scar, and did you miss me</p>
-    <p>While you were looking for yourself out there?</p>
-  </div>
+
+
+  <body>
+    <h3>Make your font selections and click Done.</h3>
+    <form>
+        <fieldset>
+            <legend>Font Size</legend>
+            <input type="radio" name="fontSize" value="1em" checked>1em<br>
+            <input type="radio" name="fontSize" value="3em">3em<br>
+            <input type="radio" name="fontSize" value="5em">5em
+        </fieldset>
+        <fieldset>
+            <legend>Other Font Features</legend>
+            <input type="checkbox" name="otherFontFeatures" value="italic">italic<br>
+            <input type="checkbox" name="otherFontFeatures" value="bold">bold<br>
+            <input type="checkbox" name="otherFontFeatures" value="small-caps">small-caps
+        </fieldset>
+        <br><br>
+        <input type="button" value="Done" onclick="applyFontSelections(this.form);">
+    </form>
+    <br>
+    <div class="hidden" id="message">
+      <!-- Lyrics -->
+      <p>But tell me, did you sail across the sun?</p>
+      <p>Did you make it to the Milky Way to see the lights all faded</p>
+      <p>And that Heaven is overrated?</p>
+      <p>And tell me, did you fall for a shooting star?</p>
+      <p>One without a permanent scar, and did you miss me</p>
+      <p>While you were looking for yourself out there?</p>
+    </div>
+
+    <script>
+        function applyFontSelections(form) {
+            const fontSize = form.fontSize.value;
+            const otherFontFeatures = [...form.otherFontFeatures]
+                .filter(input => input.checked)
+                .map(input => input.value);
+
+            const message = document.getElementById("message");
+            message.style.fontSize = fontSize;
+            message.style.fontStyle = otherFontFeatures.includes("italic") ? "italic" : "normal";
+            message.style.fontWeight = otherFontFeatures.includes("bold") ? "bold" : "normal";
+            message.style.fontVariant = otherFontFeatures.includes("small-caps") ? "small-caps" : "normal";
+
+            message.classList.remove("hidden");
+        }
+    </script>
+
+
+
+
+
+
 
   
   <style>
