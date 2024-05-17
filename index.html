@@ -1,71 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Collaborative Whiteboard</title>
+  <title>Collaborative Text Editor</title>
   <style>
-    #canvas {
-      border: 1px solid black;
+    #editor {
+      width: 600px;
+      height: 400px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      overflow-y: scroll;
     }
   </style>
 </head>
 <body>
-  <canvas id="canvas" width="800" height="600"></canvas>
+  <div id="editor" contenteditable="true"></div>
+
   <script>
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    let isDrawing = false;
-  
+    const editor = document.getElementById('editor');
+    let isTyping = false;
+
     // WebSocket Connection
     const socket = new WebSocket('ws://localhost:8080');
-  
+
     socket.onopen = function() {
       console.log('WebSocket connection established.');
     };
-  
+
     socket.onmessage = function(event) {
       const data = JSON.parse(event.data);
-      if (data.type === 'draw') {
-        drawLine(data.x0, data.y0, data.x1, data.y1, data.color);
+      if (data.type === 'text') {
+        receiveText(data.text);
       }
     };
-  
+
     socket.onclose = function() {
       console.log('WebSocket connection closed.');
     };
-  
-    // Drawing Functions
-    function startDrawing(event) {
-      isDrawing = true;
-      const { offsetX, offsetY } = event;
-      socket.send(JSON.stringify({ type: 'draw', x0: offsetX, y0: offsetY, color: 'black' }));
+
+    // Send Text
+    function sendText() {
+      const text = editor.textContent;
+      const data = { type: 'text', text };
+      socket.send(JSON.stringify(data));
     }
-  
-    function draw(event) {
-      if (!isDrawing) return;
-      const { offsetX, offsetY } = event;
-      socket.send(JSON.stringify({ type: 'draw', x0: event.offsetX, y0: event.offsetY, x1: offsetX, y1: offsetY, color: 'black' }));
-      drawLine(event.offsetX, event.offsetY, offsetX, offsetY, 'black');
+
+    // Receive Text
+    function receiveText(text) {
+      isTyping = true;
+      editor.textContent = text;
+      isTyping = false;
     }
-  
-    function stopDrawing() {
-      isDrawing = false;
-    }
-  
-    function drawLine(x0, y0, x1, y1, color) {
-      context.beginPath();
-      context.moveTo(x0, y0);
-      context.lineTo(x1, y1);
-      context.strokeStyle = color;
-      context.lineWidth = 2;
-      context.stroke();
-      context.closePath();
-    }
-  
+
     // Event Listeners
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', stopDrawing);
-    canvas.addEventListener('mouseout', stopDrawing);
+    editor.addEventListener('input', function() {
+      if (!isTyping) {
+        sendText();
+      }
+    });
   </script>
 </body>
 </html>
