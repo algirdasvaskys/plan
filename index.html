@@ -18,9 +18,11 @@
 </head>
 <body>
   <div id="editor" contenteditable="true"></div>
+  <button id="save-button">Save</button>
 
   <script>
     const editor = document.getElementById('editor');
+    const saveButton = document.getElementById('save-button');
     let isTyping = false;
 
     // WebSocket Connection
@@ -55,12 +57,22 @@
       isTyping = false;
     }
 
+    // Save Text
+    function saveText() {
+      const text = editor.textContent;
+      // Send the text to the server for saving
+      // Replace the following line with your server-side save logic
+      console.log('Saving text:', text);
+    }
+
     // Event Listeners
     editor.addEventListener('input', function() {
       if (!isTyping) {
         sendText();
       }
     });
+
+    saveButton.addEventListener('click', saveText);
   </script>
 </body>
 </html>
