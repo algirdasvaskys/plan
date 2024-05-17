@@ -1,64 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hexadecimal Translator</title>
-  <style>
-    /* CSS styles for the page */
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .translation {
-      margin-bottom: 10px;
-    }
-    .translation label {
-      font-weight: bold;
-    }
-  </style>
+  <title>AVR Microcontroller LED Control</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    // JavaScript function to handle translation
-    function translateHexToLanguage() {
-      var hexValue = document.getElementById('hex-input').value;
-      var translations = {
-        '4865': 'Hello',
-        '6C6C6F': 'World'
-        // Add more translations as needed
-      };
-
-      var translatedText = '';
-      var hexPairs = splitHexValue(hexValue);
-
-      for (var i = 0; i < hexPairs.length; i++) {
-        var pair = hexPairs[i];
-        if (translations[pair]) {
-          translatedText += translations[pair];
-        } else {
-          translatedText += '[UNKNOWN]';
-        }
+    $(document).ready(function() {
+      // Function to send the LED state to the AVR microcontroller
+      function setLEDState(state) {
+        $.ajax({
+          type: 'POST',
+          url: '/led-control', // URL to your AVR microcontroller endpoint
+          data: { state: state },
+          success: function(response) {
+            console.log('LED state set to ' + state);
+          },
+          error: function() {
+            console.log('Failed to set LED state');
+          }
+        });
       }
 
-      document.getElementById('translation-output').innerHTML = translatedText;
-    }
-
-    // JavaScript function to split a hexadecimal value into pairs of characters
-    function splitHexValue(hexValue) {
-      var hexPairs = [];
-      for (var i = 0; i < hexValue.length; i += 2) {
-        hexPairs.push(hexValue.substr(i, 2));
-      }
-      return hexPairs;
-    }
+      // Handle the button click event
+      $('#led-toggle-btn').on('click', function() {
+        var currentState = $('#led-state').text();
+        var newState = currentState === 'ON' ? 'OFF' : 'ON';
+        $('#led-state').text(newState);
+        setLEDState(newState);
+      });
+    });
   </script>
 </head>
 <body>
-  <h1>Hexadecimal Translator</h1>
-  <div>
-    <label for="hex-input">Enter Hexadecimal Value:</label>
-    <input type="text" id="hex-input" />
-    <button onclick="translateHexToLanguage()">Translate</button>
-  </div>
-  <div class="translation">
-    <label for="translation-output">Translation:</label>
-    <span id="translation-output"></span>
-  </div>
+  <h1>AVR Microcontroller LED Control</h1>
+  <p>LED State: <span id="led-state">OFF</span></p>
+  <button id="led-toggle-btn">Toggle LED</button>
 </body>
 </html>
