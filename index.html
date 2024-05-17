@@ -1,38 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AVR Microcontroller LED Control</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Function to send the LED state to the AVR microcontroller
-      function setLEDState(state) {
-        $.ajax({
-          type: 'POST',
-          url: '/led-control', // URL to your AVR microcontroller endpoint
-          data: { state: state },
-          success: function(response) {
-            console.log('LED state set to ' + state);
-          },
-          error: function() {
-            console.log('Failed to set LED state');
-          }
-        });
-      }
-
-      // Handle the button click event
-      $('#led-toggle-btn').on('click', function() {
-        var currentState = $('#led-state').text();
-        var newState = currentState === 'ON' ? 'OFF' : 'ON';
-        $('#led-state').text(newState);
-        setLEDState(newState);
-      });
-    });
-  </script>
+  <title>Emulating strcpy</title>
 </head>
 <body>
-  <h1>AVR Microcontroller LED Control</h1>
-  <p>LED State: <span id="led-state">OFF</span></p>
-  <button id="led-toggle-btn">Toggle LED</button>
+  <h1>Emulating strcpy</h1>
+  <input type="text" id="sourceInput" placeholder="Enter Source String" />
+  <button onclick="copyString()">Copy String</button>
+  <div id="output"></div>
+
+  <script>
+    // Custom function to emulate strcpy
+    function strcpy(destination, source) {
+      return destination = source;
+    }
+
+    // Function to copy string
+    function copyString() {
+      var sourceString = document.getElementById("sourceInput").value;
+      var destinationString = "";
+
+      var copiedString = strcpy(destinationString, sourceString);
+
+      var outputElement = document.getElementById("output");
+      outputElement.textContent = "Copied String: " + copiedString;
+    }
+  </script>
 </body>
 </html>
