@@ -52,4 +52,58 @@
     setInterval(updatePosition, 2000);
   </script>
 </body>
+<head>
+  <title>Inline Graphic Element Status Example</title>
+  <style>
+    .inline-graphic {
+      display: inline-block;
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: lightgray;
+      border: 1px solid gray;
+      text-align: center;
+      line-height: 100px;
+    }
+
+    .status {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      padding: 5px;
+      background-color: green;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .status.error {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Inline Graphic Element Status Example</h1>
+
+  <div class="inline-graphic">
+    <div class="status" id="status">Loading</div>
+    <img src="path/to/your/image.png" alt="Inline Graphic Element">
+  </div>
+
+  <script>
+    // Simulating status update after a delay
+    setTimeout(function() {
+      var statusElement = document.getElementById("status");
+      statusElement.textContent = "Completed";
+      statusElement.classList.remove("error");
+    }, 3000);
+
+    // Simulating error status update after a delay
+    setTimeout(function() {
+      var statusElement = document.getElementById("status");
+      statusElement.textContent = "Error";
+      statusElement.classList.add("error");
+    }, 5000);
+  </script>
+</body>
 </html>
