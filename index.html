@@ -1,109 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Random Bouncing Animation</title>
+  <title>Drag Event Example</title>
   <style>
-    .bounce {
-      width: 100px;
-      height: 100px;
-      background-color: #f00;
-      position: absolute;
-      animation: bounce 2s infinite;
+    .drag-container {
+      width: 200px;
+      height: 200px;
+      border: 2px dashed gray;
+      padding: 10px;
     }
 
-    @keyframes bounce {
-      0% { top: 0; left: 0; }
-      25% { top: 0; left: calc(100% - 100px); }
-      50% { top: calc(100% - 100px); left: calc(100% - 100px); }
-      75% { top: calc(100% - 100px); left: 0; }
-      100% { top: 0; left: 0; }
+    .drag-item {
+      background-color: lightblue;
+      padding: 10px;
+      margin-bottom: 10px;
     }
   </style>
-</head>
-<body>
-  <div class="bounce"></div>
-
   <script>
-    // Get the bounding rectangle of the viewport
-    var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-
-    // Get the bouncing element
-    var bounceElement = document.querySelector('.bounce');
-
-    // Generate random coordinates within the viewport
-    function getRandomCoordinates() {
-      var x = Math.floor(Math.random() * (viewportWidth - 100));
-      var y = Math.floor(Math.random() * (viewportHeight - 100));
-      return { x: x, y: y };
+    function handleDragStart(event) {
+      event.dataTransfer.setData('text/plain', event.target.id);
+      event.target.style.opacity = '0.4';
     }
 
-    // Update the bouncing element's position with random coordinates
-    function updatePosition() {
-      var coordinates = getRandomCoordinates();
-      bounceElement.style.top = coordinates.y + 'px';
-      bounceElement.style.left = coordinates.x + 'px';
+    function handleDragEnd(event) {
+      event.target.style.opacity = '1';
     }
 
-    // Call the updatePosition function to set initial position
-    updatePosition();
+    function handleDragOver(event) {
+      event.preventDefault();
+    }
 
-    // Call the updatePosition function every 2 seconds to change position
-    setInterval(updatePosition, 2000);
+    function handleDrop(event) {
+      event.preventDefault();
+      const data = event.dataTransfer.getData('text/plain');
+      const draggableElement = document.getElementById(data);
+      const dropzone = event.target;
+      dropzone.appendChild(draggableElement);
+    }
   </script>
-</body>
-<head>
-  <title>Inline Graphic Element Status Example</title>
-  <style>
-    .inline-graphic {
-      display: inline-block;
-      position: relative;
-      width: 100px;
-      height: 100px;
-      background-color: lightgray;
-      border: 1px solid gray;
-      text-align: center;
-      line-height: 100px;
-    }
-
-    .status {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      padding: 5px;
-      background-color: green;
-      color: white;
-      font-weight: bold;
-      font-size: 12px;
-    }
-
-    .status.error {
-      background-color: red;
-    }
-  </style>
 </head>
 <body>
-  <h1>Inline Graphic Element Status Example</h1>
+  <h1>Drag Event Example</h1>
 
-  <div class="inline-graphic">
-    <div class="status" id="status">Loading</div>
-    <img src="path/to/your/image.png" alt="Inline Graphic Element">
+  <div class="drag-container" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+    <div class="drag-item" id="item1" draggable="true" ondragstart="handleDragStart(event)" ondragend="handleDragEnd(event)">
+      Drag me!
+    </div>
+    <div class="drag-item" id="item2" draggable="true" ondragstart="handleDragStart(event)" ondragend="handleDragEnd(event)">
+      Drag me too!
+    </div>
   </div>
-
-  <script>
-    // Simulating status update after a delay
-    setTimeout(function() {
-      var statusElement = document.getElementById("status");
-      statusElement.textContent = "Completed";
-      statusElement.classList.remove("error");
-    }, 3000);
-
-    // Simulating error status update after a delay
-    setTimeout(function() {
-      var statusElement = document.getElementById("status");
-      statusElement.textContent = "Error";
-      statusElement.classList.add("error");
-    }, 5000);
-  </script>
 </body>
 </html>
