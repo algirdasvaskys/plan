@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Emulating strcpy</title>
+  <title>Random Bouncing Animation</title>
+  <style>
+    .bounce {
+      width: 100px;
+      height: 100px;
+      background-color: #f00;
+      position: absolute;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0% { top: 0; left: 0; }
+      25% { top: 0; left: calc(100% - 100px); }
+      50% { top: calc(100% - 100px); left: calc(100% - 100px); }
+      75% { top: calc(100% - 100px); left: 0; }
+      100% { top: 0; left: 0; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Emulating strcpy</h1>
-  <input type="text" id="sourceInput" placeholder="Enter Source String" />
-  <button onclick="copyString()">Copy String</button>
-  <div id="output"></div>
+  <div class="bounce"></div>
 
   <script>
-    // Custom function to emulate strcpy
-    function strcpy(destination, source) {
-      return destination = source;
+    // Get the bounding rectangle of the viewport
+    var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    // Get the bouncing element
+    var bounceElement = document.querySelector('.bounce');
+
+    // Generate random coordinates within the viewport
+    function getRandomCoordinates() {
+      var x = Math.floor(Math.random() * (viewportWidth - 100));
+      var y = Math.floor(Math.random() * (viewportHeight - 100));
+      return { x: x, y: y };
     }
 
-    // Function to copy string
-    function copyString() {
-      var sourceString = document.getElementById("sourceInput").value;
-      var destinationString = "";
-
-      var copiedString = strcpy(destinationString, sourceString);
-
-      var outputElement = document.getElementById("output");
-      outputElement.textContent = "Copied String: " + copiedString;
+    // Update the bouncing element's position with random coordinates
+    function updatePosition() {
+      var coordinates = getRandomCoordinates();
+      bounceElement.style.top = coordinates.y + 'px';
+      bounceElement.style.left = coordinates.x + 'px';
     }
+
+    // Call the updatePosition function to set initial position
+    updatePosition();
+
+    // Call the updatePosition function every 2 seconds to change position
+    setInterval(updatePosition, 2000);
   </script>
 </body>
 </html>
