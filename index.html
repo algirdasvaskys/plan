@@ -1,52 +1,42 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8">
-  <title>YouTube Video Example</title>
-  <script src="https://www.youtube.com/player_api"></script>
-</head>
-
-<body>
-  <div id="player"></div>
-
-  <script>
-    // Load the YouTube Player API asynchronously
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/player_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // YouTube Player API callback function
-    var player;
-    function onYouTubePlayerAPIReady() {
-      player = new YT.Player('player', {
-        videoId: 'zzUp3W0uP74',
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
+    <title>ProgressEvent Example</title>
+    <style>
+        .progress-bar {
+            width: 300px;
+            height: 20px;
+            background-color: #f2f2f2;
+            margin-bottom: 10px;
         }
-      });
-    }
-
-    // Event handler for player ready
-    function onPlayerReady(event) {
-      console.log('YouTube player is ready');
-      // Perform additional actions when the player is ready
-    }
-
-    // Event handler for player state change
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.PLAYING) {
-        console.log('Video started playing');
-        // Perform additional actions when the video starts playing
-      }
-      if (event.data === YT.PlayerState.ENDED) {
-        console.log('Video playback ended');
-        // Perform additional actions when the video ends
-      }
-    }
-  </script>
+        
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>ProgressEvent Example</h1>
+    <div class="progress-bar">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+    <script>
+        function simulateProgress() {
+            var progressBarFill = document.getElementById('progress-fill');
+            var progress = 0;
+            var interval = setInterval(function() {
+                progress += 10;
+                progressBarFill.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    alert('Progress Complete!');
+                }
+            }, 1000);
+        }
+        
+        simulateProgress();
+    </script>
 </body>
-
 </html>
