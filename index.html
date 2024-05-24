@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SHA-256 Hash Verification Example</title>
+    <title>SHA-256 Hashing Example</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
     <style>
         body {
@@ -39,49 +39,26 @@
             cursor: pointer;
             font-size: 16px;
         }
-
-        .result {
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        .success {
-            color: green;
-        }
-
-        .error {
-            color: red;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>SHA-256 Hash Verification Example</h1>
+        <h1>SHA-256 Hashing Example</h1>
 
         <label for="input">Input:</label>
         <input type="text" id="input" placeholder="Enter a value">
 
-        <label for="hash">Hash:</label>
-        <input type="text" id="hash" placeholder="Enter the expected hash">
+        <button onclick="calculateHash()">Calculate Hash</button>
 
-        <button onclick="verifyHash()">Verify Hash</button>
-
-        <div class="result" id="result"></div>
+        <label for="output">Hash:</label>
+        <input type="text" id="output" readonly>
     </div>
 
     <script>
-        function verifyHash() {
+        function calculateHash() {
             var input = document.getElementById('input').value;
-            var expectedHash = document.getElementById('hash').value;
-            var calculatedHash = sha256(input);
-
-            if (calculatedHash === expectedHash) {
-                document.getElementById('result').textContent = "Hash matches!";
-                document.getElementById('result').className = "result success";
-            } else {
-                document.getElementById('result').textContent = "Hash does not match!";
-                document.getElementById('result').className = "result error";
-            }
+            var hash = sha256(input);
+            document.getElementById('output').value = hash;
         }
     </script>
 </body>
