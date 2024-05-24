@@ -1,65 +1,55 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>SHA-256 Hashing Example</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>YouTube Video Example</title>
+  <script src="https://www.youtube.com/player_api"></script>
 </head>
+
 <body>
-    <div class="container">
-        <h1>SHA-256 Hashing Example</h1>
+  <div id="player"></div>
 
-        <label for="input">Input:</label>
-        <input type="text" id="input" placeholder="Enter a value">
+  <script>
+    // Load the YouTube Player API asynchronously
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        <button onclick="calculateHash()">Calculate Hash</button>
-
-        <label for="output">Hash:</label>
-        <input type="text" id="output" readonly>
-    </div>
-
-    <script>
-        function calculateHash() {
-            var input = document.getElementById('input').value;
-            var hash = sha256(input);
-            document.getElementById('output').value = hash;
+    // YouTube Player API callback function
+    var player;
+    function onYouTubePlayerAPIReady() {
+      player = new YT.Player('player', {
+        videoId: 'zzUp3W0uP74',
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
         }
-    </script>
+      });
+    }
+
+    // Event handler for player ready
+    function onPlayerReady(event) {
+      console.log('YouTube player is ready');
+      // Perform additional actions when the player is ready
+    }
+
+    // Event handler for player state change
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        console.log('Video started playing');
+        // Perform additional actions when the video starts playing
+      }
+      if (event.data === YT.PlayerState.ENDED) {
+        console.log('Video playback ended');
+        // Perform additional actions when the video ends
+      }
+    }
+  </script>
 </body>
+
 </html>
+
+
+
