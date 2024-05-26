@@ -11,6 +11,12 @@
       border: 1px solid #ccc;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       z-index: 1;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .window.show {
+      opacity: 1;
     }
 
     .window-title-bar {
@@ -39,6 +45,23 @@
       height: auto;
     }
   </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var windows = document.querySelectorAll('.window');
+      var index = 0;
+
+      function showWindow() {
+        windows[index].classList.add('show');
+        index++;
+        if (index < windows.length) {
+          setTimeout(showWindow, 1000);
+        }
+      }
+
+      // Trigger the effect
+      showWindow();
+    });
+  </script>
 </head>
 <body>
   <h1>Groundworks</h1>
@@ -67,16 +90,14 @@
   <div class="window" style="left: 700px; top: 100px;">
     <div class="window-title-bar">Shuttering, Digging, Laying cables, Concreting</div>
     <div class="window-content">
-      <!-- Image URL goes here -->
- <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/13458648_1191904104175955_5126249990314862461_o.jpg" alt="My Image">
-
-
+      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/13458648_1191904104175955_5126249990314862461_o.jpg" alt="My Image">
     </div>
   </div>
+  
   <div class="window" style="left: 900px; top: 200px;">
     <div class="window-title-bar">Dumper driving, Sanding cables, Crimping</div>
     <div class="window-content">
-     <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/13474980_1191903884175977_5835093673817173491_o.jpg" alt="My Image">
+      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/13474980_1191903884175977_5835093673817173491_o.jpg" alt="My Image">
     </div>
   </div>
 
