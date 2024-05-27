@@ -1,80 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Menu</title>
-<style>
-/* CSS styles for the links */
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 10px;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-  height: 30px; /* Adjust the height as desired */
-  line-height: 30px; /* Adjust the line height to vertically center the text */
-}
-
-a[href="index.html"],
-a[href="training.html"],
-a[href="about.html"],
-a[href="conferences.html"] {
-  font-size: 18px; /* Font size for the "Home," "Training," "About us," and "Groundworks" links */
-  font-weight: bold; /* Bold text */
-  text-transform: uppercase; /* Uppercase text */
-}
-
-a[href="groundworks.html"],
-a[href="electrical%20installation.html"],
-a[href="electrical%20fault%20finding.html"] {
-  font-size: 18px; /* Font size for the "Electrical installation" and "Electrical fault finding" links */
-  font-weight: bold; /* Bold text */
-  text-transform: uppercase; /* Uppercase text */
-  height: auto; /* Resetting the height to auto to match the default height */
-  line-height: normal; /* Resetting the line height to normal */
-}
-</style>
-</head>
-<body>
-<nav>
-<ul>
-<li>
-<a href="index.html">Home</a>
-</li>
-<li>
-<a href="training.html">Training</a>
-</li>
-<li>
-<a href="conferences.html">Groundwork</a>
-</li>
-<li>
-<a href="electrical%20installation.html">Electrical installation</a>
-</li>
-<li>
-<a href="electrical%20fault%20finding.html">Electrical fault finding</a>
-</li>
-<li>
-<a href="about.html">About us</a>
-</li>
-</ul>
-</nav>
-</body>
-
-
-
-
-
-
-<head>
+  <meta charset="utf-8">
+  <title>Menu</title>
   <style>
+    /* CSS styles for the links */
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      height: 30px; /* Adjust the height as desired */
+      line-height: 30px; /* Adjust the line height to vertically center the text */
+    }
+
+    a[href="index.html"],
+    a[href="training.html"],
+    a[href="about.html"],
+    a[href="conferences.html"] {
+      font-size: 18px; /* Font size for the "Home," "Training," "About us," and "Groundworks" links */
+      font-weight: bold; /* Bold text */
+      text-transform: uppercase; /* Uppercase text */
+    }
+
+    a[href="groundworks.html"],
+    a[href="electrical%20installation.html"],
+    a[href="electrical%20fault%20finding.html"] {
+      font-size: 18px; /* Font size for the "Electrical installation" and "Electrical fault finding" links */
+      font-weight: bold; /* Bold text */
+      text-transform: uppercase; /* Uppercase text */
+      height: auto; /* Resetting the height to auto to match the default height */
+      line-height: normal; /* Resetting the line height to normal */
+    }
+
     .window {
       position: absolute;
       width: 400px;
@@ -116,6 +83,32 @@ a[href="electrical%20fault%20finding.html"] {
       width: auto;
       height: auto;
     }
+
+    /* Bouncing Animation */
+    .bounce {
+      width: 100px;
+      height: 100px;
+      background-color: #f00;
+      position: absolute;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0% { top: 0; left: 0; }
+      25% { top: 0; left: calc(100% - 100px); }
+      50% { top: calc(100% - 100px); left: calc(100% - 100px); }
+      75% { top: calc(100% - 100px); left: 0; }
+      100% { top: 0; left: 0; }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .fade-out {
+      animation: fadeOut 1s forwards;
+    }
   </style>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -127,7 +120,26 @@ a[href="electrical%20fault%20finding.html"] {
         index++;
         if (index < windows.length) {
           setTimeout(showWindow, 1000);
+        } else {
+          setTimeout(startBouncingAnimation, 5000);
         }
+      }
+
+      function startBouncingAnimation() {
+        var menu = document.querySelector('nav');
+        menu.style.display = 'none';
+
+        var windows = document.querySelectorAll('.window');
+        windows.forEach(function(window) {
+          window.classList.add('fade-out');
+          setTimeout(function() {
+            window.remove();
+          }, 1000);
+        });
+
+        var bouncingElement = document.createElement('div');
+        bouncingElement.classList.add('bounce');
+        document.body.appendChild(bouncingElement);
       }
 
       // Trigger the effect
@@ -136,7 +148,29 @@ a[href="electrical%20fault%20finding.html"] {
   </script>
 </head>
 <body>
-  
+  <nav>
+    <ul>
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="training.html">Training</a>
+      </li>
+      <li>
+        <a href="conferences.html">Groundwork</a>
+      </li>
+      <li>
+        <a href="electrical%20installation.html">Electrical installation</a>
+      </li>
+      <li>
+        <a href="electrical%20fault%20finding.html">Electrical fault finding</a>
+      </li>
+      <li>
+        <a href="about.html">About us</a>
+      </li>
+    </ul>
+  </nav>
+
   <div class="window" style="left: 100px; top: 100px;">
     <div class="window-title-bar">Cable Ducting, Cable Pulling, Rodding, Tracing cables</div>
     <div class="window-content">
@@ -178,39 +212,5 @@ a[href="electrical%20fault%20finding.html"] {
       <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/Terminating%20SWA.png" alt="My Image">
     </div>
   </div>
-
-  <script>
-    // JavaScript code for window dragging functionality
-    const windows = document.querySelectorAll('.window');
-
-    windows.forEach(windowElement => {
-      const titleBar = windowElement.querySelector('.window-title-bar');
-      let isDragging = false;
-      let offset = { x: 0, y: 0 };
-
-      titleBar.addEventListener('mousedown', startDragging);
-      titleBar.addEventListener('mouseup', stopDragging);
-      titleBar.addEventListener('mousemove', dragWindow);
-
-      function startDragging(event) {
-        isDragging = true;
-        offset.x = event.clientX - windowElement.offsetLeft;
-        offset.y = event.clientY - windowElement.offsetTop;
-      }
-
-      function stopDragging() {
-        isDragging = false;
-      }
-
-      function dragWindow(event) {
-        if (isDragging) {
-          windowElement.style.left = `${event.clientX - offset.x}px`;
-          windowElement.style.top = `${event.clientY - offset.y}px`;
-        }
-      }
-    });
-  </script>
 </body>
-
-
 </html>
