@@ -1,7 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Groundworks</title>
+<meta charset="utf-8">
+<title>Menu</title>
+<style>
+/* CSS styles for the links */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  height: 30px; /* Adjust the height as desired */
+  line-height: 30px; /* Adjust the line height to vertically center the text */
+}
+
+a[href="index.html"],
+a[href="training.html"],
+a[href="about.html"],
+a[href="conferences.html"] {
+  font-size: 18px; /* Font size for the "Home," "Training," "About us," and "Groundworks" links */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase text */
+}
+
+a[href="groundworks.html"],
+a[href="electrical%20installation.html"],
+a[href="electrical%20fault%20finding.html"] {
+  font-size: 18px; /* Font size for the "Electrical installation" and "Electrical fault finding" links */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase text */
+  height: auto; /* Resetting the height to auto to match the default height */
+  line-height: normal; /* Resetting the line height to normal */
+}
+</style>
+</head>
+<body>
+<nav>
+<ul>
+<li>
+<a href="index.html">Home</a>
+</li>
+<li>
+<a href="training.html">Training</a>
+</li>
+<li>
+<a href="conferences.html">Groundwork</a>
+</li>
+<li>
+<a href="electrical%20installation.html">Electrical installation</a>
+</li>
+<li>
+<a href="electrical%20fault%20finding.html">Electrical fault finding</a>
+</li>
+<li>
+<a href="about.html">About us</a>
+</li>
+</ul>
+</nav>
+</body>
+
+
+
+
+
+
+<head>
   <style>
     .window {
       position: absolute;
@@ -64,8 +136,7 @@
   </script>
 </head>
 <body>
-  <h1>Groundworks</h1>
-
+  
   <div class="window" style="left: 100px; top: 100px;">
     <div class="window-title-bar">Cable Ducting, Cable Pulling, Rodding, Tracing cables</div>
     <div class="window-content">
@@ -140,4 +211,6 @@
     });
   </script>
 </body>
+
+
 </html>
