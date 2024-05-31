@@ -1,39 +1,216 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>three.js</title>
+  <meta charset="utf-8">
+  <title>Menu</title>
   <style>
-    body { margin: 0; }
-    canvas { width: 100%; height: 100%; }
+    /* CSS styles for the links */
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      height: 30px; /* Adjust the height as desired */
+      line-height: 30px; /* Adjust the line height to vertically center the text */
+    }
+
+    a[href="index.html"],
+    a[href="training.html"],
+    a[href="about.html"],
+    a[href="conferences.html"] {
+      font-size: 18px; /* Font size for the "Home," "Training," "About us," and "Groundworks" links */
+      font-weight: bold; /* Bold text */
+      text-transform: uppercase; /* Uppercase text */
+    }
+
+    a[href="groundworks.html"],
+    a[href="electrical%20installation.html"],
+    a[href="electrical%20fault%20finding.html"] {
+      font-size: 18px; /* Font size for the "Electrical installation" and "Electrical fault finding" links */
+      font-weight: bold; /* Bold text */
+      text-transform: uppercase; /* Uppercase text */
+      height: auto; /* Resetting the height to auto to match the default height */
+      line-height: normal; /* Resetting the line height to normal */
+    }
+
+    .window {
+      position: absolute;
+      width: 400px;
+      height: 300px;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .window.show {
+      opacity: 1;
+    }
+
+    .window-title-bar {
+      background-color: #ddd;
+      padding: 8px;
+      cursor: move;
+    }
+
+    .window-content {
+      padding: 16px;
+      box-sizing: border-box;
+      height: calc(90% - 0px);
+      overflow: auto;
+    }
+
+    .window-content img {
+      max-width: 100%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .window-content video {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
+
+    /* Bouncing Animation */
+    .bounce {
+      width: 100px;
+      height: 100px;
+      background-color: #f00;
+      position: absolute;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0% { top: 0; left: 0; }
+      25% { top: 0; left: calc(100% - 100px); }
+      50% { top: calc(100% - 100px); left: calc(100% - 100px); }
+      75% { top: calc(100% - 100px); left: 0; }
+      100% { top: 0; left: 0; }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .fade-out {
+      animation: fadeOut 1s forwards;
+    }
   </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var windows = document.querySelectorAll('.window');
+      var index = 0;
+
+      function showWindow() {
+        windows[index].classList.add('show');
+        index++;
+        if (index < windows.length) {
+          setTimeout(showWindow, 1000);
+        } else {
+          setTimeout(startBouncingAnimation, 5000);
+        }
+      }
+
+      function startBouncingAnimation() {
+        var menu = document.querySelector('nav');
+        menu.style.display = 'none';
+
+        var windows = document.querySelectorAll('.window');
+        windows.forEach(function(window) {
+          window.classList.add('fade-out');
+          setTimeout(function() {
+            window.remove();
+          }, 1000);
+        });
+
+        var bouncingElement = document.createElement('div');
+        bouncingElement.classList.add('bounce');
+        document.body.appendChild(bouncingElement);
+      }
+
+      // Trigger the effect
+      showWindow();
+    });
+  </script>
 </head>
 <body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r132/three.min.js"></script>
-<script>
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  var renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  <nav>
+    <ul>
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="training.html">Training</a>
+      </li>
+      <li>
+        <a href="conferences.html">Groundwork</a>
+      </li>
+      <li>
+        <a href="electrical%20installation.html">Electrical installation</a>
+      </li>
+      <li>
+        <a href="electrical%20fault%20finding.html">Electrical fault finding</a>
+      </li>
+      <li>
+        <a href="about.html">About us</a>
+      </li>
+    </ul>
+  </nav>
 
-  var geometry = new THREE.BoxGeometry(1, 1, 1);
-  var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  var cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+  <div class="window" style="left: 100px; top: 100px;">
+    <div class="window-title-bar">Cable Ducting, Cable Pulling, Rodding, Tracing cables</div>
+    <div class="window-content">
+      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/IMG_2474.JPG" alt="My Image">
+    </div>
+  </div>
 
-  camera.position.z = 5;
+  <div class="window" style="left: 200px; top: 200px;">
+    <div class="window-title-bar">1st and 2nd Fixing Conduit and Trunking Systems</div>
+    <div class="window-content">
+      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/20150323_131846.jpg" alt="My Image">
+    </div>
+  </div>
 
-  function animate() {
-    requestAnimationFrame(animate);
+  <div class="window" style="left: 400px; top: 300px;">
+    <div class="window-title-bar">Coding Arduino</div>
+    <div class="window-content">
+      <video src="https://raw.githubusercontent.com/algirdasvaskys/work/main/408047395_1499864970791193_6883057916458183148_n.mp4" controls></video>
+    </div>
+  </div>
 
-    // Add rotation to the cube
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+  <div class="window" style="left: 700px; top: 100px;">
+    <div class="window-title-bar">Shuttering, Digging, Laying cables, Concreting</div>
+    <div class="window-content">
+      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/13458648_1191904104175955_5126249990314862461_o.jpg" alt="My Image">
+    </div>
+  </div>
+  
+  <div class="window" style="left: 900px; top: 200px;">
+    <div class="window-title-bar">Dumper driving, Sanding cables, Crimping</div>
+    <div class="window-content">
+      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/13474980_1191903884175977_5835093673817173491_o.jpg" alt="My Image">
+    </div>
+  </div>
 
-    renderer.render(scene, camera);
-  }
-
-  animate();
-</script>
+  <div class="window" style="left: 1100px; top: 300px;">
+    <div class="window-title-bar">Terminating SWA</div>
+    <div class="window-content">
+      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/Terminating%20SWA.png" alt="My Image">
+    </div>
+  </div>
 </body>
 </html>
