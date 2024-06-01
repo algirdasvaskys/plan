@@ -1,45 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Costing of Job (Materials and Labour)</title>
-  <script>
-    // Function to calculate the total cost per m²
-    function calculateTotalCost() {
-      // Materials
-      var floatingCoatCostPerM2 = 4.69; // Cost per m² for floating coat
-      var skimCoatCostPerM2 = 1.32; // Cost per m² for skim coat
-      var wastePercentage = 5; // Waste percentage
-      var totalMaterialCostPerM2 = (floatingCoatCostPerM2 + skimCoatCostPerM2) * (1 + wastePercentage / 100);
-
-      // Labour
-      var laborCostPerM2 = 21.72; // Cost per m² for labor
-
-      // Calculate the total cost per m²
-      var totalCostPerM2 = totalMaterialCostPerM2 + laborCostPerM2;
-
-      // Display the result in the output element
-      document.getElementById("total-cost-output").innerHTML = totalCostPerM2.toFixed(2);
+  <title>Advanced HTML Calculator</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
     }
-  </script>
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      border: 1px solid #ccc;
+      padding: 20px;
+      background-color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Costing of Job (Materials and Labour)</h1>
+  <h1>AER Interest Rate Calculator</h1>
 
-  <h2>A - 12mm Two Coat Plaster To Walls</h2>
+  <div class="container">
+    <h2>Calculator</h2>
+    <form>
+      <label for="principal">Principal Amount:</label>
+      <input type="number" id="principal" name="principal" required><br>
 
-  <h3>Materials</h3>
-  <p>Floating coat cost per m²: €4.69</p>
-  <p>Skim coat cost per m²: €1.32</p>
-  <p>Waste percentage: 5%</p>
-  <p>Total material cost per m² (including waste): €6.61</p>
+      <label for="aer">Annual Equivalent Rate (AER):</label>
+<select id="aer" name="aer">
+  <option value="1">1%</option>
+  <option value="2">2%</option>
+  <option value="3">3%</option>
+  <option value="4">4%</option>
+  <option value="5">5%</option>
+  <option value="6">6%</option>
+  <option value="7">7%</option>
+  <option value="8">8%</option>
+  <option value="9">9%</option>
+  <option value="10">10%</option>
+  <option value="11">11%</option>
+  <option value="12">12%</option>
+  <option value="13">13%</option>
+  <option value="14">14%</option>
+  <option value="15">15%</option>
+  <option value="16">16%</option>
+  <option value="17">17%</option>
+  <option value="18">18%</option>
+  <option value="19">19%</option>
+  <option value="20">20%</option>
+  <option value="21">21%</option>
+  <option value="22">22%</option>
+  <option value="23">23%</option>
+  <option value="24">24%</option>
+  <option value="25">25%</option>
+  <option value="26">26%</option>
+  <option value="27">27%</option>
+  <option value="28">28%</option>
+  <option value="29">29%</option>
+  <option value="30">30%</option>
+  <option value="31">31%</option>
+  <option value="32">32%</option>
+  <option value="33">33%</option>
+  <option value="34">34%</option>
+  <option value="35">35%</option>
+</select><br>
 
-  <h3>Labour</h3>
-  <p>Cost per m² for labor: €21.72</p>
+      <label for="years">Number of Years:</label>
+      <input type="number" id="years" name="years" required><br>
 
-  <button type="button" onclick="calculateTotalCost()">Calculate</button>
+      <input type="button" value="Calculate" class="button" onclick="calculateInterest()">
+    </form>
+  </div>
 
-  <h3>Results</h3>
-  <p>Total Cost per m²: <span id="total-cost-output"></span> €</p>
+  <div class="container">
+    <h2>Result</h2>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateInterest() {
+      var principal = parseFloat(document.getElementById("principal").value);
+      var aer = parseFloat(document.getElementById("aer").value);
+      var years = parseInt(document.getElementById("years").value);
+
+      var interest = principal * (Math.pow((1 + (aer / 100)), years) - 1);
+      interest = interest.toFixed(2);
+
+      document.getElementById("result").innerHTML = "Interest Earned: £" + interest;
+    }
+  </script>
 
 </body>
 </html>
+
