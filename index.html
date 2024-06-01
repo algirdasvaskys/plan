@@ -1,115 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Advanced HTML Calculator</title>
-  <style>
-    /* CSS styles */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      margin: 0;
-      padding: 20px;
-    }
+    <title>SHA-256 Hash Verification Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-    h1 {
-      color: #333;
-      text-align: center;
-    }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-    .container {
-      border: 1px solid #ccc;
-      padding: 20px;
-      background-color: #fff;
-      margin-bottom: 20px;
-    }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-    .button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-  </style>
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-  <h1>AER Interest Rate Calculator</h1>
+    <div class="container">
+        <h1>SHA-256 Hash Verification Example</h1>
 
-  <div class="container">
-    <h2>Calculator</h2>
-    <form>
-      <label for="principal">Principal Amount:</label>
-      <input type="number" id="principal" name="principal" required><br>
+        <label for="input">Input:</label>
+        <input type="text" id="input" placeholder="Enter a value">
 
-      <label for="aer">Annual Equivalent Rate (AER):</label>
-<select id="aer" name="aer">
-  <option value="1">1%</option>
-  <option value="2">2%</option>
-  <option value="3">3%</option>
-  <option value="4">4%</option>
-  <option value="5">5%</option>
-  <option value="6">6%</option>
-  <option value="7">7%</option>
-  <option value="8">8%</option>
-  <option value="9">9%</option>
-  <option value="10">10%</option>
-  <option value="11">11%</option>
-  <option value="12">12%</option>
-  <option value="13">13%</option>
-  <option value="14">14%</option>
-  <option value="15">15%</option>
-  <option value="16">16%</option>
-  <option value="17">17%</option>
-  <option value="18">18%</option>
-  <option value="19">19%</option>
-  <option value="20">20%</option>
-  <option value="21">21%</option>
-  <option value="22">22%</option>
-  <option value="23">23%</option>
-  <option value="24">24%</option>
-  <option value="25">25%</option>
-  <option value="26">26%</option>
-  <option value="27">27%</option>
-  <option value="28">28%</option>
-  <option value="29">29%</option>
-  <option value="30">30%</option>
-  <option value="31">31%</option>
-  <option value="32">32%</option>
-  <option value="33">33%</option>
-  <option value="34">34%</option>
-  <option value="35">35%</option>
-</select><br>
+        <label for="hash">Hash:</label>
+        <input type="text" id="hash" placeholder="Enter the expected hash">
 
-      <label for="years">Number of Years:</label>
-      <input type="number" id="years" name="years" required><br>
+        <button onclick="verifyHash()">Verify Hash</button>
 
-      <input type="button" value="Calculate" class="button" onclick="calculateInterest()">
-    </form>
-  </div>
+        <div class="result" id="result"></div>
+    </div>
 
-  <div class="container">
-    <h2>Result</h2>
-    <p id="result"></p>
-  </div>
+    <script>
+        function verifyHash() {
+            var input = document.getElementById('input').value;
+            var expectedHash = document.getElementById('hash').value;
+            var calculatedHash = sha256(input);
 
-  <script>
-    function calculateInterest() {
-      var principal = parseFloat(document.getElementById("principal").value);
-      var aer = parseFloat(document.getElementById("aer").value);
-      var years = parseInt(document.getElementById("years").value);
-
-      var interest = principal * (Math.pow((1 + (aer / 100)), years) - 1);
-      interest = interest.toFixed(2);
-
-      document.getElementById("result").innerHTML = "Interest Earned: £" + interest;
-    }
-  </script>
-
+            if (calculatedHash === expectedHash) {
+                document.getElementById('result').textContent = "Hash matches!";
+                document.getElementById('result').className = "result success";
+            } else {
+                document.getElementById('result').textContent = "Hash does not match!";
+                document.getElementById('result').className = "result error";
+            }
+        }
+    </script>
 </body>
 </html>
-
