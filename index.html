@@ -1,216 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Menu</title>
-  <style>
-    /* CSS styles for the links */
-    nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    nav ul li {
-      display: inline;
-      margin-right: 10px;
-    }
-
-    a {
-      text-decoration: none;
-      color: black;
-      height: 30px; /* Adjust the height as desired */
-      line-height: 30px; /* Adjust the line height to vertically center the text */
-    }
-
-    a[href="index.html"],
-    a[href="training.html"],
-    a[href="about.html"],
-    a[href="conferences.html"] {
-      font-size: 18px; /* Font size for the "Home," "Training," "About us," and "Groundworks" links */
-      font-weight: bold; /* Bold text */
-      text-transform: uppercase; /* Uppercase text */
-    }
-
-    a[href="groundworks.html"],
-    a[href="electrical%20installation.html"],
-    a[href="electrical%20fault%20finding.html"] {
-      font-size: 18px; /* Font size for the "Electrical installation" and "Electrical fault finding" links */
-      font-weight: bold; /* Bold text */
-      text-transform: uppercase; /* Uppercase text */
-      height: auto; /* Resetting the height to auto to match the default height */
-      line-height: normal; /* Resetting the line height to normal */
-    }
-
-    .window {
-      position: absolute;
-      width: 400px;
-      height: 300px;
-      background-color: #f2f2f2;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .window.show {
-      opacity: 1;
-    }
-
-    .window-title-bar {
-      background-color: #ddd;
-      padding: 8px;
-      cursor: move;
-    }
-
-    .window-content {
-      padding: 16px;
-      box-sizing: border-box;
-      height: calc(90% - 0px);
-      overflow: auto;
-    }
-
-    .window-content img {
-      max-width: 100%;
-      max-height: 90%;
-      object-fit: contain;
-    }
-
-    .window-content video {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-    }
-
-    /* Bouncing Animation */
-    .bounce {
-      width: 100px;
-      height: 100px;
-      background-color: #f00;
-      position: absolute;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0% { top: 0; left: 0; }
-      25% { top: 0; left: calc(100% - 100px); }
-      50% { top: calc(100% - 100px); left: calc(100% - 100px); }
-      75% { top: calc(100% - 100px); left: 0; }
-      100% { top: 0; left: 0; }
-    }
-
-    @keyframes fadeOut {
-      0% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
-    .fade-out {
-      animation: fadeOut 1s forwards;
-    }
-  </style>
+  <title>Estimation and Calculation of Areas and Quantities of Slabs</title>
   <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      var windows = document.querySelectorAll('.window');
-      var index = 0;
+    // Function to calculate material cost per m²
+    function calculateMaterialCost() {
+      // Retrieve input values from the form
+      var combobox = document.getElementById("slab-selection");
+      var selectedOption = combobox.options[combobox.selectedIndex];
+      var selectedPrice = parseFloat(selectedOption.getAttribute("data-price"));
+      var selectedArea = parseFloat(selectedOption.getAttribute("data-area"));
+      var wastePercentage = parseFloat(document.getElementById("waste-percentage").value);
 
-      function showWindow() {
-        windows[index].classList.add('show');
-        index++;
-        if (index < windows.length) {
-          setTimeout(showWindow, 1000);
-        } else {
-          setTimeout(startBouncingAnimation, 5000);
-        }
-      }
+      // Calculate material cost per m²
+      var materialCostPerM2 = selectedPrice / selectedArea;
+      var materialCostWithWaste = materialCostPerM2 * (1 + wastePercentage / 100);
 
-      function startBouncingAnimation() {
-        var menu = document.querySelector('nav');
-        menu.style.display = 'none';
-
-        var windows = document.querySelectorAll('.window');
-        windows.forEach(function(window) {
-          window.classList.add('fade-out');
-          setTimeout(function() {
-            window.remove();
-          }, 1000);
-        });
-
-        var bouncingElement = document.createElement('div');
-        bouncingElement.classList.add('bounce');
-        document.body.appendChild(bouncingElement);
-      }
-
-      // Trigger the effect
-      showWindow();
-    });
+      // Display the result in the output element
+      document.getElementById("material-cost-output").innerHTML = materialCostWithWaste.toFixed(2);
+    }
   </script>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li>
-        <a href="index.html">Home</a>
-      </li>
-      <li>
-        <a href="training.html">Training</a>
-      </li>
-      <li>
-        <a href="conferences.html">Groundwork</a>
-      </li>
-      <li>
-        <a href="electrical%20installation.html">Electrical installation</a>
-      </li>
-      <li>
-        <a href="electrical%20fault%20finding.html">Electrical fault finding</a>
-      </li>
-      <li>
-        <a href="about.html">About us</a>
-      </li>
-    </ul>
-  </nav>
+  <h1>Estimation and Calculation of Areas and Quantities of Slabs</h1>
 
-  <div class="window" style="left: 100px; top: 100px;">
-    <div class="window-title-bar">Cable Ducting, Cable Pulling, Rodding, Tracing cables</div>
-    <div class="window-content">
-      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/IMG_2474.JPG" alt="My Image">
-    </div>
-  </div>
+  <h2>Example Calculation</h2>
 
-  <div class="window" style="left: 200px; top: 200px;">
-    <div class="window-title-bar">1st and 2nd Fixing Conduit and Trunking Systems</div>
-    <div class="window-content">
-      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/20150323_131846.jpg" alt="My Image">
-    </div>
-  </div>
+  <h3>Materials</h3>
+  <form>
+    <label for="slab-selection">Slab Selection: </label>
+    <select id="slab-selection">
+      <option data-price="25" data-area="10">Slab A - $25 per m²</option>
+      <option data-price="30" data-area="12">Slab B - $30 per m²</option>
+      <option data-price="35" data-area="15">Slab C - $35 per m²</option>
+      <!-- Add more options with respective prices and areas -->
+    </select>
 
-  <div class="window" style="left: 400px; top: 300px;">
-    <div class="window-title-bar">Coding Arduino</div>
-    <div class="window-content">
-      <video src="https://raw.githubusercontent.com/algirdasvaskys/work/main/408047395_1499864970791193_6883057916458183148_n.mp4" controls></video>
-    </div>
-  </div>
+    <label for="waste-percentage">Waste Percentage: </label>
+    <input type="text" id="waste-percentage" placeholder="Enter waste percentage">
 
-  <div class="window" style="left: 700px; top: 100px;">
-    <div class="window-title-bar">Shuttering, Digging, Laying cables, Concreting</div>
-    <div class="window-content">
-      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/13458648_1191904104175955_5126249990314862461_o.jpg" alt="My Image">
-    </div>
-  </div>
-  
-  <div class="window" style="left: 900px; top: 200px;">
-    <div class="window-title-bar">Dumper driving, Sanding cables, Crimping</div>
-    <div class="window-content">
-      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/13474980_1191903884175977_5835093673817173491_o.jpg" alt="My Image">
-    </div>
-  </div>
+    <button type="button" onclick="calculateMaterialCost()">Calculate</button>
+  </form>
 
-  <div class="window" style="left: 1100px; top: 300px;">
-    <div class="window-title-bar">Terminating SWA</div>
-    <div class="window-content">
-      <img src="https://raw.githubusercontent.com/algirdasvaskys/work/main/Terminating%20SWA.png" alt="My Image">
-    </div>
-  </div>
+  <h3>Results</h3>
+  <p>Material Cost per m² (including waste): <span id="material-cost-output"></span></p>
+
 </body>
 </html>
