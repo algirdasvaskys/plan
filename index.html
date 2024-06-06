@@ -1,49 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Estimation and Calculation of Areas and Quantities of Slabs</title>
-  <script>
-    // Function to calculate material cost per m²
-    function calculateMaterialCost() {
-      // Retrieve input values from the form
-      var combobox = document.getElementById("slab-selection");
-      var selectedOption = combobox.options[combobox.selectedIndex];
-      var selectedPrice = parseFloat(selectedOption.getAttribute("data-price"));
-      var selectedArea = parseFloat(selectedOption.getAttribute("data-area"));
-      var wastePercentage = parseFloat(document.getElementById("waste-percentage").value);
-
-      // Calculate material cost per m²
-      var materialCostPerM2 = selectedPrice / selectedArea;
-      var materialCostWithWaste = materialCostPerM2 * (1 + wastePercentage / 100);
-
-      // Display the result in the output element
-      document.getElementById("material-cost-output").innerHTML = materialCostWithWaste.toFixed(2);
+  <title>Advanced HTML Calculator</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
     }
-  </script>
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      border: 1px solid #ccc;
+      padding: 20px;
+      background-color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Estimation and Calculation of Areas and Quantities of Slabs</h1>
+  <h1>AER Interest Rate Calculator</h1>
 
-  <h2>Example Calculation</h2>
+  <div class="container">
+    <h2>Calculator</h2>
+    <form>
+      <label for="principal">Principal Amount:</label>
+      <input type="number" id="principal" name="principal" required><br>
 
-  <h3>Materials</h3>
-  <form>
-    <label for="slab-selection">Slab Selection: </label>
-    <select id="slab-selection">
-      <option data-price="25" data-area="10">Slab A - $25 per m²</option>
-      <option data-price="30" data-area="12">Slab B - $30 per m²</option>
-      <option data-price="35" data-area="15">Slab C - $35 per m²</option>
-      <!-- Add more options with respective prices and areas -->
-    </select>
+      <label for="aer">Annual Equivalent Rate (AER):</label>
+<select id="aer" name="aer">
+  <option value="1">1%</option>
+  <option value="2">2%</option>
+  <option value="3">3%</option>
+  <option value="4">4%</option>
+  <option value="5">5%</option>
+  <option value="6">6%</option>
+  <option value="7">7%</option>
+  <option value="8">8%</option>
+  <option value="9">9%</option>
+  <option value="10">10%</option>
+  <option value="11">11%</option>
+  <option value="12">12%</option>
+  <option value="13">13%</option>
+  <option value="14">14%</option>
+  <option value="15">15%</option>
+  <option value="16">16%</option>
+  <option value="17">17%</option>
+  <option value="18">18%</option>
+  <option value="19">19%</option>
+  <option value="20">20%</option>
+  <option value="21">21%</option>
+  <option value="22">22%</option>
+  <option value="23">23%</option>
+  <option value="24">24%</option>
+  <option value="25">25%</option>
+  <option value="26">26%</option>
+  <option value="27">27%</option>
+  <option value="28">28%</option>
+  <option value="29">29%</option>
+  <option value="30">30%</option>
+  <option value="31">31%</option>
+  <option value="32">32%</option>
+  <option value="33">33%</option>
+  <option value="34">34%</option>
+  <option value="35">35%</option>
+</select><br>
 
-    <label for="waste-percentage">Waste Percentage: </label>
-    <input type="text" id="waste-percentage" placeholder="Enter waste percentage">
+      <label for="years">Number of Years:</label>
+      <input type="number" id="years" name="years" required><br>
 
-    <button type="button" onclick="calculateMaterialCost()">Calculate</button>
-  </form>
+      <input type="button" value="Calculate" class="button" onclick="calculateInterest()">
+    </form>
+  </div>
 
-  <h3>Results</h3>
-  <p>Material Cost per m² (including waste): <span id="material-cost-output"></span></p>
+  <div class="container">
+    <h2>Result</h2>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateInterest() {
+      var principal = parseFloat(document.getElementById("principal").value);
+      var aer = parseFloat(document.getElementById("aer").value);
+      var years = parseInt(document.getElementById("years").value);
+
+      var interest = principal * (Math.pow((1 + (aer / 100)), years) - 1);
+      interest = interest.toFixed(2);
+
+      document.getElementById("result").innerHTML = "Interest Earned: £" + interest;
+    }
+  </script>
 
 </body>
 </html>
+
