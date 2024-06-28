@@ -1,223 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>test &amp; Installation</title>
-  <style>
-    body {
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%);
-      overflow: hidden;
-      animation: rotate 10s linear infinite;
-    }
-    .star {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      background: #fffff;
-      animation: twinkle 3s infinite;
-    }
-    .star:nth-child(1) {
-      top: 10%;
-      left: 20%;
-      animation-delay: 1s;
-    }
-    .star:nth-child(2) {
-      top: 20%;
-      left: 50%;
-      animation-delay: 0.5s;
-    }
-    .star:nth-child(3) {
-      top: 30%;
-      left: 80%;
-      animation-delay: 1.5s;
-    }
-    @keyframes twinkle {
-      0% {
-        opacity: 0;
-        transform: scale(0);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0);
-      }
-    }
-    @keyframes rotate {
-      from {
-        transform: rotateZ(0deg);
-      }
-      to {
-        transform: rotateZ(360deg);
-      }
-    }
-    @keyframes scroll {
-      from {
-        background-position: 0% 0%;
-      }
-      to {
-        background-position: 100% 100%;
-      }
-    }
-    body {
-      background-size: 300% 300%;
-      animation: scroll 10s linear infinite;
-    }
-    .sun {
-      position: absolute;
-      top: 20%;
-      right: 0%;
-      width: 200px;
-      height: 200px;
-      margin: -200px 0 0 -100px;
-      background-image: radial-gradient(circle, #f6ff00 0%, #ffcb00 30%, #ffad00 50%, #ff8f00 70%, #ff6f00 100%);
-      background-size: cover;
-      border-radius: 50%;
-      animation: sun-rotation 20s linear infinite;
-      animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-      box-shadow: 0 0 80px 40px rgba(255, 191, 0, 0.5);
-      filter: blur(20px);
-    }
-    @keyframes sun-rotation {
-      0% {
-        transform: rotateZ(0deg);
-      }
-      25% {
-        transform: rotateZ(90deg);
-      }
-      50% {
-        transform: rotateZ(180deg);
-      }
-      75% {
-        transform: rotateZ(270deg);
-      }
-      100% {
-        transform: rotateZ(360deg);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashed Map Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+        }
+        .output p {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 3px;
+        }
+    </style>
 </head>
 <body>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="shooting-star"></div>
-  <div class="sun"></div>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>test &amp; Installation</title>
-  <style>
-    body {
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%);
-      overflow: hidden;
-      animation: rotate 10s linear infinite;
-    }
-    .star {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      background: #fffff;
-      animation: twinkle 3s infinite;
-    }
-    .star:nth-child(1) {
-      top: 10%;
-      left: 20%;
-      animation-delay: 1s;
-    }
-    .star:nth-child(2) {
-      top: 20%;
-      left: 50%;
-      animation-delay: 0.5s;
-    }
-    .star:nth-child(3) {
-      top: 30%;
-      left: 80%;
-      animation-delay: 1.5s;
-    }
-    @keyframes twinkle {
-      0% {
-        opacity: 0;
-        transform: scale(0);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0);
-      }
-    }
-    @keyframes rotate {
-      from {
-        transform: rotateZ(0deg);
-      }
-      to {
-        transform: rotateZ(360deg);
-      }
-    }
-    @keyframes scroll {
-      from {
-        background-position: 0% 0%;
-      }
-      to {
-        background-position: 100% 100%;
-      }
-    }
-    body {
-      background-size: 300% 300%;
-      animation: scroll 10s linear infinite;
-    }
-    .sun {
-      position: absolute;
-      top: 20%;
-      right: 0%;
-      width: 200px;
-      height: 200px;
-      margin: -200px 0 0 -100px;
-      background-image: radial-gradient(circle, #f6ff00 0%, #ffcb00 30%, #ffad00 50%, #ff8f00 70%, #ff6f00 100%);
-      background-size: cover;
-      border-radius: 50%;
-      animation: sun-rotation 20s linear infinite;
-      animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-      box-shadow: 0 0 80px 40px rgba(255, 191, 0, 0.5);
-      filter: blur(20px);
-    }
-    @keyframes sun-rotation {
-      0% {
-        transform: rotateZ(0deg);
-      }
-      25% {
-        transform: rotateZ(90deg);
-      }
-      50% {
-        transform: rotateZ(180deg);
-      }
-      75% {
-        transform: rotateZ(270deg);
-      }
-      100% {
-        transform: rotateZ(360deg);
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="shooting-star"></div>
-  <div class="sun"></div>
-</body>
-</html>
+    <h1>Abstract Hashed Map Example</h1>
+    <div class="container">
+        <div class="form-group">
+            <label for="key">Key</label>
+            <input type="text" id="key" placeholder="Enter key">
+        </div>
+        <div class="form-group">
+            <label for="value">Value</label>
+            <input type="text" id="value" placeholder="Enter value">
+        </div>
+        <button onclick="addToMap()">Add to Map</button>
+        <button onclick="displayMap()">Display Map</button>
+        <div class="output" id="output"></div>
+    </div>
 
+    <script>
+        const map = new Map();
+
+        function addToMap() {
+            const key = document.getElementById('key').value;
+            const value = document.getElementById('value').value;
+
+            if (key && value) {
+                map.set(key, value);
+                document.getElementById('key').value = '';
+                document.getElementById('value').value = '';
+                alert(`Added: ${key} -> ${value}`);
+            } else {
+                alert('Please enter both key and value.');
+            }
+        }
+
+        function displayMap() {
+            const output = document.getElementById('output');
+            output.innerHTML = '';
+
+            if (map.size === 0) {
+                output.innerHTML = '<p>Map is empty.</p>';
+                return;
+            }
+
+            map.forEach((value, key) => {
+                const p = document.createElement('p');
+                p.textContent = `${key} -> ${value}`;
+                output.appendChild(p);
+            });
+        }
+    </script>
+</body>
+</html>
