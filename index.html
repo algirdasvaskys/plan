@@ -3,105 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hashed Map Example</title>
+    <title>DeflateInflateRatioBurst Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 20px;
+            background-color: #f0f0f0;
         }
-        h1 {
-            color: #333;
+        .burst-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
         }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .burst {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            border-radius: 50%;
+            transition: transform 0.5s ease, background-color 0.5s ease;
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .output {
-            margin-top: 20px;
-        }
-        .output p {
-            background-color: #e0e0e0;
-            padding: 10px;
-            border-radius: 3px;
+        .burst.inflated {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: #e74c3c;
         }
     </style>
 </head>
 <body>
-    <h1>Abstract Hashed Map Example</h1>
-    <div class="container">
-        <div class="form-group">
-            <label for="key">Key</label>
-            <input type="text" id="key" placeholder="Enter key">
-        </div>
-        <div class="form-group">
-            <label for="value">Value</label>
-            <input type="text" id="value" placeholder="Enter value">
-        </div>
-        <button onclick="addToMap()">Add to Map</button>
-        <button onclick="displayMap()">Display Map</button>
-        <div class="output" id="output"></div>
+    <div class="burst-container">
+        <div id="burst" class="burst"></div>
     </div>
 
     <script>
-        const map = new Map();
-
-        function addToMap() {
-            const key = document.getElementById('key').value;
-            const value = document.getElementById('value').value;
-
-            if (key && value) {
-                map.set(key, value);
-                document.getElementById('key').value = '';
-                document.getElementById('value').value = '';
-                alert(`Added: ${key} -> ${value}`);
-            } else {
-                alert('Please enter both key and value.');
-            }
-        }
-
-        function displayMap() {
-            const output = document.getElementById('output');
-            output.innerHTML = '';
-
-            if (map.size === 0) {
-                output.innerHTML = '<p>Map is empty.</p>';
-                return;
-            }
-
-            map.forEach((value, key) => {
-                const p = document.createElement('p');
-                p.textContent = `${key} -> ${value}`;
-                output.appendChild(p);
+        document.addEventListener('DOMContentLoaded', () => {
+            const burstElement = document.getElementById('burst');
+            let isInflated = false;
+            
+            burstElement.addEventListener('click', () => {
+                isInflated = !isInflated;
+                if (isInflated) {
+                    burstElement.classList.add('inflated');
+                } else {
+                    burstElement.classList.remove('inflated');
+                }
             });
-        }
+        });
     </script>
 </body>
 </html>
