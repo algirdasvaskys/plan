@@ -1,1 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test &amp; Installation</title>
+  <style>
+    body {
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%);
+      overflow: hidden;
+      animation: rotate 10s linear infinite;
+    }
+    .star {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #fffff;
+      animation: twinkle 3s infinite;
+    }
+    .star:nth-child(1) {
+      top: 10%;
+      left: 20%;
+      animation-delay: 1s;
+    }
+    .star:nth-child(2) {
+      top: 20%;
+      left: 50%;
+      animation-delay: 0.5s;
+    }
+    .star:nth-child(3) {
+      top: 30%;
+      left: 80%;
+      animation-delay: 1.5s;
+    }
+    @keyframes twinkle {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+    @keyframes rotate {
+      from {
+        transform: rotateZ(0deg);
+      }
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+    @keyframes scroll {
+      from {
+        background-position: 0% 0%;
+      }
+      to {
+        background-position: 100% 100%;
+      }
+    }
+    body {
+      background-size: 300% 300%;
+      animation: scroll 10s linear infinite;
+    }
+    .sun {
+      position: absolute;
+      top: 20%;
+      right: 0%;
+      width: 200px;
+      height: 200px;
+      margin: -200px 0 0 -100px;
+      background-image: radial-gradient(circle, #f6ff00 0%, #ffcb00 30%, #ffad00 50%, #ff8f00 70%, #ff6f00 100%);
+      background-size: cover;
+      border-radius: 50%;
+      animation: sun-rotation 20s linear infinite;
+      animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 0 80px 40px rgba(255, 191, 0, 0.5);
+      filter: blur(20px);
+    }
+    @keyframes sun-rotation {
+      0% {
+        transform: rotateZ(0deg);
+      }
+      25% {
+        transform: rotateZ(90deg);
+      }
+      50% {
+        transform: rotateZ(180deg);
+      }
+      75% {
+        transform: rotateZ(270deg);
+      }
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="shooting-star"></div>
+  <div class="sun"></div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test &amp; Installation</title>
+  <style>
+    body {
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%);
+      overflow: hidden;
+      animation: rotate 10s linear infinite;
+    }
+    .star {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #fffff;
+      animation: twinkle 3s infinite;
+    }
+    .star:nth-child(1) {
+      top: 10%;
+      left: 20%;
+      animation-delay: 1s;
+    }
+    .star:nth-child(2) {
+      top: 20%;
+      left: 50%;
+      animation-delay: 0.5s;
+    }
+    .star:nth-child(3) {
+      top: 30%;
+      left: 80%;
+      animation-delay: 1.5s;
+    }
+    @keyframes twinkle {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+    @keyframes rotate {
+      from {
+        transform: rotateZ(0deg);
+      }
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+    @keyframes scroll {
+      from {
+        background-position: 0% 0%;
+      }
+      to {
+        background-position: 100% 100%;
+      }
+    }
+    body {
+      background-size: 300% 300%;
+      animation: scroll 10s linear infinite;
+    }
+    .sun {
+      position: absolute;
+      top: 20%;
+      right: 0%;
+      width: 200px;
+      height: 200px;
+      margin: -200px 0 0 -100px;
+      background-image: radial-gradient(circle, #f6ff00 0%, #ffcb00 30%, #ffad00 50%, #ff8f00 70%, #ff6f00 100%);
+      background-size: cover;
+      border-radius: 50%;
+      animation: sun-rotation 20s linear infinite;
+      animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 0 80px 40px rgba(255, 191, 0, 0.5);
+      filter: blur(20px);
+    }
+    @keyframes sun-rotation {
+      0% {
+        transform: rotateZ(0deg);
+      }
+      25% {
+        transform: rotateZ(90deg);
+      }
+      50% {
+        transform: rotateZ(180deg);
+      }
+      75% {
+        transform: rotateZ(270deg);
+      }
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="shooting-star"></div>
+  <div class="sun"></div>
+</body>
+</html>
+
 
