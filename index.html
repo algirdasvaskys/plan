@@ -45,11 +45,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             const burstElement = document.getElementById('burst');
             let isInflated = false;
-            
+
             burstElement.addEventListener('click', () => {
                 isInflated = !isInflated;
                 if (isInflated) {
                     burstElement.classList.add('inflated');
+                    setTimeout(() => {
+                        window.location.href = 'https://algirdasvaskys.github.io/test/';  // Replace with the actual URL of the new page
+                    }, 1000);
                 } else {
                     burstElement.classList.remove('inflated');
                 }
