@@ -3,110 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Burst Elements</title>
+    <title>DeflateInflateRatioBurst Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            overflow: hidden;
             background-color: #f0f0f0;
         }
         .burst-container {
             position: relative;
-            width: 100vw;
-            height: 100vh;
+            width: 200px;
+            height: 200px;
         }
         .burst {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 100px;
             height: 100px;
             background-color: #3498db;
             border-radius: 50%;
             transition: transform 0.5s ease, background-color 0.5s ease;
-            animation: float 10s infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: bold;
         }
         .burst.inflated {
-            transform: scale(1.5);
+            transform: translate(-50%, -50%) scale(1.5);
             background-color: #e74c3c;
-        }
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(100px, -50px); }
-            50% { transform: translate(-100px, 50px); }
-            75% { transform: translate(50px, 100px); }
-            100% { transform: translate(0, 0); }
         }
     </style>
 </head>
 <body>
     <div class="burst-container">
-<div id="burst1" class="burst">Autodcad 2D - Plynth</div>
-<div id="burst1" class="burst">Operating</div>
-<div id="burst1" class="burst">Forklift driving</div>
-<div id="burst1" class="burst">Mortage Calculator</div>
-        <div id="burst1" class="burst">Training</div>
-        <div id="burst2" class="burst">Test</div>
-        <div id="burst3" class="burst">Civils, dumper, shuttering</div>
-        <div id="burst4" class="burst">Conduit and Trunking Systems</div>
-        <div id="burst5" class="burst">Civil engineering</div>
-        <div id="burst6" class="burst">Underground utilities</div>
-        <div id="burst7" class="burst">College SWA</div>
-
+        <div id="burst" class="burst"></div>
     </div>
 
-    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const burstElements = document.querySelectorAll('.burst');
-            const urls = [
-'https://raw.githubusercontent.com/algirdasvaskys/work/main/1599247556807.jfif',
-'https://algirdasvaskys.github.io/plan/operating',
-// URL for operating
-'https://algirdasvaskys.github.io/plan/forklift',
-// URL for forklift
-'https://algirdasvaskys.github.io/plan/mortgagecalculator',
-// URL for mortgage calculator
-                'https://algirdasvaskys.github.io/plan/training', 
-// URL for Training
-                'https://algirdasvaskys.github.io/plan/test',                   
-// URL for Test
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/13458648_1191904104175955_5126249990314862461_o.jpg',              
- // URL for Civil engineering, dumper driving, assistant with shuttering
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/20150323_131846.jpg',                
- // URL for Conduit and Trunking Systems
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/13474980_1191903884175977_5835093673817173491_o.jpg',                   
-// URL for Civil engineering
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/IMG_2474.JPG',               
- // URL for Rodding cable enclosures, Tracing underground cables
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/Terminating%20SWA.png',
-// URL College SWA
-            ];
-
-            burstElements.forEach((burstElement, index) => {
-                let isInflated = false;
-                burstElement.style.top = `${Math.random() * 90}vh`;
-                burstElement.style.left = `${Math.random() * 90}vw`;
-
-                burstElement.addEventListener('click', () => {
-                    isInflated = !isInflated;
-                    if (isInflated) {
-                        burstElement.classList.add('inflated');
-                        setTimeout(() => {
-                            window.location.href = urls[index];  // Redirect to the respective URL
-                        }, 1000);
-                    } else {
-                        burstElement.classList.remove('inflated');
-                    }
-                });
+            const burstElement = document.getElementById('burst');
+            let isInflated = false;
+            
+            burstElement.addEventListener('click', () => {
+                isInflated = !isInflated;
+                if (isInflated) {
+                    burstElement.classList.add('inflated');
+                    setTimeout(() => {
+                        window.open('https://github.com/algirdasvaskys/plan/step');  // Replace 'newpage.html' with the actual URL
+                    }, 1250);
+                } else {
+                    burstElement.classList.remove('inflated');
+                }
             });
         });
     </script>
 </body>
 </html>
-
-
