@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mortgage Calculator</title>
+  <script>
+    function calculatePayment() {
+      var loanAmount = parseFloat(document.getElementById("loanAmount").value);
+      var interestRate = parseFloat(document.getElementById("interestRate").value);
+      var loanTerm = parseFloat(document.getElementById("loanTerm").value);
+
+      var monthlyRate = interestRate / 100 / 12; // Monthly interest rate
+      var numPayments = loanTerm * 12; // Total number of monthly payments
+
+      var monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numPayments));
+
+      // Calculate and display the monthly payment table
+      var resultTable = "<table><tr><th>Month</th><th>Payment</th><th>Outstanding Balance</th><th>Interest</th></tr>";
+      var outstandingBalance = loanAmount;
+      for (var i = 1; i <= numPayments; i++) {
+        var interestPayment = outstandingBalance * monthlyRate;
+        var principalPayment = monthlyPayment - interestPayment;
+        outstandingBalance -= principalPayment;
+        
+        resultTable += "<tr><td>" + i + "</td><td>£" + monthlyPayment.toFixed(2) + "</td><td>£" + outstandingBalance.toFixed(2) + "</td><td>£" + interestPayment.toFixed(2) + "</td></tr>";
+      }
+      resultTable += "</table>";
+
+      // Display the monthly payment table
+      document.getElementById("result").innerHTML = resultTable;
+    }
+  </script>
+</head>
+<body>
+  <h1>Mortgage Calculator</h1>
+  <label for="interestRate">Mortgage Rate:</label>
+  <select id="interestRate">
+    <option value="1">1%</option>
+    <option value="2">2%</option>
+    <option value="3">3%</option>
+    <option value="4">4%</option>
+    <option value="5">5%</option>
+    <option value="6">6%</option>
+    <option value="7">7%</option>
+    <option value="8">8%</option>
+    <option value="9">9%</option>
+    <option value="10" selected>10%</option>
+  </select><br>
+
+  <label for="loanAmount">Mortgage Value:</label>
+  <input type="number" id="loanAmount" value="250000"><br>
+
+  <label for="loanTerm">Mortgage Time (in years):</label>
+  <select id="loanTerm">
+    <option value="5">5 years</option>
+    <option value="10">10 years</option>
+    <option value="15">15 years</option>
+    <option value="20">20 years</option>
+    <option value="25">25 years</option>
+    <option value="30">30 years</option>
+  </select><br>
+
+  <button onclick="calculatePayment()">Calculate</button>
+  <div id="result"></div>
+</body>
+</html>
