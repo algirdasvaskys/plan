@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="">
+  <title>Relay Inputs and Outputs - Measured and Expected Values for Troubleshooting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #007BFF;
+    }
+
+    p {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: #fff;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .open {
+      background-color: #ffcccc;
+    }
+
+    .closed {
+      background-color: #ccffcc;
+    }
+
+    .ohms {
+      background-color: #f2f2f2;
+    }
+
+    .troubleshoot {
+      display: none;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .troubleshoot.visible {
+      display: block;
+    }
+
+    .troubleshoot h3 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+
+    .toggle-troubleshoot {
+      cursor: pointer;
+      color: #007BFF;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    function toggleTroubleshoot(id) {
+      const troubleshootDiv = document.getElementById(id);
+      troubleshootDiv.classList.toggle('visible');
+    }
+  </script>
+</head>
+<body>
+  <h1>Relay Inputs and Outputs - Measured and Expected Values for Troubleshooting</h1>
+  <p>Use the table below to understand the measured and expected values for relay inputs and outputs, and click on the rows for troubleshooting tips.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Device</th>
+        <th>Terminals</th>
+        <th>Status</th>
+        <th>Measured Value</th>
+        <th>Expected Value</th>
+        <th>Troubleshoot</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr onclick="toggleTroubleshoot('troubleshoot1')">
+        <td>Control Device</td>
+        <td>Terminal 9 to Terminal 11</td>
+        <td class="closed">Closed (Circuit Complete)</td>
+        <td>24V (or appropriate control voltage)</td>
+        <td>24V (or appropriate control voltage)</td>
+        <td class="toggle-troubleshoot">View Tips</td>
+      </tr>
+      <tr onclick="toggleTroubleshoot('troubleshoot2')">
+        <td>Control Device</td>
+        <td>Terminal 8 to Terminal 11</td>
+        <td class="open">Open (Circuit Broken)</td>
+        <td class="ohms">OL (Open Line)</td>
+        <td class="ohms">OL (Open Line)</td>
+        <td class="toggle-troubleshoot">View Tips</td>
+      </tr>
+      <tr onclick="toggleTroubleshoot('troubleshoot3')">
+        <td>Relay (Coil)</td>
+        <td>Terminal A1 to Terminal A2</td>
+        <td class="open">Open (De-energized)</td>
+        <td class="ohms">72 ohms</td>
+        <td class="ohms">70-75 ohms</td><td class="toggle-troubleshoot">View Tips</td>
+      </tr>
+      <tr onclick="toggleTroubleshoot('troubleshoot4')">
+        <td>Relay (Coil)</td>
+        <td>Terminal A1 to Terminal A2</td>
+        <td class="closed">Closed (Energized)</td>
+        <td>24V (or appropriate coil voltage)</td>
+        <td>24V (or appropriate coil voltage)</td>
+        <td class="toggle-troubleshoot">View Tips</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="troubleshoot1" class="troubleshoot">
+    <h3>Troubleshooting Tips for Control Device (Terminal 9 to Terminal 11)</h3>
+    <p>If the measured voltage is not as expected (e.g., 24V), check for:</p>
+    <ul>
+      <li>Power supply issues or incorrect voltage.</li>
+      <li>Faulty control device.</li>
+      <li>Loose connections or damaged wires.</li>
+    </ul>
+    <p><strong>Note:</strong> Measure voltage across the terminals when the control device is in the closed state. Never measure resistance on a live circuit.</p>
+  </div>
+
+  <div id="troubleshoot2" class="troubleshoot">
+    <h3>Troubleshooting Tips for Control Device (Terminal 8 to Terminal 11)</h3>
+    <p>If the measured value is not OL (Open Line), check for:</p>
+    <ul>
+      <li>Short circuits in the wiring.</li>
+      <li>Stuck or faulty contacts in the control device.</li>
+    </ul>
+    <p><strong>Note:</strong> Always ensure the circuit is de-energized before measuring resistance to avoid inaccurate readings and ensure safety.</p>
+  </div>
+
+  <div id="troubleshoot3" class="troubleshoot">
+    <h3>Troubleshooting Tips for Relay (Coil) (Terminal A1 to Terminal A2 - De-energized)</h3>
+    <p>If the measured value is outside 70-75 ohms, check for:</p>
+    <ul>
+      <li>Possible coil damage or degradation.</li>
+      <li>Incorrect relay type or specifications.</li>
+    </ul>
+    <p><strong>Note:</strong> Always ensure the circuit is de-energized before measuring resistance to avoid inaccurate readings and ensure safety.</p>
+  </div>
+
+  <div id="troubleshoot4" class="troubleshoot">
+    <h3>Troubleshooting Tips for Relay (Coil) (Terminal A1 to Terminal A2 - Energized)</h3>
+    <p>If the measured voltage is not as expected (e.g., 24V), check for:</p>
+    <ul>
+      <li>Power supply issues.</li>
+      <li>Faulty relay or control circuit.</li>
+      <li>Incorrect wiring or connections.</li>
+    </ul>
+    <p><strong>Note:</strong> Measure voltage across the coil terminals when the relay is energized to ensure it is receiving the correct voltage. Never measure resistance on a live circuit.</p>
+  </div>
+
+</body>
+</html>
