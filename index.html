@@ -156,6 +156,33 @@
         }
       });
     });
+
+    // Debugging: Check if YouTube API script loads correctly
+    window.addEventListener('error', (event) => {
+      console.error('Error: ', event);
+    });
+
+    // Debugging: Check if onYouTubeIframeAPIReady is called
+    window.onYouTubeIframeAPIReady = function() {
+      console.log('YouTube IFrame API is ready');
+      player = new YT.Player('player', {
+        height: '0',
+        width: '0',
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          showinfo: 0,
+          modestbranding: 1,
+          loop: 1,
+          playlist: videoId
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    };
   </script>
 </body>
 
