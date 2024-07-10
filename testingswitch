@@ -12,14 +12,12 @@
       padding: 20px;
       background-color: #f0f0f0;
     }
-
     h1 {
       font-size: 28px;
       font-weight: bold;
       margin: 20px 0;
       color: #007BFF;
     }
-
     p {
       margin-bottom: 10px;
       color: #333;
