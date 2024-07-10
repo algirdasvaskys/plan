@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="John Dean">
+  <title>Fuse Inputs and Outputs - Measured and Expected Values for Troubleshooting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #007BFF;
+    }
+
+    p {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: #fff;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .blown {
+      background-color: #ffcccc;
+    }
+
+    .good {
+      background-color: #ccffcc;
+    }
+
+    .ohms {
+      background-color: #f2f2f2;
+    }
+
+    .volts {
+      background-color: #e6f7ff;
+    }
+
+    .troubleshoot {
+      display: none;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .troubleshoot.visible {
+      display: block;
+    }
+
+    .troubleshoot h3 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+
+    .toggle-troubleshoot {
+      cursor: pointer;
+      color: #007BFF;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    function toggleTroubleshoot(id) {
+      const troubleshootDiv = document.getElementById(id);
+      troubleshootDiv.classList.toggle('visible');
+    }
+  </script>
+</head>
+<body>
+  <h1>Fuse Inputs and Outputs - Measured and Expected Values for Troubleshooting</h1>
+  <p>Use the table below to understand the measured and expected values for fuse inputs and outputs, and click on the rows for troubleshooting tips.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Fuse Type</th>
+        <th>Terminals</th>
+        <th>Status</th>
+        <th>Measured Value</th>
+        <th>Expected Value</th>
+        <th>Troubleshoot</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr onclick="toggleTroubleshoot('troubleshoot1')">
+        <td>Standard Fuse</td>
+        <td>Terminal 1 to Terminal 2</td>
+        <td class="good">Good</td>
+        <td class="ohms">0Ω (Continuity)</td>
+        <td class="ohms">0Ω (Continuity)</td>
+        <td class="toggle-troubleshoot">View Tips</td>
+      </tr>
+      <tr onclick="toggleTroubleshoot('troubleshoot2')">
+        <td>Standard Fuse</td>
+        <td>Terminal 1 to Terminal 2</td>
+        <td class="blown">Blown</td>
+        <td class="ohms">OL (Open Line)</td>
+        <td class="ohms">OL (Open Line)</td>
+        <td class="toggle-troubleshoot">View Tips</td>
+      </tr>
+      <tr onclick="toggleTroubleshoot('troubleshoot3')">
+        <td>Ceramic Fuse</td>
+        <td>Terminal 1 to Terminal 2</td>
+        <td class="good">Good</td>
+        <td class="ohms">0Ω (Continuity)</td>
+        <td class="ohms">0Ω (Continuity)</td>
+<td class="toggle-troubleshoot">View Tips</td>
+      </tr>
+      <tr onclick="toggleTroubleshoot('troubleshoot4')">
+        <td>Ceramic Fuse</td>
+        <td>Terminal 1 to Terminal 2</td>
+        <td class="blown">Blown</td>
+        <td class="ohms">OL (Open Line)</td>
+        <td class="ohms">OL (Open Line)</td>
+        <td class="toggle-troubleshoot">View Tips</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="troubleshoot1" class="troubleshoot">
+    <h3>Troubleshooting Tips for Standard Fuse (Good)</h3>
+    <p>If the measured resistance is not 0Ω (Continuity), check for:</p>
+    <ul>
+      <li>Loose connections in the fuse holder.</li>
+      <li>Corrosion or oxidation on the terminals.</li>
+      <li>Ensure the fuse is properly seated in its holder.</li>
+    </ul>
+  </div>
+
+  <div id="troubleshoot2" class="troubleshoot">
+    <h3>Troubleshooting Tips for Standard Fuse (Blown)</h3>
+    <p>If the measured value is not OL (Open Line), check for:</p>
+    <ul>
+      <li>Short circuits downstream of the fuse.</li>
+      <li>Overcurrent conditions that caused the fuse to blow.</li>
+      <li>Correct fuse rating for the circuit's load.</li>
+    </ul>
+    <p><strong>Note:</strong> Replace with a fuse of the correct rating after addressing the root cause.</p>
+  </div>
+
+  <div id="troubleshoot3" class="troubleshoot">
+    <h3>Troubleshooting Tips for Ceramic Fuse (Good)</h3>
+    <p>If the measured resistance is not 0Ω (Continuity), check for:</p>
+    <ul>
+      <li>Loose connections in the fuse holder.</li>
+      <li>Corrosion or oxidation on the terminals.</li>
+      <li>Ensure the fuse is properly seated in its holder.</li>
+    </ul>
+  </div>
+
+  <div id="troubleshoot4" class="troubleshoot">
+    <h3>Troubleshooting Tips for Ceramic Fuse (Blown)</h3>
+    <p>If the measured value is not OL (Open Line), check for:</p>
+    <ul>
+      <li>Short circuits downstream of the fuse.</li>
+      <li>Overcurrent conditions that caused the fuse to blow.</li>
+      <li>Correct fuse rating for the circuit's load.</li>
+    </ul>
+    <p><strong>Note:</strong> Replace with a fuse of the correct rating after addressing the root cause.</p>
+  </div>
+</body>
+</html>
