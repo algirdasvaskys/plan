@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ladder Logic Explanation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .ladder-logic {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-gap: 10px;
+      padding: 20px;
+      background: white;
+      border: 2px solid #000;
+    }
+    .contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      border: 1px solid #000;
+      cursor: pointer;
+      background-color: #e0e0e0;
+      font-weight: bold;
+    }
+    .contact.closed {
+      background-color: #a0e0a0;
+    }
+    .contact.open {
+      background-color: #e0a0a0;
+    }
+    .contact::before {
+      content: '';
+      width: 80%;
+      height: 2px;
+      background: #000;
+    }
+    .contact.no::before {
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid #000;
+      margin-top: 10px;
+    }
+    .contact.nc::before {
+      border-top: 10px solid #000;
+      border-bottom: 10px solid #000;
+      border-left: 10px solid transparent;
+      margin-top: 10px;
+    }
+    .result {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-column: span 4;
+      height: 50px;
+      background-color: #f0f0f0;
+      border: 1px solid #000;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="ladder-logic">
+    <div class="contact no" id="contact1" onclick="toggleContact('contact1')">NO</div>
+    <div class="contact nc" id="contact2" onclick="toggleContact('contact2')">NC</div>
+    <div class="contact no" id="contact3" onclick="toggleContact('contact3')">NO</div>
+    <div class="result" id="result">OFF</div>
+  </div>
+  <script>
+    function toggleContact(id) {
+      const contact = document.getElementById(id);
+      contact.classList.toggle('open');
+      contact.classList.toggle('closed');
+      updateResult();
+    }
+
+    function updateResult() {
+      const contact1 = document.getElementById('contact1').classList.contains('closed');
+      const contact2 = document.getElementById('contact2').classList.contains('open');
+      const contact3 = document.getElementById('contact3').classList.contains('closed');
+      const result = document.getElementById('result');
+
+      if (contact1 && contact2 && contact3) {
+        result.textContent = 'ON';
+        result.style.backgroundColor = '#a0e0a0';
+      } else {
+        result.textContent = 'OFF';
+        result.style.backgroundColor = '#e0a0a0';
+      }
+    }
+  </script>
+</body>
+</html>
+
+
