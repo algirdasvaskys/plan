@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Phase Motor with Single Phase Supply</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+        }
+        .caption {
+            text-align: center;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        .steps {
+            margin-top: 20px;
+        }
+        .steps li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Running a Three Phase Motor on Single Phase Supply</h1>
+        <p>To run a three-phase motor using a single-phase supply, you can use a capacitor to create a phase shift. This method is commonly known as the capacitor-start or capacitor-run method. Here is an explanation and a diagram to illustrate the concept:</p>
+        
+        <div class="diagram">
+            <svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="300" fill="#f9f9f9" stroke="#ccc" stroke-width="2"/>
+                <line x1="50" y1="50" x2="350" y2="50" stroke="black" stroke-width="2"/>
+                <line x1="50" y1="50" x2="50" y2="250" stroke="black" stroke-width="2"/>
+                <line x1="50" y1="150" x2="350" y2="150" stroke="black" stroke-width="2"/>
+                <line x1="50" y1="250" x2="350" y2="250" stroke="black" stroke-width="2"/>
+                <circle cx="100" cy="50" r="10" fill="blue"/>
+                <circle cx="100" cy="150" r="10" fill="blue"/>
+                <circle cx="100" cy="250" r="10" fill="blue"/>
+                <line x1="100" y1="50" x2="150" y2="100" stroke="black" stroke-width="2"/>
+                <line x1="100" y1="150" x2="150" y2="100" stroke="black" stroke-width="2"/>
+                <line x1="100" y1="250" x2="150" y2="100" stroke="black" stroke-width="2"/>
+                <rect x="150" y="90" width="100" height="20" fill="red" stroke="black" stroke-width="2"/>
+                <text x="155" y="105" font-family="Arial" font-size="14" fill="white">Capacitor</text>
+                <text x="70" y="35" font-family="Arial" font-size="14" fill="black">T1</text>
+                <text x="70" y="135" font-family="Arial" font-size="14" fill="black">T2</text>
+                <text x="70" y="235" font-family="Arial" font-size="14" fill="black">T3</text>
+                <text x="110" y="270" font-family="Arial" font-size="14" fill="black">Three Phase Motor</text>
+                <line x1="250" y1="100" x2="350" y2="100" stroke="black" stroke-width="2"/>
+                <line x1="250" y1="110" x2="350" y2="110" stroke="black" stroke-width="2"/>
+            </svg>
+            <div class="caption">Diagram: Three Phase Motor Connection with a Capacitor for Single Phase Supply</div>
+        </div>
+        
+        <div class="steps">
+            <h2>Steps to Connect a Three Phase Motor to a Single Phase Supply:</h2>
+            <ol>
+                <li><strong>Identify the Motor Terminals:</strong> The three terminals of the motor are T1, T2, and T3.</li>
+                <li><strong>Connect the Single Phase Supply:</strong> Connect the single-phase supply (L and N) to two of the motor terminals (e.g., T1 and T2).</li>
+                <li><strong>Use a Capacitor:</strong> Connect a capacitor in series between the third terminal (T3) and one of the supply terminals (e.g., T1). This creates a phase shift.</li>
+                <li><strong>Start the Motor:</strong> When power is applied, the capacitor generates a phase shift, allowing the motor to start and run.</li>
+                <li><strong>Adjust the Capacitor Size:</strong> The size of the capacitor may need to be adjusted based on the motor’s power rating and load requirements.</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
+
