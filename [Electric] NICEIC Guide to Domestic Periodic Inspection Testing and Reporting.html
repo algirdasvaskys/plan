@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NICEIC Guide to Domestic Periodic Inspection Testing and Reporting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .schematic {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>NICEIC Guide to Domestic Periodic Inspection Testing and Reporting</h1>
+        <p>The NICEIC (National Inspection Council for Electrical Installation Contracting) Guide provides a comprehensive approach to the periodic inspection, testing, and reporting of electrical installations in domestic properties. The key objectives are to ensure safety, identify any deficiencies, and confirm that the installation complies with current regulations.</p>
+
+        <h2>Key Steps in the Inspection Process</h2>
+        <ol>
+            <li>Visual Inspection: Checking the condition of electrical equipment and installations.</li>
+            <li>Testing: Conducting tests to ensure safety and functionality.</li>
+            <li>Reporting: Documenting the findings and recommending necessary actions.</li>
+        </ol>
+
+        <h3>Visual Inspection</h3>
+        <p>This involves a thorough examination of the electrical installation for signs of wear and tear, damage, or non-compliance with regulations. It includes checking sockets, switches, circuit breakers, and other components.</p>
+
+        <h3>Testing</h3>
+        <p>The testing phase includes several key tests:</p>
+        <ul>
+            <li><strong>Earth Continuity Test:</strong> Ensures all metal parts of the installation are properly earthed.</li>
+            <li><strong>Insulation Resistance Test:</strong> Checks the insulation of electrical wiring to prevent electric shocks.</li>
+            <li><strong>Polarity Test:</strong> Verifies correct wiring of live, neutral, and earth conductors.</li>
+            <li><strong>Earth Fault Loop Impedance Test:</strong> Measures impedance to ensure protection devices will operate correctly.</li>
+            <li><strong>RCD Test:</strong> Tests the functionality of Residual Current Devices (RCDs).</li>
+        </ul>
+
+        <h3>Reporting</h3>
+        <p>The final report, often called an Electrical Installation Condition Report (EICR), summarizes the findings from the inspection and testing phases. It includes observations, recommendations, and a classification code for observed issues.</p>
+
+        <h2>Example Electrical Schematic</h2>
+        <div class="schematic">
+            <svg width="100%" height="400px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Main supply -->
+                <line x1="20" y1="20" x2="20" y2="380" stroke="black" stroke-width="2"/>
+                <line x1="40" y1="20" x2="40" y2="380" stroke="black" stroke-width="2"/>
+
+                <!-- Earth -->
+                <rect x="60" y="20" width="20" height="360" fill="green"/>
+
+                <!-- Circuit Breaker -->
+                <rect x="100" y="40" width="60" height="40" fill="gray"/>
+                <text x="110" y="65" fill="white">CB1</text>
+
+                <!-- Wiring to outlets -->
+                <line x1="130" y1="80" x2="130" y2="180" stroke="black" stroke-width="2"/>
+                <line x1="130" y1="180" x2="200" y2="180" stroke="black" stroke-width="2"/>
+                <line x1="200" y1="180" x2="200" y2="280" stroke="black" stroke-width="2"/>
+                <line x1="200" y1="280" x2="270" y2="280" stroke="black" stroke-width="2"/>
+
+                <!-- Outlet 1 -->
+                <rect x="270" y="260" width="40" height="40" fill="blue"/>
+                <text x="275" y="285" fill="white">O1</text>
+
+                <!-- Outlet 2 -->
+                <line x1="200" y1="280" x2="200" y2="340" stroke="black" stroke-width="2"/>
+                <line x1="200" y1="340" x2="270" y2="340" stroke="black" stroke-width="2"/>
+                <rect x="270" y="320" width="40" height="40" fill="blue"/>
+                <text x="275" y="345" fill="white">O2</text>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>
