@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forward Reserve Wye-Delta Motor Control Diagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+        }
+        .interactive {
+            margin-top: 30px;
+        }
+        .interactive input, .interactive button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Forward Reserve Wye-Delta Motor Control Diagram</h1>
+
+    <p>The Wye-Delta motor starting method is used to reduce the starting current of the motor. This method is often used in applications where the motor has to start under a light load and the reduction in current draw is crucial. The forward reserve Wye-Delta method involves initially connecting the motor in a Wye (Star) configuration and then switching to a Delta configuration.</p>
+
+    <h2>Components Involved</h2>
+    <ul>
+        <li>Three-Phase Motor</li>
+        <li>Wye-Delta Starter</li>
+        <li>Control Circuit</li>
+        <li>Power Circuit</li>
+        <li>Timers</li>
+        <li>Contactors</li>
+        <li>Overload Relays</li>
+    </ul>
+
+    <h2>Control Circuit Diagram</h2>
+    <div class="diagram">
+        <img src="https://via.placeholder.com/800x400" alt="Control Circuit Diagram">
+    </div>
+
+    <h2>Power Circuit Diagram</h2>
+    <div class="diagram">
+        <img src="https://via.placeholder.com/800x400" alt="Power Circuit Diagram">
+    </div>
+
+    <h2>Explanation of Operation</h2>
+    <p>The Wye-Delta starter works in two stages:</p>
+    <ol>
+        <li><strong>Wye (Star) Starting:</strong> Initially, the motor is connected in a Wye configuration, which reduces the voltage across each winding to 1/√3 (approximately 58%) of the line voltage. This significantly reduces the starting current and torque.</li>
+        <li><strong>Delta Running:</strong> After a preset time delay (usually controlled by a timer), the motor is switched to a Delta configuration. In this configuration, the motor receives the full line voltage, allowing it to run at full speed and torque.</li>
+    </ol>
+
+    <h2>Interactive Elements</h2>
+    <div class="interactive">
+        <label for="timer">Set Timer for Wye to Delta Transition (seconds):</label>
+        <input type="number" id="timer" name="timer" min="1" max="60" value="10">
+        <button onclick="setTimer()">Set Timer</button>
+        <p id="timer-display"></p>
+    </div>
+
+    <script>
+        function setTimer() {
+            const timerValue = document.getElementById('timer').value;
+            document.getElementById('timer-display').innerText = `Timer set to ${timerValue} seconds`;
+        }
+    </script>
+
+    <div class="footer">
+        <p>&copy; 2024 Electrical and Automation</p>
+    </div>
+    
+</body>
+</html>
+
+
+
