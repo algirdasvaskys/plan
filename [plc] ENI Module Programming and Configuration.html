@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENI Module Programming and Configuration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .accordion {
+            margin-top: 20px;
+        }
+        .accordion-item {
+            margin-bottom: 10px;
+        }
+        .accordion-header {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ENI Module Programming and Configuration</h1>
+        <p>This guide will walk you through the process of programming and configuring an Ethernet/IP Network Interface (ENI) module.</p>
+        
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">1. Introduction to ENI Modules</div>
+                <div class="accordion-content">
+                    <h2>What is an ENI Module?</h2>
+                    <p>An ENI (Ethernet/IP Network Interface) module allows for communication between devices over an Ethernet network using the Ethernet/IP protocol. It is commonly used in industrial automation for connecting PLCs, sensors, and other equipment.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">2. Setting Up the ENI Module</div>
+                <div class="accordion-content">
+                    <h2>Hardware Connections</h2>
+                    <p>Connect the ENI module to your network and power supply. Ensure that the module is properly grounded.</p>
+                    <h2>Software Configuration</h2>
+                    <p>Use the manufacturer's configuration software to set up the IP address, subnet mask, and gateway for the ENI module.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">3. Programming the ENI Module</div>
+                <div class="accordion-content">
+                    <h2>Step-by-Step Programming</h2>
+                    <p>Follow these steps to program your ENI module:</p>
+                    <ol>
+                        <li>Open the programming software and connect to the ENI module.</li>
+                        <li>Create a new project and select the ENI module from the device list.</li>
+                        <li>Configure the communication parameters such as baud rate, parity, and data bits.</li>
+                        <li>Write the desired program logic using the software's programming language (e.g., ladder logic, structured text).</li>
+                        <li>Download the program to the ENI module and test the communication.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">4. Troubleshooting</div>
+                <div class="accordion-content">
+                    <h2>Common Issues</h2>
+                    <p>If you encounter issues, consider the following troubleshooting steps:</p>
+                    <ul>
+                        <li>Check the physical connections and ensure all cables are properly connected.</li>
+                        <li>Verify the IP configuration settings.</li>
+                        <li>Ensure that the ENI module is properly powered and grounded.</li>
+                        <li>Consult the manufacturer's documentation for specific error codes and troubleshooting tips.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
