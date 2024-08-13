@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitor Calculations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Capacitor Calculations</h1>
+    
+    <h2>Capacitors in Series</h2>
+    <p>When capacitors are connected in series, the total capacitance is less than any individual capacitance. The formula for calculating the total capacitance of capacitors in series is:</p>
+    <div class="formula">
+        1/C<sub>total</sub> = 1/C<sub>1</sub> + 1/C<sub>2</sub> + 1/C<sub>3</sub> + ...
+    </div>
+    <p>Where C<sub>total</sub> is the total capacitance, and C<sub>1</sub>, C<sub>2</sub>, C<sub>3</sub>, etc., are the individual capacitances.</p>
+    
+    <h3>Calculate Capacitors in Series</h3>
+    <div id="seriesInputs">
+        <input type="number" placeholder="Capacitor 1 (μF)">
+        <input type="number" placeholder="Capacitor 2 (μF)">
+    </div>
+    <button onclick="addSeriesInput()">Add Capacitor</button>
+    <button onclick="calculateSeries()">Calculate</button>
+    <div id="seriesResult"></div>
+    
+    <h2>Capacitors in Parallel</h2>
+    <p>When capacitors are connected in parallel, the total capacitance is the sum of all individual capacitances. The formula for calculating the total capacitance of capacitors in parallel is:</p>
+    <div class="formula">
+        C<sub>total</sub> = C<sub>1</sub> + C<sub>2</sub> + C<sub>3</sub> + ...
+    </div>
+    <p>Where C<sub>total</sub> is the total capacitance, and C<sub>1</sub>, C<sub>2</sub>, C<sub>3</sub>, etc., are the individual capacitances.</p>
+    
+    <h3>Calculate Capacitors in Parallel</h3>
+    <div id="parallelInputs">
+        <input type="number" placeholder="Capacitor 1 (μF)">
+        <input type="number" placeholder="Capacitor 2 (μF)">
+    </div>
+    <button onclick="addParallelInput()">Add Capacitor</button>
+    <button onclick="calculateParallel()">Calculate</button>
+    <div id="parallelResult"></div>
+
+    <script>
+        function addSeriesInput() {
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.placeholder = `Capacitor ${document.getElementById('seriesInputs').children.length + 1} (μF)`;
+            document.getElementById('seriesInputs').appendChild(input);
+        }
+
+        function addParallelInput() {
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.placeholder = `Capacitor ${document.getElementById('parallelInputs').children.length + 1} (μF)`;
+            document.getElementById('parallelInputs').appendChild(input);
+        }
+
+        function calculateSeries() {
+            const inputs = document.getElementById('seriesInputs').getElementsByTagName('input');
+            let totalReciprocal = 0;
+            for (let input of inputs) {
+                if (input.value) {
+                    totalReciprocal += 1 / parseFloat(input.value);
+                }
+            }
+            const totalCapacitance = 1 / totalReciprocal;
+            document.getElementById('seriesResult').innerHTML = `Total Capacitance in Series: ${totalCapacitance.toFixed(2)} μF`;
+        }
+
+        function calculateParallel() {
+            const inputs = document.getElementById('parallelInputs').getElementsByTagName('input');
+            let totalCapacitance = 0;
+            for (let input of inputs) {
+                if (input.value) {
+                    totalCapacitance += parseFloat(input.value);
+                }
+            }
+            document.getElementById('parallelResult').innerHTML = `Total Capacitance in Parallel: ${totalCapacitance.toFixed(2)} μF`;
+        }
+    </script>
+</body>
+</html>
