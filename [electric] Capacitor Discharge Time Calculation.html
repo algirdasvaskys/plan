@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitor Discharge Time Calculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+        .example {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .note {
+            background-color: #ffe6e6;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Capacitor Discharge Time Calculation</h1>
+    
+    <h2>Introduction</h2>
+    <p>Capacitors are essential components in many electrical circuits, capable of storing and releasing electrical energy. Understanding how to calculate their discharge time is crucial for designing and analyzing circuits.</p>
+    
+    <h2>The Discharge Formula</h2>
+    <p>The voltage across a discharging capacitor follows an exponential decay pattern. The formula for the voltage at any time t during discharge is:</p>
+    <div class="formula">
+        V(t) = V₀ * e^(-t / (R * C))
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>V(t) is the voltage at time t</li>
+        <li>V₀ is the initial voltage</li>
+        <li>e is Euler's number (approximately 2.71828)</li>
+        <li>t is the time since discharge began</li>
+        <li>R is the resistance in ohms</li>
+        <li>C is the capacitance in farads</li>
+    </ul>
+    
+    <h2>Time Constant</h2>
+    <p>The product R * C is known as the time constant, often denoted by τ (tau). It represents the time it takes for the capacitor to discharge to about 36.8% of its initial voltage.</p>
+    
+    <h2>Calculating Discharge Time</h2>
+    <p>To find the time it takes for a capacitor to discharge to a specific voltage:</p>
+    <div class="formula">
+        t = -R * C * ln(V / V₀)
+    </div>
+    <p>Where ln is the natural logarithm, and V is the final voltage you're interested in.</p>
+    
+    <h2>Examples</h2>
+    
+    <div class="example">
+        <h3>Example 1: Basic Discharge Time</h3>
+        <p>Calculate the time it takes for a 100 µF capacitor to discharge through a 10 kΩ resistor from 12V to 1V.</p>
+        <p>Given:</p>
+        <ul>
+            <li>C = 100 µF = 1 * 10^-4 F</li>
+            <li>R = 10 kΩ = 1 * 10^4 Ω</li>
+            <li>V₀ = 12V</li>
+            <li>V = 1V</li>
+        </ul>
+        <p>Solution:</p>
+        <div class="formula">
+            t = -R * C * ln(V / V₀)<br>
+            t = -(1 * 10^4) * (1 * 10^-4) * ln(1 / 12)<br>
+            t = -1 * ln(1/12)<br>
+            t ≈ 2.485 seconds
+        </div>
+    </div>
+    
+    <div class="example">
+        <h3>Example 2: Time Constant</h3>
+        <p>Find the time constant for a 470 µF capacitor and a 2.2 kΩ resistor.</p>
+        <p>Given:</p>
+        <ul>
+            <li>C = 470 µF = 4.7 * 10^-4 F</li>
+            <li>R = 2.2 kΩ = 2.2 * 10^3 Ω</li>
+        </ul>
+        <p>Solution:</p>
+        <div class="formula">
+            τ = R * C<br>
+            τ = (2.2 * 10^3) * (4.7 * 10^-4)<br>
+            τ = 1.034 seconds
+        </div>
+        <p>This means it will take 1.034 seconds for the capacitor to discharge to about 36.8% of its initial voltage.</p>
+    </div>
+    
+    <h2>Practical Considerations</h2>
+    <p>In practice, capacitors are often considered "fully discharged" after 5 time constants. At this point, the capacitor has discharged to about 0.7% of its initial voltage.</p>
+    
+    <div class="note">
+        <strong>Note:</strong> Real-world capacitors may not discharge exactly as predicted due to factors like dielectric absorption and leakage current. Always consult component datasheets and consider safety when working with charged capacitors.
+    </div>
+    
+    <h2>Conclusion</h2>
+    <p>Understanding capacitor discharge time is crucial for designing timing circuits, power supplies, and many other electronic applications. By using the formulas and examples provided, you can accurately calculate discharge times for various capacitor-resistor combinations.</p>
+</body>
+</html>
