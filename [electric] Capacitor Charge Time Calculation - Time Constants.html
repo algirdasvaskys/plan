@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitor Charge Time Calculation - Time Constants</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+        .note {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            margin-bottom: 15px;
+            padding: 4px 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Capacitor Charge Time Calculation Using Time Constants</h1>
+
+    <h2>Introduction</h2>
+    <p>When a capacitor charges through a resistor, it follows an exponential curve. The time constant (τ) is a measure of how quickly the capacitor charges or discharges. Understanding time constants is crucial for calculating capacitor charge times.</p>
+
+    <h2>Time Constant (τ)</h2>
+    <p>The time constant is defined as the product of resistance (R) and capacitance (C):</p>
+    <div class="formula">
+        τ = R * C
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>τ (tau) is the time constant in seconds</li>
+        <li>R is the resistance in ohms (Ω)</li>
+        <li>C is the capacitance in farads (F)</li>
+    </ul>
+
+    <h2>Charging Equation</h2>
+    <p>The voltage across a charging capacitor at any time t is given by:</p>
+    <div class="formula">
+        V(t) = V_s * (1 - e^(-t/τ))
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>V(t) is the voltage across the capacitor at time t</li>
+        <li>V_s is the supply voltage</li>
+        <li>e is the base of natural logarithms (approximately 2.71828)</li>
+        <li>t is the time elapsed since charging began</li>
+        <li>τ is the time constant</li>
+    </ul>
+
+    <h2>Charge Time Calculation</h2>
+    <p>To calculate the time it takes for a capacitor to charge to a specific percentage of its full charge:</p>
+    <ol>
+        <li>Determine the desired percentage of charge</li>
+        <li>Use the following formula to calculate the number of time constants needed:</li>
+    </ol>
+    <div class="formula">
+        Number of time constants = -ln(1 - desired percentage)
+    </div>
+    <p>Where ln is the natural logarithm.</p>
+
+    <h3>Common charge percentages:</h3>
+    <ul>
+        <li>63.2% charge: 1 time constant</li>
+        <li>86.5% charge: 2 time constants</li>
+        <li>95% charge: 3 time constants</li>
+        <li>98.2% charge: 4 time constants</li>
+        <li>99.3% charge: 5 time constants</li>
+    </ul>
+
+    <h2>Example Calculation</h2>
+    <p>Let's calculate the time it takes for a 100μF capacitor to charge to 95% through a 10kΩ resistor:</p>
+    <ol>
+        <li>Calculate the time constant:
+            <div class="formula">
+                τ = R * C = 10,000Ω * 100μF = 1 second
+            </div>
+        </li>
+        <li>For 95% charge, we need 3 time constants</li>
+        <li>Calculate the charge time:
+            <div class="formula">
+                Charge time = 3 * τ = 3 * 1 second = 3 seconds
+            </div>
+        </li>
+    </ol>
+
+    <div class="note">
+        <p><strong>Note:</strong> In practical applications, it's often considered that a capacitor is fully charged after 5 time constants (99.3% charge). This is because the charging rate becomes very slow beyond this point, and the small increase in charge is usually negligible for most purposes.</p>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>Understanding time constants and how to use them in calculations is essential for working with capacitors in electronic circuits. This method allows you to determine charge times for any desired percentage of full charge, given the resistance and capacitance values in your circuit.</p>
+</body>
+</html>
