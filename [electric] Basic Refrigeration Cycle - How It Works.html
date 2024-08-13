@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Refrigeration Cycle - How It Works</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
+        .component {
+            font-weight: bold;
+            color: #3498db;
+        }
+        .process {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Refrigeration Cycle - How It Works</h1>
+    
+    <p>The basic refrigeration cycle is a process used in various cooling systems, including air conditioners and refrigerators. It works by transferring heat from inside a space (like a refrigerator or a room) to the outside environment. This process involves four main components and four stages.</p>
+    
+    <h2>Main Components</h2>
+    <ul>
+        <li><span class="component">Compressor</span></li>
+        <li><span class="component">Condenser</span></li>
+        <li><span class="component">Expansion Valve</span></li>
+        <li><span class="component">Evaporator</span></li>
+    </ul>
+
+    <h2>Refrigeration Cycle Diagram</h2>
+    <svg class="diagram" viewBox="0 0 400 300">
+        <rect x="10" y="10" width="380" height="280" fill="none" stroke="#333" stroke-width="2"/>
+        <circle cx="80" cy="80" r="30" fill="#3498db"/>
+        <text x="80" y="85" text-anchor="middle" fill="white">Compressor</text>
+        <rect x="200" y="50" width="150" height="60" fill="#e74c3c"/>
+        <text x="275" y="85" text-anchor="middle" fill="white">Condenser</text>
+        <rect x="50" y="200" width="60" height="60" fill="#2ecc71"/>
+        <text x="80" y="235" text-anchor="middle" fill="white">Expansion Valve</text>
+        <rect x="200" y="190" width="150" height="60" fill="#f39c12"/>
+        <text x="275" y="225" text-anchor="middle" fill="white">Evaporator</text>
+        <path d="M110 80 H200" stroke="#333" stroke-width="2" fill="none"/>
+        <path d="M350 110 V190" stroke="#333" stroke-width="2" fill="none"/>
+        <path d="M200 220 H110" stroke="#333" stroke-width="2" fill="none"/>
+        <path d="M50 230 V80 H50" stroke="#333" stroke-width="2" fill="none"/>
+        <text x="150" y="70" fill="#333">High Pressure</text>
+        <text x="360" y="150" fill="#333">High to Low Pressure</text>
+        <text x="150" y="250" fill="#333">Low Pressure</text>
+        <text x="30" y="150" fill="#333">Low to High Pressure</text>
+    </svg>
+
+    <h2>The Four Stages of the Refrigeration Cycle</h2>
+
+    <div class="process">
+        <h3>1. Compression</h3>
+        <p>The cycle begins with the <span class="component">compressor</span>. It takes in low-pressure, low-temperature refrigerant gas and compresses it. This process increases both the pressure and temperature of the refrigerant. The refrigerant leaves the compressor as a high-pressure, high-temperature gas.</p>
+    </div>
+
+    <div class="process">
+        <h3>2. Condensation</h3>
+        <p>The hot, high-pressure refrigerant gas then enters the <span class="component">condenser</span>. Here, it releases its heat to the surrounding environment (usually outside air). As it cools, the refrigerant condenses from a gas into a liquid, while still maintaining high pressure.</p>
+    </div>
+
+    <div class="process">
+        <h3>3. Expansion</h3>
+        <p>The high-pressure liquid refrigerant then passes through an <span class="component">expansion valve</span>. This valve allows the refrigerant to expand quickly, which causes a sudden drop in pressure. This pressure drop results in a significant temperature decrease, turning some of the liquid refrigerant into a cold, low-pressure mixture of liquid and vapor.</p>
+    </div>
+
+    <div class="process">
+        <h3>4. Evaporation</h3>
+        <p>Finally, the cold refrigerant enters the <span class="component">evaporator</span>. Here, it absorbs heat from the surrounding area (inside the refrigerator or the room to be cooled). This heat causes the remaining liquid refrigerant to evaporate into a gas. The refrigerant leaves the evaporator as a low-pressure, low-temperature gas, ready to enter the compressor again and repeat the cycle.</p>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>This continuous cycle effectively moves heat from inside the cooled space to the outside environment. The efficiency of this process depends on various factors, including the type of refrigerant used, the design of the components, and the temperature difference between the inside and outside environments.</p>
+
+</body>
+</html>
