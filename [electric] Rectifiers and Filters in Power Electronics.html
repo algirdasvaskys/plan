@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectifiers and Filters in Power Electronics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .content {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .image-placeholder {
+            background-color: #ddd;
+            border: 1px solid #999;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rectifiers and Filters in Power Electronics</h1>
+
+    <div class="content">
+        <h2>1. Full Wave Bridge Rectifier</h2>
+        <p>A full wave bridge rectifier is a circuit that converts alternating current (AC) to direct current (DC) using four diodes arranged in a bridge configuration.</p>
+        <h3>How it works:</h3>
+        <ul>
+            <li>During the positive half-cycle of AC input, two diodes conduct.</li>
+            <li>During the negative half-cycle, the other two diodes conduct.</li>
+            <li>This arrangement ensures that current always flows in the same direction through the load.</li>
+        </ul>
+        <div class="image-placeholder">[Full Wave Bridge Rectifier Circuit Diagram]</div>
+        <p>Advantages:</p>
+        <ul>
+            <li>Provides better efficiency compared to half-wave rectifiers</li>
+            <li>Produces less ripple in the output voltage</li>
+            <li>Utilizes both half-cycles of the AC input</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>2. Capacitor Filters</h2>
+        <p>Capacitor filters are used to smooth out the rectified DC output, reducing ripple and providing a more stable DC voltage.</p>
+        <h3>How it works:</h3>
+        <ul>
+            <li>A large capacitor is connected in parallel with the load resistor.</li>
+            <li>The capacitor charges during the peak of the rectified waveform.</li>
+            <li>It discharges slowly between peaks, maintaining a more constant voltage.</li>
+        </ul>
+        <div class="image-placeholder">[Capacitor Filter Circuit Diagram]</div>
+        <p>Advantages:</p>
+        <ul>
+            <li>Significantly reduces ripple in the output voltage</li>
+            <li>Simple and cost-effective solution for smoothing DC output</li>
+            <li>Improves the overall efficiency of the power supply</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>3. Half Wave Rectifier</h2>
+        <p>A half wave rectifier is the simplest form of rectifier circuit that converts AC to pulsating DC using a single diode.</p>
+        <h3>How it works:</h3>
+        <ul>
+            <li>The diode conducts only during the positive half-cycle of the AC input.</li>
+            <li>During the negative half-cycle, the diode blocks current flow.</li>
+            <li>This results in a pulsating DC output that uses only half of the input waveform.</li>
+        </ul>
+        <div class="image-placeholder">[Half Wave Rectifier Circuit Diagram]</div>
+        <p>Characteristics:</p>
+        <ul>
+            <li>Simplest rectifier circuit</li>
+            <li>Less efficient compared to full wave rectifiers</li>
+            <li>Produces more ripple in the output voltage</li>
+            <li>Often used in low-power applications or where simplicity is preferred</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>Comparison and Applications</h2>
+        <p>When choosing between these rectifier types and filtering methods, consider the following:</p>
+        <ul>
+            <li>Full wave bridge rectifiers are more efficient and produce less ripple than half wave rectifiers.</li>
+            <li>Capacitor filters are essential for smoothing the output of both types of rectifiers.</li>
+            <li>Half wave rectifiers may be suitable for very low power applications or where cost is a critical factor.</li>
+            <li>For most power supply applications, a full wave bridge rectifier with capacitor filtering is preferred.</li>
+        </ul>
+        <p>Common applications include:</p>
+        <ul>
+            <li>Power supplies for electronic devices</li>
+            <li>Battery chargers</li>
+            <li>Motor control circuits</li>
+            <li>LED drivers</li>
+        </ul>
+    </div>
+</body>
+</html>
