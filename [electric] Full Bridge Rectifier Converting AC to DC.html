@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Bridge Rectifier: Converting AC to DC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .note {
+            background-color: #f0f0f0;
+            border-left: 5px solid #2c3e50;
+            padding: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Full Bridge Rectifier: Converting AC to DC</h1>
+    
+    <h2>Introduction</h2>
+    <p>A full bridge rectifier is a crucial component in power electronics that converts alternating current (AC) into direct current (DC). This process is essential for many electronic devices that require DC power but are supplied with AC from the mains.</p>
+    
+    <h2>How a Full Bridge Rectifier Works</h2>
+    <p>A full bridge rectifier consists of four diodes arranged in a bridge configuration. Here's how it functions:</p>
+    <ol>
+        <li>During the positive half-cycle of the AC input, two diodes conduct while the other two are reverse-biased.</li>
+        <li>During the negative half-cycle, the other pair of diodes conducts, and the first pair is reverse-biased.</li>
+        <li>This arrangement ensures that current always flows in the same direction through the load, regardless of the input polarity.</li>
+    </ol>
+    
+    <div class="note">
+        <strong>Note:</strong> The resulting DC output is not smooth but pulsating. Additional filtering is required to obtain a smooth DC output.
+    </div>
+    
+    <h2>Components of a Full Bridge Rectifier</h2>
+    <ul>
+        <li>Four diodes (usually silicon diodes)</li>
+        <li>AC input source</li>
+        <li>Load resistor</li>
+        <li>Optional smoothing capacitor</li>
+    </ul>
+    
+    <h2>Steps to Build a Full Bridge Rectifier</h2>
+    <ol>
+        <li>Arrange four diodes in a bridge configuration.</li>
+        <li>Connect the AC input across two opposite corners of the bridge.</li>
+        <li>Connect the load across the other two corners.</li>
+        <li>Optionally, add a capacitor in parallel with the load for smoothing.</li>
+    </ol>
+    
+    <h2>Advantages of Full Bridge Rectifiers</h2>
+    <ul>
+        <li>Higher efficiency compared to half-wave rectifiers</li>
+        <li>Lower ripple factor in the output</li>
+        <li>Better transformer utilization</li>
+    </ul>
+    
+    <h2>Applications</h2>
+    <p>Full bridge rectifiers are used in various applications, including:</p>
+    <ul>
+        <li>Power supplies for electronic devices</li>
+        <li>Battery chargers</li>
+        <li>Welding equipment</li>
+        <li>Motor speed controllers</li>
+    </ul>
+    
+    <h2>Conclusion</h2>
+    <p>Full bridge rectifiers are an efficient and reliable method for converting AC to DC power. Understanding their operation is crucial for anyone working with power electronics or designing power supply systems.</p>
+</body>
+</html>
