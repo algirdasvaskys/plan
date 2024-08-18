@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Turn ON and OFF a Motor Using a Sensor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .component {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        #sensor {
+            background-color: #3498db;
+            cursor: pointer;
+        }
+        #controller {
+            background-color: #e74c3c;
+        }
+        #motor {
+            background-color: #2ecc71;
+        }
+        .wire {
+            width: 50px;
+            height: 2px;
+            background-color: #333;
+        }
+        #status {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>How to Turn ON and OFF a Motor Using a Sensor</h1>
+
+    <h2>Introduction</h2>
+    <p>Controlling a motor with a sensor is a common task in automation and robotics. This guide will explain the process and components involved in turning a motor on and off using a sensor.</p>
+
+    <h2>Components Required</h2>
+    <ul>
+        <li>Sensor (e.g., proximity sensor, motion sensor, or light sensor)</li>
+        <li>Motor controller or relay</li>
+        <li>DC or AC motor</li>
+        <li>Power supply</li>
+        <li>Wires for connections</li>
+    </ul>
+
+    <h2>Step-by-Step Process</h2>
+    <ol>
+        <li><strong>Connect the sensor to the controller:</strong> Wire the sensor's output to the controller's input.</li>
+        <li><strong>Connect the controller to the motor:</strong> Wire the controller's output to the motor's power input.</li>
+        <li><strong>Connect the power supply:</strong> Provide appropriate power to the sensor, controller, and motor.</li>
+        <li><strong>Program the controller:</strong> Set up the controller to respond to the sensor's signal and control the motor accordingly.</li>
+        <li><strong>Test the system:</strong> Activate the sensor and observe the motor's response.</li>
+    </ol>
+
+    <h2>Interactive Diagram</h2>
+    <p>Click on the sensor to simulate activation and observe how it affects the motor.</p>
+    <div class="diagram">
+        <div id="sensor" class="component">Sensor</div>
+        <div class="wire"></div>
+        <div id="controller" class="component">Controller</div>
+        <div class="wire"></div>
+        <div id="motor" class="component">Motor</div>
+    </div>
+    <div id="status">Motor Status: OFF</div>
+
+    <h2>Explanation</h2>
+    <p>When the sensor detects the desired condition (e.g., motion, proximity, or light level), it sends a signal to the controller. The controller processes this signal and decides whether to turn the motor on or off. This setup allows for automated control of the motor based on environmental conditions detected by the sensor.</p>
+
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Ensure all electrical connections are secure and properly insulated.</li>
+        <li>Use appropriate voltage and current ratings for all components.</li>
+        <li>Install emergency stop mechanisms for safety.</li>
+        <li>Follow local electrical codes and regulations.</li>
+    </ul>
+
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li>If the motor doesn't respond, check all connections and power supply.</li>
+        <li>Verify that the sensor is functioning correctly and sending the appropriate signal.</li>
+        <li>Ensure the controller is properly programmed and responding to the sensor's input.</li>
+        <li>Check for any fault codes or error messages on the controller.</li>
+    </ul>
+
+    <script>
+        const sensor = document.getElementById('sensor');
+        const motor = document.getElementById('motor');
+        const status = document.getElementById('status');
+        let isOn = false;
+
+        sensor.addEventListener('click', function() {
+            isOn = !isOn;
+            if (isOn) {
+                motor.style.backgroundColor = '#27ae60';
+                status.textContent = 'Motor Status: ON';
+            } else {
+                motor.style.backgroundColor = '#2ecc71';
+                status.textContent = 'Motor Status: OFF';
+            }
+        });
+    </script>
+</body>
+</html>
