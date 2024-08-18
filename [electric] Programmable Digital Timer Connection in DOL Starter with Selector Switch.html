@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmable Digital Timer Connection in DOL Starter with Selector Switch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .note {
+            background-color: #f9f9f9;
+            border-left: 5px solid #3498db;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border-left: 5px solid #e74c3c;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Programmable Digital Timer Connection in DOL Starter with Selector Switch</h1>
+    
+    <div class="section">
+        <h2>1. Introduction</h2>
+        <p>This guide provides step-by-step instructions for connecting a programmable digital timer in a Direct-On-Line (DOL) starter circuit with a selector switch. This setup allows for both manual and timed operation of the motor.</p>
+    </div>
+    
+    <div class="section">
+        <h2>2. Components Required</h2>
+        <ul>
+            <li>DOL Starter</li>
+            <li>Programmable Digital Timer</li>
+            <li>Selector Switch (3-position: Manual-Off-Auto)</li>
+            <li>Contactor</li>
+            <li>Overload Relay</li>
+            <li>MCB (Miniature Circuit Breaker)</li>
+            <li>Push Buttons (Start and Stop)</li>
+            <li>Indicator Lights</li>
+            <li>Control Transformer (if required)</li>
+            <li>Wiring and Terminals</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>3. Wiring Procedure</h2>
+        <ol>
+            <li>Install the MCB at the incoming power supply.</li>
+            <li>Connect the programmable digital timer to the control circuit.</li>
+            <li>Wire the selector switch with three positions: Manual, Off, and Auto.</li>
+            <li>Connect the contactor and overload relay as per the DOL starter configuration.</li>
+            <li>Wire the start and stop push buttons.</li>
+            <li>Connect indicator lights for power, run, and trip status.</li>
+            <li>Integrate the timer into the control circuit.</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>4. Detailed Connection Steps</h2>
+        <ol>
+            <li>Connect the incoming power supply to the MCB.</li>
+            <li>From MCB, connect to the contactor's main contacts.</li>
+            <li>Wire the overload relay in series with the contactor's main contacts.</li>
+            <li>Connect the motor to the overload relay output.</li>
+            <li>For the control circuit:
+                <ul>
+                    <li>Connect one line of the control supply to the common terminal of the selector switch.</li>
+                    <li>Wire the "Manual" position of the selector switch to the start push button.</li>
+                    <li>Connect the "Auto" position to the timer's output contact.</li>
+                    <li>Wire the start button and timer output in parallel to the contactor coil.</li>
+                    <li>Connect the stop button in series with the parallel combination of start button and timer output.</li>
+                    <li>Wire the overload relay's normally closed auxiliary contact in series with the control circuit.</li>
+                </ul>
+            </li>
+            <li>Connect the timer's power supply terminals to the control circuit power.</li>
+            <li>Wire indicator lights:
+                <ul>
+                    <li>Power On: Connect across the control supply.</li>
+                    <li>Run: Wire in parallel with the contactor coil.</li>
+                    <li>Trip: Connect to the overload relay's normally open auxiliary contact.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="note">
+        <h3>Note:</h3>
+        <p>Ensure that all connections are tight and properly insulated. Use appropriate wire sizes for both main and control circuits.</p>
+    </div>
+    
+    <div class="section">
+        <h2>5. Timer Programming</h2>
+        <p>Program the digital timer according to the desired on and off cycles. Refer to the timer's manual for specific programming instructions.</p>
+    </div>
+    
+    <div class="section">
+        <h2>6. Operation</h2>
+        <ul>
+            <li><strong>Manual Mode:</strong> Use start and stop push buttons to control the motor.</li>
+            <li><strong>Auto Mode:</strong> Motor operates based on the programmed timer settings.</li>
+            <li><strong>Off Mode:</strong> Motor remains off regardless of timer or push button status.</li>
+        </ul>
+    </div>
+    
+    <div class="warning">
+        <h3>Safety Warning:</h3>
+        <p>Always ensure power is disconnected before working on electrical circuits. Follow all relevant safety procedures and local electrical codes. Only qualified personnel should perform these connections.</p>
+    </div>
+    
+    <div class="section">
+        <h2>7. Testing and Troubleshooting</h2>
+        <ol>
+            <li>After completing all connections, double-check all wiring before powering on.</li>
+            <li>Test each mode of operation (Manual, Off, Auto) to ensure proper functioning.</li>
+            <li>Verify that the overload protection is working by simulating an overload condition.</li>
+            <li>Check that the timer is accurately controlling the motor in Auto mode.</li>
+            <li>If any issues arise, systematically check each component and connection.</li>
+        </ol>
+    </div>
+</body>
+</html>
