@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Transformer Starter Control Wiring Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .circuit-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .component {
+            stroke: #2c3e50;
+            stroke-width: 2;
+        }
+        .wire {
+            stroke: #3498db;
+            stroke-width: 1.5;
+        }
+        .label {
+            font-size: 12px;
+            fill: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Auto Transformer Starter Control Wiring Explained</h1>
+    
+    <h2>Introduction</h2>
+    <p>An auto transformer starter is a type of reduced voltage starter used for starting three-phase induction motors. It provides a smoother start by reducing the initial voltage applied to the motor, which in turn reduces the starting current and torque.</p>
+
+    <h2>Circuit Diagram</h2>
+    <svg class="circuit-diagram" viewBox="0 0 400 300">
+        <!-- Motor -->
+        <circle cx="350" cy="150" r="30" class="component" fill="none"/>
+        <text x="350" y="155" text-anchor="middle" class="label">Motor</text>
+
+        <!-- Auto Transformer -->
+        <rect x="150" y="100" width="100" height="100" class="component" fill="none"/>
+        <text x="200" y="155" text-anchor="middle" class="label">Auto Transformer</text>
+
+        <!-- Contactor -->
+        <rect x="50" y="125" width="50" height="50" class="component" fill="none"/>
+        <text x="75" y="155" text-anchor="middle" class="label">C1</text>
+
+        <!-- Start Button -->
+        <circle cx="25" cy="50" r="10" class="component" fill="none"/>
+        <text x="25" y="70" text-anchor="middle" class="label">Start</text>
+
+        <!-- Stop Button -->
+        <circle cx="75" cy="50" r="10" class="component" fill="none"/>
+        <text x="75" y="70" text-anchor="middle" class="label">Stop</text>
+
+        <!-- Wiring -->
+        <path d="M25 60 V125 H50" class="wire" fill="none"/>
+        <path d="M75 60 V100 H50 V125" class="wire" fill="none"/>
+        <path d="M100 150 H150" class="wire" fill="none"/>
+        <path d="M250 150 H320" class="wire" fill="none"/>
+    </svg>
+
+    <h2>Components</h2>
+    <ul>
+        <li><strong>Auto Transformer:</strong> The main component that reduces the starting voltage.</li>
+        <li><strong>Contactor (C1):</strong> The main contactor that connects the motor to the power supply.</li>
+        <li><strong>Start Button:</strong> Initiates the starting sequence.</li>
+        <li><strong>Stop Button:</strong> Stops the motor and resets the circuit.</li>
+        <li><strong>Motor:</strong> The three-phase induction motor being controlled.</li>
+    </ul>
+
+    <h2>Working Principle</h2>
+    <ol>
+        <li>When the Start button is pressed, it energizes the control circuit.</li>
+        <li>The main contactor (C1) closes, connecting the motor to the auto transformer's tapped winding.</li>
+        <li>The auto transformer provides a reduced voltage to the motor, typically 65-80% of the full voltage.</li>
+        <li>After a preset time or when the motor reaches a certain speed, the auto transformer is bypassed, and the motor is connected directly to the power supply.</li>
+        <li>The motor continues to run at full voltage until the Stop button is pressed or a fault occurs.</li>
+    </ol>
+
+    <h2>Advantages</h2>
+    <ul>
+        <li>Reduced starting current and torque, which is gentler on the motor and power supply.</li>
+        <li>Smooth acceleration of the motor.</li>
+        <li>Suitable for high inertia loads.</li>
+        <li>More energy-efficient compared to other reduced voltage starting methods.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Auto transformer starters provide an effective method for starting large three-phase induction motors while minimizing stress on both the motor and the power supply. By understanding the control wiring and working principle, engineers and technicians can efficiently install, maintain, and troubleshoot these systems.</p>
+</body>
+</html>
