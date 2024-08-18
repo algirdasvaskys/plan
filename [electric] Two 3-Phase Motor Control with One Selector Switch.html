@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two 3-Phase Motor Control with One Selector Switch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        .motor {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+        #motor1 {
+            top: 50px;
+            left: 50px;
+        }
+        #motor2 {
+            top: 50px;
+            right: 50px;
+        }
+        .switch {
+            width: 80px;
+            height: 40px;
+            background-color: #e74c3c;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .wire {
+            position: absolute;
+            background-color: #2c3e50;
+            height: 2px;
+        }
+        #wire1 {
+            width: 200px;
+            top: 100px;
+            left: 100px;
+        }
+        #wire2 {
+            width: 200px;
+            top: 100px;
+            right: 100px;
+        }
+        #wire3 {
+            width: 2px;
+            height: 150px;
+            left: 50%;
+            top: 100px;
+        }
+        .status {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Two 3-Phase Motor Control with One Selector Switch</h1>
+    
+    <p>This document explains the method for starting and stopping two 3-phase motors using only one selector switch. This setup is commonly used in industrial applications where simplified control is desired.</p>
+
+    <h2>System Components:</h2>
+    <ul>
+        <li>Two 3-phase motors</li>
+        <li>One 3-position selector switch</li>
+        <li>Contactors for each motor</li>
+        <li>Overload relays for motor protection</li>
+        <li>Control circuit with appropriate voltage</li>
+    </ul>
+
+    <h2>Selector Switch Positions:</h2>
+    <ol>
+        <li>OFF: Both motors are stopped</li>
+        <li>ON 1: Motor 1 runs, Motor 2 is stopped</li>
+        <li>ON 2: Motor 2 runs, Motor 1 is stopped</li>
+    </ol>
+
+    <h2>Interactive Diagram:</h2>
+    <div class="diagram">
+        <div class="motor" id="motor1">Motor 1</div>
+        <div class="motor" id="motor2">Motor 2</div>
+        <div class="switch" id="switch" onclick="toggleSwitch()">OFF</div>
+        <div class="wire" id="wire1"></div>
+        <div class="wire" id="wire2"></div>
+        <div class="wire" id="wire3"></div>
+    </div>
+    <div class="status" id="status">Both motors are stopped</div>
+
+    <h2>Operation Procedure:</h2>
+    <ol>
+        <li>Ensure all safety precautions are in place before operating the system.</li>
+        <li>To start Motor 1:
+            <ul>
+                <li>Turn the selector switch to the "ON 1" position.</li>
+                <li>The contactor for Motor 1 will energize, starting the motor.</li>
+                <li>Motor 2 remains off in this position.</li>
+            </ul>
+        </li>
+        <li>To start Motor 2:
+            <ul>
+                <li>Turn the selector switch to the "ON 2" position.</li>
+                <li>The contactor for Motor 2 will energize, starting the motor.</li>
+                <li>Motor 1 will stop if it was running, and its contactor will de-energize.</li>
+            </ul>
+        </li>
+        <li>To stop both motors:
+            <ul>
+                <li>Turn the selector switch to the "OFF" position.</li>
+                <li>Both contactors will de-energize, stopping both motors.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Safety Considerations:</h2>
+    <ul>
+        <li>Ensure proper grounding of all equipment.</li>
+        <li>Install emergency stop buttons in accessible locations.</li>
+        <li>Use appropriately rated circuit breakers and fuses.</li>
+        <li>Regularly inspect and maintain all components of the system.</li>
+        <li>Train operators on proper use and safety procedures.</li>
+    </ul>
+
+    <h2>Advantages of This Setup:</h2>
+    <ul>
+        <li>Simplified control with a single switch</li>
+        <li>Reduced panel space requirements</li>
+        <li>Lower component count, potentially reducing costs</li>
+        <li>Easier troubleshooting due to simpler circuit</li>
+    </ul>
+
+    <h2>Limitations:</h2>
+    <ul>
+        <li>Cannot run both motors simultaneously</li>
+        <li>May not be suitable for applications requiring independent motor control</li>
+        <li>Limited flexibility in operation sequences</li>
+    </ul>
+
+    <script>
+        let switchState = 0;
+        const switchElem = document.getElementById('switch');
+        const motor1 = document.getElementById('motor1');
+        const motor2 = document.getElementById('motor2');
+        const statusElem = document.getElementById('status');
+
+        function toggleSwitch() {
+            switchState = (switchState + 1) % 3;
+            updateSystem();
+        }
+
+        function updateSystem() {
+            switch(switchState) {
+                case 0:
+                    switchElem.textContent = 'OFF';
+                    motor1.style.backgroundColor = '#3498db';
+                    motor2.style.backgroundColor = '#3498db';
+                    statusElem.textContent = 'Both motors are stopped';
+                    break;
+                case 1:
+                    switchElem.textContent = 'ON 1';
+                    motor1.style.backgroundColor = '#e74c3c';
+                    motor2.style.backgroundColor = '#3498db';
+                    statusElem.textContent = 'Motor 1 is running, Motor 2 is stopped';
+                    break;
+                case 2:
+                    switchElem.textContent = 'ON 2';
+                    motor1.style.backgroundColor = '#3498db';
+                    motor2.style.backgroundColor = '#e74c3c';
+                    statusElem.textContent = 'Motor 2 is running, Motor 1 is stopped';
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
