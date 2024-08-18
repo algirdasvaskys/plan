@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Forward Starter Control Wiring with Auto Manual Selector Switch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border: 1px solid #ff9999;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        ol {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reverse Forward Starter Control Wiring with Auto Manual Selector Switch</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Electrical wiring should only be performed by qualified electricians. Improper wiring can result in equipment damage, injury, or death.
+    </div>
+
+    <h2>Components Required:</h2>
+    <div class="component">
+        <ul>
+            <li>Two contactors (one for forward direction, one for reverse)</li>
+            <li>Overload relay</li>
+            <li>Auto/Manual selector switch (3-position)</li>
+            <li>Forward and Reverse pushbuttons</li>
+            <li>Stop pushbutton</li>
+            <li>Control transformer</li>
+            <li>Fuses or circuit breakers</li>
+            <li>Three-phase motor</li>
+        </ul>
+    </div>
+
+    <h2>Wiring Method:</h2>
+    <ol>
+        <li>
+            <strong>Power Circuit:</strong>
+            <ul>
+                <li>Connect the three-phase power supply to the main circuit breaker or fuses.</li>
+                <li>Wire the output of the circuit breaker to the overload relay.</li>
+                <li>Connect the forward contactor between the overload relay and the motor terminals U1, V1, W1.</li>
+                <li>Wire the reverse contactor to swap two phases (e.g., V1 and W1) for reverse operation.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Control Circuit:</strong>
+            <ul>
+                <li>Connect the control transformer primary to two phases of the main power supply.</li>
+                <li>Wire the secondary of the transformer to the control circuit, typically 120V AC.</li>
+                <li>Install a fuse on one side of the control circuit for protection.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Auto/Manual Selector Switch:</strong>
+            <ul>
+                <li>Wire the common terminal of the selector switch to the control circuit power.</li>
+                <li>Connect the "Manual" position to the manual control circuit.</li>
+                <li>Wire the "Auto" position to the automatic control circuit (e.g., PLC outputs).</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Manual Control:</strong>
+            <ul>
+                <li>Wire the Forward and Reverse pushbuttons in parallel, each with a normally open contact.</li>
+                <li>Connect the Stop pushbutton with a normally closed contact in series with the Forward and Reverse buttons.</li>
+                <li>Wire the output of the pushbuttons to the coils of the respective contactors.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Automatic Control:</strong>
+            <ul>
+                <li>Connect the "Auto" position of the selector switch to the PLC or other control system outputs.</li>
+                <li>Ensure the automatic system can control both forward and reverse operations.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Interlocking:</strong>
+            <ul>
+                <li>Wire normally closed auxiliary contacts of each contactor in series with the coil of the opposite contactor to prevent simultaneous activation.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Overload Protection:</strong>
+            <ul>
+                <li>Connect a normally closed contact from the overload relay in series with both contactor coils to disconnect power in case of an overload condition.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Indicator Lights (Optional):</strong>
+            <ul>
+                <li>Wire indicator lights in parallel with each contactor coil to show the current operation status (Forward/Reverse).</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Testing and Commissioning:</h2>
+    <ol>
+        <li>Verify all connections are tight and properly insulated.</li>
+        <li>Ensure the motor shaft is free to rotate.</li>
+        <li>Power up the control circuit and test the manual operation:
+            <ul>
+                <li>Press the Forward button and verify the motor rotates in the forward direction.</li>
+                <li>Press the Stop button and ensure the motor stops.</li>
+                <li>Press the Reverse button and confirm the motor rotates in the opposite direction.</li>
+            </ul>
+        </li>
+        <li>Test the Auto/Manual selector switch functionality.</li>
+        <li>Verify the automatic control system (if applicable) can properly control the motor in both directions.</li>
+        <li>Test the overload protection by simulating an overload condition.</li>
+    </ol>
+
+    <div class="warning">
+        <strong>Important:</strong> Always follow local electrical codes and safety regulations. Regular maintenance and inspection of the control system are essential for safe and reliable operation.
+    </div>
+</body>
+</html>
