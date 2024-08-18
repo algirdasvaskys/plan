@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverse Timer Connection With Contactor for Two Motors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component-list {
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .step {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e8f4f8;
+            border-left: 5px solid #3498db;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border: 1px solid #ff9999;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inverse Timer Connection With Contactor for Two Motors</h1>
+    
+    <p>This document provides a comprehensive guide on setting up an inverse timer connection with a contactor for controlling two motors. This setup allows for alternating operation of two motors, where one motor runs while the other is stopped, and vice versa.</p>
+    
+    <h2>Components Required</h2>
+    <div class="component-list">
+        <ul>
+            <li>Two three-phase motors</li>
+            <li>Two contactors (one for each motor)</li>
+            <li>Inverse timer (or alternating relay)</li>
+            <li>Overload relays (one for each motor)</li>
+            <li>Control circuit components (pushbuttons, indicator lights)</li>
+            <li>Power supply</li>
+            <li>Wiring and terminals</li>
+        </ul>
+    </div>
+
+    <h2>Step-by-Step Guide</h2>
+
+    <div class="step">
+        <h3>Step 1: Power Circuit Setup</h3>
+        <p>Connect the main power supply to the contactors. Each contactor should be wired to its respective motor. Ensure proper sizing of contactors and overload relays based on motor ratings.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Control Circuit Wiring</h3>
+        <p>Wire the control circuit, including the inverse timer, start/stop pushbuttons, and indicator lights. The inverse timer will alternate the operation between the two contactors.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Inverse Timer Configuration</h3>
+        <p>Configure the inverse timer to alternate between the two outputs at the desired interval. This will determine how long each motor runs before switching to the other.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Contactor Coil Connections</h3>
+        <p>Connect the outputs of the inverse timer to the coils of the respective contactors. When one output is energized, it will close its associated contactor, starting that motor.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Overload Relay Integration</h3>
+        <p>Integrate the overload relays into the control circuit. Wire them in series with the contactor coils to ensure motor protection.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Testing and Adjustments</h3>
+        <p>Test the system thoroughly. Verify that the motors alternate as intended and that all safety features (overload protection, emergency stop) function correctly. Make adjustments to the timer settings if necessary.</p>
+    </div>
+
+    <div class="warning">
+        <h3>Safety Warning</h3>
+        <p>Always ensure power is disconnected before working on electrical circuits. This installation should only be performed by qualified electrical technicians. Follow all relevant electrical codes and safety standards.</p>
+    </div>
+
+    <h2>Operation</h2>
+    <p>When the system is started, the inverse timer will energize one contactor, starting the first motor. After the set time interval, it will de-energize this contactor and energize the other, stopping the first motor and starting the second. This process will continue to alternate as long as the system is running.</p>
+
+    <h2>Maintenance</h2>
+    <p>Regular maintenance should include:</p>
+    <ul>
+        <li>Checking all electrical connections for tightness</li>
+        <li>Inspecting contactors for wear and proper operation</li>
+        <li>Verifying the function of overload relays</li>
+        <li>Ensuring the inverse timer is operating correctly</li>
+        <li>Monitoring motor performance and checking for any unusual noise or vibration</li>
+    </ul>
+
+    <p>By following this guide, you can set up an effective inverse timer connection with contactors for two motors, allowing for efficient alternating operation in various industrial applications.</p>
+</body>
+</html>
