@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactor Control with Two Proximity Sensors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .component {
+            position: absolute;
+            text-align: center;
+        }
+        .sensor {
+            width: 60px;
+            height: 30px;
+            background-color: #3498db;
+            color: white;
+            line-height: 30px;
+        }
+        .contactor {
+            width: 80px;
+            height: 80px;
+            background-color: #e74c3c;
+            color: white;
+            line-height: 80px;
+        }
+        .wire {
+            position: absolute;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contactor Turn ON and OFF by Using Two Proximity Sensors</h1>
+    
+    <h2>Introduction</h2>
+    <p>This document explains how to control a contactor using two proximity sensors. This method is commonly used in industrial automation for tasks such as conveyor belt control or machine safety systems.</p>
+    
+    <h2>Components Required</h2>
+    <ul>
+        <li>1 x Contactor</li>
+        <li>2 x Proximity Sensors</li>
+        <li>1 x Power Supply (24V DC)</li>
+        <li>Wires for connections</li>
+    </ul>
+    
+    <h2>Working Principle</h2>
+    <p>The system uses two proximity sensors to control the state of the contactor:</p>
+    <ul>
+        <li>Sensor 1 turns the contactor ON when activated</li>
+        <li>Sensor 2 turns the contactor OFF when activated</li>
+    </ul>
+    
+    <h2>Wiring Diagram</h2>
+    <div class="diagram">
+        <div class="component sensor" style="top: 50px; left: 50px;">Sensor 1</div>
+        <div class="component sensor" style="top: 50px; right: 50px;">Sensor 2</div>
+        <div class="component contactor" style="top: 160px; left: 360px;">Contactor</div>
+        <div class="wire" style="width: 2px; height: 80px; top: 80px; left: 79px;"></div>
+        <div class="wire" style="width: 2px; height: 80px; top: 80px; right: 79px;"></div>
+        <div class="wire" style="width: 283px; height: 2px; top: 160px; left: 79px;"></div>
+        <div class="wire" style="width: 283px; height: 2px; top: 160px; right: 79px;"></div>
+    </div>
+    
+    <h2>Step-by-Step Procedure</h2>
+    <ol>
+        <li>Connect the positive terminal of the 24V DC power supply to one terminal of each proximity sensor.</li>
+        <li>Connect the negative terminal of the power supply to the common point of the contactor coil.</li>
+        <li>Connect the output of Sensor 1 to the ON terminal of the contactor coil.</li>
+        <li>Connect the output of Sensor 2 to the OFF terminal of the contactor coil.</li>
+        <li>Ensure all connections are secure and properly insulated.</li>
+    </ol>
+    
+    <h2>Operation</h2>
+    <p>Once the system is set up:</p>
+    <ul>
+        <li>When an object is detected by Sensor 1, it will activate and turn the contactor ON.</li>
+        <li>When an object is detected by Sensor 2, it will activate and turn the contactor OFF.</li>
+        <li>The contactor will remain in its last state until the opposite sensor is activated.</li>
+    </ul>
+    
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Always ensure the power is off before making any connections.</li>
+        <li>Use appropriate safety equipment when working with electrical systems.</li>
+        <li>Regularly check and maintain the sensors and contactor for proper operation.</li>
+        <li>Implement additional safety measures as required by local regulations and specific application needs.</li>
+    </ul>
+    
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li>If the contactor doesn't switch, check the power supply and all connections.</li>
+        <li>Verify that the sensors are functioning correctly and detecting objects as expected.</li>
+        <li>Ensure the contactor coil voltage matches the power supply voltage.</li>
+        <li>Check for any loose connections or damaged wires.</li>
+    </ul>
+    
+    <p>By following this guide, you should be able to successfully set up and operate a contactor using two proximity sensors for ON and OFF control.</p>
+</body>
+</html>
