@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase Failure Relay Connection with DOL Motor Starter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+        }
+        @media (max-width: 600px) {
+            .diagram {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Phase Failure Relay Connection with DOL Motor Starter</h1>
+
+    <h2>Introduction</h2>
+    <p>A Phase Failure Relay (PFR) is an essential component in a Direct-On-Line (DOL) motor starter circuit. It protects three-phase motors from damage caused by phase loss, phase reversal, and voltage imbalance.</p>
+
+    <h2>Components</h2>
+    <ul>
+        <li>Three-phase power supply</li>
+        <li>Phase Failure Relay (PFR)</li>
+        <li>DOL starter (contactor and overload relay)</li>
+        <li>Three-phase motor</li>
+        <li>Control circuit components (fuses, switches, indicators)</li>
+    </ul>
+
+    <h2>Connection Diagram</h2>
+    <div class="diagram">
+        <svg width="100%" height="100%" viewBox="0 0 600 400">
+            <!-- Power Supply -->
+            <text x="50" y="30" font-size="14">L1</text>
+            <text x="50" y="70" font-size="14">L2</text>
+            <text x="50" y="110" font-size="14">L3</text>
+            <line x1="70" y1="20" x2="550" y2="20" stroke="black" />
+            <line x1="70" y1="60" x2="550" y2="60" stroke="black" />
+            <line x1="70" y1="100" x2="550" y2="100" stroke="black" />
+
+            <!-- Phase Failure Relay -->
+            <rect x="100" y="140" width="100" height="60" fill="none" stroke="black" />
+            <text x="120" y="170" font-size="12">Phase Failure</text>
+            <text x="130" y="190" font-size="12">Relay (PFR)</text>
+
+            <!-- DOL Starter -->
+            <rect x="250" y="140" width="100" height="60" fill="none" stroke="black" />
+            <text x="270" y="170" font-size="12">DOL Starter</text>
+            <text x="260" y="190" font-size="12">(Contactor + OLR)</text>
+
+            <!-- Motor -->
+            <circle cx="500" cy="170" r="40" fill="none" stroke="black" />
+            <text x="480" y="175" font-size="12">Motor</text>
+
+            <!-- Connections -->
+            <line x1="70" y1="20" x2="100" y2="140" stroke="black" />
+            <line x1="70" y1="60" x2="120" y2="140" stroke="black" />
+            <line x1="70" y1="100" x2="140" y2="140" stroke="black" />
+
+            <line x1="200" y1="170" x2="250" y2="170" stroke="black" />
+            <line x1="350" y1="160" x2="460" y2="160" stroke="black" />
+            <line x1="350" y1="170" x2="460" y2="170" stroke="black" />
+            <line x1="350" y1="180" x2="460" y2="180" stroke="black" />
+
+            <!-- Control Circuit -->
+            <rect x="100" y="250" width="400" height="100" fill="none" stroke="black" />
+            <text x="250" y="270" font-size="14">Control Circuit</text>
+            <text x="120" y="300" font-size="12">- Fuses</text>
+            <text x="120" y="320" font-size="12">- Start/Stop buttons</text>
+            <text x="120" y="340" font-size="12">- Indicator lamps</text>
+            <text x="320" y="300" font-size="12">- PFR contacts</text>
+            <text x="320" y="320" font-size="12">- Contactor coil</text>
+            <text x="320" y="340" font-size="12">- Auxiliary contacts</text>
+        </svg>
+    </div>
+
+    <h2>Connection Procedure</h2>
+    <ol>
+        <li>Connect the three-phase power supply (L1, L2, L3) to the input terminals of the Phase Failure Relay (PFR).</li>
+        <li>Connect the output terminals of the PFR to the input of the DOL starter (contactor).</li>
+        <li>Connect the output terminals of the DOL starter to the three-phase motor.</li>
+        <li>In the control circuit:
+            <ul>
+                <li>Connect the normally closed (NC) contact of the PFR in series with the start button and contactor coil.</li>
+                <li>Connect the overload relay (OLR) contact in series with the PFR contact.</li>
+                <li>Add necessary control components like stop button, indicator lamps, and auxiliary contacts as required.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Operation</h2>
+    <p>When all three phases are present and balanced, the PFR's NC contact remains closed, allowing the motor to start when the start button is pressed. If a phase failure, reversal, or significant imbalance occurs, the PFR opens its NC contact, preventing motor operation or stopping the running motor.</p>
+
+    <h2>Benefits</h2>
+    <ul>
+        <li>Protects the motor from damage due to phase issues</li>
+        <li>Prevents motor from running on two phases (single phasing)</li>
+        <li>Ensures proper motor rotation by detecting phase reversal</li>
+        <li>Improves overall system reliability and motor lifespan</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Incorporating a Phase Failure Relay in a DOL motor starter circuit is crucial for protecting three-phase motors from electrical faults. Proper connection and integration of the PFR with the starter and control circuit ensure safe and reliable motor operation.</p>
+</body>
+</html>
