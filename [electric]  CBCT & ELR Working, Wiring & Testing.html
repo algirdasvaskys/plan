@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBCT & ELR: Working, Wiring & Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .image-placeholder {
+            background-color: #f0f0f0;
+            border: 1px dashed #999;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CBCT & ELR: Working, Wiring & Testing</h1>
+    
+    <div class="section">
+        <h2>1. Introduction</h2>
+        <p>Core Balance Current Transformer (CBCT) and Earth Leakage Relay (ELR) are crucial components in electrical systems for detecting earth faults and protecting against electrical hazards.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. Working Principle</h2>
+        <h3>2.1 CBCT (Core Balance Current Transformer)</h3>
+        <ul>
+            <li>A CBCT is a type of current transformer that encircles all phase conductors and the neutral conductor (if present).</li>
+            <li>It operates on the principle of magnetic balance.</li>
+            <li>Under normal conditions, the vector sum of currents in all conductors is zero.</li>
+            <li>During an earth fault, the balance is disturbed, inducing a current in the CBCT secondary winding.</li>
+        </ul>
+        <div class="image-placeholder">[CBCT Diagram Placeholder]</div>
+
+        <h3>2.2 ELR (Earth Leakage Relay)</h3>
+        <ul>
+            <li>The ELR receives the signal from the CBCT.</li>
+            <li>It compares the received signal with a preset threshold.</li>
+            <li>If the signal exceeds the threshold, the ELR triggers a trip signal to the associated circuit breaker.</li>
+        </ul>
+        <div class="image-placeholder">[ELR Diagram Placeholder]</div>
+    </div>
+
+    <div class="section">
+        <h2>3. Wiring</h2>
+        <h3>3.1 CBCT Wiring</h3>
+        <ul>
+            <li>Install the CBCT around all phase conductors and neutral (if present).</li>
+            <li>Ensure the CBCT is centered and perpendicular to the conductors.</li>
+            <li>Connect the CBCT secondary leads to the ELR input terminals.</li>
+        </ul>
+
+        <h3>3.2 ELR Wiring</h3>
+        <ul>
+            <li>Connect the ELR power supply terminals to an appropriate voltage source.</li>
+            <li>Wire the ELR output contacts to the trip circuit of the associated circuit breaker.</li>
+            <li>If required, connect any auxiliary contacts for remote signaling.</li>
+        </ul>
+        <div class="image-placeholder">[Wiring Diagram Placeholder]</div>
+    </div>
+
+    <div class="section">
+        <h2>4. Testing</h2>
+        <h3>4.1 CBCT Testing</h3>
+        <ul>
+            <li>Perform insulation resistance test on CBCT secondary winding.</li>
+            <li>Conduct a primary injection test to verify CBCT ratio and polarity.</li>
+            <li>Check for any physical damage or loose connections.</li>
+        </ul>
+
+        <h3>4.2 ELR Testing</h3>
+        <ul>
+            <li>Verify power supply and check if the relay is energized.</li>
+            <li>Test the pick-up current by injecting a known current through the CBCT.</li>
+            <li>Check the time delay function if applicable.</li>
+            <li>Test the trip function by simulating a fault condition.</li>
+        </ul>
+
+        <h3>4.3 System Testing</h3>
+        <ul>
+            <li>Conduct an end-to-end test by simulating an earth fault.</li>
+            <li>Verify that the circuit breaker trips within the specified time.</li>
+            <li>Test the system at different fault current levels.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>5. Maintenance</h2>
+        <ul>
+            <li>Regularly inspect CBCT and ELR for physical damage or contamination.</li>
+            <li>Check and tighten all electrical connections periodically.</li>
+            <li>Perform functional tests at least annually or as per manufacturer's recommendations.</li>
+            <li>Keep records of all tests and maintenance activities.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>6. Safety Precautions</h2>
+        <ul>
+            <li>Always follow proper lockout/tagout procedures before working on the system.</li>
+            <li>Use appropriate personal protective equipment (PPE).</li>
+            <li>Ensure all personnel are trained in the operation and maintenance of CBCT and ELR systems.</li>
+            <li>Never disable or bypass earth fault protection without proper authorization and risk assessment.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>7. Conclusion</h2>
+        <p>Proper installation, wiring, and regular testing of CBCT and ELR systems are crucial for maintaining effective earth fault protection. Always refer to manufacturer's guidelines and local electrical codes for specific requirements.</p>
+    </div>
+</body>
+</html>
