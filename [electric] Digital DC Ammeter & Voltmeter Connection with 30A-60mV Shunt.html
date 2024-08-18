@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital DC Ammeter & Voltmeter Connection with 30A/60mV Shunt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .steps {
+            background-color: #e6f7ff;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .safety {
+            background-color: #ffe6e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Digital DC Ammeter & Voltmeter Connection with 30A/60mV Shunt</h1>
+    
+    <div class="component">
+        <h2>Components Required:</h2>
+        <ul>
+            <li>Digital DC Ammeter</li>
+            <li>Digital DC Voltmeter</li>
+            <li>30A/60mV Shunt Resistor</li>
+            <li>DC Power Source</li>
+            <li>Load (e.g., resistor, motor, etc.)</li>
+            <li>Connecting wires</li>
+        </ul>
+    </div>
+    
+    <div class="steps">
+        <h2>Connection Steps:</h2>
+        <ol>
+            <li>Connect the positive terminal of the power source to one end of the shunt resistor.</li>
+            <li>Connect the other end of the shunt resistor to the positive terminal of the load.</li>
+            <li>Connect the negative terminal of the load to the negative terminal of the power source.</li>
+            <li>Connect the ammeter across the shunt resistor:
+                <ul>
+                    <li>Connect the positive terminal of the ammeter to the power source side of the shunt.</li>
+                    <li>Connect the negative terminal of the ammeter to the load side of the shunt.</li>
+                </ul>
+            </li>
+            <li>Connect the voltmeter in parallel with the load:
+                <ul>
+                    <li>Connect the positive terminal of the voltmeter to the positive terminal of the load.</li>
+                    <li>Connect the negative terminal of the voltmeter to the negative terminal of the load.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="safety">
+        <h2>Safety Considerations:</h2>
+        <ul>
+            <li>Ensure all connections are secure and properly insulated.</li>
+            <li>Double-check the polarity of all connections before powering on the circuit.</li>
+            <li>Use appropriate gauge wires that can handle the expected current.</li>
+            <li>Never exceed the maximum current rating of the shunt resistor (30A in this case).</li>
+            <li>Ensure the voltmeter can handle the expected voltage of your power source.</li>
+            <li>If working with high voltages or currents, use appropriate personal protective equipment.</li>
+        </ul>
+    </div>
+    
+    <div>
+        <h2>How It Works:</h2>
+        <p>The 30A/60mV shunt is a precision resistor that produces a small voltage drop (60mV) when the maximum rated current (30A) flows through it. The ammeter measures this voltage drop and converts it to a current reading. The voltmeter directly measures the voltage across the load.</p>
+        <p>This setup allows you to simultaneously measure the current flowing through the circuit and the voltage across the load, providing valuable information about the power consumption and behavior of your DC circuit.</p>
+    </div>
+</body>
+</html>
