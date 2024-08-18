@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence DOL Starter Connection with Two Contactors and Add-on Block Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .note {
+            background-color: #f0f0f0;
+            border-left: 5px solid #3498db;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border-left: 5px solid #e74c3c;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sequence DOL Starter Connection with Two Contactors and Add-on Block Timer</h1>
+    
+    <div class="section">
+        <h2>1. Introduction</h2>
+        <p>A Sequence DOL (Direct On Line) Starter with two contactors and an add-on block timer is used to start two motors in a specific sequence. This setup ensures that the second motor starts only after the first motor has been running for a predetermined time.</p>
+    </div>
+    
+    <div class="section">
+        <h2>2. Components Required</h2>
+        <ul>
+            <li>Two 3-phase motors</li>
+            <li>Two 3-pole contactors (K1 and K2)</li>
+            <li>Two overload relays (OL1 and OL2)</li>
+            <li>One add-on block timer (T1)</li>
+            <li>Start and Stop push buttons</li>
+            <li>Main circuit breaker or fuses</li>
+            <li>Control circuit fuse</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>3. Connection Procedure</h2>
+        <ol>
+            <li>Connect the main power supply to the main circuit breaker or fuses.</li>
+            <li>From the main circuit breaker, connect to the common points of both contactors K1 and K2.</li>
+            <li>Connect the output of contactor K1 to the input of overload relay OL1, then to Motor 1.</li>
+            <li>Connect the output of contactor K2 to the input of overload relay OL2, then to Motor 2.</li>
+            <li>For the control circuit:
+                <ul>
+                    <li>Connect one side of the control supply to the Start button, Stop button (NC), OL1 (NC), OL2 (NC), and K1 coil in series.</li>
+                    <li>Connect the other side of K1 coil to the other side of the control supply.</li>
+                    <li>Connect a normally open auxiliary contact of K1 in parallel with the Start button for self-holding.</li>
+                    <li>Connect the add-on block timer T1 to K1. The timer should be energized when K1 is energized.</li>
+                    <li>Connect the normally open contact of T1 to the K2 coil.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>4. Operation Sequence</h2>
+        <ol>
+            <li>When the Start button is pressed, contactor K1 is energized, starting Motor 1.</li>
+            <li>The add-on block timer T1 starts counting when K1 is energized.</li>
+            <li>After the preset time on T1 elapses, its contact closes, energizing contactor K2 and starting Motor 2.</li>
+            <li>Both motors continue to run until the Stop button is pressed or an overload occurs.</li>
+        </ol>
+    </div>
+    
+    <div class="note">
+        <p><strong>Note:</strong> The add-on block timer T1 is typically mounted directly onto contactor K1, simplifying the wiring and reducing panel space requirements.</p>
+    </div>
+    
+    <div class="warning">
+        <p><strong>Warning:</strong> Always ensure that the power is disconnected before working on electrical connections. This work should only be performed by qualified electricians.</p>
+    </div>
+    
+    <div class="section">
+        <h2>5. Troubleshooting</h2>
+        <ul>
+            <li>If Motor 1 doesn't start, check K1, OL1, and the control circuit connections.</li>
+            <li>If Motor 2 doesn't start after the delay, check K2, OL2, T1, and their connections.</li>
+            <li>If both motors start simultaneously, check the T1 timer settings and connections.</li>
+        </ul>
+    </div>
+</body>
+</html>
