@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Forward Motor Control Circuit Diagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+        }
+        .component {
+            font-weight: bold;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reverse Forward Motor Control Circuit Diagram</h1>
+    
+    <h2>Circuit Diagram</h2>
+    <div class="diagram">
+        <!-- SVG diagram will be inserted here -->
+    </div>
+    
+    <h2>Components</h2>
+    <ul>
+        <li><span class="component">M:</span> Three-phase induction motor</li>
+        <li><span class="component">F1, F2, F3:</span> Fuses</li>
+        <li><span class="component">C1, C2:</span> Contactors</li>
+        <li><span class="component">OL:</span> Overload relay</li>
+        <li><span class="component">PB1:</span> Start pushbutton (NO - Normally Open)</li>
+        <li><span class="component">PB2:</span> Stop pushbutton (NC - Normally Closed)</li>
+        <li><span class="component">PB3:</span> Forward pushbutton (NO)</li>
+        <li><span class="component">PB4:</span> Reverse pushbutton (NO)</li>
+    </ul>
+    
+    <h2>Circuit Operation</h2>
+    <ol>
+        <li>The circuit is powered by a three-phase supply, protected by fuses F1, F2, and F3.</li>
+        <li>To start the motor in the forward direction:
+            <ul>
+                <li>Press PB1 (Start) and PB3 (Forward) simultaneously.</li>
+                <li>Contactor C1 energizes, closing its main and auxiliary contacts.</li>
+                <li>The motor starts rotating in the forward direction.</li>
+            </ul>
+        </li>
+        <li>To start the motor in the reverse direction:
+            <ul>
+                <li>Press PB1 (Start) and PB4 (Reverse) simultaneously.</li>
+                <li>Contactor C2 energizes, closing its main and auxiliary contacts.</li>
+                <li>The motor starts rotating in the reverse direction.</li>
+            </ul>
+        </li>
+        <li>To stop the motor:
+            <ul>
+                <li>Press PB2 (Stop).</li>
+                <li>The engaged contactor (C1 or C2) de-energizes, opening its contacts.</li>
+                <li>The motor stops.</li>
+            </ul>
+        </li>
+        <li>Interlocking:
+            <ul>
+                <li>C1 and C2 are electrically interlocked using their auxiliary contacts.</li>
+                <li>This prevents both contactors from engaging simultaneously, avoiding a short circuit.</li>
+            </ul>
+        </li>
+        <li>Overload protection:
+            <ul>
+                <li>The overload relay (OL) protects the motor from overcurrent.</li>
+                <li>If an overload occurs, OL opens its contact in the control circuit, stopping the motor.</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h2>Safety Features</h2>
+    <ul>
+        <li>Fuses (F1, F2, F3) protect against short circuits.</li>
+        <li>The overload relay (OL) protects against prolonged overcurrent situations.</li>
+        <li>Electrical interlocking prevents simultaneous engagement of forward and reverse contactors.</li>
+        <li>The stop button (PB2) is normally closed for fail-safe operation.</li>
+    </ul>
+    
+    <script>
+        // JavaScript to create SVG diagram
+        const diagram = document.querySelector('.diagram');
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("width", "100%");
+        svg.setAttribute("height", "100%");
+        svg.setAttribute("viewBox", "0 0 600 400");
+        
+        // Add SVG elements here to create the circuit diagram
+        // This is a simplified representation
+        svg.innerHTML = `
+            <rect x="50" y="50" width="500" height="300" fill="none" stroke="#333" />
+            <circle cx="300" cy="200" r="50" fill="none" stroke="#333" />
+            <text x="300" y="205" text-anchor="middle">M</text>
+            <line x1="50" y1="100" x2="550" y2="100" stroke="#333" />
+            <line x1="50" y1="300" x2="550" y2="300" stroke="#333" />
+            <rect x="100" y="80" width="40" height="40" fill="none" stroke="#333" />
+            <text x="120" y="105" text-anchor="middle">C1</text>
+            <rect x="460" y="80" width="40" height="40" fill="none" stroke="#333" />
+            <text x="480" y="105" text-anchor="middle">C2</text>
+            <circle cx="200" cy="350" r="15" fill="none" stroke="#333" />
+            <text x="200" y="355" text-anchor="middle">PB1</text>
+            <circle cx="300" cy="350" r="15" fill="none" stroke="#333" />
+            <text x="300" y="355" text-anchor="middle">PB2</text>
+            <circle cx="400" cy="350" r="15" fill="none" stroke="#333" />
+            <text x="400" y="355" text-anchor="middle">PB3</text>
+        `;
+        
+        diagram.appendChild(svg);
+    </script>
+</body>
+</html>
