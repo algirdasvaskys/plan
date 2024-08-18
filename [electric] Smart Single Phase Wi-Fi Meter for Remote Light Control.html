@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Single Phase Wi-Fi Meter for Remote Light Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .component-list, .step-list {
+            padding-left: 20px;
+        }
+        .note {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Smart Single Phase Wi-Fi Meter for Remote Light Control</h1>
+    
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>This guide will walk you through creating a Smart Single Phase Wi-Fi Meter that allows you to control your home lights from anywhere in the world using a smartphone or computer.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Components Needed</h2>
+        <ul class="component-list">
+            <li>ESP8266 NodeMCU (Wi-Fi enabled microcontroller)</li>
+            <li>Relay module (5V)</li>
+            <li>ACS712 current sensor</li>
+            <li>ZMPT101B voltage sensor</li>
+            <li>Power supply module (3.3V and 5V outputs)</li>
+            <li>Jumper wires</li>
+            <li>Breadboard or PCB</li>
+            <li>Enclosure box</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Setup Process</h2>
+        <ol class="step-list">
+            <li>Connect the components:
+                <ul>
+                    <li>Connect the relay module to a digital pin on the ESP8266</li>
+                    <li>Connect the ACS712 current sensor to an analog pin</li>
+                    <li>Connect the ZMPT101B voltage sensor to another analog pin</li>
+                    <li>Power the ESP8266 and sensors using the power supply module</li>
+                </ul>
+            </li>
+            <li>Program the ESP8266:
+                <ul>
+                    <li>Install the Arduino IDE and necessary libraries (ESP8266, Blynk)</li>
+                    <li>Write code to read voltage and current, calculate power, and control the relay</li>
+                    <li>Implement Wi-Fi connectivity and integrate with a cloud service like Blynk</li>
+                </ul>
+            </li>
+            <li>Set up the cloud service:
+                <ul>
+                    <li>Create a Blynk account and new project</li>
+                    <li>Add buttons for on/off control and displays for voltage, current, and power readings</li>
+                    <li>Get the authentication token for your project</li>
+                </ul>
+            </li>
+            <li>Finalize the hardware:
+                <ul>
+                    <li>Transfer the circuit from breadboard to PCB if desired</li>
+                    <li>Place the assembled circuit into the enclosure box</li>
+                    <li>Connect the device to your home's electrical system (consult a professional electrician)</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Usage Instructions</h2>
+        <ol class="step-list">
+            <li>Power on the Smart Wi-Fi Meter</li>
+            <li>Ensure the device is connected to your home Wi-Fi network</li>
+            <li>Open the Blynk app on your smartphone or access the web dashboard</li>
+            <li>Use the on/off button to control your lights remotely</li>
+            <li>Monitor real-time voltage, current, and power consumption</li>
+        </ol>
+    </div>
+    
+    <div class="note">
+        <strong>Note:</strong> Always prioritize safety when working with electrical systems. If you're not comfortable with electrical work, please consult a licensed electrician for installation.
+    </div>
+    
+    <div class="section">
+        <h2>Troubleshooting</h2>
+        <ul>
+            <li>If the device doesn't connect to Wi-Fi, check your network settings and ensure the correct credentials are provided in the code</li>
+            <li>If readings seem inaccurate, calibrate the voltage and current sensors using known references</li>
+            <li>For any persistent issues, check all connections and ensure the code is properly uploaded to the ESP8266</li>
+        </ul>
+    </div>
+</body>
+</html>
