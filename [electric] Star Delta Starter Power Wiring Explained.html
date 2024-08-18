@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Delta Starter Power Wiring Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #777;
+        }
+        .step {
+            background-color: #f9f9f9;
+            border-left: 5px solid #2c3e50;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .note {
+            background-color: #ffffcc;
+            border: 1px solid #ffeb3b;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Star Delta Starter Power Wiring Explained</h1>
+    <p>The Star Delta starter is a method of starting a three-phase induction motor, which reduces the starting current and torque. This guide will explain the power wiring process step by step.</p>
+
+    <div class="diagram">
+        [Diagram: Star Delta Starter Wiring would be here]
+    </div>
+
+    <h2>Components Required</h2>
+    <ul>
+        <li>3-phase induction motor</li>
+        <li>Main contactor</li>
+        <li>Star contactor</li>
+        <li>Delta contactor</li>
+        <li>Overload relay</li>
+        <li>Timer relay</li>
+        <li>Fuses or circuit breaker</li>
+        <li>Start and stop push buttons</li>
+    </ul>
+
+    <h2>Wiring Procedure</h2>
+
+    <div class="step">
+        <h3>Step 1: Main Power Supply Connection</h3>
+        <p>Connect the three-phase power supply (L1, L2, L3) to the main contactor's incoming terminals.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Main Contactor to Overload Relay</h3>
+        <p>Connect the outgoing terminals of the main contactor to the incoming terminals of the overload relay.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Overload Relay to Star and Delta Contactors</h3>
+        <p>From the overload relay, connect:</p>
+        <ul>
+            <li>L1 to U1 of the star contactor and U1 of the delta contactor</li>
+            <li>L2 to V1 of the star contactor and V1 of the delta contactor</li>
+            <li>L3 to W1 of the star contactor and W1 of the delta contactor</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Star Contactor to Motor Windings</h3>
+        <p>Connect the star contactor to the motor windings:</p>
+        <ul>
+            <li>U2 to U2 of the motor</li>
+            <li>V2 to V2 of the motor</li>
+            <li>W2 to W2 of the motor</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Delta Contactor to Motor Windings</h3>
+        <p>Connect the delta contactor to the motor windings:</p>
+        <ul>
+            <li>U2 to W1 of the motor</li>
+            <li>V2 to U1 of the motor</li>
+            <li>W2 to V1 of the motor</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Motor Winding Connections</h3>
+        <p>Connect the motor windings:</p>
+        <ul>
+            <li>U1 to U1 of the overload relay</li>
+            <li>V1 to V1 of the overload relay</li>
+            <li>W1 to W1 of the overload relay</li>
+        </ul>
+    </div>
+
+    <h2>Operation Sequence</h2>
+    <ol>
+        <li>When the start button is pressed, the main contactor and star contactor are energized.</li>
+        <li>The motor starts in star connection, reducing the starting current.</li>
+        <li>After a preset time (usually 5-10 seconds), the timer relay activates.</li>
+        <li>The star contactor is de-energized, and the delta contactor is energized.</li>
+        <li>The motor now runs in delta connection at full speed and torque.</li>
+    </ol>
+
+    <div class="note">
+        <h3>Important Notes:</h3>
+        <ul>
+            <li>Always ensure proper insulation and cable sizing for the current ratings.</li>
+            <li>Use appropriate protection devices like fuses or circuit breakers.</li>
+            <li>Follow local electrical codes and safety regulations.</li>
+            <li>The control wiring is not shown in this explanation, which focuses on power wiring.</li>
+        </ul>
+    </div>
+
+    <p>This wiring method allows for a smooth start of large three-phase induction motors, reducing mechanical stress on the motor and electrical stress on the power supply system.</p>
+</body>
+</html>
