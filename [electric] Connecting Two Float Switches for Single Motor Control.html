@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting Two Float Switches for Single Motor Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #34495e;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        @media (max-width: 600px) {
+            .diagram {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>How to Connect Two Float Switches Together for Single Motor Control</h1>
+    
+    <h2>Introduction</h2>
+    <p>Connecting two float switches for single motor control is a common practice in pump systems, particularly in water tanks or sumps. This setup allows for automatic control of a pump based on water levels, using one switch for the "start" function and another for the "stop" function.</p>
+
+    <h2>Components Needed</h2>
+    <ul>
+        <li>Two float switches</li>
+        <li>Single-phase motor or pump</li>
+        <li>Contactor or relay</li>
+        <li>Power supply</li>
+        <li>Wiring and connectors</li>
+    </ul>
+
+    <h2>Wiring Diagram</h2>
+    <div class="diagram">
+        <svg width="100%" height="100%" viewBox="0 0 600 400">
+            <!-- Power Supply -->
+            <rect x="50" y="50" width="60" height="30" fill="none" stroke="black" />
+            <text x="80" y="70" text-anchor="middle">Power</text>
+            
+            <!-- Float Switches -->
+            <circle cx="200" cy="100" r="20" fill="none" stroke="black" />
+            <text x="200" y="105" text-anchor="middle">FS1</text>
+            <circle cx="200" cy="300" r="20" fill="none" stroke="black" />
+            <text x="200" y="305" text-anchor="middle">FS2</text>
+            
+            <!-- Contactor -->
+            <rect x="350" y="150" width="60" height="100" fill="none" stroke="black" />
+            <text x="380" y="205" text-anchor="middle">Contactor</text>
+            
+            <!-- Motor -->
+            <circle cx="500" y="200" r="40" fill="none" stroke="black" />
+            <text x="500" y="205" text-anchor="middle">Motor</text>
+            
+            <!-- Wiring -->
+            <polyline points="110,65 350,65 350,150" fill="none" stroke="black" />
+            <polyline points="200,120 200,150 350,150" fill="none" stroke="black" />
+            <polyline points="200,280 200,250 350,250" fill="none" stroke="black" />
+            <polyline points="410,200 500,200" fill="none" stroke="black" />
+        </svg>
+    </div>
+
+    <h2>Step-by-Step Connection Process</h2>
+    <ol>
+        <li><strong>Power Supply Connection:</strong> Connect the power supply to the contactor's coil terminals.</li>
+        <li><strong>Float Switch 1 (Start):</strong> Connect one wire from FS1 to the power supply and the other to one of the contactor's coil terminals.</li>
+        <li><strong>Float Switch 2 (Stop):</strong> Connect FS2 in series with FS1, between FS1 and the contactor's coil terminal.</li>
+        <li><strong>Contactor to Motor:</strong> Connect the contactor's main contacts to the motor.</li>
+        <li><strong>Grounding:</strong> Ensure all components are properly grounded for safety.</li>
+    </ol>
+
+    <h2>Operation Principle</h2>
+    <p>When the water level rises to FS1, it closes the circuit, energizing the contactor and starting the motor. The motor continues to run even if FS1 opens again. When the water level drops to FS2, it opens the circuit, de-energizing the contactor and stopping the motor.</p>
+
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Always disconnect power before working on electrical connections.</li>
+        <li>Use appropriate wire gauges and insulation for the voltage and current involved.</li>
+        <li>Ensure all connections are secure and properly insulated.</li>
+        <li>Install appropriate circuit protection devices (fuses or circuit breakers).</li>
+        <li>Follow local electrical codes and regulations.</li>
+    </ul>
+
+    <h2>Maintenance</h2>
+    <p>Regularly check the float switches for proper operation and clean them if necessary. Inspect all electrical connections periodically for signs of wear or corrosion. Test the system regularly to ensure it's functioning correctly.</p>
+
+    <h2>Conclusion</h2>
+    <p>Connecting two float switches for single motor control provides an efficient and automated way to manage pump operations based on water levels. By following these instructions and considering safety precautions, you can successfully implement this control system in your application.</p>
+</body>
+</html>
