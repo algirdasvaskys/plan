@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR vs DELTA Motor Connections</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .connection-diagram {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Difference Between Motor STAR Connection and DELTA Connection</h1>
+    
+    <h2>Introduction</h2>
+    <p>In three-phase electrical systems, two common ways to connect the windings of motors, generators, and transformers are the Star (Y) connection and the Delta (Δ) connection. Each has its own characteristics and applications.</p>
+
+    <h2>STAR (Y) Connection</h2>
+    <p>In a Star connection:</p>
+    <ul>
+        <li>The three phases are connected to a common point, called the neutral point or star point.</li>
+        <li>The other ends of the phases are connected to the three line terminals.</li>
+        <li>The voltage between any line and the neutral is called the phase voltage.</li>
+        <li>The voltage between any two lines is called the line voltage.</li>
+    </ul>
+    <div class="connection-diagram" id="star-diagram"></div>
+
+    <h2>DELTA (Δ) Connection</h2>
+    <p>In a Delta connection:</p>
+    <ul>
+        <li>The three phases are connected end-to-end, forming a closed loop.</li>
+        <li>There is no neutral point in a delta connection.</li>
+        <li>The voltage across each phase winding is the same as the line voltage.</li>
+    </ul>
+    <div class="connection-diagram" id="delta-diagram"></div>
+
+    <h2>Key Differences</h2>
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th>STAR Connection</th>
+            <th>DELTA Connection</th>
+        </tr>
+        <tr>
+            <td>Neutral Point</td>
+            <td>Present</td>
+            <td>Absent</td>
+        </tr>
+        <tr>
+            <td>Voltage Relationship</td>
+            <td>V<sub>line</sub> = √3 × V<sub>phase</sub></td>
+            <td>V<sub>line</sub> = V<sub>phase</sub></td>
+        </tr>
+        <tr>
+            <td>Current Relationship</td>
+            <td>I<sub>line</sub> = I<sub>phase</sub></td>
+            <td>I<sub>line</sub> = √3 × I<sub>phase</sub></td>
+        </tr>
+        <tr>
+            <td>Power</td>
+            <td>P = √3 × V<sub>L</sub> × I<sub>L</sub> × cos φ</td>
+            <td>P = √3 × V<sub>L</sub> × I<sub>L</sub> × cos φ</td>
+        </tr>
+        <tr>
+            <td>Starting Current</td>
+            <td>Lower</td>
+            <td>Higher</td>
+        </tr>
+        <tr>
+            <td>Starting Torque</td>
+            <td>Lower</td>
+            <td>Higher</td>
+        </tr>
+    </table>
+
+    <h2>Applications</h2>
+    <h3>STAR Connection</h3>
+    <ul>
+        <li>Used for starting high-power motors to reduce initial current surge</li>
+        <li>Preferred for long transmission lines due to lower line currents</li>
+        <li>Suitable for low-speed, high-torque applications</li>
+    </ul>
+
+    <h3>DELTA Connection</h3>
+    <ul>
+        <li>Used for running motors at full speed</li>
+        <li>Preferred for short transmission lines and high-current applications</li>
+        <li>Suitable for high-speed, low-torque applications</li>
+    </ul>
+
+    <h2>Star-Delta Starter</h2>
+    <p>Many industrial motors use a star-delta starter, which initially connects the motor in star configuration for starting, then switches to delta configuration for running. This provides the benefits of both configurations:</p>
+    <ul>
+        <li>Reduced starting current (star connection)</li>
+        <li>Full power and efficiency during operation (delta connection)</li>
+    </ul>
+
+    <script>
+        function drawStarDiagram() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 300;
+            document.getElementById('star-diagram').appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+            
+            // Draw star
+            ctx.beginPath();
+            ctx.moveTo(200, 50);
+            ctx.lineTo(100, 250);
+            ctx.lineTo(300, 250);
+            ctx.closePath();
+            ctx.strokeStyle = '#2c3e50';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Draw center point
+            ctx.beginPath();
+            ctx.arc(200, 183, 5, 0, 2 * Math.PI);
+            ctx.fillStyle = '#2c3e50';
+            ctx.fill();
+
+            // Label phases
+            ctx.font = '16px Arial';
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillText('A', 190, 40);
+            ctx.fillText('B', 80, 270);
+            ctx.fillText('C', 310, 270);
+            ctx.fillText('N', 210, 190);
+        }
+
+        function drawDeltaDiagram() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 300;
+            document.getElementById('delta-diagram').appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+            
+            // Draw delta
+            ctx.beginPath();
+            ctx.moveTo(200, 50);
+            ctx.lineTo(100, 250);
+            ctx.lineTo(300, 250);
+            ctx.closePath();
+            ctx.strokeStyle = '#2c3e50';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Label phases
+            ctx.font = '16px Arial';
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillText('A', 190, 40);
+            ctx.fillText('B', 80, 270);
+            ctx.fillText('C', 310, 270);
+        }
+
+        drawStarDiagram();
+        drawDeltaDiagram();
+    </script>
+</body>
+</html>
