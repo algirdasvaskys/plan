@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip & ON Indication Lamp Circuit for MCB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .circuit-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .component {
+            stroke: #2c3e50;
+            stroke-width: 2;
+        }
+        .wire {
+            stroke: #3498db;
+            stroke-width: 2;
+        }
+        .label {
+            font-size: 12px;
+            fill: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Standard Method for Making Trip & ON Indication Lamp Circuit for MCB</h1>
+    
+    <h2>Introduction</h2>
+    <p>A Trip & ON Indication Lamp Circuit for a Miniature Circuit Breaker (MCB) is an essential component in electrical systems. It provides visual indicators for the status of the MCB, showing whether it's ON or has been tripped due to a fault condition.</p>
+    
+    <h2>Components Required</h2>
+    <ul>
+        <li>Miniature Circuit Breaker (MCB)</li>
+        <li>Two indicator lamps (typically LED)</li>
+        <li>Resistors (value depends on the voltage and LED specifications)</li>
+        <li>Wires</li>
+        <li>Power source (AC supply)</li>
+    </ul>
+    
+    <h2>Circuit Diagram</h2>
+    <div class="circuit-diagram">
+        <svg width="100%" height="100%" viewBox="0 0 600 400">
+            <!-- MCB -->
+            <rect x="250" y="100" width="100" height="150" fill="none" class="component" />
+            <text x="300" y="185" text-anchor="middle" class="label">MCB</text>
+            
+            <!-- Power Source -->
+            <circle cx="100" cy="200" r="20" fill="none" class="component" />
+            <text x="100" y="240" text-anchor="middle" class="label">AC Supply</text>
+            
+            <!-- ON Lamp -->
+            <circle cx="450" cy="150" r="15" fill="none" class="component" />
+            <text x="450" y="180" text-anchor="middle" class="label">ON Lamp</text>
+            
+            <!-- Trip Lamp -->
+            <circle cx="450" cy="250" r="15" fill="none" class="component" />
+            <text x="450" y="280" text-anchor="middle" class="label">Trip Lamp</text>
+            
+            <!-- Wires -->
+            <line x1="120" y1="200" x2="250" y2="200" class="wire" />
+            <line x1="350" y1="150" x2="435" y2="150" class="wire" />
+            <line x1="350" y1="250" x2="435" y2="250" class="wire" />
+            <line x1="465" y1="150" x2="500" y2="150" class="wire" />
+            <line x1="465" y1="250" x2="500" y2="250" class="wire" />
+            <line x1="500" y1="150" x2="500" y2="300" class="wire" />
+            <line x1="100" y1="300" x2="500" y2="300" class="wire" />
+        </svg>
+    </div>
+    
+    <h2>Step-by-Step Method</h2>
+    <ol>
+        <li><strong>Prepare the MCB:</strong> Ensure the MCB is in good condition and rated appropriately for your circuit.</li>
+        <li><strong>Connect the power source:</strong> Connect the AC supply to the input terminal of the MCB.</li>
+        <li><strong>Wire the ON lamp:</strong> 
+            <ul>
+                <li>Connect one terminal of the ON lamp to the output terminal of the MCB.</li>
+                <li>Connect the other terminal of the ON lamp to the neutral line.</li>
+            </ul>
+        </li>
+        <li><strong>Wire the Trip lamp:</strong>
+            <ul>
+                <li>Connect one terminal of the Trip lamp to the trip terminal of the MCB.</li>
+                <li>Connect the other terminal of the Trip lamp to the neutral line.</li>
+            </ul>
+        </li>
+        <li><strong>Add resistors:</strong> If necessary, add appropriate resistors in series with each lamp to limit current flow.</li>
+        <li><strong>Secure connections:</strong> Ensure all connections are tight and properly insulated.</li>
+        <li><strong>Test the circuit:</strong> Turn on the power and test the circuit:
+            <ul>
+                <li>When the MCB is ON, the ON lamp should light up.</li>
+                <li>When the MCB trips, the Trip lamp should light up.</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Always work with the power turned off when wiring the circuit.</li>
+        <li>Use appropriately rated components for your specific voltage and current requirements.</li>
+        <li>Ensure proper insulation to prevent short circuits.</li>
+        <li>Follow local electrical codes and regulations.</li>
+        <li>If you're not confident in your abilities, consult a professional electrician.</li>
+    </ul>
+    
+    <h2>Conclusion</h2>
+    <p>This Trip & ON Indication Lamp Circuit provides a clear visual indication of the MCB's status, enhancing safety and ease of maintenance in electrical systems. Always prioritize safety when working with electrical circuits and consult professionals when in doubt.</p>
+</body>
+</html>
