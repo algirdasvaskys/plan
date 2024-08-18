@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiring of Single Phase Submersible Pump Starter with Two Capacitors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f0f0f0;
+            border-left: 5px solid #3498db;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .warning {
+            background-color: #ffecb3;
+            border-left: 5px solid #ffa000;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .steps {
+            counter-reset: step-counter;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .steps li {
+            counter-increment: step-counter;
+            margin-bottom: 10px;
+        }
+        .steps li::before {
+            content: "Step " counter(step-counter) ": ";
+            font-weight: bold;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wiring of Single Phase Submersible Pump Starter with Two Capacitors</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Electrical wiring can be dangerous. Always ensure that the power is turned off before working on any electrical connections. If you're not confident in your abilities, please consult a licensed electrician.
+    </div>
+
+    <h2>Components Required</h2>
+    <div class="component">
+        <ul>
+            <li>Single Phase Submersible Pump Motor</li>
+            <li>Start Capacitor</li>
+            <li>Run Capacitor</li>
+            <li>Overload Relay</li>
+            <li>Contactor</li>
+            <li>Single Phase Power Supply</li>
+            <li>Circuit Breaker</li>
+            <li>Start/Stop Push Buttons</li>
+            <li>Wires</li>
+        </ul>
+    </div>
+
+    <h2>Wiring Procedure</h2>
+    <ol class="steps">
+        <li>Install the circuit breaker at the main power supply.</li>
+        <li>Connect the power supply to the input terminals of the contactor.</li>
+        <li>Wire the start and stop push buttons to the contactor coil.</li>
+        <li>Connect the overload relay to the contactor output.</li>
+        <li>Wire the motor windings:
+            <ul>
+                <li>Connect the main winding to one output of the overload relay.</li>
+                <li>Connect the auxiliary winding to the other output of the overload relay.</li>
+                <li>Join the common point of both windings.</li>
+            </ul>
+        </li>
+        <li>Wire the capacitors:
+            <ul>
+                <li>Connect the run capacitor in parallel with the auxiliary winding.</li>
+                <li>Connect the start capacitor in series with the auxiliary winding and in parallel with the run capacitor.</li>
+            </ul>
+        </li>
+        <li>Connect the centrifugal switch (if present) in series with the start capacitor.</li>
+        <li>Ensure all ground connections are properly made.</li>
+        <li>Double-check all connections before powering on the circuit.</li>
+    </ol>
+
+    <h2>Operation</h2>
+    <p>When the start button is pressed, the contactor closes, allowing current to flow through both the main and auxiliary windings. The start capacitor provides a high starting torque. As the motor reaches about 75% of its rated speed, the centrifugal switch (if present) opens, disconnecting the start capacitor. The motor continues to run with the main winding and the run capacitor connected to the auxiliary winding.</p>
+
+    <h2>Maintenance</h2>
+    <ul>
+        <li>Regularly inspect all connections for signs of wear or damage.</li>
+        <li>Check capacitor condition periodically; replace if bulged or leaking.</li>
+        <li>Ensure the overload relay is set to the correct current rating for the motor.</li>
+        <li>Keep the starter box clean and dry to prevent short circuits.</li>
+    </ul>
+
+    <div class="warning">
+        <strong>Remember:</strong> Always follow local electrical codes and regulations when installing or modifying electrical equipment.
+    </div>
+</body>
+</html>
