@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Phase Motor Terminal Connection: Star & Delta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .connection-type {
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .connection-diagram {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>3 Phase Motor Terminal Connection: Star & Delta</h1>
+    
+    <p>Three-phase induction motors are widely used in industrial applications due to their efficiency and reliability. The two most common types of connections for these motors are Star (Y) and Delta (Δ) configurations. This document explains both connection methods in detail.</p>
+
+    <div class="connection-type">
+        <h2>Star (Y) Connection</h2>
+        <p>In a Star connection, also known as a Wye connection, the ends of the three windings are connected together at a common point, forming a "star" shape.</p>
+
+        <h3>Connection Method:</h3>
+        <ol>
+            <li>Identify the six terminal ends of the motor (U1, V1, W1, U2, V2, W2).</li>
+            <li>Connect U2, V2, and W2 together. This forms the neutral point or star point.</li>
+            <li>Connect U1, V1, and W1 to the three phases of the power supply (L1, L2, L3 respectively).</li>
+        </ol>
+
+        <div class="connection-diagram" id="star-diagram"></div>
+
+        <h3>Characteristics:</h3>
+        <ul>
+            <li>Lower starting current</li>
+            <li>Higher starting torque</li>
+            <li>Suitable for high starting load applications</li>
+            <li>Line voltage = √3 × Phase voltage</li>
+            <li>Line current = Phase current</li>
+        </ul>
+    </div>
+
+    <div class="connection-type">
+        <h2>Delta (Δ) Connection</h2>
+        <p>In a Delta connection, the end of each winding is connected to the start of the next winding, forming a triangular or "delta" shape.</p>
+
+        <h3>Connection Method:</h3>
+        <ol>
+            <li>Identify the six terminal ends of the motor (U1, V1, W1, U2, V2, W2).</li>
+            <li>Connect U1 to W2, V1 to U2, and W1 to V2.</li>
+            <li>Connect the junctions of U1-W2, V1-U2, and W1-V2 to the three phases of the power supply (L1, L2, L3 respectively).</li>
+        </ol>
+
+        <div class="connection-diagram" id="delta-diagram"></div>
+
+        <h3>Characteristics:</h3>
+        <ul>
+            <li>Higher starting current</li>
+            <li>Lower starting torque</li>
+            <li>Suitable for low starting load applications</li>
+            <li>Line voltage = Phase voltage</li>
+            <li>Line current = √3 × Phase current</li>
+        </ul>
+    </div>
+
+    <h2>Comparison: Star vs Delta</h2>
+    <table>
+        <tr>
+            <th>Characteristic</th>
+            <th>Star (Y) Connection</th>
+            <th>Delta (Δ) Connection</th>
+        </tr>
+        <tr>
+            <td>Starting Current</td>
+            <td>Lower (1/3 of Delta)</td>
+            <td>Higher</td>
+        </tr>
+        <tr>
+            <td>Starting Torque</td>
+            <td>Higher</td>
+            <td>Lower</td>
+        </tr>
+        <tr>
+            <td>Running Current</td>
+            <td>Lower</td>
+            <td>Higher (√3 times Star)</td>
+        </tr>
+        <tr>
+            <td>Power Output</td>
+            <td>Lower</td>
+            <td>Higher</td>
+        </tr>
+        <tr>
+            <td>Suitable For</td>
+            <td>High starting load, lower running load</td>
+            <td>Low starting load, higher running load</td>
+        </tr>
+    </table>
+
+    <script>
+        function drawStarDiagram() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 300;
+            document.getElementById('star-diagram').appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+
+            // Draw star shape
+            ctx.beginPath();
+            ctx.moveTo(200, 50);
+            ctx.lineTo(100, 250);
+            ctx.lineTo(300, 250);
+            ctx.closePath();
+            ctx.strokeStyle = '#2c3e50';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Draw connection points
+            ctx.fillStyle = '#e74c3c';
+            ctx.beginPath();
+            ctx.arc(200, 50, 5, 0, 2 * Math.PI);
+            ctx.arc(100, 250, 5, 0, 2 * Math.PI);
+            ctx.arc(300, 250, 5, 0, 2 * Math.PI);
+            ctx.fill();
+
+            // Label connection points
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = '14px Arial';
+            ctx.fillText('U1', 190, 40);
+            ctx.fillText('V1', 80, 270);
+            ctx.fillText('W1', 310, 270);
+            ctx.fillText('U2, V2, W2', 180, 150);
+        }
+
+        function drawDeltaDiagram() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 300;
+            document.getElementById('delta-diagram').appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+
+            // Draw delta shape
+            ctx.beginPath();
+            ctx.moveTo(200, 50);
+            ctx.lineTo(100, 250);
+            ctx.lineTo(300, 250);
+            ctx.closePath();
+            ctx.strokeStyle = '#2c3e50';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Draw connection points
+            ctx.fillStyle = '#e74c3c';
+            ctx.beginPath();
+            ctx.arc(200, 50, 5, 0, 2 * Math.PI);
+            ctx.arc(100, 250, 5, 0, 2 * Math.PI);
+            ctx.arc(300, 250, 5, 0, 2 * Math.PI);
+            ctx.fill();
+
+            // Label connection points
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = '14px Arial';
+            ctx.fillText('U1-W2', 210, 60);
+            ctx.fillText('V1-U2', 70, 260);
+            ctx.fillText('W1-V2', 310, 260);
+        }
+
+        window.onload = function() {
+            drawStarDiagram();
+            drawDeltaDiagram();
+        };
+    </script>
+</body>
+</html>
