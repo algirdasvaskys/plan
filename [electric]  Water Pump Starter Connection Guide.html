@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Pump Starter Connection Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .component h3 {
+            margin-top: 0;
+        }
+        #diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        #controls {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        @media (max-width: 600px) {
+            #diagram {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Water Pump Starter Connection with Float Switch and Water Level Indicator</h1>
+    
+    <div class="component">
+        <h3>Components Required:</h3>
+        <ul>
+            <li>Water pump</li>
+            <li>Pump starter (contactor and overload relay)</li>
+            <li>Float switch</li>
+            <li>Water level indicator</li>
+            <li>Power supply (typically 220V AC)</li>
+            <li>Control circuit (24V AC or DC)</li>
+            <li>Wires and connectors</li>
+        </ul>
+    </div>
+
+    <h2>Connection Method:</h2>
+
+    <ol>
+        <li>
+            <h3>Power Circuit:</h3>
+            <p>Connect the main power supply (220V AC) to the input of the pump starter (contactor). Connect the output of the starter to the water pump.</p>
+        </li>
+        <li>
+            <h3>Control Circuit:</h3>
+            <p>Set up a 24V control circuit using a step-down transformer or a separate 24V power supply.</p>
+        </li>
+        <li>
+            <h3>Float Switch:</h3>
+            <p>Connect the float switch in series with the control circuit and the starter coil. This ensures the pump only operates when the water level is sufficient.</p>
+        </li>
+        <li>
+            <h3>Water Level Indicator:</h3>
+            <p>Connect the water level indicator in parallel with the control circuit. This will provide a visual indication of the water level.</p>
+        </li>
+        <li>
+            <h3>Overload Protection:</h3>
+            <p>Ensure the overload relay is properly set and connected to protect the pump from overcurrent situations.</p>
+        </li>
+    </ol>
+
+    <div class="component">
+        <h3>Safety Considerations:</h3>
+        <ul>
+            <li>Always disconnect power before working on electrical connections.</li>
+            <li>Use appropriate wire gauges for the current ratings of your components.</li>
+            <li>Ensure all connections are secure and properly insulated.</li>
+            <li>Install a ground fault circuit interrupter (GFCI) for added safety.</li>
+            <li>Follow local electrical codes and regulations.</li>
+        </ul>
+    </div>
+
+    <h2>Interactive Diagram</h2>
+    <p>Use the controls below to simulate different water levels and see how the system responds.</p>
+
+    <canvas id="diagram"></canvas>
+
+    <div id="controls">
+        <button onclick="setWaterLevel(25)">25% Water Level</button>
+        <button onclick="setWaterLevel(50)">50% Water Level</button>
+        <button onclick="setWaterLevel(75)">75% Water Level</button>
+        <button onclick="setWaterLevel(100)">100% Water Level</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('diagram');
+        const ctx = canvas.getContext('2d');
+        let waterLevel = 50;
+
+        function drawDiagram() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw tank
+            ctx.strokeRect(50, 50, 200, 300);
+
+            // Draw water
+            ctx.fillStyle = '#3498db';
+            ctx.fillRect(50, 350 - waterLevel * 3, 200, waterLevel * 3);
+
+            // Draw pump
+            ctx.fillStyle = '#e74c3c';
+            ctx.fillRect(300, 250, 50, 100);
+
+            // Draw float switch
+            ctx.fillStyle = '#2ecc71';
+            ctx.beginPath();
+            ctx.arc(150, 350 - waterLevel * 3, 10, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Draw connections
+            ctx.strokeStyle = '#333';
+            ctx.beginPath();
+            ctx.moveTo(250, 300);
+            ctx.lineTo(300, 300);
+            ctx.stroke();
+
+            // Draw indicator
+            ctx.fillStyle = waterLevel > 25 ? '#2ecc71' : '#e74c3c';
+            ctx.beginPath();
+            ctx.arc(400, 100, 20, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Label components
+            ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.fillText('Tank', 130, 370);
+            ctx.fillText('Pump', 300, 370);
+            ctx.fillText('Float Switch', 160, 340 - waterLevel * 3);
+            ctx.fillText('Indicator', 380, 130);
+        }
+
+        function setWaterLevel(level) {
+            waterLevel = level;
+            drawDiagram();
+        }
+
+        // Initial draw
+        drawDiagram();
+
+        // Make canvas responsive
+        function resizeCanvas() {
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+            drawDiagram();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+    </script>
+</body>
+</html>
