@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Controller Connection Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Controller Connection Guide</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with electrical components can be dangerous. Always ensure power is disconnected before making any connections. If you're not confident in your abilities, consult a qualified electrician.
+    </div>
+
+    <div class="section">
+        <h2>1. Components Overview</h2>
+        <ul>
+            <li>Temperature Controller</li>
+            <li>RTD (Resistance Temperature Detector)</li>
+            <li>Thermocouple</li>
+            <li>Solid State Relay (SSR)</li>
+            <li>Power Supply</li>
+            <li>Heating Element or Cooling Device</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. RTD Connection</h2>
+        <p>RTDs are typically more accurate than thermocouples for lower temperature ranges.</p>
+        <ol>
+            <li>Identify the RTD input terminals on your temperature controller. They are usually labeled as RTD+ and RTD-.</li>
+            <li>Connect the RTD's red wire to the RTD+ terminal.</li>
+            <li>Connect the RTD's white wire to the RTD- terminal.</li>
+            <li>If your RTD has a third wire (often black), connect it to the RTD- terminal as well. This is for lead wire compensation.</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>3. Thermocouple Connection</h2>
+        <p>Thermocouples are better for higher temperature ranges and faster response times.</p>
+        <ol>
+            <li>Locate the thermocouple input terminals on your controller. They are usually marked as TC+ and TC-.</li>
+            <li>Connect the positive (usually red) wire of the thermocouple to the TC+ terminal.</li>
+            <li>Connect the negative (usually blue or white) wire to the TC- terminal.</li>
+            <li>Ensure you're using the correct type of thermocouple (K, J, T, etc.) that matches your controller's settings.</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>4. Solid State Relay (SSR) Connection</h2>
+        <ol>
+            <li>Identify the output terminals on your temperature controller. They're often labeled as OUT+ and OUT-.</li>
+            <li>Connect the OUT+ terminal to the positive input of the SSR.</li>
+            <li>Connect the OUT- terminal to the negative input of the SSR.</li>
+            <li>On the output side of the SSR:
+                <ul>
+                    <li>Connect one terminal to your heating element or cooling device.</li>
+                    <li>Connect the other terminal to your power source.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>5. Power Supply Connection</h2>
+        <ol>
+            <li>Locate the power input terminals on your temperature controller.</li>
+            <li>Connect the positive wire from your power supply to the positive terminal.</li>
+            <li>Connect the negative wire from your power supply to the negative terminal.</li>
+            <li>Ensure you're using the correct voltage as specified by your controller's requirements.</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>6. Final Steps</h2>
+        <ol>
+            <li>Double-check all connections to ensure they are secure and correct.</li>
+            <li>Configure your temperature controller settings:
+                <ul>
+                    <li>Set the input type (RTD or Thermocouple)</li>
+                    <li>Set the temperature range</li>
+                    <li>Set the control parameters (PID values if applicable)</li>
+                </ul>
+            </li>
+            <li>Power on the system and test its operation.</li>
+            <li>Monitor the system closely during initial operation to ensure everything is functioning correctly.</li>
+        </ol>
+    </div>
+
+    <div class="warning">
+        <strong>Note:</strong> This guide provides a general overview. Always refer to the specific manuals for your components, as connection details may vary between manufacturers and models.
+    </div>
+</body>
+</html>
