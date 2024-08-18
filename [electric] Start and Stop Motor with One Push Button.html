@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start and Stop Motor with One Push Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #444;
+        }
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+        #circuit {
+            max-width: 100%;
+            height: auto;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #status {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Start and Stop a Motor Using Only One Push Button</h1>
+        
+        <h2>Interactive Diagram</h2>
+        <div class="diagram">
+            <svg id="circuit" width="400" height="300" viewBox="0 0 400 300">
+                <rect x="50" y="50" width="300" height="200" fill="none" stroke="#333" stroke-width="2"/>
+                <circle id="motor" cx="200" cy="150" r="50" fill="#ddd" stroke="#333" stroke-width="2"/>
+                <text x="200" y="155" text-anchor="middle" font-size="14">Motor</text>
+                <rect id="button" x="150" y="230" width="100" height="40" fill="#4CAF50" stroke="#333" stroke-width="2" rx="5" ry="5"/>
+                <text x="200" y="255" text-anchor="middle" fill="white" font-size="14">Push Button</text>
+                <line x1="200" y1="50" x2="200" y2="100" stroke="#333" stroke-width="2"/>
+                <line x1="200" y1="200" x2="200" y2="230" stroke="#333" stroke-width="2"/>
+            </svg>
+            <br>
+            <button id="toggleButton" class="button">Push Button</button>
+            <div id="status">Motor Status: Stopped</div>
+        </div>
+
+        <h2>How It Works</h2>
+        <p>This system uses a single push button to both start and stop a motor. Here's how it functions:</p>
+        <ol>
+            <li><strong>Initial State:</strong> The motor is initially stopped.</li>
+            <li><strong>Starting the Motor:</strong> When the push button is pressed for the first time, it completes the circuit, allowing current to flow to the motor, which starts it.</li>
+            <li><strong>Keeping the Motor Running:</strong> A holding circuit or latching relay is used to keep the motor running even after the button is released.</li>
+            <li><strong>Stopping the Motor:</strong> When the push button is pressed again, it interrupts the holding circuit, cutting power to the motor and stopping it.</li>
+        </ol>
+
+        <h2>Components Required</h2>
+        <ul>
+            <li>Motor</li>
+            <li>Power supply</li>
+            <li>Push button (momentary switch)</li>
+            <li>Contactor or relay</li>
+            <li>Auxiliary contact</li>
+            <li>Overload protection device</li>
+        </ul>
+
+        <h2>Circuit Explanation</h2>
+        <p>The circuit consists of the following key elements:</p>
+        <ol>
+            <li><strong>Main Contact:</strong> This is the primary switch that controls power to the motor.</li>
+            <li><strong>Push Button:</strong> A normally open (NO) momentary switch that initiates both start and stop functions.</li>
+            <li><strong>Auxiliary Contact:</strong> This contact is mechanically linked to the main contact and is used in the control circuit.</li>
+            <li><strong>Holding Circuit:</strong> This circuit keeps the contactor energized after the push button is released.</li>
+        </ol>
+
+        <h2>Operation Sequence</h2>
+        <ol>
+            <li><strong>Starting:</strong> Pressing the button energizes the contactor coil, closing the main contact and starting the motor. The auxiliary contact also closes, creating a parallel path around the push button.</li>
+            <li><strong>Running:</strong> After releasing the button, the motor continues to run because the auxiliary contact maintains the circuit.</li>
+            <li><strong>Stopping:</strong> Pressing the button again interrupts the holding circuit, de-energizing the contactor and stopping the motor.</li>
+        </ol>
+
+        <h2>Safety Considerations</h2>
+        <ul>
+            <li>Always include proper overload protection for the motor.</li>
+            <li>Ensure all components are rated for the voltage and current of your system.</li>
+            <li>Include an emergency stop button in addition to the start/stop button for added safety.</li>
+            <li>Follow all local electrical codes and regulations when implementing this circuit.</li>
+        </ul>
+    </div>
+
+    <script>
+        let isRunning = false;
+        const toggleButton = document.getElementById('toggleButton');
+        const status = document.getElementById('status');
+        const motor = document.getElementById('motor');
+
+        toggleButton.addEventListener('click', function() {
+            isRunning = !isRunning;
+            if (isRunning) {
+                status.textContent = 'Motor Status: Running';
+                motor.style.fill = '#4CAF50';
+            } else {
+                status.textContent = 'Motor Status: Stopped';
+                motor.style.fill = '#ddd';
+            }
+        });
+    </script>
+</body>
+</html>
