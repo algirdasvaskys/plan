@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VFD Control with 2 Wires: Reverse and Forward Motor Operation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .note {
+            background-color: #f0f0f0;
+            border-left: 5px solid #3498db;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .warning {
+            background-color: #ffeeba;
+            border-left: 5px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Controlling VFD with 2 Wires: Reverse and Forward Motor Operation</h1>
+    
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>This document explains how to control a Variable Frequency Drive (VFD) using only two wires while enabling both forward and reverse motor operation. This method is efficient and simplifies wiring in many industrial applications.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Components Required</h2>
+        <ul>
+            <li>Variable Frequency Drive (VFD)</li>
+            <li>Three-phase AC motor</li>
+            <li>Two-wire control cable</li>
+            <li>SPDT (Single Pole Double Throw) switch</li>
+            <li>Potentiometer (for speed control, optional)</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Wiring Method</h2>
+        <ol>
+            <li>Connect the VFD to the power supply and the motor as per the manufacturer's instructions.</li>
+            <li>Locate the control terminal block on the VFD.</li>
+            <li>Identify the following terminals on the VFD:
+                <ul>
+                    <li>Common (COM) terminal</li>
+                    <li>Forward Run (FWD) terminal</li>
+                    <li>Reverse Run (REV) terminal</li>
+                </ul>
+            </li>
+            <li>Connect one wire from the SPDT switch to the COM terminal.</li>
+            <li>Connect the other two wires from the SPDT switch to the FWD and REV terminals respectively.</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>SPDT Switch Configuration</h2>
+        <table>
+            <tr>
+                <th>Switch Position</th>
+                <th>Connection</th>
+                <th>Motor Operation</th>
+            </tr>
+            <tr>
+                <td>Center</td>
+                <td>Open</td>
+                <td>Stop</td>
+            </tr>
+            <tr>
+                <td>Up</td>
+                <td>COM to FWD</td>
+                <td>Forward Rotation</td>
+            </tr>
+            <tr>
+                <td>Down</td>
+                <td>COM to REV</td>
+                <td>Reverse Rotation</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>VFD Configuration</h2>
+        <p>Configure the VFD parameters for 2-wire control:</p>
+        <ol>
+            <li>Set the control mode to "2-wire control" or equivalent in the VFD settings.</li>
+            <li>Configure the input terminals for forward and reverse run commands.</li>
+            <li>Set acceleration and deceleration times as required for your application.</li>
+        </ol>
+        <div class="note">
+            <p>Note: The exact parameter names and setting procedures may vary depending on the VFD manufacturer. Consult your VFD's manual for specific instructions.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Operation</h2>
+        <ol>
+            <li>To start the motor in forward direction, flip the SPDT switch to the "Up" position.</li>
+            <li>To reverse the motor direction, flip the SPDT switch to the "Down" position.</li>
+            <li>To stop the motor, return the SPDT switch to the center position.</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Speed Control (Optional)</h2>
+        <p>If speed control is required:</p>
+        <ol>
+            <li>Connect a potentiometer to the VFD's analog input terminals.</li>
+            <li>Configure the VFD to accept speed reference from the analog input.</li>
+            <li>Adjust the potentiometer to control the motor speed.</li>
+        </ol>
+    </div>
+    
+    <div class="warning">
+        <h3>Safety Precautions</h3>
+        <ul>
+            <li>Always follow proper electrical safety procedures and local electrical codes.</li>
+            <li>Ensure the VFD and motor are properly grounded.</li>
+            <li>Implement appropriate safety interlocks and emergency stop mechanisms.</li>
+            <li>Verify that the motor can safely operate in both directions before applying reverse rotation.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Conclusion</h2>
+        <p>This 2-wire control method provides a simple and effective way to operate a VFD-controlled motor in both forward and reverse directions. It reduces wiring complexity while maintaining full control over the motor's operation.</p>
+    </div>
+</body>
+</html>
