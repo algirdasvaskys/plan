@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse Relay Connection to Turn ON/OFF Load with Single Push Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .circuit-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .component {
+            stroke: #2c3e50;
+            stroke-width: 2;
+            fill: none;
+        }
+        .wire {
+            stroke: #3498db;
+            stroke-width: 2;
+        }
+        .text {
+            font-size: 14px;
+            fill: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pulse Relay Connection to Turn ON/OFF Load with Single Push Button</h1>
+    
+    <h2>Introduction</h2>
+    <p>This document explains how to create a circuit that allows turning a load ON and OFF using a single push button with a pulse relay connection. This method is commonly used in home automation and industrial control systems where a single button press can toggle the state of a device.</p>
+    
+    <h2>Circuit Diagram</h2>
+    <svg class="circuit-diagram" viewBox="0 0 400 300">
+        <!-- Power supply -->
+        <line x1="50" y1="50" x2="50" y2="250" class="wire" />
+        <line x1="350" y1="50" x2="350" y2="250" class="wire" />
+        <text x="30" y="150" class="text">L</text>
+        <text x="360" y="150" class="text">N</text>
+        
+        <!-- Push button -->
+        <circle cx="100" cy="100" r="10" class="component" />
+        <line x1="90" y1="100" x2="110" y2="100" class="component" />
+        <text x="80" y="85" class="text">Push Button</text>
+        
+        <!-- Pulse relay coil -->
+        <rect x="150" y="80" width="40" height="60" class="component" />
+        <text x="155" y="70" class="text">Pulse Relay</text>
+        
+        <!-- Relay contact -->
+        <line x1="200" y1="180" x2="220" y2="200" class="component" />
+        <circle cx="200" cy="180" r="3" fill="#2c3e50" />
+        <circle cx="220" cy="200" r="3" fill="#2c3e50" />
+        
+        <!-- Load -->
+        <rect x="250" y="170" width="40" height="60" class="component" />
+        <text x="255" y="250" class="text">Load</text>
+        
+        <!-- Wires -->
+        <polyline points="50,100 90,100" class="wire" />
+        <polyline points="110,100 150,100" class="wire" />
+        <polyline points="190,110 350,110" class="wire" />
+        <polyline points="200,180 250,180" class="wire" />
+        <polyline points="290,200 350,200" class="wire" />
+    </svg>
+    
+    <h2>How It Works</h2>
+    <ol>
+        <li><strong>Components:</strong>
+            <ul>
+                <li>Single Push Button</li>
+                <li>Pulse Relay (also known as impulse relay or latching relay)</li>
+                <li>Load (e.g., light bulb, motor, etc.)</li>
+                <li>Power Supply</li>
+            </ul>
+        </li>
+        <li><strong>Circuit Connections:</strong>
+            <ul>
+                <li>The push button is connected in series with the pulse relay coil.</li>
+                <li>The relay contact is connected in series with the load.</li>
+                <li>Both circuits are powered by the same supply.</li>
+            </ul>
+        </li>
+        <li><strong>Operation:</strong>
+            <ul>
+                <li>When the push button is pressed, it energizes the pulse relay coil.</li>
+                <li>The pulse relay changes its contact state (ON to OFF or OFF to ON).</li>
+                <li>This change in contact state either connects or disconnects the load from the power supply.</li>
+                <li>The relay maintains its state even after the button is released.</li>
+                <li>Pressing the button again will toggle the relay to its opposite state.</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h2>Advantages</h2>
+    <ul>
+        <li>Simplicity: Only one button is needed to control the load.</li>
+        <li>Memory Effect: The relay remembers its last state, allowing for consistent control.</li>
+        <li>Power Efficiency: The relay only consumes power during state changes.</li>
+        <li>Versatility: Can be used with various types of loads.</li>
+    </ul>
+    
+    <h2>Applications</h2>
+    <ul>
+        <li>Home Lighting Control</li>
+        <li>Industrial Machine ON/OFF Control</li>
+        <li>Staircase Lighting</li>
+        <li>Motor Control in Various Equipment</li>
+    </ul>
+    
+    <h2>Safety Considerations</h2>
+    <p>Always ensure proper insulation and follow electrical safety guidelines when working with mains voltage. If you're not familiar with electrical work, consult a licensed electrician.</p>
+</body>
+</html>
