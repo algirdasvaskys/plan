@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Wire Sensor Connection with Latching Relay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .component {
+            fill: #3498db;
+            stroke: #2980b9;
+            stroke-width: 2;
+        }
+        .wire {
+            stroke: #34495e;
+            stroke-width: 2;
+        }
+        .text {
+            font-size: 14px;
+            fill: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>2-Wire Sensor Connection with Latching Relay</h1>
+    
+    <h2>Introduction</h2>
+    <p>This document explains the method for connecting a 2-wire sensor to a latching relay. This configuration is commonly used in various electrical and electronic applications where power conservation is crucial.</p>
+
+    <h2>Components Required</h2>
+    <ul>
+        <li>2-wire sensor</li>
+        <li>Latching relay</li>
+        <li>Power source (battery or power supply)</li>
+        <li>Connecting wires</li>
+    </ul>
+
+    <h2>Circuit Diagram</h2>
+    <svg class="diagram" viewBox="0 0 400 300">
+        <!-- Power Source -->
+        <rect x="10" y="140" width="60" height="40" class="component" />
+        <text x="40" y="165" text-anchor="middle" class="text">Power</text>
+
+        <!-- Sensor -->
+        <circle cx="200" cy="100" r="30" class="component" />
+        <text x="200" y="105" text-anchor="middle" class="text">Sensor</text>
+
+        <!-- Latching Relay -->
+        <rect x="300" y="140" width="80" height="60" class="component" />
+        <text x="340" y="175" text-anchor="middle" class="text">Latching Relay</text>
+
+        <!-- Wires -->
+        <line x1="70" y1="160" x2="200" y2="160" class="wire" />
+        <line x1="200" y1="160" x2="200" y2="130" class="wire" />
+        <line x1="200" y1="70" x2="200" y2="40" class="wire" />
+        <line x1="200" y1="40" x2="340" y2="40" class="wire" />
+        <line x1="340" y1="40" x2="340" y2="140" class="wire" />
+    </svg>
+
+    <h2>Connection Method</h2>
+    <ol>
+        <li>Connect the positive terminal of the power source to one wire of the 2-wire sensor.</li>
+        <li>Connect the other wire of the sensor to the "Set" terminal of the latching relay.</li>
+        <li>Connect the "Reset" terminal of the latching relay to the negative terminal of the power source.</li>
+        <li>The relay's common terminal (COM) can be connected to the load or the next stage of your circuit.</li>
+    </ol>
+
+    <h2>How It Works</h2>
+    <p>When the sensor is activated, it completes the circuit, allowing current to flow to the "Set" coil of the latching relay. This causes the relay to switch and maintain its state even after the sensor is deactivated. To reset the relay, a separate reset circuit (not shown in this basic diagram) would be used.</p>
+
+    <h2>Advantages</h2>
+    <ul>
+        <li>Power Efficiency: The latching relay maintains its state without continuous power.</li>
+        <li>Simplicity: 2-wire sensors are easy to install and require minimal wiring.</li>
+        <li>Reliability: Latching relays are known for their long-term stability and reliability.</li>
+    </ul>
+
+    <h2>Considerations</h2>
+    <p>Ensure that the voltage and current ratings of all components are compatible. The latching relay should be chosen based on the specific requirements of your application, including the load it needs to switch.</p>
+
+    <h2>Conclusion</h2>
+    <p>This 2-wire sensor connection with a latching relay provides an efficient and reliable method for various sensing applications. It's particularly useful in scenarios where power consumption is a concern, such as in battery-operated devices or energy-efficient systems.</p>
+</body>
+</html>
