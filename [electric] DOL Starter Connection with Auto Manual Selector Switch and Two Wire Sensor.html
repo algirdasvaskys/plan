@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOL Starter Connection with Auto Manual Selector Switch and Two Wire Sensor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f2f2f2;
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .note {
+            background-color: #ffe6e6;
+            border-left: 4px solid #e74c3c;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .steps {
+            background-color: #e6f7ff;
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOL Starter Connection with Auto Manual Selector Switch and Two Wire Sensor</h1>
+    
+    <h2>Components Required:</h2>
+    <div class="component">
+        <ul>
+            <li>DOL Starter</li>
+            <li>Auto/Manual Selector Switch (3-position)</li>
+            <li>Two Wire Sensor</li>
+            <li>Contactor</li>
+            <li>Overload Relay</li>
+            <li>Motor</li>
+            <li>MCB (Miniature Circuit Breaker)</li>
+            <li>Auxiliary Contactor (for auto mode)</li>
+        </ul>
+    </div>
+
+    <h2>Connection Procedure:</h2>
+    <div class="steps">
+        <ol>
+            <li><strong>Power Supply:</strong> Connect the main power supply to the MCB.</li>
+            <li><strong>MCB to Contactor:</strong> Connect the output of MCB to the input of the main contactor.</li>
+            <li><strong>Contactor to Overload Relay:</strong> Connect the output of the contactor to the input of the overload relay.</li>
+            <li><strong>Overload Relay to Motor:</strong> Connect the output of the overload relay to the motor terminals.</li>
+            <li><strong>Control Circuit:</strong> Connect the control circuit power supply (usually 230V AC) to the selector switch.</li>
+            <li><strong>Selector Switch:</strong> 
+                <ul>
+                    <li>Connect the "Manual" position to the contactor coil through a NO push button.</li>
+                    <li>Connect the "Auto" position to the auxiliary contactor coil.</li>
+                </ul>
+            </li>
+            <li><strong>Two Wire Sensor:</strong> Connect the sensor to the auxiliary contactor.</li>
+            <li><strong>Auxiliary Contactor:</strong> Connect the NO contact of the auxiliary contactor to the main contactor coil.</li>
+            <li><strong>Overload Contacts:</strong> Connect the NC contact of the overload relay in series with the contactor coil circuit for protection.</li>
+        </ol>
+    </div>
+
+    <h2>Operation:</h2>
+    <div class="note">
+        <p><strong>Manual Mode:</strong> When the selector switch is in "Manual" position, the operator can start and stop the motor using the push buttons.</p>
+        <p><strong>Auto Mode:</strong> When the selector switch is in "Auto" position, the two wire sensor controls the motor operation. When the sensor is activated, it energizes the auxiliary contactor, which in turn energizes the main contactor to start the motor.</p>
+        <p><strong>Off Mode:</strong> In the center position of the selector switch, the motor remains off regardless of sensor status or manual push buttons.</p>
+    </div>
+
+    <h2>Safety Considerations:</h2>
+    <div class="note">
+        <ul>
+            <li>Ensure proper insulation and wiring to prevent short circuits.</li>
+            <li>Use appropriate wire gauges based on the motor current.</li>
+            <li>Properly ground all components and the motor.</li>
+            <li>Set the overload relay according to the motor's full load current.</li>
+            <li>Test the emergency stop functionality before regular operation.</li>
+        </ul>
+    </div>
+
+    <h2>Maintenance:</h2>
+    <div class="note">
+        <ul>
+            <li>Regularly inspect all connections for loose terminals.</li>
+            <li>Check the condition of the contactor contacts periodically.</li>
+            <li>Test the operation of the overload relay at regular intervals.</li>
+            <li>Keep the control panel clean and free from dust and moisture.</li>
+            <li>Periodically test the functionality of the two wire sensor.</li>
+        </ul>
+    </div>
+</body>
+</html>
