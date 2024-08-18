@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Made Smart Touch Switch Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .warning {
+            background-color: #ffeeee;
+            border-left: 5px solid #ff0000;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        ul, ol {
+            padding-left: 30px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Home-Made Smart Touch Switch Board</h1>
+    <p>Learn how to create your own smart touch switch board, as demonstrated by @TheElectricalGuy.</p>
+
+    <div class="warning">
+        <strong>Safety Warning:</strong> Working with electricity can be dangerous. Always ensure the power is off before starting any electrical work. If you're not confident in your abilities, please consult a professional electrician.
+    </div>
+
+    <h2>Materials Needed:</h2>
+    <ul>
+        <li>Arduino Nano or similar microcontroller</li>
+        <li>TTP223 touch sensors (quantity depends on the number of switches you want)</li>
+        <li>5V relay module (quantity matches the number of switches)</li>
+        <li>Jumper wires</li>
+        <li>Breadboard or PCB</li>
+        <li>5V power supply</li>
+        <li>Electrical box or enclosure</li>
+        <li>Acrylic or glass panel for the touch surface</li>
+    </ul>
+
+    <h2>Step-by-Step Instructions:</h2>
+    <ol>
+        <li>
+            <h3>Prepare the Arduino:</h3>
+            <p>Upload the necessary code to the Arduino Nano. The code should read the touch sensor inputs and control the relay outputs accordingly.</p>
+        </li>
+        <li>
+            <h3>Connect the Touch Sensors:</h3>
+            <p>Wire the TTP223 touch sensors to the Arduino's digital input pins. Each sensor will require a power (VCC), ground (GND), and signal connection.</p>
+        </li>
+        <li>
+            <h3>Connect the Relay Module:</h3>
+            <p>Wire the relay module to the Arduino's digital output pins. Each relay will need a control signal, as well as power and ground connections.</p>
+        </li>
+        <li>
+            <h3>Power Supply:</h3>
+            <p>Connect the 5V power supply to power both the Arduino and the relay module. Ensure proper voltage regulation if needed.</p>
+        </li>
+        <li>
+            <h3>Prepare the Enclosure:</h3>
+            <p>Mount the Arduino, relay module, and other components inside the electrical box or enclosure.</p>
+        </li>
+        <li>
+            <h3>Create the Touch Panel:</h3>
+            <p>Cut the acrylic or glass panel to fit the enclosure. Mark the positions for the touch-sensitive areas.</p>
+        </li>
+        <li>
+            <h3>Assemble the Touch Panel:</h3>
+            <p>Attach the touch sensors to the back of the acrylic/glass panel at the marked positions. Ensure good contact between the sensors and the panel.</p>
+        </li>
+        <li>
+            <h3>Final Assembly:</h3>
+            <p>Carefully place the touch panel onto the enclosure, making sure all wires are properly connected and not pinched.</p>
+        </li>
+        <li>
+            <h3>Testing:</h3>
+            <p>Before connecting to mains power, test the system using a low-voltage power source to ensure all touch controls and relays are functioning correctly.</p>
+        </li>
+        <li>
+            <h3>Installation:</h3>
+            <p>Once tested, the smart touch switch board can be installed in place of a traditional switch. Ensure all mains wiring is done by a qualified electrician.</p>
+        </li>
+    </ol>
+
+    <h2>Additional Tips:</h2>
+    <ul>
+        <li>Consider adding LED indicators to show the status of each switch.</li>
+        <li>For advanced functionality, you could incorporate Wi-Fi capabilities using an ESP8266 or ESP32 module instead of an Arduino.</li>
+        <li>Always use appropriate gauge wires for the current load of your circuits.</li>
+        <li>Consider adding a manual override or failsafe mechanism in case of system malfunction.</li>
+    </ul>
+
+    <p>Remember, this project involves working with both low-voltage electronics and potentially high-voltage mains power. Always prioritize safety and consult with a professional if you're unsure about any step in the process.</p>
+</body>
+</html>
