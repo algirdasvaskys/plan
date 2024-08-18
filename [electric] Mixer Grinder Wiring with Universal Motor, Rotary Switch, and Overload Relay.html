@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixer Grinder Wiring with Universal Motor, Rotary Switch, and Overload Relay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .warning {
+            background-color: #ffeeee;
+            border-left: 5px solid #ff0000;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .component {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .steps {
+            counter-reset: step-counter;
+        }
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mixer Grinder Wiring with Universal Motor, Rotary Switch, and Overload Relay</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with electrical equipment can be dangerous. Always ensure the power is disconnected before working on any electrical device. If you're not confident in your abilities, please consult a qualified electrician.
+    </div>
+
+    <h2>Components Required</h2>
+    <div class="component">
+        <ul>
+            <li>Universal Motor</li>
+            <li>Rotary Switch (3-speed)</li>
+            <li>Overload Relay</li>
+            <li>Power Cord</li>
+            <li>Wires (appropriate gauge)</li>
+            <li>Mixer Grinder Body</li>
+        </ul>
+    </div>
+
+    <h2>Wiring Method</h2>
+    <div class="steps">
+        <div class="step">
+            Identify the components of the universal motor: There are typically four terminals - two for the field winding and two for the armature winding.
+        </div>
+        <div class="step">
+            Connect the power cord: The live wire (usually brown or red) goes to the rotary switch, and the neutral wire (usually blue or black) connects to one terminal of the field winding.
+        </div>
+        <div class="step">
+            Wire the rotary switch: This switch will control the speed of the motor. Connect the live wire from the power cord to the common terminal of the switch.
+        </div>
+        <div class="step">
+            Connect the switch to the motor: From the three speed terminals of the rotary switch, run wires to the field winding of the motor. These connections determine the motor speed.
+        </div>
+        <div class="step">
+            Wire the overload relay: Connect one terminal of the overload relay to the other terminal of the field winding. The other terminal of the relay connects to one terminal of the armature winding.
+        </div>
+        <div class="step">
+            Complete the motor circuit: Connect the remaining terminal of the armature winding to the neutral wire from the power cord.
+        </div>
+        <div class="step">
+            Ground connection: Ensure that the mixer grinder body is properly grounded. Connect the ground wire (usually green or yellow-green) from the power cord to a suitable grounding point on the mixer body.
+        </div>
+        <div class="step">
+            Double-check all connections: Ensure all connections are tight and properly insulated.
+        </div>
+        <div class="step">
+            Test the wiring: Once everything is securely in place, plug in the mixer grinder and test each speed setting to ensure proper operation.
+        </div>
+    </div>
+
+    <h2>Additional Notes</h2>
+    <ul>
+        <li>The overload relay protects the motor from overheating due to excessive current draw. It will cut off power to the motor if it detects an overload condition.</li>
+        <li>The rotary switch allows for different speed settings by connecting different portions of the field winding.</li>
+        <li>Always use the appropriate wire gauge for the current rating of your mixer grinder.</li>
+        <li>Ensure all connections are properly insulated to prevent short circuits.</li>
+        <li>If you're unsure about any step, consult the manufacturer's manual or a professional electrician.</li>
+    </ul>
+</body>
+</html>
