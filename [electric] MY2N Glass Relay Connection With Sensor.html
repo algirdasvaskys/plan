@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY2N Glass Relay Connection With Sensor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>MY2N Glass Relay Connection With Sensor</h1>
+    
+    <div class="container">
+        <h2>Introduction</h2>
+        <p>The MY2N Glass Relay is a compact and versatile relay commonly used in electrical and electronic applications. This guide will walk you through the process of connecting a MY2N Glass Relay with a sensor.</p>
+    </div>
+    
+    <div class="container">
+        <h2>Components Needed</h2>
+        <ul>
+            <li>MY2N Glass Relay</li>
+            <li>Sensor (e.g., temperature, motion, or light sensor)</li>
+            <li>Power supply (according to relay and sensor specifications)</li>
+            <li>Connecting wires</li>
+            <li>Breadboard (optional, for prototyping)</li>
+        </ul>
+    </div>
+    
+    <div class="container">
+        <h2>Step-by-Step Connection Guide</h2>
+        <ol>
+            <li>
+                <h3>Understand the MY2N Glass Relay Pinout</h3>
+                <p>The MY2N Glass Relay typically has 8 pins:</p>
+                <ul>
+                    <li>Pins 1 and 8: Coil connections</li>
+                    <li>Pins 2 and 6: Normally Closed (NC) contacts</li>
+                    <li>Pins 4 and 7: Normally Open (NO) contacts</li>
+                    <li>Pins 3 and 5: Common (COM) contacts</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Connect the Relay Coil</h3>
+                <p>Connect the positive terminal of your power supply to pin 1 of the relay. Connect pin 8 to the output of your sensor.</p>
+            </li>
+            <li>
+                <h3>Connect the Sensor</h3>
+                <p>Follow the sensor's datasheet to properly power and connect it. The sensor's output should be connected to pin 8 of the relay.</p>
+            </li>
+            <li>
+                <h3>Connect the Load</h3>
+                <p>Depending on your application, connect your load to either the NO or NC contacts:</p>
+                <ul>
+                    <li>For a normally open circuit, use pins 4 and 3 (or 7 and 5)</li>
+                    <li>For a normally closed circuit, use pins 2 and 3 (or 6 and 5)</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Test the Circuit</h3>
+                <p>Power up your circuit and test the sensor. When the sensor is triggered, you should hear the relay click and see your load respond accordingly.</p>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="container">
+        <h2>Safety Considerations</h2>
+        <ul>
+            <li>Always ensure your power supply matches the specifications of both the relay and the sensor.</li>
+            <li>If working with high voltages, take appropriate safety precautions and consider using a professional electrician.</li>
+            <li>Double-check all connections before powering on the circuit.</li>
+        </ul>
+    </div>
+    
+    <div class="container">
+        <h2>Troubleshooting</h2>
+        <ul>
+            <li>If the relay doesn't click, check the coil connections and ensure the sensor is providing sufficient voltage.</li>
+            <li>If the load doesn't respond, verify the load connections and ensure you're using the correct relay contacts (NO or NC).</li>
+            <li>Use a multimeter to test continuity and voltages at different points in your circuit.</li>
+        </ul>
+    </div>
+    
+    <div class="container">
+        <h2>Conclusion</h2>
+        <p>Connecting a MY2N Glass Relay with a sensor can be a straightforward process when you understand the components and follow the steps carefully. This setup can be used in various applications, from home automation to industrial control systems.</p>
+    </div>
+</body>
+</html>
