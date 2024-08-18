@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltage Monitoring Relay Connection with DOL Starter for Motor Protection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .component {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .step {
+            margin-bottom: 15px;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border-left: 5px solid #ff4d4d;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Voltage Monitoring Relay Connection with DOL Starter for Motor Protection</h1>
+    
+    <div class="section">
+        <h2>1. Introduction</h2>
+        <p>Connecting a Voltage Monitoring Relay with a Direct-On-Line (DOL) Starter is an effective method for protecting motors against voltage fluctuations. This setup helps prevent damage to the motor caused by undervoltage, overvoltage, or phase loss conditions.</p>
+    </div>
+    
+    <div class="section">
+        <h2>2. Components Required</h2>
+        <div class="component">
+            <strong>a. Voltage Monitoring Relay (VMR)</strong>
+            <p>A device that monitors the voltage supply and trips when voltage levels are outside the set parameters.</p>
+        </div>
+        <div class="component">
+            <strong>b. Direct-On-Line (DOL) Starter</strong>
+            <p>A motor starting method that connects the motor directly to the main power supply.</p>
+        </div>
+        <div class="component">
+            <strong>c. Contactor</strong>
+            <p>An electrically controlled switch used for switching an electrical power circuit.</p>
+        </div>
+        <div class="component">
+            <strong>d. Overload Relay</strong>
+            <p>A device that protects the motor from overload conditions.</p>
+        </div>
+        <div class="component">
+            <strong>e. Circuit Breaker or Fuses</strong>
+            <p>For short circuit and overcurrent protection.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>3. Connection Steps</h2>
+        <div class="step">
+            <strong>Step 1: Power Supply Connection</strong>
+            <p>Connect the three-phase power supply to the main circuit breaker or fuse unit.</p>
+        </div>
+        <div class="step">
+            <strong>Step 2: Voltage Monitoring Relay Connection</strong>
+            <p>Connect the input terminals of the VMR to the output of the circuit breaker or fuse unit. This allows the VMR to monitor the incoming voltage.</p>
+        </div>
+        <div class="step">
+            <strong>Step 3: Control Circuit Connection</strong>
+            <p>Connect the output contact of the VMR in series with the control circuit of the DOL starter. This ensures that the starter can only operate when the voltage is within acceptable limits.</p>
+        </div>
+        <div class="step">
+            <strong>Step 4: DOL Starter Connection</strong>
+            <p>Connect the output of the circuit breaker to the input of the DOL starter's contactor.</p>
+        </div>
+        <div class="step">
+            <strong>Step 5: Overload Relay Connection</strong>
+            <p>Connect the overload relay in series with the motor windings. The overload relay should be properly sized for the motor's full load current.</p>
+        </div>
+        <div class="step">
+            <strong>Step 6: Motor Connection</strong>
+            <p>Connect the output of the DOL starter to the motor terminals, ensuring proper phase sequence.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>4. Operation</h2>
+        <p>When the power is supplied, the VMR monitors the voltage. If the voltage is within the set parameters, it allows the control circuit to operate. The DOL starter can then be activated to start the motor. If at any point the voltage falls outside the acceptable range, the VMR will trip, opening the control circuit and stopping the motor.</p>
+    </div>
+    
+    <div class="section">
+        <h2>5. Safety Considerations</h2>
+        <div class="warning">
+            <strong>Warning: </strong>Always ensure that the power is disconnected before working on electrical connections. Only qualified electricians should perform these connections.
+        </div>
+        <ul>
+            <li>Ensure all components are properly rated for the motor and supply voltage.</li>
+            <li>Verify that all connections are tight and secure.</li>
+            <li>Use appropriate personal protective equipment (PPE) when working with electrical systems.</li>
+            <li>Follow all local electrical codes and regulations.</li>
+            <li>Perform thorough testing of the system before putting it into regular operation.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>6. Maintenance</h2>
+        <p>Regular maintenance should include:</p>
+        <ul>
+            <li>Checking all connections for tightness</li>
+            <li>Inspecting components for signs of wear or damage</li>
+            <li>Testing the operation of the VMR and DOL starter</li>
+            <li>Verifying that the overload relay is set correctly</li>
+            <li>Keeping the equipment clean and free from dust and debris</li>
+        </ul>
+    </div>
+</body>
+</html>
