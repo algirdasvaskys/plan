@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSR - Solid State Relay Connection with Wi-Fi Controller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border-left: 5px solid #ff4d4d;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .step {
+            margin-bottom: 20px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SSR - Solid State Relay Connection with Wi-Fi Controller</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with electrical systems can be dangerous. Always ensure power is disconnected before making any connections. If you're not comfortable or qualified to work with electrical systems, please consult a licensed electrician.
+    </div>
+
+    <h2>Components Needed:</h2>
+    <div class="component">
+        <ul>
+            <li>Solid State Relay (SSR)</li>
+            <li>Wi-Fi Controller (e.g., ESP8266 or ESP32)</li>
+            <li>Power supply for the Wi-Fi controller</li>
+            <li>Load (e.g., lamp, motor, heater)</li>
+            <li>AC power source</li>
+            <li>Wires and connectors</li>
+        </ul>
+    </div>
+
+    <h2>Connection Steps:</h2>
+
+    <div class="step">
+        <h3>Step 1: Prepare the SSR</h3>
+        <p>Identify the following terminals on your SSR:</p>
+        <ul>
+            <li>Input terminals (usually labeled + and -)</li>
+            <li>Output terminals (usually labeled L1 and L2 or Line and Load)</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Connect the Wi-Fi Controller to the SSR</h3>
+        <p>Connect the Wi-Fi controller to the input side of the SSR:</p>
+        <ul>
+            <li>Connect a GPIO pin from the Wi-Fi controller to the + terminal of the SSR</li>
+            <li>Connect the ground (GND) of the Wi-Fi controller to the - terminal of the SSR</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Connect the Load to the SSR</h3>
+        <p>On the output side of the SSR:</p>
+        <ul>
+            <li>Connect one wire from your AC load to one of the SSR output terminals</li>
+            <li>Connect the other wire from your AC load to the neutral wire of your AC power source</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Connect the AC Power Source</h3>
+        <p>Complete the circuit by connecting the live wire from your AC power source to the remaining output terminal of the SSR.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Power the Wi-Fi Controller</h3>
+        <p>Connect your Wi-Fi controller to its power supply.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Program the Wi-Fi Controller</h3>
+        <p>Program your Wi-Fi controller to control the GPIO pin connected to the SSR. Here's a basic pseudocode example:</p>
+        <pre><code>
+// Set up Wi-Fi connection
+setupWiFi();
+
+// Set up GPIO pin
+pinMode(SSR_PIN, OUTPUT);
+
+// In your main loop or in response to a command
+if (commandReceived == "ON") {
+    digitalWrite(SSR_PIN, HIGH);  // Turn on the SSR
+} else if (commandReceived == "OFF") {
+    digitalWrite(SSR_PIN, LOW);   // Turn off the SSR
+}
+        </code></pre>
+    </div>
+
+    <h2>Safety Considerations:</h2>
+    <ul>
+        <li>Ensure all connections are secure and properly insulated</li>
+        <li>Use appropriate wire gauges for your load current</li>
+        <li>Consider adding a fuse or circuit breaker for additional protection</li>
+        <li>Ensure proper heat dissipation for the SSR, especially for high-current applications</li>
+        <li>Always follow local electrical codes and regulations</li>
+    </ul>
+
+    <h2>Troubleshooting:</h2>
+    <ul>
+        <li>If the SSR doesn't switch, check the control voltage from the Wi-Fi controller</li>
+        <li>Verify that the SSR is rated for your load current and voltage</li>
+        <li>Ensure the Wi-Fi controller is properly connected to your network</li>
+        <li>Double-check all wiring connections</li>
+    </ul>
+
+    <p>Remember, this setup allows you to control your AC load remotely via Wi-Fi. Always prioritize safety when working with electrical systems.</p>
+</body>
+</html>
