@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Lights Project with Arduino Uno - Beginner Level</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .circuit-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-left: 3px solid #f36d33;
+            color: #666;
+            page-break-inside: avoid;
+            font-family: monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 1.6em;
+            max-width: 100%;
+            overflow: auto;
+            padding: 1em 1.5em;
+            display: block;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Traffic Lights Project with Arduino Uno - Beginner Level</h1>
+    
+    <h2>Introduction</h2>
+    <p>This project will guide you through creating a simple traffic light system using an Arduino Uno. We'll use three LEDs (red, yellow, and green) to simulate traffic lights.</p>
+    
+    <h2>Components Required</h2>
+    <ul>
+        <li>Arduino Uno board</li>
+        <li>Breadboard</li>
+        <li>3 LEDs (1 red, 1 yellow, 1 green)</li>
+        <li>3 resistors (220 ohms)</li>
+        <li>Jumper wires</li>
+        <li>USB cable for Arduino</li>
+    </ul>
+    
+    <h2>Circuit Diagram</h2>
+    <div class="circuit-diagram">
+        <!-- Circuit diagram would be drawn here -->
+        <svg width="100%" height="100%" viewBox="0 0 600 400">
+            <!-- Arduino Uno -->
+            <rect x="50" y="50" width="200" height="300" fill="#00979c" />
+            <text x="150" y="200" fill="white" text-anchor="middle">Arduino Uno</text>
+            
+            <!-- Breadboard -->
+            <rect x="300" y="50" width="250" height="300" fill="#e0e0e0" />
+            <text x="425" y="30" fill="black" text-anchor="middle">Breadboard</text>
+            
+            <!-- LEDs -->
+            <circle cx="350" cy="100" r="10" fill="red" />
+            <circle cx="400" cy="100" r="10" fill="yellow" />
+            <circle cx="450" cy="100" r="10" fill="green" />
+            
+            <!-- Resistors -->
+            <line x1="350" y1="120" x2="350" y2="150" stroke="brown" stroke-width="3" />
+            <line x1="400" y1="120" x2="400" y2="150" stroke="brown" stroke-width="3" />
+            <line x1="450" y1="120" x2="450" y2="150" stroke="brown" stroke-width="3" />
+            
+            <!-- Wires -->
+            <line x1="250" y1="100" x2="350" y2="100" stroke="red" stroke-width="2" />
+            <line x1="250" y1="150" x2="400" y2="150" stroke="orange" stroke-width="2" />
+            <line x1="250" y1="200" x2="450" y2="200" stroke="green" stroke-width="2" />
+            <line x1="250" y1="250" x2="500" y2="250" stroke="black" stroke-width="2" />
+        </svg>
+    </div>
+    
+    <h2>Wiring Instructions</h2>
+    <ol>
+        <li>Connect the long leg (anode) of the red LED to digital pin 2 on the Arduino.</li>
+        <li>Connect the long leg (anode) of the yellow LED to digital pin 3 on the Arduino.</li>
+        <li>Connect the long leg (anode) of the green LED to digital pin 4 on the Arduino.</li>
+        <li>Connect the short leg (cathode) of each LED to a 220-ohm resistor.</li>
+        <li>Connect the other end of each resistor to the Arduino's GND (ground) pin.</li>
+    </ol>
+    
+    <h2>Arduino Code</h2>
+    <pre><code>
+// Traffic Light Simulation
+
+// Define pin numbers
+const int redPin = 2;
+const int yellowPin = 3;
+const int greenPin = 4;
+
+void setup() {
+  // Initialize the LED pins as outputs
+  pinMode(redPin, OUTPUT);
+  pinMode(yellowPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+}
+
+void loop() {
+  // Red light
+  digitalWrite(redPin, HIGH);
+  digitalWrite(yellowPin, LOW);
+  digitalWrite(greenPin, LOW);
+  delay(5000);  // Stay red for 5 seconds
+
+  // Green light
+  digitalWrite(redPin, LOW);
+  digitalWrite(yellowPin, LOW);
+  digitalWrite(greenPin, HIGH);
+  delay(5000);  // Stay green for 5 seconds
+
+  // Yellow light
+  digitalWrite(redPin, LOW);
+  digitalWrite(yellowPin, HIGH);
+  digitalWrite(greenPin, LOW);
+  delay(2000);  // Stay yellow for 2 seconds
+}
+    </code></pre>
+    
+    <h2>Instructions to Run the Project</h2>
+    <ol>
+        <li>Connect your Arduino Uno to your computer using the USB cable.</li>
+        <li>Open the Arduino IDE on your computer.</li>
+        <li>Copy and paste the provided code into a new Arduino sketch.</li>
+        <li>Select the correct board (Arduino Uno) and port from the Tools menu.</li>
+        <li>Click the "Upload" button to compile and upload the code to your Arduino.</li>
+        <li>Once uploaded, the traffic light sequence should start automatically.</li>
+    </ol>
+    
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li>If the LEDs don't light up, double-check your wiring connections.</li>
+        <li>Ensure that the LEDs are connected in the correct orientation (long leg to Arduino pin).</li>
+        <li>Verify that you've selected the correct board and port in the Arduino IDE.</li>
+        <li>If you're still having issues, try using a multimeter to test the continuity of your connections.</li>
+    </ul>
+    
+    <h2>Conclusion</h2>
+    <p>Congratulations! You've successfully created a simple traffic light system using an Arduino Uno. This project demonstrates basic digital output control and timing in Arduino programming. Feel free to modify the timings or add additional features to enhance your traffic light simulation.</p>
+</body>
+</html>
