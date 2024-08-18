@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star-Delta Starter: Practical Connection Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .step {
+            margin-bottom: 20px;
+        }
+        .step-number {
+            font-weight: bold;
+            color: #3498db;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border-left: 5px solid #ff4d4d;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Star-Delta Starter: Practical Connection Guide</h1>
+    <div class="container">
+        <p>This guide will walk you through the process of connecting a Star-Delta starter for a three-phase induction motor. Star-Delta starters are used to reduce the starting current and torque of large motors.</p>
+    </div>
+
+    <div class="warning">
+        <h3>⚠️ Safety Warning</h3>
+        <p>Working with electrical systems can be dangerous. Always ensure that the power is disconnected and proper safety measures are in place before working on any electrical connections. If you're not qualified, please consult a licensed electrician.</p>
+    </div>
+
+    <h2>Components Required:</h2>
+    <ul>
+        <li>Three-phase induction motor</li>
+        <li>Star-Delta starter panel</li>
+        <li>Power supply</li>
+        <li>Cables and wire</li>
+        <li>Multimeter</li>
+        <li>Screwdriver set</li>
+        <li>Wire stripper</li>
+    </ul>
+
+    <h2>Connection Procedure:</h2>
+
+    <div class="step">
+        <p><span class="step-number">Step 1:</span> Identify Motor Terminals</p>
+        <p>Locate the six terminals of the motor. They should be labeled as U1, V1, W1 (start of each winding) and U2, V2, W2 (end of each winding).</p>
+    </div>
+
+    <div class="step">
+        <p><span class="step-number">Step 2:</span> Connect Motor to Starter</p>
+        <p>Connect the motor terminals to the corresponding terminals on the Star-Delta starter:</p>
+        <ul>
+            <li>U1 to U1</li>
+            <li>V1 to V1</li>
+            <li>W1 to W1</li>
+            <li>U2 to U2</li>
+            <li>V2 to V2</li>
+            <li>W2 to W2</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <p><span class="step-number">Step 3:</span> Connect Power Supply</p>
+        <p>Connect the three-phase power supply to the input terminals of the Star-Delta starter, usually labeled as L1, L2, and L3.</p>
+    </div>
+
+    <div class="step">
+        <p><span class="step-number">Step 4:</span> Star Connection</p>
+        <p>In the starter panel, connect U2, V2, and W2 together. This forms the star point.</p>
+    </div>
+
+    <div class="step">
+        <p><span class="step-number">Step 5:</span> Delta Connection</p>
+        <p>Prepare the delta connection by connecting:</p>
+        <ul>
+            <li>U1 to W2</li>
+            <li>V1 to U2</li>
+            <li>W1 to V2</li>
+        </ul>
+        <p>These connections are usually made through contactors in the starter panel.</p>
+    </div>
+
+    <div class="step">
+        <p><span class="step-number">Step 6:</span> Control Circuit</p>
+        <p>Connect the control circuit components such as push buttons, timers, and contactors according to the starter panel's wiring diagram.</p>
+    </div>
+
+    <div class="step">
+        <p><span class="step-number">Step 7:</span> Verify Connections</p>
+        <p>Double-check all connections to ensure they are tight and correct. Use a multimeter to verify continuity where appropriate.</p>
+    </div>
+
+    <div class="step">
+        <p><span class="step-number">Step 8:</span> Testing</p>
+        <p>Before applying power, perform insulation resistance tests. Once safety checks are complete, energize the circuit and test the starter operation.</p>
+    </div>
+
+    <h2>Operation:</h2>
+    <ol>
+        <li>When the start button is pressed, the motor starts in star connection.</li>
+        <li>After a preset time (usually 5-10 seconds), the starter automatically switches to delta connection.</li>
+        <li>The motor continues to run in delta connection until stopped.</li>
+    </ol>
+
+    <div class="container">
+        <h3>Troubleshooting Tips:</h3>
+        <ul>
+            <li>If the motor doesn't start, check for loose connections or blown fuses.</li>
+            <li>If the motor hums but doesn't rotate, one phase may be missing.</li>
+            <li>If the starter doesn't switch from star to delta, check the timer settings and contactor operation.</li>
+        </ul>
+    </div>
+
+    <p>Remember, proper maintenance and regular inspections are crucial for the safe and efficient operation of Star-Delta starters and motors.</p>
+</body>
+</html>
