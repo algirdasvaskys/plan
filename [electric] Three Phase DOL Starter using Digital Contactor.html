@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Phase DOL Starter using Digital Contactor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .wiring {
+            background-color: #e6f3ff;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .operation {
+            background-color: #e6ffe6;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Three Phase DOL Starter using Digital Contactor</h1>
+    
+    <h2>Components</h2>
+    <div class="component">
+        <ul>
+            <li>Digital Contactor</li>
+            <li>Overload Relay</li>
+            <li>Circuit Breaker or Fuses</li>
+            <li>Start and Stop Push Buttons</li>
+            <li>Three Phase Induction Motor</li>
+            <li>Control Transformer (if required)</li>
+        </ul>
+    </div>
+
+    <h2>Wiring Method</h2>
+    <div class="wiring">
+        <ol>
+            <li>Connect the three-phase power supply to the input terminals of the circuit breaker or fuses.</li>
+            <li>Connect the output of the circuit breaker to the input terminals of the digital contactor.</li>
+            <li>Connect the output terminals of the digital contactor to the input of the overload relay.</li>
+            <li>Connect the output of the overload relay to the three-phase induction motor terminals.</li>
+            <li>For the control circuit:
+                <ul>
+                    <li>Connect the start button (normally open) and stop button (normally closed) in series.</li>
+                    <li>Connect this series combination to the digital contactor's control input.</li>
+                    <li>If required, use a control transformer to step down the voltage for the control circuit.</li>
+                </ul>
+            </li>
+            <li>Connect the overload relay's auxiliary contact to the digital contactor's control circuit for motor protection.</li>
+        </ol>
+    </div>
+
+    <h2>Operation</h2>
+    <div class="operation">
+        <ol>
+            <li>When the start button is pressed, it energizes the digital contactor's control circuit.</li>
+            <li>The digital contactor closes its main contacts, connecting the three-phase power to the motor.</li>
+            <li>The motor starts rotating at full speed (Direct On Line).</li>
+            <li>The stop button can be pressed at any time to de-energize the contactor and stop the motor.</li>
+            <li>If an overload occurs, the overload relay trips, opening its auxiliary contact and stopping the motor.</li>
+            <li>The digital contactor may provide additional features such as:
+                <ul>
+                    <li>Soft start/stop functionality</li>
+                    <li>Overcurrent protection</li>
+                    <li>Phase loss protection</li>
+                    <li>Remote monitoring and control capabilities</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <h2>Safety Considerations</h2>
+    <div class="component">
+        <ul>
+            <li>Ensure all wiring is done by a qualified electrician.</li>
+            <li>Use appropriate wire sizes for the motor current.</li>
+            <li>Properly ground all components and the motor frame.</li>
+            <li>Set the overload relay to the correct motor full load current.</li>
+            <li>Test the emergency stop functionality before regular operation.</li>
+            <li>Follow all local electrical codes and regulations.</li>
+        </ul>
+    </div>
+
+    <h2>Advantages of Digital Contactor</h2>
+    <div class="component">
+        <ul>
+            <li>Enhanced motor protection features</li>
+            <li>Potential for energy savings through optimized starting</li>
+            <li>Reduced mechanical wear on the contactor</li>
+            <li>Possibility of remote monitoring and control</li>
+            <li>Improved diagnostics and troubleshooting capabilities</li>
+        </ul>
+    </div>
+</body>
+</html>
