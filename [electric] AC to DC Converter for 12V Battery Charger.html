@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AC to DC Converter for 12V Battery Charger</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .circuit-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+        }
+        .component {
+            stroke: #2c3e50;
+            stroke-width: 2;
+            fill: none;
+        }
+        .wire {
+            stroke: #34495e;
+            stroke-width: 2;
+        }
+        .label {
+            font-size: 12px;
+            fill: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>AC to DC Converter Circuit for 12V Battery Charger</h1>
+    
+    <h2>Circuit Diagram</h2>
+    <svg class="circuit-diagram" viewBox="0 0 400 250">
+        <!-- AC Source -->
+        <circle cx="50" cy="125" r="20" class="component"/>
+        <path d="M 40 125 Q 50 105, 60 125 Q 50 145, 40 125" class="component"/>
+        <text x="30" y="165" class="label">AC Input</text>
+
+        <!-- Transformer -->
+        <rect x="100" y="75" width="60" height="100" class="component"/>
+        <path d="M 100 95 L 160 95 M 100 155 L 160 155" class="component"/>
+        <text x="110" y="140" class="label">Transformer</text>
+
+        <!-- Bridge Rectifier -->
+        <rect x="200" y="100" width="60" height="60" class="component"/>
+        <path d="M 210 110 L 250 150 M 210 150 L 250 110" class="component"/>
+        <text x="205" y="180" class="label">Bridge Rectifier</text>
+
+        <!-- Capacitor -->
+        <path d="M 300 110 L 300 140 M 310 110 L 310 140" class="component"/>
+        <text x="290" y="160" class="label">Capacitor</text>
+
+        <!-- Voltage Regulator -->
+        <rect x="340" y="110" width="40" height="30" class="component"/>
+        <text x="342" y="160" class="label">Voltage Reg</text>
+
+        <!-- Wires -->
+        <path d="M 70 125 L 100 125" class="wire"/>
+        <path d="M 160 125 L 200 125" class="wire"/>
+        <path d="M 260 125 L 300 125" class="wire"/>
+        <path d="M 310 125 L 340 125" class="wire"/>
+        <path d="M 380 125 L 400 125" class="wire"/>
+
+        <!-- Output -->
+        <text x="380" y="115" class="label">12V DC</text>
+        <text x="380" y="145" class="label">Output</text>
+    </svg>
+
+    <h2>Circuit Explanation</h2>
+    <p>This circuit converts AC power to regulated 12V DC for charging a battery. Here's how it works:</p>
+
+    <ol>
+        <li><strong>AC Input:</strong> The circuit starts with the AC power source, typically 120V or 240V from a wall outlet.</li>
+        
+        <li><strong>Transformer:</strong> The transformer steps down the high voltage AC to a lower voltage, usually around 15-18V AC. This is necessary because we need a voltage slightly higher than 12V to account for losses in the rest of the circuit.</li>
+        
+        <li><strong>Bridge Rectifier:</strong> The bridge rectifier converts the AC to pulsating DC. It uses four diodes arranged in a bridge configuration to convert both positive and negative cycles of the AC input into positive DC pulses.</li>
+        
+        <li><strong>Capacitor:</strong> The capacitor smooths out the pulsating DC from the rectifier. It charges during voltage peaks and discharges during troughs, resulting in a smoother DC voltage.</li>
+        
+        <li><strong>Voltage Regulator:</strong> The voltage regulator (often an LM7812 or similar) ensures a steady 12V DC output regardless of small fluctuations in input voltage or load current. It also provides protection against voltage spikes.</li>
+        
+        <li><strong>12V DC Output:</strong> The final output is a stable 12V DC suitable for charging a battery.</li>
+    </ol>
+
+    <h2>Important Considerations</h2>
+    <ul>
+        <li>The transformer's secondary voltage should be slightly higher than 12V (typically 15-18V) to account for voltage drops across the rectifier and regulator.</li>
+        <li>The capacitor's value depends on the current requirements but is typically in the range of 1000-4700µF.</li>
+        <li>The voltage regulator may require a heatsink depending on the current draw of the battery charger.</li>
+        <li>Always include fuse protection in your actual circuit for safety.</li>
+        <li>Ensure all components are rated for the expected voltages and currents in your specific application.</li>
+    </ul>
+
+    <p>This circuit provides a basic framework for a 12V battery charger. For a complete charger, you might need additional components like current limiting resistors, charge control ICs, or indicators to show charging status.</p>
+</body>
+</html>
