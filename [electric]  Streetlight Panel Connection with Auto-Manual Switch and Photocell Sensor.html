@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streetlight Panel Connection with Auto-Manual Switch and Photocell Sensor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .content {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #ffeeee;
+            border: 1px solid #ffcccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            display: block;
+            background-color: #eee;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Streetlight Panel Connection with Auto-Manual Switch and Photocell Sensor</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with electrical systems can be dangerous. Always follow local electrical codes and safety guidelines. If you're not qualified, please consult a licensed electrician.
+    </div>
+    
+    <div class="content">
+        <h2>Components Required:</h2>
+        <ul>
+            <li>Streetlight panel</li>
+            <li>Auto-manual switch (3-position switch: Auto, Off, Manual)</li>
+            <li>Photocell sensor</li>
+            <li>Contactor</li>
+            <li>Circuit breaker</li>
+            <li>Power supply</li>
+            <li>Streetlight(s)</li>
+            <li>Wiring and connectors</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>Connection Method:</h2>
+        <ol>
+            <li><strong>Power Supply Connection:</strong>
+                <ul>
+                    <li>Connect the main power supply to the input of the circuit breaker.</li>
+                    <li>Connect the output of the circuit breaker to the contactor's power input terminals.</li>
+                </ul>
+            </li>
+            <li><strong>Contactor Connection:</strong>
+                <ul>
+                    <li>Connect the contactor's output terminals to the streetlight(s).</li>
+                    <li>The contactor will serve as the switch to turn the streetlights on and off.</li>
+                </ul>
+            </li>
+            <li><strong>Auto-Manual Switch Connection:</strong>
+                <ul>
+                    <li>Connect the common terminal of the auto-manual switch to the contactor's control circuit.</li>
+                    <li>Connect the "Manual" position of the switch directly to the power supply (through appropriate fusing).</li>
+                    <li>Connect the "Auto" position of the switch to the photocell sensor.</li>
+                </ul>
+            </li>
+            <li><strong>Photocell Sensor Connection:</strong>
+                <ul>
+                    <li>Connect the photocell sensor to the power supply.</li>
+                    <li>Connect the output of the photocell sensor to the "Auto" position on the auto-manual switch.</li>
+                </ul>
+            </li>
+            <li><strong>Grounding:</strong>
+                <ul>
+                    <li>Ensure all components are properly grounded according to local electrical codes.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="content">
+        <h2>Operation:</h2>
+        <ul>
+            <li><strong>Auto Mode:</strong> When the switch is in the "Auto" position, the photocell sensor controls the streetlights. They will turn on at dusk and off at dawn.</li>
+            <li><strong>Manual Mode:</strong> When the switch is in the "Manual" position, the streetlights will be on regardless of the time of day.</li>
+            <li><strong>Off Mode:</strong> When the switch is in the "Off" position, the streetlights will remain off regardless of the time of day.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>Safety Considerations:</h2>
+        <ul>
+            <li>Always turn off the main power before working on the panel.</li>
+            <li>Use appropriately rated components for the voltage and current of your system.</li>
+            <li>Ensure proper insulation and weather protection for outdoor components.</li>
+            <li>Regular maintenance and inspection of the system is recommended.</li>
+            <li>Follow all local electrical codes and regulations.</li>
+        </ul>
+    </div>
+    
+    <div class="diagram" id="wiringDiagram">
+        <!-- Placeholder for a wiring diagram -->
+        <!-- In a real implementation, this would be replaced with an actual SVG or canvas element -->
+    </div>
+    
+    <script>
+        // This script would normally create a wiring diagram
+        // For this example, we'll just add some text to the placeholder
+        const diagram = document.getElementById('wiringDiagram');
+        diagram.textContent = 'Wiring Diagram would be displayed here';
+    </script>
+</body>
+</html>
