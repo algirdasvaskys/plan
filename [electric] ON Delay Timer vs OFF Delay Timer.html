@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ON Delay Timer vs OFF Delay Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .timer-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        @media (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Difference Between ON Delay Timer and OFF Delay Timer</h1>
+    
+    <h2>Introduction</h2>
+    <p>Timers are essential components in electrical and control systems. Two common types of timers are ON Delay Timers and OFF Delay Timers. Understanding their differences is crucial for proper application in various electrical systems.</p>
+    
+    <h2>ON Delay Timer</h2>
+    <p>An ON Delay Timer, also known as a delay-on timer or pick-up delay timer, introduces a time delay before turning ON an output.</p>
+    <h3>Operation:</h3>
+    <ol>
+        <li>When the input signal is applied, the timer starts counting.</li>
+        <li>The output remains OFF during the delay period.</li>
+        <li>Once the preset time elapses, the output turns ON.</li>
+        <li>If the input signal is removed before the delay time, the timer resets without activating the output.</li>
+    </ol>
+    
+    <h2>OFF Delay Timer</h2>
+    <p>An OFF Delay Timer, also called a delay-off timer or drop-out delay timer, introduces a time delay before turning OFF an output.</p>
+    <h3>Operation:</h3>
+    <ol>
+        <li>When the input signal is applied, the output turns ON immediately.</li>
+        <li>When the input signal is removed, the timer starts counting.</li>
+        <li>The output remains ON during the delay period.</li>
+        <li>Once the preset time elapses, the output turns OFF.</li>
+        <li>If the input signal is reapplied before the delay time, the timer resets, and the output remains ON.</li>
+    </ol>
+    
+    <h2>Key Differences</h2>
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th>ON Delay Timer</th>
+            <th>OFF Delay Timer</th>
+        </tr>
+        <tr>
+            <td>Delay Occurrence</td>
+            <td>Before turning ON</td>
+            <td>Before turning OFF</td>
+        </tr>
+        <tr>
+            <td>Initial Output State</td>
+            <td>OFF when input applied</td>
+            <td>ON when input applied</td>
+        </tr>
+        <tr>
+            <td>Timing Start</td>
+            <td>When input is applied</td>
+            <td>When input is removed</td>
+        </tr>
+        <tr>
+            <td>Output Change</td>
+            <td>OFF to ON after delay</td>
+            <td>ON to OFF after delay</td>
+        </tr>
+        <tr>
+            <td>Common Applications</td>
+            <td>Motor start-up delays, sequential operations</td>
+            <td>Cooling fans, automatic doors, lighting controls</td>
+        </tr>
+    </table>
+    
+    <h2>Timer Diagrams</h2>
+    <div class="timer-diagram" id="onDelayDiagram"></div>
+    <div class="timer-diagram" id="offDelayDiagram"></div>
+    
+    <h2>Conclusion</h2>
+    <p>Both ON Delay and OFF Delay Timers are valuable in electrical systems, but they serve different purposes. ON Delay Timers are useful when a delay is needed before activating a process, while OFF Delay Timers are beneficial when a process needs to continue for a set time after the trigger is removed. Understanding these differences allows for proper selection and application in various control scenarios.</p>
+
+    <script>
+        function drawTimerDiagram(canvasId, isOnDelay) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw axes
+            ctx.beginPath();
+            ctx.moveTo(50, 50);
+            ctx.lineTo(50, height - 50);
+            ctx.lineTo(width - 50, height - 50);
+            ctx.stroke();
+
+            // Draw labels
+            ctx.font = '14px Arial';
+            ctx.fillText('Time', width - 100, height - 20);
+            ctx.save();
+            ctx.translate(20, height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('Signal', 0, 0);
+            ctx.restore();
+
+            // Draw input signal
+            ctx.beginPath();
+            ctx.moveTo(50, height - 100);
+            ctx.lineTo(width / 2, height - 100);
+            ctx.lineTo(width / 2, height - 200);
+            ctx.lineTo(width - 50, height - 200);
+            ctx.strokeStyle = 'blue';
+            ctx.stroke();
+
+            // Draw output signal
+            ctx.beginPath();
+            if (isOnDelay) {
+                ctx.moveTo(50, height - 100);
+                ctx.lineTo(width / 2 + 50, height - 100);
+                ctx.lineTo(width / 2 + 50, height - 200);
+                ctx.lineTo(width - 50, height - 200);
+            } else {
+                ctx.moveTo(50, height - 100);
+                ctx.lineTo(width / 2, height - 200);
+                ctx.lineTo(width / 2 + 50, height - 200);
+                ctx.lineTo(width / 2 + 50, height - 100);
+                ctx.lineTo(width - 50, height - 100);
+            }
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+
+            // Add legend
+            ctx.font = '12px Arial';
+            ctx.fillStyle = 'blue';
+            ctx.fillText('Input', width - 100, 20);
+            ctx.fillStyle = 'red';
+            ctx.fillText('Output', width - 100, 40);
+        }
+
+        drawTimerDiagram('onDelayDiagram', true);
+        drawTimerDiagram('offDelayDiagram', false);
+    </script>
+</body>
+</html>
