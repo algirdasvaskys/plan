@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOL Starter: Local, Remote, and DCS Start-Stop Connection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .content-section {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .note {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            padding: 10px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOL Starter: Local, Remote, and DCS Start-Stop Connection</h1>
+    
+    <div class="content-section">
+        <h2>Introduction</h2>
+        <p>A Direct-On-Line (DOL) starter is a common method used to start and stop electric motors. This document explains the local, remote, and DCS (Distributed Control System) start-stop connections for a DOL starter.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>1. Local Start-Stop Connection</h2>
+        <p>Local control allows the motor to be started and stopped directly at the motor location.</p>
+        <ul>
+            <li>Start pushbutton (NO contact) connected in parallel with the hold-in contact of the contactor</li>
+            <li>Stop pushbutton (NC contact) connected in series with the control circuit</li>
+            <li>Overload relay contact in series with the control circuit</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>2. Remote Start-Stop Connection</h2>
+        <p>Remote control enables starting and stopping the motor from a distant location.</p>
+        <ul>
+            <li>Remote start pushbutton (NO contact) connected in parallel with the local start button</li>
+            <li>Remote stop pushbutton (NC contact) connected in series with the local stop button</li>
+            <li>Additional wiring to connect remote station to the starter panel</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>3. DCS Start-Stop Connection</h2>
+        <p>DCS control allows for automated control of the motor through a centralized control system.</p>
+        <ul>
+            <li>DCS start command connected to a relay with NO contact, wired in parallel with start buttons</li>
+            <li>DCS stop command connected to a relay with NC contact, wired in series with stop buttons</li>
+            <li>Feedback signals (e.g., run status, fault status) wired to DCS inputs</li>
+            <li>Local/Remote/DCS selector switch to choose control mode</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Components</h2>
+        <ul>
+            <li>Contactor: Main power switching device</li>
+            <li>Overload relay: Protects motor from overload conditions</li>
+            <li>Control transformer: Provides control voltage (typically 110V or 24V)</li>
+            <li>Pushbuttons: For manual control</li>
+            <li>Selector switch: To choose between local, remote, and DCS control</li>
+            <li>Auxiliary contacts: For status indication and interlocking</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        <strong>Note:</strong> Always refer to the specific manufacturer's guidelines and local electrical codes when implementing DOL starter connections. Safety should be the top priority in all electrical installations.
+    </div>
+
+</body>
+</html>
