@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecting Resistor Value for LED - Simple Calculation Method</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        .note {
+            background-color: #ffe6e6;
+            border-left: 5px solid #ff9999;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .example {
+            background-color: #e6f3ff;
+            border-left: 5px solid #99ccff;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selecting Resistor Value for LED - Simple Calculation Method</h1>
+    
+    <h2>Introduction</h2>
+    <p>When using LEDs in electronic circuits, it's crucial to include a current-limiting resistor to protect the LED from excessive current. This guide will explain how to calculate the appropriate resistor value using a simple method.</p>
+    
+    <h2>The Formula</h2>
+    <p>The basic formula for calculating the resistor value is:</p>
+    <div class="formula">
+        R = (V<sub>s</sub> - V<sub>f</sub>) / I<sub>f</sub>
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>R = Resistor value in ohms (Ω)</li>
+        <li>V<sub>s</sub> = Supply voltage</li>
+        <li>V<sub>f</sub> = LED forward voltage</li>
+        <li>I<sub>f</sub> = LED forward current</li>
+    </ul>
+    
+    <h2>Step-by-Step Calculation</h2>
+    <ol>
+        <li>Determine the supply voltage (V<sub>s</sub>) of your circuit.</li>
+        <li>Find the forward voltage (V<sub>f</sub>) of your LED from its datasheet.</li>
+        <li>Determine the desired forward current (I<sub>f</sub>) for your LED, usually found in the datasheet.</li>
+        <li>Subtract the LED forward voltage from the supply voltage.</li>
+        <li>Divide the result by the desired forward current.</li>
+        <li>The result is the required resistor value in ohms.</li>
+    </ol>
+    
+    <div class="note">
+        <strong>Note:</strong> Always round up to the nearest standard resistor value to ensure the LED receives less than or equal to its rated current.
+    </div>
+    
+    <h2>Example Calculation</h2>
+    <div class="example">
+        <p>Let's calculate the resistor value for a red LED with the following specifications:</p>
+        <ul>
+            <li>Supply voltage (V<sub>s</sub>) = 5V</li>
+            <li>LED forward voltage (V<sub>f</sub>) = 2.0V</li>
+            <li>Desired forward current (I<sub>f</sub>) = 20mA (0.02A)</li>
+        </ul>
+        <p>Using the formula: R = (V<sub>s</sub> - V<sub>f</sub>) / I<sub>f</sub></p>
+        <p>R = (5V - 2.0V) / 0.02A</p>
+        <p>R = 3V / 0.02A</p>
+        <p>R = 150Ω</p>
+        <p>The nearest standard resistor value is 150Ω, so we would use a 150Ω resistor.</p>
+    </div>
+    
+    <h2>Conclusion</h2>
+    <p>By following this simple calculation method, you can easily determine the appropriate resistor value for your LED circuit. Remember to always check the LED's specifications in its datasheet and use a resistor with an appropriate power rating.</p>
+</body>
+</html>
