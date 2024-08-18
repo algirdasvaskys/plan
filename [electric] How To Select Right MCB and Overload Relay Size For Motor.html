@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To Select Right MCB and Overload Relay Size For Motor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .formula {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>How To Select Right MCB and Overload Relay Size For Motor</h1>
+    
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>Selecting the correct size for Miniature Circuit Breakers (MCBs) and Overload Relays is crucial for the safe and efficient operation of motors. This guide will walk you through the process of choosing the right sizes for these protective devices.</p>
+    </div>
+
+    <div class="section">
+        <h2>Step 1: Determine Motor Full Load Current (FLC)</h2>
+        <p>The first step is to find the Full Load Current (FLC) of the motor. This information is typically provided on the motor nameplate or in the motor's specifications.</p>
+    </div>
+
+    <div class="section">
+        <h2>Step 2: Calculate MCB Size</h2>
+        <p>To determine the MCB size, use the following formula:</p>
+        <div class="formula">
+            MCB Rating = 2.5 × FLC
+        </div>
+        <p>Round up the result to the next standard MCB size. Standard MCB sizes are typically 6A, 10A, 16A, 20A, 25A, 32A, 40A, 50A, 63A, etc.</p>
+    </div>
+
+    <div class="section">
+        <h2>Step 3: Select Overload Relay Size</h2>
+        <p>For the Overload Relay, use the following guideline:</p>
+        <div class="formula">
+            Overload Relay Setting = 1.15 × FLC to 1.3 × FLC
+        </div>
+        <p>Choose an Overload Relay with an adjustable range that includes this calculated value.</p>
+    </div>
+
+    <div class="section">
+        <h2>Example Calculation</h2>
+        <p>Let's consider a motor with the following specifications:</p>
+        <ul>
+            <li>Power: 5.5 kW</li>
+            <li>Voltage: 415V (3-phase)</li>
+            <li>Full Load Current (FLC): 11A</li>
+        </ul>
+        
+        <h3>MCB Size Calculation:</h3>
+        <div class="formula">
+            MCB Rating = 2.5 × 11A = 27.5A
+        </div>
+        <p>Round up to the next standard size: 32A MCB</p>
+        
+        <h3>Overload Relay Setting:</h3>
+        <div class="formula">
+            Minimum setting = 1.15 × 11A = 12.65A<br>
+            Maximum setting = 1.3 × 11A = 14.3A
+        </div>
+        <p>Choose an Overload Relay with an adjustable range that includes 12.65A to 14.3A.</p>
+    </div>
+
+    <div class="section">
+        <h2>Additional Considerations</h2>
+        <ul>
+            <li>Always refer to local electrical codes and standards when selecting protective devices.</li>
+            <li>Consider the starting current of the motor, which can be 5-7 times the FLC for Direct-On-Line (DOL) starting.</li>
+            <li>For motors with special starting methods (e.g., star-delta, soft starter), consult the manufacturer's guidelines.</li>
+            <li>Ensure the short-circuit breaking capacity of the MCB is suitable for the installation point.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Conclusion</h2>
+        <p>Proper selection of MCB and Overload Relay sizes is essential for motor protection. By following these steps and considering the specific requirements of your installation, you can ensure the safety and longevity of your motor system.</p>
+    </div>
+</body>
+</html>
