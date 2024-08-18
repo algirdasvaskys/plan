@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Change Over Switch (ATS) Using One Contactor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .note {
+            background-color: #f0f0f0;
+            border-left: 5px solid #3498db;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #ffeeba;
+            border-left: 5px solid #ffc107;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Auto Change Over Switch (ATS) Using One Contactor</h1>
+    
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>An Auto Change Over Switch (ATS) is a crucial component in electrical systems where a backup power source is required. Typically, ATSes use multiple contactors, but this guide will explain how to create an ATS using only one contactor, which can be more cost-effective and simpler to implement.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Components Required</h2>
+        <ul>
+            <li>1 x Three-pole contactor</li>
+            <li>1 x Voltage monitoring relay</li>
+            <li>1 x Timer relay</li>
+            <li>2 x MCBs (Miniature Circuit Breakers)</li>
+            <li>Wires and terminals</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Working Principle</h2>
+        <p>The ATS with one contactor works on the principle of prioritizing the main power supply. When the main supply is available, the contactor remains de-energized, allowing the main supply to power the load. If the main supply fails, the contactor energizes, switching the load to the backup supply.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Setup and Configuration</h2>
+        <ol>
+            <li>Connect the main power supply to the normally closed (NC) contacts of the contactor.</li>
+            <li>Connect the backup power supply to the normally open (NO) contacts of the contactor.</li>
+            <li>Wire the voltage monitoring relay to monitor the main power supply.</li>
+            <li>Connect the output of the voltage monitoring relay to the timer relay.</li>
+            <li>Wire the timer relay output to the contactor coil.</li>
+            <li>Install MCBs on both the main and backup power supply lines for protection.</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Operation</h2>
+        <ol>
+            <li>When the main power supply is available, the voltage monitoring relay keeps the timer relay de-energized.</li>
+            <li>If the main power fails, the voltage monitoring relay detects the failure and triggers the timer relay.</li>
+            <li>After a preset delay (to avoid unnecessary switching due to brief power fluctuations), the timer relay energizes the contactor.</li>
+            <li>The energized contactor switches the load from the main supply to the backup supply.</li>
+            <li>When the main power is restored, the voltage monitoring relay de-energizes the timer relay, which in turn de-energizes the contactor, switching back to the main supply.</li>
+        </ol>
+    </div>
+    
+    <div class="note">
+        <h3>Note:</h3>
+        <p>The delay in the timer relay is crucial to prevent rapid switching between power sources during brief power fluctuations. Typically, a delay of 3-5 seconds is sufficient, but this can be adjusted based on specific requirements.</p>
+    </div>
+    
+    <div class="warning">
+        <h3>Warning:</h3>
+        <p>Working with electrical systems can be dangerous. Always ensure that the installation is carried out by a qualified electrician and complies with local electrical codes and regulations.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Advantages</h2>
+        <ul>
+            <li>Cost-effective: Uses only one contactor instead of two.</li>
+            <li>Simpler design: Fewer components mean easier installation and maintenance.</li>
+            <li>Space-saving: Requires less space in the electrical panel.</li>
+            <li>Lower power consumption: One contactor consumes less power than two.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Conclusion</h2>
+        <p>Using a single contactor for an Auto Change Over Switch is an efficient and cost-effective solution for implementing backup power systems. While it may not be suitable for all applications, especially those requiring simultaneous connection to both power sources, it is an excellent option for many residential and small commercial setups.</p>
+    </div>
+</body>
+</html>
