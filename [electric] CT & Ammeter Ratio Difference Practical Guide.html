@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CT & Ammeter Ratio Difference: Practical Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .info-box {
+            background-color: #f0f8ff;
+            border: 1px solid #4682b4;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #fff5e6;
+            border-color: #ff9800;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .interactive {
+            background-color: #e6ffe6;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 5px;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Learning Practically: What to Do When CT & Ammeter Ratio is Different</h1>
+    
+    <div class="info-box">
+        <p>In electrical measurements, it's crucial to understand how to handle situations where the Current Transformer (CT) ratio and the Ammeter ratio are different. This guide will help you navigate through this practical scenario.</p>
+    </div>
+
+    <h2>Understanding the Basics</h2>
+    <ul>
+        <li><strong>CT (Current Transformer):</strong> A device used to measure alternating current.</li>
+        <li><strong>Ammeter:</strong> An instrument for measuring electric current in amperes.</li>
+        <li><strong>Ratio:</strong> The relationship between the primary and secondary currents in a CT or the full-scale reading of an ammeter.</li>
+    </ul>
+
+    <h2>Steps to Handle Different CT and Ammeter Ratios</h2>
+    <ol>
+        <li>Identify the CT ratio and Ammeter ratio</li>
+        <li>Calculate the multiplication factor</li>
+        <li>Take the Ammeter reading</li>
+        <li>Apply the multiplication factor to get the actual current</li>
+    </ol>
+
+    <h2>Detailed Procedure</h2>
+    <ol>
+        <li>
+            <strong>Identify Ratios:</strong>
+            <ul>
+                <li>Check the CT nameplate for its ratio (e.g., 100:5)</li>
+                <li>Note the Ammeter's full-scale reading (e.g., 5A)</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Calculate Multiplication Factor:</strong>
+            <ul>
+                <li>Multiplication Factor = (CT Primary Current) / (CT Secondary Current * Ammeter Full Scale)</li>
+                <li>Example: For CT ratio 100:5 and Ammeter 5A full scale:
+                    <br>Multiplication Factor = 100 / (5 * 5) = 4</li>
+            </ul>
+        </li>
+        <li><strong>Take Ammeter Reading:</strong> Record the current shown on the Ammeter</li>
+        <li><strong>Calculate Actual Current:</strong> Multiply the Ammeter reading by the multiplication factor</li>
+    </ol>
+
+    <div class="info-box warning">
+        <h3>Safety Warning</h3>
+        <p>Always prioritize safety when working with electrical equipment. Ensure proper insulation and use appropriate Personal Protective Equipment (PPE).</p>
+    </div>
+
+    <h2>Practical Example</h2>
+    <p>Let's say you have a CT with a ratio of 200:5 and an Ammeter with a 5A full scale. The Ammeter shows a reading of 3A.</p>
+    <ol>
+        <li>CT Ratio: 200:5, Ammeter Full Scale: 5A</li>
+        <li>Multiplication Factor = 200 / (5 * 5) = 8</li>
+        <li>Ammeter Reading: 3A</li>
+        <li>Actual Current = 3A * 8 = 24A</li>
+    </ol>
+
+    <div class="interactive">
+        <h3>Interactive Calculator</h3>
+        <p>Use this calculator to determine the actual current:</p>
+        <input type="number" id="ctPrimary" placeholder="CT Primary Current">
+        <input type="number" id="ctSecondary" placeholder="CT Secondary Current">
+        <input type="number" id="ammeterScale" placeholder="Ammeter Full Scale">
+        <input type="number" id="ammeterReading" placeholder="Ammeter Reading">
+        <button onclick="calculateCurrent()">Calculate</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateCurrent() {
+            const ctPrimary = parseFloat(document.getElementById('ctPrimary').value);
+            const ctSecondary = parseFloat(document.getElementById('ctSecondary').value);
+            const ammeterScale = parseFloat(document.getElementById('ammeterScale').value);
+            const ammeterReading = parseFloat(document.getElementById('ammeterReading').value);
+
+            if (isNaN(ctPrimary) || isNaN(ctSecondary) || isNaN(ammeterScale) || isNaN(ammeterReading)) {
+                document.getElementById('result').innerHTML = "Please enter valid numbers for all fields.";
+                return;
+            }
+
+            const multiplicationFactor = ctPrimary / (ctSecondary * ammeterScale);
+            const actualCurrent = ammeterReading * multiplicationFactor;
+
+            document.getElementById('result').innerHTML = `Actual Current: ${actualCurrent.toFixed(2)} A`;
+        }
+    </script>
+</body>
+</html>
