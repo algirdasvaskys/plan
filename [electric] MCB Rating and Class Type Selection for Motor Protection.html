@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCB Rating and Class Type Selection for Motor Protection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .note {
+            background-color: #f9f9f9;
+            border-left: 5px solid #4CAF50;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Proper MCB Rating and Class Type Selection for Motor Protection</h1>
+    
+    <h2>Introduction</h2>
+    <p>Selecting the correct Miniature Circuit Breaker (MCB) rating and class type is crucial for effective motor protection. This guide will help you understand the process and make informed decisions.</p>
+    
+    <h2>MCB Rating Selection</h2>
+    <p>The MCB rating should be selected based on the full load current (FLC) of the motor. Follow these steps:</p>
+    <ol>
+        <li>Determine the motor's full load current (FLC) from its nameplate or datasheet.</li>
+        <li>Calculate the MCB rating using the formula: MCB Rating = 1.25 × FLC</li>
+        <li>Choose the next standard MCB rating above the calculated value.</li>
+    </ol>
+    
+    <div class="note">
+        <strong>Note:</strong> The 1.25 factor accounts for motor starting current and provides a safety margin.
+    </div>
+    
+    <h2>MCB Class Type Selection</h2>
+    <p>MCBs are classified into different types based on their tripping characteristics. For motor protection, the following classes are commonly used:</p>
+    
+    <table>
+        <tr>
+            <th>Class Type</th>
+            <th>Characteristics</th>
+            <th>Suitable for</th>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>Trips between 3-5 times rated current</td>
+            <td>Resistive loads, lighting circuits</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>Trips between 5-10 times rated current</td>
+            <td>Small motors, transformers</td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td>Trips between 10-20 times rated current</td>
+            <td>Large motors, welding machines</td>
+        </tr>
+    </table>
+    
+    <p>For most motor applications, Class C or D MCBs are recommended:</p>
+    <ul>
+        <li>Class C: Suitable for small to medium-sized motors</li>
+        <li>Class D: Preferred for large motors or motors with high starting currents</li>
+    </ul>
+    
+    <h2>Example Calculation</h2>
+    <p>Let's consider a motor with the following specifications:</p>
+    <ul>
+        <li>Power: 5.5 kW</li>
+        <li>Voltage: 400V (3-phase)</li>
+        <li>Full Load Current (FLC): 10.5A</li>
+    </ul>
+    
+    <p>MCB Rating Calculation:</p>
+    <ol>
+        <li>MCB Rating = 1.25 × FLC</li>
+        <li>MCB Rating = 1.25 × 10.5A = 13.125A</li>
+        <li>Choose the next standard MCB rating: 16A</li>
+    </ol>
+    
+    <p>MCB Class Selection:</p>
+    <p>For this motor, a Class C MCB would be suitable. Therefore, choose a 16A Class C MCB.</p>
+    
+    <h2>Conclusion</h2>
+    <p>Proper selection of MCB rating and class type is essential for effective motor protection. Always consider the motor's characteristics, starting current, and operating conditions when making your selection. When in doubt, consult with a qualified electrical engineer or refer to relevant electrical codes and standards.</p>
+</body>
+</html>
