@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Phase Distribution Board Connection with High Low Voltage Protection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #ffcccc;
+            border-left: 5px solid #ff0000;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .steps {
+            counter-reset: step-counter;
+        }
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Single Phase Distribution Board Connection with High Low Voltage Protection</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with electrical systems can be dangerous. Always consult a licensed electrician and follow local electrical codes and regulations.
+    </div>
+
+    <h2>Components Required:</h2>
+    <div class="component">
+        <ul>
+            <li>Single Phase Distribution Board</li>
+            <li>Main Circuit Breaker (MCB)</li>
+            <li>Residual Current Device (RCD)</li>
+            <li>High-Low Voltage Protection Relay</li>
+            <li>Contactor</li>
+            <li>Miniature Circuit Breakers (MCBs) for individual circuits</li>
+            <li>Voltmeter</li>
+            <li>Ammeter</li>
+            <li>Indicator Lights</li>
+            <li>Wires and connectors</li>
+        </ul>
+    </div>
+
+    <h2>Connection Procedure:</h2>
+    <div class="steps">
+        <div class="step">Install the Distribution Board: Mount the distribution board securely on the wall.</div>
+        
+        <div class="step">Connect the Main Power Supply: Connect the incoming power supply (Live and Neutral) to the main MCB.</div>
+        
+        <div class="step">Install RCD: Connect the output of the main MCB to the input of the RCD.</div>
+        
+        <div class="step">Install High-Low Voltage Protection Relay: Connect the output of the RCD to the input of the High-Low Voltage Protection Relay.</div>
+        
+        <div class="step">Install Contactor: Connect the output of the High-Low Voltage Protection Relay to the input of the Contactor.</div>
+        
+        <div class="step">Connect MCBs: Connect the output of the Contactor to the bus bars that feed the individual MCBs.</div>
+        
+        <div class="step">Install Voltmeter and Ammeter: Connect the voltmeter in parallel and the ammeter in series with the main power supply.</div>
+        
+        <div class="step">Connect Indicator Lights: Install indicator lights to show the status of the power supply and protection devices.</div>
+        
+        <div class="step">Individual Circuit Connections: Connect the loads to the respective MCBs.</div>
+        
+        <div class="step">Grounding: Ensure proper grounding of the distribution board and all components.</div>
+    </div>
+
+    <h2>High-Low Voltage Protection Settings:</h2>
+    <p>Configure the High-Low Voltage Protection Relay with appropriate voltage thresholds:</p>
+    <ul>
+        <li>High Voltage Cut-off: Typically set at 240V + 10% (264V)</li>
+        <li>Low Voltage Cut-off: Typically set at 240V - 10% (216V)</li>
+        <li>Time Delay: Set an appropriate time delay (e.g., 5 seconds) to prevent nuisance tripping</li>
+    </ul>
+
+    <h2>Safety Considerations:</h2>
+    <ul>
+        <li>Always use properly rated components and wires.</li>
+        <li>Ensure proper insulation and separation between live parts.</li>
+        <li>Label all circuits and components clearly.</li>
+        <li>Perform thorough testing before energizing the system.</li>
+        <li>Regularly inspect and maintain the distribution board and its components.</li>
+    </ul>
+
+    <div class="warning">
+        <strong>Important:</strong> After installation, have the entire system inspected and approved by a certified electrician before use.
+    </div>
+</body>
+</html>
