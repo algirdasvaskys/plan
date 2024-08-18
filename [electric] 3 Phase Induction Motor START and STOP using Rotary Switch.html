@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Phase Induction Motor START and STOP using Rotary Switch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2 {
+            color: #3498db;
+        }
+        .warning {
+            background-color: #f39c12;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .step {
+            background-color: #ecf0f1;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>3 Phase Induction Motor START and STOP using Rotary Switch</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with 3-phase electrical systems can be dangerous. Always follow proper safety procedures and consult with a qualified electrician before attempting any electrical work.
+    </div>
+
+    <h2>Introduction</h2>
+    <p>A rotary switch is a simple and effective way to control the starting and stopping of a 3-phase induction motor. This method is commonly used in industrial applications due to its reliability and ease of use.</p>
+
+    <h2>Components Required</h2>
+    <ul>
+        <li>3-phase induction motor</li>
+        <li>Rotary switch (3-position: OFF, START, RUN)</li>
+        <li>Contactor</li>
+        <li>Overload relay</li>
+        <li>Fuses or circuit breaker</li>
+        <li>Control transformer (if required)</li>
+        <li>Wiring and terminals</li>
+    </ul>
+
+    <h2>Wiring Diagram</h2>
+    <p>Here's a basic wiring diagram for the 3-phase induction motor control using a rotary switch:</p>
+    <!-- Note: In a real implementation, you would include an actual image here -->
+    <img src="wiring_diagram.png" alt="Wiring Diagram for 3-Phase Induction Motor Control">
+
+    <h2>Step-by-Step Procedure</h2>
+
+    <div class="step">
+        <h3>Step 1: Safety First</h3>
+        <p>Ensure that the power supply is disconnected and locked out before beginning any work on the circuit.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Install the Rotary Switch</h3>
+        <p>Mount the rotary switch in an easily accessible location. Ensure it's properly rated for the voltage and current of your application.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Install the Contactor</h3>
+        <p>Mount the contactor in the control panel. The contactor will be responsible for making and breaking the main power circuit to the motor.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Install the Overload Relay</h3>
+        <p>Connect the overload relay in series with the motor. This device protects the motor from overcurrent conditions.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Wire the Control Circuit</h3>
+        <p>Connect the rotary switch to the contactor coil. The "START" position should energize the contactor coil, while the "RUN" position maintains the circuit.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Wire the Power Circuit</h3>
+        <p>Connect the three phases from the power supply through the contactor and overload relay to the motor terminals.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 7: Install Fuses or Circuit Breaker</h3>
+        <p>Install appropriate fuses or a circuit breaker upstream of the contactor for short circuit protection.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 8: Final Checks</h3>
+        <p>Double-check all connections, ensure proper grounding, and verify that all components are securely mounted.</p>
+    </div>
+
+    <h2>Operation</h2>
+    <ol>
+        <li><strong>To Start:</strong> Turn the rotary switch to the "START" position. This energizes the contactor coil, closing the main contacts and starting the motor.</li>
+        <li><strong>To Run:</strong> Release the switch from "START". It should spring back to the "RUN" position, maintaining the circuit.</li>
+        <li><strong>To Stop:</strong> Turn the rotary switch to the "OFF" position. This de-energizes the contactor coil, opening the main contacts and stopping the motor.</li>
+    </ol>
+
+    <h2>Maintenance</h2>
+    <p>Regular maintenance is crucial for the longevity and safe operation of the motor and control system:</p>
+    <ul>
+        <li>Periodically check all electrical connections for tightness.</li>
+        <li>Inspect the rotary switch for signs of wear or damage.</li>
+        <li>Test the overload relay to ensure it's functioning correctly.</li>
+        <li>Keep the motor and control components clean and free from dust and debris.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Using a rotary switch to control a 3-phase induction motor is a simple and effective method. However, proper installation and regular maintenance are crucial for safe and reliable operation. Always consult with a qualified electrician for specific applications and adhere to local electrical codes and regulations.</p>
+</body>
+</html>
