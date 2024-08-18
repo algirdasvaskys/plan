@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Phase Motor Control Circuit Diagram with Two-way Switch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .component {
+            position: absolute;
+            font-size: 12px;
+        }
+        .wire {
+            position: absolute;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>3 Phase Motor Control Circuit Diagram using Two-way Switch</h1>
+    
+    <h2>Introduction</h2>
+    <p>This document explains the method for creating a 3 Phase Motor Control Circuit using a two-way switch. This setup allows for reversing the direction of a three-phase motor by changing the phase sequence.</p>
+
+    <h2>Components Required</h2>
+    <ul>
+        <li>Three-phase power supply</li>
+        <li>Three-phase motor</li>
+        <li>Two-way switch</li>
+        <li>Contactor</li>
+        <li>Overload relay</li>
+        <li>Fuses or circuit breaker</li>
+    </ul>
+
+    <h2>Circuit Diagram</h2>
+    <div class="diagram" id="circuitDiagram">
+        <!-- Circuit diagram will be drawn here using JavaScript -->
+    </div>
+
+    <h2>Working Principle</h2>
+    <ol>
+        <li>The two-way switch allows for changing the connection of two of the three phases.</li>
+        <li>When the switch is in one position, the motor runs in one direction.</li>
+        <li>When the switch is moved to the other position, two of the phases are interchanged, reversing the motor's direction.</li>
+    </ol>
+
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Always ensure the motor is at a complete stop before changing the switch position.</li>
+        <li>Use appropriate fuses or circuit breakers for overcurrent protection.</li>
+        <li>The overload relay protects the motor from overheating due to excessive current draw.</li>
+        <li>All connections should be properly insulated and secured.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>This 3 Phase Motor Control Circuit with a two-way switch provides a simple and effective method for reversing the direction of a three-phase motor. It's commonly used in industrial applications where bi-directional motor control is required.</p>
+
+    <script>
+        function drawCircuit() {
+            const diagram = document.getElementById('circuitDiagram');
+            
+            // Power Supply
+            drawComponent(diagram, 50, 50, "Power Supply");
+            
+            // Fuses
+            drawComponent(diagram, 150, 50, "Fuses");
+            drawWire(diagram, 100, 60, 150, 60);
+            drawWire(diagram, 100, 70, 150, 70);
+            drawWire(diagram, 100, 80, 150, 80);
+            
+            // Two-way Switch
+            drawComponent(diagram, 250, 50, "Two-way Switch");
+            drawWire(diagram, 200, 60, 250, 60);
+            drawWire(diagram, 200, 70, 250, 70);
+            drawWire(diagram, 200, 80, 250, 80);
+            
+            // Contactor
+            drawComponent(diagram, 350, 50, "Contactor");
+            drawWire(diagram, 300, 60, 350, 60);
+            drawWire(diagram, 300, 70, 350, 70);
+            drawWire(diagram, 300, 80, 350, 80);
+            
+            // Overload Relay
+            drawComponent(diagram, 450, 50, "Overload Relay");
+            drawWire(diagram, 400, 60, 450, 60);
+            drawWire(diagram, 400, 70, 450, 70);
+            drawWire(diagram, 400, 80, 450, 80);
+            
+            // Motor
+            drawComponent(diagram, 550, 50, "3-Phase Motor");
+            drawWire(diagram, 500, 60, 550, 60);
+            drawWire(diagram, 500, 70, 550, 70);
+            drawWire(diagram, 500, 80, 550, 80);
+        }
+
+        function drawComponent(parent, x, y, text) {
+            const component = document.createElement('div');
+            component.className = 'component';
+            component.style.left = x + 'px';
+            component.style.top = y + 'px';
+            component.textContent = text;
+            parent.appendChild(component);
+        }
+
+        function drawWire(parent, x1, y1, x2, y2) {
+            const wire = document.createElement('div');
+            wire.className = 'wire';
+            wire.style.left = x1 + 'px';
+            wire.style.top = y1 + 'px';
+            wire.style.width = (x2 - x1) + 'px';
+            wire.style.height = '2px';
+            parent.appendChild(wire);
+        }
+
+        window.onload = drawCircuit;
+    </script>
+</body>
+</html>
