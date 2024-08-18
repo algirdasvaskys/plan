@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Night Lamp with Motion Sensor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2 {
+            color: #34495e;
+        }
+        .components, .steps {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .components ul, .steps ol {
+            padding-left: 20px;
+        }
+        .note {
+            background-color: #ffe5e5;
+            border-left: 5px solid #ff9999;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Automatic Night Lamp with Motion Sensor</h1>
+    
+    <h2>Introduction</h2>
+    <p>This guide will walk you through the process of creating a night lamp that automatically turns on when it detects motion and turns off after a set period of inactivity. This project is perfect for hallways, bathrooms, or any area where you'd like convenient, hands-free lighting.</p>
+    
+    <div class="components">
+        <h2>Components Needed</h2>
+        <ul>
+            <li>Arduino Uno or compatible microcontroller</li>
+            <li>PIR (Passive Infrared) motion sensor</li>
+            <li>LED or small lamp (5V-12V)</li>
+            <li>Resistor (220-330 ohms)</li>
+            <li>Jumper wires</li>
+            <li>Breadboard</li>
+            <li>Power supply (5V-12V, depending on your lamp)</li>
+        </ul>
+    </div>
+    
+    <div class="steps">
+        <h2>Step-by-Step Guide</h2>
+        <ol>
+            <li>
+                <h3>Set up the Arduino</h3>
+                <p>Connect the Arduino to your computer using a USB cable. This will provide power and allow you to upload the code.</p>
+            </li>
+            <li>
+                <h3>Connect the PIR Sensor</h3>
+                <p>The PIR sensor typically has three pins:</p>
+                <ul>
+                    <li>VCC (Power): Connect to 5V on the Arduino</li>
+                    <li>GND (Ground): Connect to GND on the Arduino</li>
+                    <li>OUT (Signal): Connect to digital pin 2 on the Arduino</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Connect the LED or Lamp</h3>
+                <p>If using an LED:</p>
+                <ul>
+                    <li>Connect the longer leg (anode) to digital pin 13 on the Arduino through a 220-330 ohm resistor</li>
+                    <li>Connect the shorter leg (cathode) to GND on the Arduino</li>
+                </ul>
+                <p>If using a lamp:</p>
+                <ul>
+                    <li>Use a transistor or relay to control the lamp, as most lamps require more current than the Arduino can provide directly</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Write and Upload the Arduino Code</h3>
+                <p>Use the Arduino IDE to write and upload the following code:</p>
+                <pre><code>
+const int pirPin = 2;    // PIR sensor pin
+const int ledPin = 13;   // LED pin
+const int delayTime = 30000; // Time to keep the light on (30 seconds)
+
+void setup() {
+  pinMode(pirPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (digitalRead(pirPin) == HIGH) {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("Motion detected! Light ON");
+    delay(delayTime);
+  } else {
+    digitalWrite(ledPin, LOW);
+    Serial.println("No motion. Light OFF");
+  }
+}
+                </code></pre>
+            </li>
+            <li>
+                <h3>Test the Circuit</h3>
+                <p>Once the code is uploaded, the lamp should turn on when motion is detected and turn off after 30 seconds of no motion.</p>
+            </li>
+            <li>
+                <h3>Adjust and Finalize</h3>
+                <p>You can adjust the <code>delayTime</code> variable in the code to change how long the light stays on after motion is detected. You may also need to adjust the sensitivity of your PIR sensor using its built-in potentiometers.</p>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="note">
+        <h3>Safety Note</h3>
+        <p>If you're using a lamp that requires high voltage (e.g., 120V AC), please consult with a licensed electrician. Working with high voltage can be dangerous and may require additional safety measures and components.</p>
+    </div>
+    
+    <h2>Conclusion</h2>
+    <p>You now have a functional automatic night lamp that turns on with motion and off after a period of inactivity. This project can be expanded by adding features like light sensors to only activate at night, or by integrating it into a larger home automation system.</p>
+</body>
+</html>
