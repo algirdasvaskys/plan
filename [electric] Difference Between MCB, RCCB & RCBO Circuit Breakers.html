@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difference Between MCB, RCCB & RCBO Circuit Breakers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .comparison {
+            background-color: #e9f7ef;
+            border-left: 5px solid #27ae60;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            table, tr, td {
+                display: block;
+            }
+            th {
+                display: none;
+            }
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+            }
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Difference Between MCB, RCCB & RCBO Circuit Breakers</h1>
+    
+    <h2>1. MCB (Miniature Circuit Breaker)</h2>
+    <p>An MCB is designed to protect electrical circuits from overloads and short circuits.</p>
+    <ul>
+        <li>Primary function: Overcurrent protection</li>
+        <li>Does not provide earth leakage protection</li>
+        <li>Automatically trips when current exceeds the rated value</li>
+        <li>Available in various current ratings and breaking capacities</li>
+    </ul>
+
+    <h2>2. RCCB (Residual Current Circuit Breaker)</h2>
+    <p>An RCCB is designed to protect against earth leakage currents and electric shock hazards.</p>
+    <ul>
+        <li>Primary function: Earth leakage protection</li>
+        <li>Does not provide overcurrent protection</li>
+        <li>Trips when it detects an imbalance between live and neutral currents</li>
+        <li>Typically has a high sensitivity (30mA) for personal protection</li>
+    </ul>
+
+    <h2>3. RCBO (Residual Current Breaker with Overload)</h2>
+    <p>An RCBO combines the functions of both MCB and RCCB in a single device.</p>
+    <ul>
+        <li>Provides both overcurrent and earth leakage protection</li>
+        <li>Trips on overload, short circuit, and earth leakage</li>
+        <li>Space-saving solution for comprehensive circuit protection</li>
+        <li>Available in various current ratings and sensitivities</li>
+    </ul>
+
+    <div class="comparison">
+        <h2>Comparison Table</h2>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>MCB</th>
+                <th>RCCB</th>
+                <th>RCBO</th>
+            </tr>
+            <tr>
+                <td data-label="Feature">Overcurrent Protection</td>
+                <td data-label="MCB">Yes</td>
+                <td data-label="RCCB">No</td>
+                <td data-label="RCBO">Yes</td>
+            </tr>
+            <tr>
+                <td data-label="Feature">Earth Leakage Protection</td>
+                <td data-label="MCB">No</td>
+                <td data-label="RCCB">Yes</td>
+                <td data-label="RCBO">Yes</td>
+            </tr>
+            <tr>
+                <td data-label="Feature">Short Circuit Protection</td>
+                <td data-label="MCB">Yes</td>
+                <td data-label="RCCB">No</td>
+                <td data-label="RCBO">Yes</td>
+            </tr>
+            <tr>
+                <td data-label="Feature">Personal Shock Protection</td>
+                <td data-label="MCB">No</td>
+                <td data-label="RCCB">Yes</td>
+                <td data-label="RCBO">Yes</td>
+            </tr>
+            <tr>
+                <td data-label="Feature">Space Required</td>
+                <td data-label="MCB">Single Module</td>
+                <td data-label="RCCB">Double Module</td>
+                <td data-label="RCBO">Single or Double Module</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>When choosing between MCB, RCCB, and RCBO, consider the following:</p>
+    <ul>
+        <li>Use MCB for basic overcurrent protection in circuits without earth leakage concerns.</li>
+        <li>Use RCCB in addition to MCB for circuits requiring earth leakage protection, especially in wet areas or where shock hazards are a concern.</li>
+        <li>Use RCBO for comprehensive protection in a single device, ideal for new installations or when upgrading existing systems.</li>
+    </ul>
+    <p>Always consult with a qualified electrician or follow local electrical codes when selecting and installing circuit protection devices.</p>
+</body>
+</html>
