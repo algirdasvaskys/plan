@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Delta Starter Control Wiring Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-style: italic;
+            color: #777;
+        }
+        .note {
+            background-color: #f0f0f0;
+            border-left: 5px solid #3498db;
+            padding: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Star Delta Starter Control Wiring Explained</h1>
+    
+    <h2>Introduction</h2>
+    <p>A Star Delta Starter is a method of starting a three-phase induction motor to reduce the start-up current. This method is widely used for high power motors to limit the initial inrush current.</p>
+
+    <div class="diagram">
+        [A diagram of the Star Delta Starter wiring would be displayed here]
+    </div>
+
+    <h2>Components of a Star Delta Starter</h2>
+    <ul>
+        <li>Main Contactor (K1)</li>
+        <li>Star Contactor (K2)</li>
+        <li>Delta Contactor (K3)</li>
+        <li>Overload Relay (OL)</li>
+        <li>Timer (TR)</li>
+        <li>Start and Stop Push Buttons</li>
+    </ul>
+
+    <h2>Wiring Explanation</h2>
+    <ol>
+        <li><strong>Power Circuit:</strong> Connect the three-phase supply to the main contactor K1.</li>
+        <li><strong>Motor Connections:</strong> Connect the six leads of the motor to the appropriate terminals of K1, K2, and K3.</li>
+        <li><strong>Control Circuit:</strong> Wire the control circuit as follows:
+            <ul>
+                <li>Connect the start button to the main contactor K1 coil.</li>
+                <li>Wire K1 normally open auxiliary contact in parallel to the start button.</li>
+                <li>Connect the stop button in series with the above circuit.</li>
+                <li>Wire the timer TR coil in parallel with K1 coil.</li>
+                <li>Connect K2 (star contactor) coil to a normally closed contact of TR.</li>
+                <li>Connect K3 (delta contactor) coil to a normally open contact of TR.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Operation Sequence</h2>
+    <ol>
+        <li>Press the start button. This energizes K1 and K2, starting the motor in star connection.</li>
+        <li>K1's auxiliary contact maintains the circuit even after releasing the start button.</li>
+        <li>The timer TR starts counting.</li>
+        <li>After a preset time (usually 5-10 seconds), TR switches its contacts.</li>
+        <li>K2 (star contactor) is de-energized, and K3 (delta contactor) is energized.</li>
+        <li>The motor now runs in delta connection at full speed.</li>
+    </ol>
+
+    <div class="note">
+        <p><strong>Note:</strong> The transition from star to delta should be quick to prevent motor speed drop. Adjust the timer accordingly.</p>
+    </div>
+
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Always ensure proper insulation and earthing.</li>
+        <li>Use appropriate wire sizes based on the motor current.</li>
+        <li>Install overload protection devices.</li>
+        <li>Follow local electrical codes and regulations.</li>
+    </ul>
+
+    <p>This explanation provides a practical understanding of Star Delta Starter control wiring. Always consult with a qualified electrician for specific installations.</p>
+</body>
+</html>
