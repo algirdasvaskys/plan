@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitor Value to Save Electricity Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .note {
+            background-color: #ffe6e6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Capacitor Value to Save Electricity Bill 💵</h1>
+    
+    <h2>Introduction</h2>
+    <p>Power factor correction using capacitors can help reduce electricity bills by improving the power factor of an electrical system. This document explains how to calculate the appropriate capacitor value for power factor correction.</p>
+    
+    <h2>Why Power Factor Correction?</h2>
+    <p>A low power factor increases the apparent power drawn from the utility, resulting in higher electricity bills. By improving the power factor, you can reduce the apparent power and potentially save on your electricity costs.</p>
+    
+    <h2>Calculating Capacitor Value</h2>
+    <p>To calculate the required capacitor value, follow these steps:</p>
+    <ol>
+        <li>Determine the current power factor (cos φ1)</li>
+        <li>Decide on the desired power factor (cos φ2)</li>
+        <li>Measure the active power (P) in kilowatts (kW)</li>
+        <li>Use the following formula to calculate the required reactive power (Qc) in kVAR:</li>
+    </ol>
+    
+    <div class="formula">
+        Qc = P * (tan φ1 - tan φ2)
+    </div>
+    
+    <p>Where:</p>
+    <ul>
+        <li>Qc is the reactive power of the capacitor in kVAR</li>
+        <li>P is the active power in kW</li>
+        <li>φ1 is the angle corresponding to the current power factor</li>
+        <li>φ2 is the angle corresponding to the desired power factor</li>
+    </ul>
+    
+    <h2>Capacitor Value Calculation</h2>
+    <p>Once you have calculated the required reactive power (Qc), you can determine the capacitor value using the following formula:</p>
+    
+    <div class="formula">
+        C = Qc * 1000 / (2π * f * V² * 3)
+    </div>
+    
+    <p>Where:</p>
+    <ul>
+        <li>C is the capacitance in microfarads (μF)</li>
+        <li>Qc is the reactive power in kVAR</li>
+        <li>f is the frequency of the power system (usually 50 or 60 Hz)</li>
+        <li>V is the line-to-line voltage of the system</li>
+    </ul>
+    
+    <h2>Example Calculation</h2>
+    <p>Let's say we have the following scenario:</p>
+    <ul>
+        <li>Current power factor (cos φ1) = 0.8</li>
+        <li>Desired power factor (cos φ2) = 0.95</li>
+        <li>Active power (P) = 100 kW</li>
+        <li>System voltage = 415 V</li>
+        <li>Frequency = 50 Hz</li>
+    </ul>
+    
+    <p>Step 1: Calculate Qc</p>
+    <div class="formula">
+        Qc = 100 * (tan(arccos(0.8)) - tan(arccos(0.95))) ≈ 43.95 kVAR
+    </div>
+    
+    <p>Step 2: Calculate capacitor value</p>
+    <div class="formula">
+        C = 43.95 * 1000 / (2π * 50 * 415² * 3) ≈ 271.6 μF
+    </div>
+    
+    <h2>Conclusion</h2>
+    <p>In this example, a capacitor bank with a total capacitance of approximately 272 μF would be needed to improve the power factor from 0.8 to 0.95 for a 100 kW load.</p>
+    
+    <div class="note">
+        <strong>Note:</strong> Always consult with a qualified electrical engineer or technician before implementing power factor correction in your electrical system. Improper installation or calculation can lead to equipment damage or safety hazards.
+    </div>
+</body>
+</html>
