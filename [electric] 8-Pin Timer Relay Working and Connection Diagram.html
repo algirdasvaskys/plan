@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-Pin Timer Relay: Working and Connection Diagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .relay {
+            width: 300px;
+            height: 200px;
+            border: 2px solid #333;
+            position: relative;
+        }
+        .pin {
+            width: 20px;
+            height: 20px;
+            background-color: #f39c12;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        .label {
+            position: absolute;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>8-Pin Timer Relay: Working and Connection Diagram</h1>
+    
+    <h2>Introduction</h2>
+    <p>An 8-pin timer relay is a versatile electrical component used in various control applications. It allows for precise timing control in electrical circuits, making it useful in industrial automation, process control, and other time-dependent operations.</p>
+    
+    <h2>Working Principle</h2>
+    <p>The 8-pin timer relay operates on the following principle:</p>
+    <ol>
+        <li>When power is applied to the relay, it starts its timing sequence.</li>
+        <li>The relay can be configured for different timing modes (e.g., on-delay, off-delay, cyclical).</li>
+        <li>Once the set time elapses, the relay's contacts change state.</li>
+        <li>This change in contact state can be used to control other devices in the circuit.</li>
+    </ol>
+    
+    <h2>Connection Diagram</h2>
+    <p>Here's a typical connection diagram for an 8-pin timer relay:</p>
+    
+    <div class="diagram">
+        <div class="relay">
+            <div class="pin" style="top: 10px; left: 10px;">1</div>
+            <div class="label" style="top: 35px; left: 10px;">Power Supply (+)</div>
+            
+            <div class="pin" style="top: 10px; right: 10px;">8</div>
+            <div class="label" style="top: 35px; right: 10px;">Power Supply (-)</div>
+            
+            <div class="pin" style="top: 60px; left: 10px;">2</div>
+            <div class="label" style="top: 85px; left: 10px;">Start Input</div>
+            
+            <div class="pin" style="top: 60px; right: 10px;">7</div>
+            <div class="label" style="top: 85px; right: 10px;">Reset Input</div>
+            
+            <div class="pin" style="bottom: 60px; left: 10px;">3</div>
+            <div class="label" style="bottom: 85px; left: 10px;">NO Contact</div>
+            
+            <div class="pin" style="bottom: 60px; right: 10px;">6</div>
+            <div class="label" style="bottom: 85px; right: 10px;">NC Contact</div>
+            
+            <div class="pin" style="bottom: 10px; left: 10px;">4</div>
+            <div class="label" style="bottom: 35px; left: 10px;">Common</div>
+            
+            <div class="pin" style="bottom: 10px; right: 10px;">5</div>
+            <div class="label" style="bottom: 35px; right: 10px;">Output Indicator</div>
+        </div>
+    </div>
+    
+    <h2>Pin Description</h2>
+    <ol>
+        <li><strong>Pin 1:</strong> Power Supply (+) - Positive terminal of the power supply</li>
+        <li><strong>Pin 2:</strong> Start Input - Initiates the timing sequence</li>
+        <li><strong>Pin 3:</strong> NO (Normally Open) Contact - Closes when the relay is energized</li>
+        <li><strong>Pin 4:</strong> Common - Common terminal for the relay contacts</li>
+        <li><strong>Pin 5:</strong> Output Indicator - Typically connected to an LED for visual indication</li>
+        <li><strong>Pin 6:</strong> NC (Normally Closed) Contact - Opens when the relay is energized</li>
+        <li><strong>Pin 7:</strong> Reset Input - Resets the timing sequence</li>
+        <li><strong>Pin 8:</strong> Power Supply (-) - Negative terminal of the power supply</li>
+    </ol>
+    
+    <h2>Application</h2>
+    <p>To use the 8-pin timer relay in a circuit:</p>
+    <ol>
+        <li>Connect the power supply to pins 1 (+) and 8 (-).</li>
+        <li>Connect the start input (pin 2) to initiate the timing sequence.</li>
+        <li>Use the NO contact (pin 3) or NC contact (pin 6) as needed for your application.</li>
+        <li>The common pin (4) is used in conjunction with the NO and NC contacts.</li>
+        <li>Optionally, connect an LED to the output indicator (pin 5) for visual feedback.</li>
+        <li>The reset input (pin 7) can be used to reset the timer if needed.</li>
+    </ol>
+    
+    <h2>Conclusion</h2>
+    <p>The 8-pin timer relay is a powerful and flexible component for implementing time-based control in electrical circuits. By understanding its working principle and connection diagram, you can effectively integrate it into various applications requiring precise timing control.</p>
+</body>
+</html>
