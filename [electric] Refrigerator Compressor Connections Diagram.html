@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refrigerator Compressor Connections Diagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 2px solid #3498db;
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f8ff;
+            border: 1px solid #3498db;
+        }
+        .step {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Refrigerator Compressor Connections Diagram</h1>
+    
+    <div class="diagram">
+        <svg width="100%" height="100%" viewBox="0 0 600 400">
+            <!-- Compressor -->
+            <rect x="250" y="150" width="100" height="100" fill="#3498db" />
+            <text x="300" y="205" text-anchor="middle" fill="white">Compressor</text>
+            
+            <!-- Starting Capacitor -->
+            <circle cx="150" cy="100" r="40" fill="#e74c3c" />
+            <text x="150" y="105" text-anchor="middle" fill="white">Starting</text>
+            <text x="150" y="120" text-anchor="middle" fill="white">Capacitor</text>
+            
+            <!-- Running Capacitor -->
+            <circle cx="450" cy="100" r="40" fill="#2ecc71" />
+            <text x="450" y="105" text-anchor="middle" fill="white">Running</text>
+            <text x="450" y="120" text-anchor="middle" fill="white">Capacitor</text>
+            
+            <!-- Connections -->
+            <line x1="190" y1="100" x2="250" y2="170" stroke="black" stroke-width="2" />
+            <line x1="410" y1="100" x2="350" y2="170" stroke="black" stroke-width="2" />
+            <line x1="300" y1="250" x2="300" y2="300" stroke="black" stroke-width="2" />
+            <text x="310" y="280" fill="black">To Power Supply</text>
+            
+            <!-- Terminal Labels -->
+            <text x="240" y="180" fill="white">C</text>
+            <text x="350" y="180" fill="white">R</text>
+            <text x="300" y="260" fill="white">S</text>
+        </svg>
+    </div>
+    
+    <div class="legend">
+        <h3>Legend:</h3>
+        <p>C - Common Terminal</p>
+        <p>R - Run Terminal</p>
+        <p>S - Start Terminal</p>
+    </div>
+    
+    <h2>Connection Method:</h2>
+    
+    <div class="step">
+        <h3>Step 1: Identify the Terminals</h3>
+        <p>Locate the three terminals on the compressor: Common (C), Run (R), and Start (S).</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 2: Connect the Starting Capacitor</h3>
+        <p>Connect one lead of the starting capacitor to the Start (S) terminal and the other lead to the Run (R) terminal.</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 3: Connect the Running Capacitor</h3>
+        <p>Connect one lead of the running capacitor to the Common (C) terminal and the other lead to the Run (R) terminal.</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 4: Power Supply Connection</h3>
+        <p>Connect the power supply to the Common (C) and Run (R) terminals.</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 5: Grounding</h3>
+        <p>Ensure that the compressor body is properly grounded for safety.</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 6: Final Check</h3>
+        <p>Double-check all connections to ensure they are secure and correct before powering on the system.</p>
+    </div>
+    
+    <p><strong>Note:</strong> Always refer to the manufacturer's specifications and guidelines for the specific compressor model you are working with. Safety should be your top priority when working with electrical components.</p>
+</body>
+</html>
