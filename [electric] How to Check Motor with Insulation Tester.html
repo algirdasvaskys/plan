@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Check Motor with Insulation Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .safety-note {
+            background-color: #f39c12;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .step {
+            background-color: #ecf0f1;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .quiz {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>How to Check a Motor with an Insulation Tester</h1>
+    
+    <div class="safety-note">
+        <h2>⚠️ Safety First!</h2>
+        <p>Always ensure the motor is completely disconnected from its power source before testing. Wear appropriate Personal Protective Equipment (PPE) including insulated gloves and safety glasses.</p>
+    </div>
+
+    <h2>Steps to Check Motor Insulation:</h2>
+
+    <div class="step">
+        <h3>Step 1: Prepare the Motor</h3>
+        <p>Disconnect the motor from all power sources and remove it from its mounting if necessary. Clean the motor thoroughly to remove any dirt or debris.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Set Up the Insulation Tester</h3>
+        <p>Select an appropriate test voltage based on the motor's rated voltage. For motors rated up to 1000V, typically use a 500V or 1000V test voltage.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Connect the Insulation Tester</h3>
+        <p>Connect the negative (earth) lead of the tester to the motor frame. Connect the positive lead to one of the motor terminals.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Perform the Test</h3>
+        <p>Activate the tester and apply the test voltage for about 60 seconds. Record the insulation resistance reading.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Test Other Windings</h3>
+        <p>Repeat the test for each motor winding, always keeping the negative lead connected to the frame.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Interpret Results</h3>
+        <p>The minimum acceptable insulation resistance is typically 1 megohm per 1000V of motor rating, plus 1 megohm. For example, a 460V motor should have at least 1.46 megohms of insulation resistance.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 7: Record and Compare</h3>
+        <p>Record all readings and compare them to previous tests or manufacturer specifications. A significant drop in insulation resistance over time may indicate deterioration.</p>
+    </div>
+
+    <div class="quiz">
+        <h2>Quick Quiz</h2>
+        <p>What's the minimum acceptable insulation resistance for a 230V motor?</p>
+        <input type="number" id="answer" step="0.01">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value;
+            const result = document.getElementById('result');
+            if (answer == 1.23) {
+                result.textContent = "Correct! The minimum acceptable insulation resistance for a 230V motor is 1.23 megohms.";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Incorrect. Try again!";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
