@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical Machine Signal Tower Light Connection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .step {
+            background-color: #f4f4f4;
+            border-left: 5px solid #3498db;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #3498db;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border-left: 5px solid #e74c3c;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .interactive-diagram {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Electrical Machine Signal Tower Light Connection with Electrical Circuit</h1>
+    
+    <p>This guide will walk you through the process of connecting an Electrical Machine Signal Tower Light to an Electrical Circuit. Signal tower lights are essential for indicating machine status and alerting operators to various conditions.</p>
+
+    <div class="warning">
+        <h3>Safety Warning</h3>
+        <p>Always ensure that the power is disconnected before working on any electrical connections. If you're not confident in your electrical skills, please consult a qualified electrician.</p>
+    </div>
+
+    <h2>Steps for Connection</h2>
+
+    <div class="step">
+        <h3>Step 1: Gather Materials</h3>
+        <p>You'll need the following:</p>
+        <ul>
+            <li>Signal Tower Light</li>
+            <li>Power supply (typically 24V DC)</li>
+            <li>Wiring (appropriate gauge for your application)</li>
+            <li>Circuit breaker or fuse</li>
+            <li>Screwdriver</li>
+            <li>Wire strippers</li>
+            <li>Multimeter</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Plan the Connection</h3>
+        <p>Determine where the signal tower will be mounted and plan the wiring route. Ensure that the mounting location is visible and accessible for maintenance.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Install Circuit Protection</h3>
+        <p>Install a circuit breaker or fuse appropriate for your signal tower's power requirements. This protects both the signal tower and the circuit from potential overloads.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Connect Power Supply</h3>
+        <p>Connect the positive (+) and negative (-) terminals of your power supply to the corresponding terminals on the signal tower. Most signal towers operate on 24V DC, but always verify the voltage requirements.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Connect Control Signals</h3>
+        <p>Connect the control wires for each light module (typically Red, Yellow, Green) to the corresponding outputs on your control system (e.g., PLC outputs).</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Ground Connection</h3>
+        <p>Ensure that the signal tower is properly grounded to prevent electrical hazards.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 7: Verify Connections</h3>
+        <p>Use a multimeter to check for continuity and proper voltage levels before powering on the system.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 8: Test the System</h3>
+        <p>Power on the system and test each light to ensure proper operation.</p>
+    </div>
+
+    <h2>Interactive Wiring Diagram</h2>
+    <p>Use the buttons below to highlight different parts of the wiring diagram:</p>
+    <button onclick="highlightPart('power')">Power Supply</button>
+    <button onclick="highlightPart('control')">Control Signals</button>
+    <button onclick="highlightPart('ground')">Ground</button>
+
+    <canvas id="diagramCanvas" class="interactive-diagram"></canvas>
+
+    <script>
+        const canvas = document.getElementById('diagramCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+
+        function drawDiagram() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw signal tower
+            ctx.fillStyle = '#888';
+            ctx.fillRect(350, 50, 100, 300);
+
+            // Draw power supply
+            ctx.fillStyle = '#f39c12';
+            ctx.fillRect(50, 150, 100, 100);
+            ctx.fillStyle = '#000';
+            ctx.font = '14px Arial';
+            ctx.fillText('Power Supply', 55, 200);
+
+            // Draw control system
+            ctx.fillStyle = '#3498db';
+            ctx.fillRect(50, 300, 100, 100);
+            ctx.fillStyle = '#000';
+            ctx.fillText('Control System', 55, 350);
+
+            // Draw wires
+            ctx.beginPath();
+            ctx.moveTo(150, 200);
+            ctx.lineTo(350, 200);
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(150, 350);
+            ctx.lineTo(350, 350);
+            ctx.strokeStyle = 'blue';
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(400, 350);
+            ctx.lineTo(400, 400);
+            ctx.lineTo(200, 400);
+            ctx.lineTo(200, 450);
+            ctx.strokeStyle = 'green';
+            ctx.stroke();
+
+            // Draw ground symbol
+            ctx.beginPath();
+            ctx.moveTo(190, 450);
+            ctx.lineTo(210, 450);
+            ctx.moveTo(195, 455);
+            ctx.lineTo(205, 455);
+            ctx.moveTo(200, 460);
+            ctx.lineTo(200, 460);
+            ctx.strokeStyle = 'black';
+            ctx.stroke();
+        }
+
+        function highlightPart(part) {
+            drawDiagram();
+            ctx.lineWidth = 3;
+
+            switch(part) {
+                case 'power':
+                    ctx.strokeStyle = 'orange';
+                    ctx.strokeRect(45, 145, 110, 110);
+                    break;
+                case 'control':
+                    ctx.strokeStyle = 'blue';
+                    ctx.strokeRect(45, 295, 110, 110);
+                    break;
+                case 'ground':
+                    ctx.strokeStyle = 'green';
+                    ctx.beginPath();
+                    ctx.arc(200, 450, 20, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    break;
+            }
+        }
+
+        drawDiagram();
+    </script>
+</body>
+</html>
