@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Transformer Starter Power Wiring Connection Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .content {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #ffe6e6;
+            border-left: 5px solid #ff4d4d;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .steps {
+            counter-reset: step-counter;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .steps li {
+            counter-increment: step-counter;
+            margin-bottom: 10px;
+        }
+        .steps li::before {
+            content: "Step " counter(step-counter) ": ";
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Auto Transformer Starter Power Wiring Connection Explained</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with electrical connections can be dangerous. Always ensure that power is disconnected and proper safety procedures are followed. If you're not qualified, please consult a licensed electrician.
+    </div>
+    
+    <div class="content">
+        <h2>Introduction</h2>
+        <p>An auto transformer starter is a type of reduced voltage starter used for starting three-phase induction motors. It helps reduce the initial inrush current and provides a smooth acceleration of the motor. This document explains the power wiring connection for an auto transformer starter.</p>
+    </div>
+    
+    <div class="content">
+        <h2>Components</h2>
+        <ul>
+            <li>Auto transformer</li>
+            <li>Main contactor</li>
+            <li>Starting contactor</li>
+            <li>Overload relay</li>
+            <li>Control circuit (not covered in this guide)</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>Wiring Connection Steps</h2>
+        <ol class="steps">
+            <li>Connect the three-phase power supply (L1, L2, L3) to the main contactor's input terminals.</li>
+            <li>Connect the output terminals of the main contactor to the auto transformer's primary windings.</li>
+            <li>Connect the auto transformer's secondary (tapped) windings to the starting contactor's input terminals.</li>
+            <li>Connect the output terminals of the starting contactor to the motor terminals (U, V, W).</li>
+            <li>Connect the overload relay in series with the motor circuit, typically on the output side of the starting contactor.</li>
+            <li>Connect the neutral point of the auto transformer (if available) to the neutral of the power supply.</li>
+            <li>Ensure proper grounding of all components and the motor frame.</li>
+        </ol>
+    </div>
+    
+    <div class="content">
+        <h2>Operation Sequence</h2>
+        <ol>
+            <li>When the start command is given, the starting contactor closes first.</li>
+            <li>The motor starts with reduced voltage through the auto transformer taps.</li>
+            <li>After a preset time or when the motor reaches a certain speed, the main contactor closes.</li>
+            <li>Simultaneously, the starting contactor opens, connecting the motor directly to the full line voltage.</li>
+            <li>The motor continues to run at full voltage.</li>
+        </ol>
+    </div>
+    
+    <div class="content">
+        <h2>Important Considerations</h2>
+        <ul>
+            <li>Ensure proper sizing of the auto transformer based on the motor's requirements.</li>
+            <li>Use appropriate wire sizes for the current ratings of the motor and components.</li>
+            <li>Implement proper control circuitry for automatic operation and protection.</li>
+            <li>Regular maintenance and inspection of connections are crucial for safe operation.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>Conclusion</h2>
+        <p>Proper wiring of an auto transformer starter is crucial for the safe and efficient starting of large three-phase induction motors. Always follow local electrical codes and manufacturer's guidelines when installing and operating this equipment.</p>
+    </div>
+</body>
+</html>
