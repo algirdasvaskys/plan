@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Tee into Copper Pipe: The Easy Way</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .step {
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+        }
+        .warning {
+            background-color: #fcf8e3;
+            border: 1px solid #faebcc;
+            color: #8a6d3b;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .tools-materials {
+            background-color: #e7f4ff;
+            border: 1px solid #b8daff;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .visual {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>How to Tee into Copper Pipe: The Easy Way</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with plumbing can be challenging. If you're not confident in your abilities, it's always best to consult a professional plumber.
+    </div>
+
+    <div class="tools-materials">
+        <h2>Tools and Materials Needed:</h2>
+        <ul>
+            <li>Copper tee fitting</li>
+            <li>Pipe cutter</li>
+            <li>Deburring tool</li>
+            <li>Emery cloth or sandpaper</li>
+            <li>Flux brush</li>
+            <li>Soldering flux</li>
+            <li>Lead-free solder</li>
+            <li>Propane torch</li>
+            <li>Flame-resistant cloth</li>
+            <li>Safety glasses</li>
+            <li>Gloves</li>
+        </ul>
+    </div>
+
+    <h2>Step-by-Step Instructions:</h2>
+
+    <div class="step">
+        <h3>Step 1: Prepare the Work Area</h3>
+        <p>Turn off the water supply and drain the pipes. Ensure the area is well-ventilated and keep a fire extinguisher nearby.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Mark and Cut the Pipe</h3>
+        <p>Measure and mark where you want to install the tee. Use a pipe cutter to cut the copper pipe at this point.</p>
+        <div class="visual" id="visual1"></div>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Deburr and Clean the Pipe</h3>
+        <p>Use a deburring tool to remove any burrs from the cut edges. Clean the outside of the pipe ends and the inside of the tee fitting with emery cloth or sandpaper.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Apply Flux</h3>
+        <p>Apply a thin, even layer of soldering flux to the outside of both pipe ends and the inside of the tee fitting using a flux brush.</p>
+        <div class="visual" id="visual2"></div>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Assemble the Fitting</h3>
+        <p>Slide the tee fitting onto the pipe, ensuring it's fully seated and aligned correctly.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Heat the Joint</h3>
+        <p>Use a propane torch to heat the joint evenly. Start heating the pipe, then move to the fitting. The flux will liquefy and bubble when the correct temperature is reached.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 7: Apply Solder</h3>
+        <p>Touch the lead-free solder to the joint. If it's hot enough, the solder will melt and be drawn into the joint. Continue applying solder until it appears at the end of the fitting.</p>
+        <div class="visual" id="visual3"></div>
+    </div>
+
+    <div class="step">
+        <h3>Step 8: Cool and Clean</h3>
+        <p>Allow the joint to cool naturally. Once cool, wipe away any excess flux with a damp cloth.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 9: Test the Joint</h3>
+        <p>Turn the water supply back on and check for any leaks. If you spot any, you may need to drain the pipe and resolder the joint.</p>
+    </div>
+
+    <script>
+        function drawPipeCut(canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle = '#b87333';
+            ctx.lineWidth = 20;
+            ctx.beginPath();
+            ctx.moveTo(50, 150);
+            ctx.lineTo(550, 150);
+            ctx.stroke();
+            
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(300, 100);
+            ctx.lineTo(300, 200);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#000';
+            ctx.font = '16px Arial';
+            ctx.fillText('Cut Here', 310, 130);
+        }
+        
+        function drawFluxApplication(canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle = '#b87333';
+            ctx.lineWidth = 20;
+            ctx.beginPath();
+            ctx.moveTo(50, 150);
+            ctx.lineTo(250, 150);
+            ctx.moveTo(350, 150);
+            ctx.lineTo(550, 150);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#4CAF50';
+            ctx.beginPath();
+            ctx.arc(300, 150, 40, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.fillStyle = '#81C784';
+            ctx.beginPath();
+            ctx.arc(300, 150, 30, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.fillStyle = '#000';
+            ctx.font = '16px Arial';
+            ctx.fillText('Apply flux here', 310, 100);
+            ctx.fillText('and here', 310, 200);
+        }
+        
+        function drawSoldering(canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle = '#b87333';
+            ctx.lineWidth = 20;
+            ctx.beginPath();
+            ctx.moveTo(50, 150);
+            ctx.lineTo(250, 150);
+            ctx.moveTo(350, 150);
+            ctx.lineTo(550, 150);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#b87333';
+            ctx.beginPath();
+            ctx.arc(300, 150, 40, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.strokeStyle = '#FF9800';
+            ctx.lineWidth = 4;
+            for (let i = 0; i < 5; i++) {
+                ctx.beginPath();
+                ctx.moveTo(280 + i*10, 90);
+                ctx.lineTo(300 + i*10, 110);
+                ctx.stroke();
+            }
+            
+            ctx.fillStyle = '#000';
+            ctx.font = '16px Arial';
+            ctx.fillText('Apply heat', 310, 100);
+            ctx.fillText('Apply solder', 310, 200);
+        }
+
+        window.onload = function() {
+            const canvas1 = document.createElement('canvas');
+            canvas1.width = 600;
+            canvas1.height = 300;
+            document.getElementById('visual1').appendChild(canvas1);
+            drawPipeCut(canvas1);
+
+            const canvas2 = document.createElement('canvas');
+            canvas2.width = 600;
+            canvas2.height = 300;
+            document.getElementById('visual2').appendChild(canvas2);
+            drawFluxApplication(canvas2);
+
+            const canvas3 = document.createElement('canvas');
+            canvas3.width = 600;
+            canvas3.height = 300;
+            document.getElementById('visual3').appendChild(canvas3);
+            drawSoldering(canvas3);
+        };
+    </script>
+</body>
+</html>
