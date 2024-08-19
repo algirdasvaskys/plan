@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical Circuit Components Comparison: MCB, MCCB, ELCB, RCCB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .component {
+            margin-bottom: 30px;
+        }
+        .component h2 {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Electrical Circuit Components Comparison: MCB, MCCB, ELCB, RCCB</h1>
+    
+    <p>In electrical circuits, various protective devices are used to ensure safety and prevent damage. This document compares four important components: MCB, MCCB, ELCB, and RCCB.</p>
+    
+    <div class="component">
+        <h2>MCB (Miniature Circuit Breaker)</h2>
+        <p>An MCB is a device that automatically interrupts an electrical circuit to prevent damage caused by overload or short circuit.</p>
+        <ul>
+            <li>Typically used in domestic and small commercial installations</li>
+            <li>Protects against overload and short circuit</li>
+            <li>Lower current ratings (usually up to 125A)</li>
+            <li>Can be reset manually after tripping</li>
+        </ul>
+    </div>
+    
+    <div class="component">
+        <h2>MCCB (Molded Case Circuit Breaker)</h2>
+        <p>An MCCB is similar to an MCB but designed for higher current applications and provides additional features.</p>
+        <ul>
+            <li>Used in industrial and larger commercial installations</li>
+            <li>Protects against overload, short circuit, and sometimes ground faults</li>
+            <li>Higher current ratings (up to 3000A)</li>
+            <li>Adjustable trip settings for more precise protection</li>
+        </ul>
+    </div>
+    
+    <div class="component">
+        <h2>ELCB (Earth Leakage Circuit Breaker)</h2>
+        <p>An ELCB is designed to protect against earth leakage currents and electric shock hazards.</p>
+        <ul>
+            <li>Detects current flow between live conductors and earth</li>
+            <li>Trips when it detects a current imbalance</li>
+            <li>Provides protection against electric shock</li>
+            <li>Older technology, largely replaced by RCCBs</li>
+        </ul>
+    </div>
+    
+    <div class="component">
+        <h2>RCCB (Residual Current Circuit Breaker)</h2>
+        <p>An RCCB, also known as RCD (Residual Current Device), is a more advanced version of the ELCB.</p>
+        <ul>
+            <li>Detects the difference between incoming and outgoing current in a circuit</li>
+            <li>Trips when it detects a current leakage to ground</li>
+            <li>Provides protection against electric shock and fire hazards</li>
+            <li>More sensitive and faster-acting than ELCBs</li>
+        </ul>
+    </div>
+    
+    <h2>Comparison Table</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>MCB</th>
+            <th>MCCB</th>
+            <th>ELCB</th>
+            <th>RCCB</th>
+        </tr>
+        <tr>
+            <td>Primary Protection</td>
+            <td>Overload, Short Circuit</td>
+            <td>Overload, Short Circuit</td>
+            <td>Earth Leakage</td>
+            <td>Residual Current</td>
+        </tr>
+        <tr>
+            <td>Current Rating</td>
+            <td>Up to 125A</td>
+            <td>Up to 3000A</td>
+            <td>Varies</td>
+            <td>Varies</td>
+        </tr>
+        <tr>
+            <td>Application</td>
+            <td>Domestic, Small Commercial</td>
+            <td>Industrial, Large Commercial</td>
+            <td>All Types</td>
+            <td>All Types</td>
+        </tr>
+        <tr>
+            <td>Adjustable Settings</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Sometimes</td>
+            <td>Sometimes</td>
+        </tr>
+        <tr>
+            <td>Shock Protection</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+    </table>
+    
+    <p>In modern electrical installations, it's common to use a combination of these devices to provide comprehensive protection. For example, an RCCB might be used in conjunction with MCBs to provide both earth leakage and overcurrent protection.</p>
+</body>
+</html>
