@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Motor Control - Forward/Reverse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .motor-demo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .motor {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Motor Control - Forward/Reverse</h1>
+    
+    <h2>Introduction</h2>
+    <p>Basic motor control involves managing the direction and speed of a motor. In this document, we'll focus on controlling the forward and reverse directions of a motor.</p>
+    
+    <h2>Key Components</h2>
+    <ul>
+        <li><strong>Motor:</strong> The device that converts electrical energy into mechanical energy.</li>
+        <li><strong>Controller:</strong> A circuit or device that manages the motor's operation.</li>
+        <li><strong>Power Source:</strong> Provides the necessary electrical energy to run the motor.</li>
+        <li><strong>H-Bridge:</strong> A circuit that allows voltage to be applied to a load in either direction.</li>
+    </ul>
+    
+    <h2>Forward/Reverse Control Method</h2>
+    <ol>
+        <li><strong>H-Bridge Configuration:</strong> An H-bridge circuit is typically used to control the motor's direction.</li>
+        <li><strong>Switching Polarity:</strong> By changing the polarity of the voltage applied to the motor, we can change its direction.</li>
+        <li><strong>Forward Operation:</strong> Apply positive voltage to one terminal and ground to the other.</li>
+        <li><strong>Reverse Operation:</strong> Swap the connections - apply ground to the first terminal and positive voltage to the other.</li>
+        <li><strong>Stop Operation:</strong> Either disconnect both terminals or connect both to the same potential (high or low).</li>
+    </ol>
+    
+    <h2>Interactive Demonstration</h2>
+    <div class="motor-demo">
+        <div class="motor" id="motor">Stopped</div>
+    </div>
+    <div class="controls">
+        <button onclick="controlMotor('forward')">Forward</button>
+        <button onclick="controlMotor('stop')">Stop</button>
+        <button onclick="controlMotor('reverse')">Reverse</button>
+    </div>
+    
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Ensure proper insulation and grounding to prevent electrical hazards.</li>
+        <li>Use appropriate current and voltage ratings for all components.</li>
+        <li>Implement emergency stop mechanisms for larger systems.</li>
+        <li>Be cautious of mechanical hazards from moving parts.</li>
+    </ul>
+    
+    <h2>Conclusion</h2>
+    <p>Understanding basic motor control is crucial for many applications in robotics, automation, and mechatronics. By mastering forward and reverse control, you lay the foundation for more complex motor control systems.</p>
+
+    <script>
+        function controlMotor(direction) {
+            const motor = document.getElementById('motor');
+            switch(direction) {
+                case 'forward':
+                    motor.textContent = 'Forward';
+                    motor.style.backgroundColor = '#2ecc71';
+                    break;
+                case 'reverse':
+                    motor.textContent = 'Reverse';
+                    motor.style.backgroundColor = '#e74c3c';
+                    break;
+                case 'stop':
+                    motor.textContent = 'Stopped';
+                    motor.style.backgroundColor = '#3498db';
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
