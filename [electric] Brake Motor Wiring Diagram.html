@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brake Motor Wiring Diagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2 {
+            color: #34495e;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .step {
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #ffeeee;
+            border-left: 5px solid #ff0000;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Brake Motor Wiring Diagram</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with electrical systems can be dangerous. Always ensure the power is disconnected before working on any electrical components. If you're unsure, consult a qualified electrician.
+    </div>
+
+    <h2>Diagram</h2>
+    <div class="diagram">
+        <!-- SVG Diagram -->
+        <svg width="100%" height="100%" viewBox="0 0 600 400">
+            <!-- Motor -->
+            <rect x="250" y="150" width="100" height="100" fill="#ccc" stroke="#000"/>
+            <text x="300" y="205" text-anchor="middle">Motor</text>
+            
+            <!-- Brake -->
+            <rect x="400" y="175" width="50" height="50" fill="#f99" stroke="#000"/>
+            <text x="425" y="205" text-anchor="middle">Brake</text>
+            
+            <!-- Power Supply -->
+            <rect x="50" y="50" width="100" height="50" fill="#9f9" stroke="#000"/>
+            <text x="100" y="80" text-anchor="middle">Power Supply</text>
+            
+            <!-- Controller -->
+            <rect x="50" y="300" width="100" height="50" fill="#99f" stroke="#000"/>
+            <text x="100" y="330" text-anchor="middle">Controller</text>
+            
+            <!-- Wires -->
+            <line x1="150" y1="75" x2="250" y2="175" stroke="#000" stroke-width="2"/>
+            <line x1="150" y1="325" x2="250" y2="225" stroke="#000" stroke-width="2"/>
+            <line x1="350" y1="200" x2="400" y2="200" stroke="#000" stroke-width="2"/>
+            
+            <!-- Labels -->
+            <text x="190" y="120" text-anchor="middle">Power</text>
+            <text x="190" y="280" text-anchor="middle">Control</text>
+            <text x="375" y="190" text-anchor="middle">Brake</text>
+        </svg>
+    </div>
+
+    <h2>Wiring Method</h2>
+
+    <div class="step">
+        <h3>Step 1: Identify Components</h3>
+        <p>Before starting, ensure you have all necessary components:</p>
+        <ul>
+            <li>Brake Motor</li>
+            <li>Power Supply</li>
+            <li>Motor Controller</li>
+            <li>Wiring (appropriately rated for your motor's current)</li>
+            <li>Circuit protection devices (fuses or circuit breakers)</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Connect Power Supply to Controller</h3>
+        <p>Connect the positive (+) and negative (-) terminals of the power supply to the corresponding input terminals on the motor controller. Ensure proper polarity.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Connect Controller to Motor</h3>
+        <p>Connect the output terminals of the controller to the motor's input terminals. For a three-phase motor, typically labeled as U, V, and W.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Wire the Brake</h3>
+        <p>Connect the brake wires to the brake terminals on the controller. The brake is typically energized to release and de-energized to engage.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Ground Connections</h3>
+        <p>Ensure all components are properly grounded to a common ground point for safety.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Install Protection Devices</h3>
+        <p>Install appropriate fuses or circuit breakers between the power supply and the controller to protect against overcurrent.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 7: Double-Check Connections</h3>
+        <p>Verify all connections are secure and correctly wired according to the manufacturer's specifications for your specific motor and controller.</p>
+    </div>
+
+    <div class="warning">
+        <strong>Important:</strong> Always refer to the specific documentation provided by the manufacturer of your motor, controller, and brake system. The wiring method may vary depending on the exact components you are using.
+    </div>
+
+</body>
+</html>
