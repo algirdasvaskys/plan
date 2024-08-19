@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Control Circuit Series - On Delay Timer Using Omron Timer Relay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .step {
+            background-color: #e6f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Control Circuit Series - On Delay Timer Using Omron Timer Relay</h1>
+
+    <h2>Introduction</h2>
+    <p>This guide will walk you through the process of setting up a basic control circuit using an On Delay Timer with an Omron Timer Relay. This type of circuit is commonly used in industrial automation and control systems where a delay is needed before an action is taken.</p>
+
+    <h2>Components Needed</h2>
+    <div class="component">
+        <ul>
+            <li>Omron Timer Relay (e.g., H3CR series)</li>
+            <li>24V DC Power Supply</li>
+            <li>Control Switch (Normally Open)</li>
+            <li>Load (e.g., motor, lamp, or other electrical device)</li>
+            <li>Indicator Light (optional)</li>
+            <li>Wire</li>
+            <li>Circuit Breaker or Fuse for protection</li>
+        </ul>
+    </div>
+
+    <h2>Circuit Operation</h2>
+    <p>In this circuit, when the control switch is closed, the timer relay is energized and begins its timing cycle. After the preset delay time has elapsed, the relay contacts close, allowing power to flow to the load. This creates an "on delay" effect.</p>
+
+    <h2>Step-by-Step Guide</h2>
+    
+    <div class="step">
+        <h3>Step 1: Prepare the Timer Relay</h3>
+        <p>Set the desired delay time on the Omron Timer Relay according to the manufacturer's instructions. This is typically done using dials or switches on the relay itself.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Connect the Power Supply</h3>
+        <p>Connect the positive terminal of the 24V DC power supply to one side of the control switch. Connect the negative terminal to the common (COM) terminal of the timer relay.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Wire the Control Switch</h3>
+        <p>Connect the other side of the control switch to the trigger input terminal of the timer relay (often labeled as "IN" or "START").</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Connect the Load</h3>
+        <p>Connect one side of the load to the normally open (NO) contact of the timer relay. Connect the other side of the load to the negative terminal of the power supply.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Add Protection</h3>
+        <p>Install a circuit breaker or fuse between the power supply and the control switch for circuit protection.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 6: Optional Indicator Light</h3>
+        <p>If desired, connect an indicator light in parallel with the load to visually show when the timer has completed its cycle and the load is energized.</p>
+    </div>
+
+    <h2>Operation</h2>
+    <ol>
+        <li>Close the control switch to start the timer.</li>
+        <li>The timer relay will begin its timing cycle.</li>
+        <li>After the preset delay time, the timer relay contacts will close.</li>
+        <li>The load will be energized (and the indicator light, if installed, will illuminate).</li>
+        <li>Opening the control switch will reset the timer and de-energize the load.</li>
+    </ol>
+
+    <div class="warning">
+        <h2>Safety Warnings</h2>
+        <ul>
+            <li>Always ensure the power is off before working on electrical circuits.</li>
+            <li>Follow all local electrical codes and safety regulations.</li>
+            <li>Use appropriate personal protective equipment (PPE) when working with electrical systems.</li>
+            <li>If you're not confident in your ability to safely wire this circuit, consult with a qualified electrician.</li>
+        </ul>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>This basic control circuit demonstrates the use of an On Delay Timer using an Omron Timer Relay. This type of circuit can be expanded or modified for various applications in industrial control and automation systems. Always ensure proper safety measures are in place when working with electrical circuits.</p>
+</body>
+</html>
