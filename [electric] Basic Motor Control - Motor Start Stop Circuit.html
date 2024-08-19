@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Motor Control - Motor Start Stop Circuit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .circuit-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .component {
+            stroke: #2c3e50;
+            stroke-width: 2;
+        }
+        .wire {
+            stroke: #3498db;
+            stroke-width: 2;
+        }
+        .text {
+            font-size: 14px;
+            fill: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Motor Control - Motor Start Stop Circuit</h1>
+
+    <h2>Introduction</h2>
+    <p>A motor start stop circuit is a fundamental control system used in industrial and residential applications to safely start and stop electric motors. This circuit provides a simple yet effective way to control the operation of a motor using start and stop pushbuttons.</p>
+
+    <h2>Components</h2>
+    <ul>
+        <li>Motor (M)</li>
+        <li>Contactor (K1)</li>
+        <li>Overload Relay (OL)</li>
+        <li>Start Pushbutton (PB1) - Normally Open (NO)</li>
+        <li>Stop Pushbutton (PB2) - Normally Closed (NC)</li>
+        <li>Power Supply (L1, L2, L3)</li>
+    </ul>
+
+    <h2>Circuit Diagram</h2>
+    <svg class="circuit-diagram" viewBox="0 0 400 300">
+        <!-- Power Supply -->
+        <line x1="20" y1="20" x2="20" y2="280" class="wire" />
+        <line x1="40" y1="20" x2="40" y2="280" class="wire" />
+        <line x1="60" y1="20" x2="60" y2="280" class="wire" />
+        <text x="10" y="10" class="text">L1</text>
+        <text x="30" y="10" class="text">L2</text>
+        <text x="50" y="10" class="text">L3</text>
+
+        <!-- Stop Button -->
+        <circle cx="100" cy="60" r="10" class="component" fill="none" />
+        <line x1="90" y1="60" x2="110" y2="60" class="component" />
+        <text x="80" y="80" class="text">PB2 (NC)</text>
+
+        <!-- Start Button -->
+        <circle cx="150" cy="60" r="10" class="component" fill="none" />
+        <line x1="140" y1="60" x2="160" y2="60" class="component" />
+        <text x="130" y="80" class="text">PB1 (NO)</text>
+
+        <!-- Contactor Coil -->
+        <rect x="200" y="40" width="40" height="60" class="component" fill="none" />
+        <text x="205" y="70" class="text">K1</text>
+
+        <!-- Contactor Contact -->
+        <line x1="220" y1="140" x2="220" y2="160" class="component" />
+        <line x1="210" y1="150" x2="230" y2="150" class="component" />
+
+        <!-- Overload Relay -->
+        <rect x="200" y="180" width="40" height="40" class="component" fill="none" />
+        <text x="205" y="205" class="text">OL</text>
+
+        <!-- Motor -->
+        <circle cx="300" cy="200" r="30" class="component" fill="none" />
+        <text x="290" y="205" class="text">M</text>
+
+        <!-- Wiring -->
+        <polyline points="20,60 100,60 150,60 200,60" class="wire" fill="none" />
+        <line x1="240" y1="60" x2="380" y2="60" class="wire" />
+        <line x1="380" y1="60" x2="380" y2="200" class="wire" />
+        <line x1="330" y1="200" x2="380" y2="200" class="wire" />
+        <line x1="40" y1="200" x2="200" y2="200" class="wire" />
+        <line x1="240" y1="200" x2="270" y2="200" class="wire" />
+        <line x1="60" y1="240" x2="300" y2="240" class="wire" />
+    </svg>
+
+    <h2>How It Works</h2>
+    <ol>
+        <li><strong>Initial State:</strong> The circuit is de-energized, and the motor is not running.</li>
+        <li><strong>Starting the Motor:</strong>
+            <ul>
+                <li>Press the Start button (PB1).</li>
+                <li>Current flows through the Stop button (PB2), Start button (PB1), and the contactor coil (K1).</li>
+                <li>The contactor (K1) energizes and closes its main contacts.</li>
+                <li>Power is supplied to the motor through the closed contactor contacts and the overload relay (OL).</li>
+                <li>The motor starts running.</li>
+            </ul>
+        </li>
+        <li><strong>Maintaining Motor Operation:</strong>
+            <ul>
+                <li>The contactor (K1) has a normally open auxiliary contact in parallel with the Start button (PB1).</li>
+                <li>This auxiliary contact closes when the contactor is energized, creating a holding circuit.</li>
+                <li>The holding circuit maintains current flow to the contactor coil even after releasing the Start button.</li>
+            </ul>
+        </li>
+        <li><strong>Stopping the Motor:</strong>
+            <ul>
+                <li>Press the Stop button (PB2).</li>
+                <li>The circuit to the contactor coil is interrupted.</li>
+                <li>The contactor de-energizes, opening its main contacts.</li>
+                <li>Power to the motor is cut off, and the motor stops.</li>
+            </ul>
+        </li>
+        <li><strong>Overload Protection:</strong>
+            <ul>
+                <li>The overload relay (OL) monitors the current flowing to the motor.</li>
+                <li>If an overload condition occurs, the overload relay trips, opening its normally closed contact in the control circuit.</li>
+                <li>This action de-energizes the contactor, stopping the motor to prevent damage.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Ensure proper sizing of components based on motor specifications.</li>
+        <li>Use appropriate wire gauges for power and control circuits.</li>
+        <li>Install circuit protection devices (fuses or circuit breakers) for short circuit protection.</li>
+        <li>Implement proper grounding for all components.</li>
+        <li>Consider adding emergency stop buttons for additional safety.</li>
+        <li>Regular maintenance and inspection of the circuit components are essential.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The basic motor start stop circuit provides a simple and effective way to control motor operation. It incorporates essential safety features such as overload protection and a maintained contact for continuous operation. This circuit serves as a foundation for more complex motor control systems and can be expanded to include additional features like indicator lights, multiple start/stop stations, or integration with programmable logic controllers (PLCs).</p>
+</body>
+</html>
