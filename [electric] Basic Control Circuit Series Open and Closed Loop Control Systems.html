@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Control Circuit Series: Open and Closed Loop Control Systems</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .system-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Control Circuit Series: Open and Closed Loop Control Systems</h1>
+
+    <h2>Introduction</h2>
+    <p>Control systems are fundamental in various engineering applications, from simple thermostats to complex industrial processes. This document explores two primary types of control systems: open loop and closed loop control systems.</p>
+
+    <h2>1. Open Loop Control Systems</h2>
+    <p>An open loop control system, also known as a non-feedback system, operates without measuring the output of the process it controls.</p>
+
+    <h3>Key Characteristics:</h3>
+    <ul>
+        <li>No feedback mechanism</li>
+        <li>Output does not affect the input</li>
+        <li>Simpler and generally less expensive</li>
+        <li>Less accurate and reliable compared to closed loop systems</li>
+    </ul>
+
+    <h3>Open Loop Control System Diagram</h3>
+    <div class="system-diagram" id="openLoopDiagram"></div>
+
+    <h3>Examples of Open Loop Systems:</h3>
+    <ul>
+        <li>Electric hand dryer</li>
+        <li>Washing machine (without sensors)</li>
+        <li>Traffic light signals</li>
+    </ul>
+
+    <h2>2. Closed Loop Control Systems</h2>
+    <p>A closed loop control system, also known as a feedback system, measures the output and uses this information to adjust the input for desired performance.</p>
+
+    <h3>Key Characteristics:</h3>
+    <ul>
+        <li>Incorporates feedback mechanism</li>
+        <li>Output affects the input</li>
+        <li>More complex and generally more expensive</li>
+        <li>Higher accuracy and reliability</li>
+        <li>Can adapt to changes and disturbances</li>
+    </ul>
+
+    <h3>Closed Loop Control System Diagram</h3>
+    <div class="system-diagram" id="closedLoopDiagram"></div>
+
+    <h3>Examples of Closed Loop Systems:</h3>
+    <ul>
+        <li>Thermostat-controlled heating/cooling systems</li>
+        <li>Cruise control in automobiles</li>
+        <li>Industrial robots with position feedback</li>
+    </ul>
+
+    <h2>Comparison: Open Loop vs. Closed Loop Control Systems</h2>
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th>Open Loop</th>
+            <th>Closed Loop</th>
+        </tr>
+        <tr>
+            <td>Feedback</td>
+            <td>No feedback</td>
+            <td>Uses feedback</td>
+        </tr>
+        <tr>
+            <td>Accuracy</td>
+            <td>Less accurate</td>
+            <td>More accurate</td>
+        </tr>
+        <tr>
+            <td>Reliability</td>
+            <td>Less reliable</td>
+            <td>More reliable</td>
+        </tr>
+        <tr>
+            <td>Complexity</td>
+            <td>Simpler</td>
+            <td>More complex</td>
+        </tr>
+        <tr>
+            <td>Cost</td>
+            <td>Generally less expensive</td>
+            <td>Generally more expensive</td>
+        </tr>
+        <tr>
+            <td>Disturbance handling</td>
+            <td>Poor</td>
+            <td>Good</td>
+        </tr>
+    </table>
+
+    <h2>Conclusion</h2>
+    <p>Understanding the differences between open and closed loop control systems is crucial for designing effective control circuits. While open loop systems are simpler and more cost-effective, closed loop systems offer greater accuracy and adaptability, making them suitable for applications requiring precise control.</p>
+
+    <script>
+        function drawOpenLoopDiagram() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 600;
+            canvas.height = 300;
+            document.getElementById('openLoopDiagram').appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+
+            // Draw boxes
+            ctx.strokeRect(50, 100, 100, 50);
+            ctx.strokeRect(250, 100, 100, 50);
+            ctx.strokeRect(450, 100, 100, 50);
+
+            // Draw arrows
+            ctx.beginPath();
+            ctx.moveTo(150, 125);
+            ctx.lineTo(250, 125);
+            ctx.moveTo(350, 125);
+            ctx.lineTo(450, 125);
+            ctx.stroke();
+
+            // Add text
+            ctx.font = '14px Arial';
+            ctx.fillText('Input', 80, 130);
+            ctx.fillText('Controller', 270, 130);
+            ctx.fillText('Process', 475, 130);
+            ctx.fillText('Output', 530, 90);
+        }
+
+        function drawClosedLoopDiagram() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 600;
+            canvas.height = 300;
+            document.getElementById('closedLoopDiagram').appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+
+            // Draw boxes
+            ctx.strokeRect(50, 100, 100, 50);
+            ctx.strokeRect(250, 100, 100, 50);
+            ctx.strokeRect(450, 100, 100, 50);
+
+            // Draw arrows
+            ctx.beginPath();
+            ctx.moveTo(150, 125);
+            ctx.lineTo(250, 125);
+            ctx.moveTo(350, 125);
+            ctx.lineTo(450, 125);
+            ctx.moveTo(500, 150);
+            ctx.lineTo(500, 200);
+            ctx.lineTo(100, 200);
+            ctx.lineTo(100, 150);
+            ctx.stroke();
+
+            // Add text
+            ctx.font = '14px Arial';
+            ctx.fillText('Input', 80, 130);
+            ctx.fillText('Controller', 270, 130);
+            ctx.fillText('Process', 475, 130);
+            ctx.fillText('Output', 530, 90);
+            ctx.fillText('Feedback', 250, 220);
+        }
+
+        drawOpenLoopDiagram();
+        drawClosedLoopDiagram();
+    </script>
+</body>
+</html>
