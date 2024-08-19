@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lighting Circuit Breaker Size Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .calculator {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .note {
+            background-color: #ffeaa7;
+            border-left: 5px solid #fdcb6e;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculating Lighting Circuit Breaker Size for Your Home</h1>
+    
+    <p>Determining the correct circuit breaker size for your home's lighting circuit is crucial for safety and proper electrical function. This guide will walk you through the process and provide a calculator to help you determine the right size.</p>
+    
+    <h2>Step-by-step Method</h2>
+    <ol>
+        <li>Count the number of light fixtures on the circuit</li>
+        <li>Determine the wattage of each fixture</li>
+        <li>Calculate the total wattage by multiplying the number of fixtures by the average wattage per fixture</li>
+        <li>Convert the total wattage to amperes by dividing by the voltage (typically 120V in the US)</li>
+        <li>Choose a circuit breaker size that is larger than the calculated amperage, typically the next standard size up</li>
+    </ol>
+    
+    <h2>Calculator</h2>
+    <div class="calculator">
+        <label for="fixtures">Number of Light Fixtures:</label>
+        <input type="number" id="fixtures" min="1" value="10">
+        
+        <label for="watts">Average Wattage per Fixture:</label>
+        <input type="number" id="watts" min="1" value="60">
+        
+        <label for="voltage">Voltage (typically 120V in the US):</label>
+        <input type="number" id="voltage" min="1" value="120">
+        
+        <button onclick="calculateBreakerSize()">Calculate</button>
+        
+        <div id="result"></div>
+    </div>
+    
+    <h2>Explanation</h2>
+    <p>The calculator above uses the following formula to determine the circuit breaker size:</p>
+    <ol>
+        <li>Total Wattage = Number of Fixtures × Average Wattage per Fixture</li>
+        <li>Amperage = Total Wattage ÷ Voltage</li>
+        <li>Circuit Breaker Size = Next standard size above the calculated amperage</li>
+    </ol>
+    
+    <p>Standard circuit breaker sizes are typically 15A, 20A, 30A, 40A, 50A, etc. The calculator will recommend the next size up from the calculated amperage.</p>
+    
+    <div class="note">
+        <strong>Note:</strong> This calculator provides a general guideline. Always consult with a licensed electrician to ensure compliance with local electrical codes and for professional installation.
+    </div>
+    
+    <script>
+        function calculateBreakerSize() {
+            const fixtures = parseInt(document.getElementById('fixtures').value);
+            const watts = parseInt(document.getElementById('watts').value);
+            const voltage = parseInt(document.getElementById('voltage').value);
+            
+            const totalWatts = fixtures * watts;
+            const amps = totalWatts / voltage;
+            
+            let breakerSize;
+            if (amps <= 15) {
+                breakerSize = 15;
+            } else if (amps <= 20) {
+                breakerSize = 20;
+            } else if (amps <= 30) {
+                breakerSize = 30;
+            } else if (amps <= 40) {
+                breakerSize = 40;
+            } else if (amps <= 50) {
+                breakerSize = 50;
+            } else {
+                breakerSize = Math.ceil(amps / 10) * 10;
+            }
+            
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `
+                Total Wattage: ${totalWatts}W<br>
+                Calculated Amperage: ${amps.toFixed(2)}A<br>
+                Recommended Circuit Breaker Size: ${breakerSize}A
+            `;
+        }
+    </script>
+</body>
+</html>
