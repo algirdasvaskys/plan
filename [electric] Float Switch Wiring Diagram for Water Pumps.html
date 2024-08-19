@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float Switch Wiring Diagram for Water Pumps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #34495e;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .step {
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #ffeeee;
+            border-left: 5px solid #ff0000;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Float Switch Wiring Diagram for Water Pumps</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Working with electrical systems can be dangerous. If you're not comfortable or qualified to perform electrical work, please consult a licensed electrician.
+    </div>
+    
+    <h2>Diagram</h2>
+    <div class="diagram">
+        <svg width="100%" height="100%" viewBox="0 0 600 400">
+            <!-- Power Source -->
+            <rect x="50" y="50" width="100" height="50" fill="none" stroke="black" />
+            <text x="100" y="80" text-anchor="middle">Power Source</text>
+            
+            <!-- Float Switch -->
+            <circle cx="300" cy="200" r="30" fill="none" stroke="black" />
+            <text x="300" y="205" text-anchor="middle">Float</text>
+            <text x="300" y="220" text-anchor="middle">Switch</text>
+            
+            <!-- Water Pump -->
+            <rect x="450" y="175" width="100" height="50" fill="none" stroke="black" />
+            <text x="500" y="205" text-anchor="middle">Water Pump</text>
+            
+            <!-- Wiring -->
+            <line x1="150" y1="75" x2="270" y2="75" stroke="black" />
+            <line x1="270" y1="75" x2="270" y2="200" stroke="black" />
+            <line x1="330" y1="200" x2="450" y2="200" stroke="black" />
+            <line x1="150" y1="75" x2="150" y2="350" stroke="black" />
+            <line x1="150" y1="350" x2="500" y2="350" stroke="black" />
+            <line x1="500" y1="350" x2="500" y2="225" stroke="black" />
+            
+            <!-- Labels -->
+            <text x="200" y="65" text-anchor="middle">Hot (Black)</text>
+            <text x="380" y="190" text-anchor="middle">Switched Hot</text>
+            <text x="320" y="340" text-anchor="middle">Neutral (White)</text>
+        </svg>
+    </div>
+    
+    <h2>Wiring Instructions</h2>
+    
+    <div class="step">
+        <h3>Step 1: Prepare the Components</h3>
+        <p>Ensure you have the following components:</p>
+        <ul>
+            <li>Float switch</li>
+            <li>Water pump</li>
+            <li>Power source (usually 120V AC)</li>
+            <li>Electrical wire (14 or 12 gauge, depending on the pump's power requirements)</li>
+            <li>Wire nuts</li>
+            <li>Electrical tape</li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <h3>Step 2: Connect the Power Source to the Float Switch</h3>
+        <p>Connect the hot (black) wire from the power source to one terminal of the float switch.</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 3: Connect the Float Switch to the Water Pump</h3>
+        <p>Connect the other terminal of the float switch to the hot (black) wire of the water pump. This creates a switched hot connection.</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 4: Complete the Circuit</h3>
+        <p>Connect the neutral (white) wire from the power source directly to the neutral wire of the water pump.</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 5: Ground the System</h3>
+        <p>Connect the ground (green or bare copper) wires from the power source and the water pump together and to a proper ground.</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 6: Secure Connections</h3>
+        <p>Use wire nuts to secure all connections, and wrap them with electrical tape for added protection.</p>
+    </div>
+    
+    <div class="step">
+        <h3>Step 7: Test the System</h3>
+        <p>Before finalizing the installation, test the system to ensure the float switch properly controls the water pump.</p>
+    </div>
+    
+    <div class="warning">
+        <strong>Note:</strong> This is a basic wiring diagram. Depending on your specific pump and local electrical codes, you may need additional components such as a pump start relay, circuit breaker, or GFCI protection. Always consult local electrical codes and a licensed electrician for complex installations.
+    </div>
+</body>
+</html>
