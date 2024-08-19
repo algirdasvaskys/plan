@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Pneumatics Series - Decoding Solenoid Valves Port Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .valve-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px auto;
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Pneumatics Series - Decoding Solenoid Valves Port Numbers</h1>
+    
+    <h2>Introduction</h2>
+    <p>In pneumatic systems, solenoid valves play a crucial role in controlling the flow of compressed air. Understanding how to decode the port numbers on these valves is essential for proper installation, maintenance, and troubleshooting.</p>
+
+    <h2>Basic Concept</h2>
+    <p>Solenoid valve ports are typically numbered to indicate their function and connection points. The numbering system helps technicians and engineers identify how to connect the valve within a pneumatic circuit correctly.</p>
+
+    <h2>Common Numbering Systems</h2>
+    <p>There are two primary numbering systems used for solenoid valve ports:</p>
+    <ol>
+        <li><strong>ISO 5599 System:</strong> Used internationally and becoming increasingly common.</li>
+        <li><strong>Traditional System:</strong> Still widely used, especially in older equipment.</li>
+    </ol>
+
+    <h2>ISO 5599 Numbering System</h2>
+    <p>The ISO 5599 system uses single-digit numbers for each port:</p>
+    <table>
+        <tr>
+            <th>Port Number</th>
+            <th>Function</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Pressure supply (inlet)</td>
+        </tr>
+        <tr>
+            <td>2, 4</td>
+            <td>Working ports (outlets to actuator)</td>
+        </tr>
+        <tr>
+            <td>3, 5</td>
+            <td>Exhaust ports</td>
+        </tr>
+    </table>
+
+    <h2>Traditional Numbering System</h2>
+    <p>The traditional system uses letters and numbers:</p>
+    <table>
+        <tr>
+            <th>Port Label</th>
+            <th>Function</th>
+        </tr>
+        <tr>
+            <td>P</td>
+            <td>Pressure supply (inlet)</td>
+        </tr>
+        <tr>
+            <td>A, B</td>
+            <td>Working ports (outlets to actuator)</td>
+        </tr>
+        <tr>
+            <td>R, S, or EA, EB</td>
+            <td>Exhaust ports</td>
+        </tr>
+    </table>
+
+    <h2>Interpreting Port Numbers</h2>
+    <p>To interpret port numbers:</p>
+    <ol>
+        <li>Identify which numbering system is being used (ISO or Traditional).</li>
+        <li>Locate the pressure supply port (1 or P).</li>
+        <li>Identify the working ports (2 and 4, or A and B).</li>
+        <li>Note the exhaust ports (3 and 5, or R and S).</li>
+    </ol>
+
+    <h2>Visual Representation</h2>
+    <p>Below is a diagram of a typical 5/2 solenoid valve with ISO 5599 port numbering:</p>
+    
+    <svg class="valve-diagram" viewBox="0 0 400 200">
+        <rect x="100" y="50" width="200" height="100" fill="#f0f0f0" stroke="#000" stroke-width="2"/>
+        <line x1="50" y1="75" x2="100" y2="75" stroke="#000" stroke-width="2"/>
+        <line x1="50" y1="125" x2="100" y2="125" stroke="#000" stroke-width="2"/>
+        <line x1="300" y1="75" x2="350" y2="75" stroke="#000" stroke-width="2"/>
+        <line x1="300" y1="125" x2="350" y2="125" stroke="#000" stroke-width="2"/>
+        <line x1="200" y1="25" x2="200" y2="50" stroke="#000" stroke-width="2"/>
+        <text x="40" y="80" font-size="12">1</text>
+        <text x="40" y="130" font-size="12">3</text>
+        <text x="360" y="80" font-size="12">2</text>
+        <text x="360" y="130" font-size="12">4</text>
+        <text x="195" y="20" font-size="12">5</text>
+        <text x="180" y="100" font-size="14" font-weight="bold">5/2 Valve</text>
+    </svg>
+
+    <h2>Conclusion</h2>
+    <p>Understanding solenoid valve port numbering is crucial for anyone working with pneumatic systems. By familiarizing yourself with both the ISO 5599 and traditional numbering systems, you'll be better equipped to install, maintain, and troubleshoot pneumatic circuits effectively.</p>
+</body>
+</html>
