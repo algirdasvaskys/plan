@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Pneumatics Series - Controlling Four Pneumatic Cylinders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin: 20px 0;
+            position: relative;
+        }
+        .cylinder {
+            width: 60px;
+            height: 120px;
+            background-color: #3498db;
+            position: absolute;
+            bottom: 50px;
+        }
+        #cyl1 { left: 50px; }
+        #cyl2 { left: 190px; }
+        #cyl3 { left: 330px; }
+        #cyl4 { left: 470px; }
+        .piston {
+            width: 56px;
+            height: 20px;
+            background-color: #e74c3c;
+            position: absolute;
+            bottom: 0;
+            left: 2px;
+            transition: bottom 0.5s;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Pneumatics Series - Controlling Four Pneumatic Cylinders</h1>
+    
+    <h2>Introduction</h2>
+    <p>In this guide, we'll explore how to control four pneumatic cylinders both individually and as a group. This is a fundamental concept in pneumatics systems used in various industrial applications.</p>
+    
+    <h2>System Components</h2>
+    <ul>
+        <li>Four single-acting pneumatic cylinders</li>
+        <li>Four 5/2 way directional control valves (one for each cylinder)</li>
+        <li>One 5/2 way directional control valve (for group control)</li>
+        <li>Air compressor</li>
+        <li>Air preparation unit (filter, regulator, lubricator)</li>
+        <li>Pneumatic tubing and fittings</li>
+    </ul>
+    
+    <h2>Interactive Diagram</h2>
+    <div class="diagram">
+        <div class="cylinder" id="cyl1"><div class="piston"></div></div>
+        <div class="cylinder" id="cyl2"><div class="piston"></div></div>
+        <div class="cylinder" id="cyl3"><div class="piston"></div></div>
+        <div class="cylinder" id="cyl4"><div class="piston"></div></div>
+    </div>
+    
+    <div class="controls">
+        <button onclick="moveCylinder(1)">Cylinder 1</button>
+        <button onclick="moveCylinder(2)">Cylinder 2</button>
+        <button onclick="moveCylinder(3)">Cylinder 3</button>
+        <button onclick="moveCylinder(4)">Cylinder 4</button>
+        <button onclick="moveAll()">Move All</button>
+        <button onclick="resetAll()">Reset All</button>
+    </div>
+    
+    <h2>Individual Control</h2>
+    <p>Each cylinder is controlled by its own 5/2 way directional control valve. When activated, the valve allows compressed air to flow into the cylinder, extending the piston. When deactivated, the valve vents the air, and the spring returns the piston to its original position.</p>
+    
+    <h2>Group Control</h2>
+    <p>To control all cylinders as a group, we use an additional 5/2 way directional control valve. This valve is connected to all four individual control valves. When activated, it simultaneously triggers all four cylinders to extend or retract.</p>
+    
+    <h2>Operating Procedure</h2>
+    <ol>
+        <li>Ensure the air compressor is running and the air preparation unit is properly set up.</li>
+        <li>To extend a single cylinder, activate its corresponding control valve.</li>
+        <li>To retract a single cylinder, deactivate its control valve.</li>
+        <li>To extend all cylinders simultaneously, activate the group control valve.</li>
+        <li>To retract all cylinders simultaneously, deactivate the group control valve.</li>
+    </ol>
+    
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Always wear appropriate personal protective equipment (PPE) when working with pneumatic systems.</li>
+        <li>Ensure all connections are secure before pressurizing the system.</li>
+        <li>Never exceed the maximum pressure rating of any component in the system.</li>
+        <li>Be aware of moving parts and potential pinch points.</li>
+        <li>Follow proper lockout/tagout procedures when performing maintenance.</li>
+    </ul>
+    
+    <script>
+        function moveCylinder(num) {
+            const piston = document.querySelector(`#cyl${num} .piston`);
+            piston.style.bottom = piston.style.bottom === '100px' ? '0px' : '100px';
+        }
+        
+        function moveAll() {
+            const pistons = document.querySelectorAll('.piston');
+            pistons.forEach(piston => {
+                piston.style.bottom = '100px';
+            });
+        }
+        
+        function resetAll() {
+            const pistons = document.querySelectorAll('.piston');
+            pistons.forEach(piston => {
+                piston.style.bottom = '0px';
+            });
+        }
+    </script>
+</body>
+</html>
