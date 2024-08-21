@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Transformer Short Circuit Current in 3 Steps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2 {
+            color: #3498db;
+        }
+        .step {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .formula {
+            font-style: italic;
+            background-color: #e6f3ff;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        #calculator {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculate Transformer Short Circuit Current in 3 Steps</h1>
+    
+    <p>Short circuit current is a crucial parameter in electrical systems, particularly for transformers. It helps in designing protection systems and determining the withstand capabilities of electrical equipment. Here's a simple 3-step method to calculate the short circuit current of any transformer.</p>
+    
+    <div class="step">
+        <h2>Step 1: Determine the Transformer's Full Load Current</h2>
+        <p>Calculate the full load current using the transformer's rated kVA and voltage:</p>
+        <p class="formula">Full Load Current (I<sub>FL</sub>) = (kVA × 1000) / (√3 × V<sub>L-L</sub>)</p>
+        <p>Where:</p>
+        <ul>
+            <li>kVA is the transformer's rated capacity</li>
+            <li>V<sub>L-L</sub> is the line-to-line voltage</li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <h2>Step 2: Determine the Transformer's Impedance</h2>
+        <p>Find the transformer's percentage impedance (%Z) from its nameplate or specifications.</p>
+    </div>
+    
+    <div class="step">
+        <h2>Step 3: Calculate the Short Circuit Current</h2>
+        <p>Use the following formula to calculate the short circuit current:</p>
+        <p class="formula">Short Circuit Current (I<sub>SC</sub>) = (I<sub>FL</sub> × 100) / %Z</p>
+    </div>
+    
+    <div id="calculator">
+        <h2>Short Circuit Current Calculator</h2>
+        <label for="kva">Transformer Capacity (kVA):</label>
+        <input type="number" id="kva" placeholder="Enter kVA">
+        
+        <label for="voltage">Line-to-Line Voltage (V):</label>
+        <input type="number" id="voltage" placeholder="Enter voltage">
+        
+        <label for="impedance">Transformer Impedance (%):</label>
+        <input type="number" id="impedance" placeholder="Enter impedance">
+        
+        <button onclick="calculateShortCircuitCurrent()">Calculate</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateShortCircuitCurrent() {
+            const kva = parseFloat(document.getElementById('kva').value);
+            const voltage = parseFloat(document.getElementById('voltage').value);
+            const impedance = parseFloat(document.getElementById('impedance').value);
+            
+            if (isNaN(kva) || isNaN(voltage) || isNaN(impedance)) {
+                document.getElementById('result').innerHTML = "Please enter valid numbers for all fields.";
+                return;
+            }
+            
+            const fullLoadCurrent = (kva * 1000) / (Math.sqrt(3) * voltage);
+            const shortCircuitCurrent = (fullLoadCurrent * 100) / impedance;
+            
+            document.getElementById('result').innerHTML = `
+                Full Load Current: ${fullLoadCurrent.toFixed(2)} A<br>
+                Short Circuit Current: ${shortCircuitCurrent.toFixed(2)} A
+            `;
+        }
+    </script>
+</body>
+</html>
