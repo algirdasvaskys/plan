@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working and Wiring of RCCB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-style: italic;
+            color: #777;
+        }
+        .note {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Working and Wiring of RCCB (Residual Current Circuit Breaker)</h1>
+
+    <h2>1. What is an RCCB?</h2>
+    <p>An RCCB (Residual Current Circuit Breaker) is a safety device used in electrical installations to protect against electric shocks and reduce the risk of electrical fires. It is also known as an RCD (Residual Current Device) in some countries.</p>
+
+    <h2>2. How does an RCCB work?</h2>
+    <p>An RCCB works on the principle of detecting imbalances in the current flowing through the live and neutral conductors. Here's a step-by-step explanation of its operation:</p>
+    <ol>
+        <li>In normal conditions, the current flowing through the live conductor is equal to the current returning through the neutral conductor.</li>
+        <li>The RCCB contains a core balance current transformer that continuously monitors these currents.</li>
+        <li>If a fault occurs (such as current leakage to earth), it creates an imbalance between the live and neutral currents.</li>
+        <li>When this imbalance exceeds a preset threshold (typically 30mA for domestic applications), the RCCB quickly trips and disconnects the power supply.</li>
+        <li>This rapid disconnection helps prevent electric shocks and reduces the risk of electrical fires.</li>
+    </ol>
+
+    <div class="diagram">
+        [Diagram: Simple illustration of RCCB internal components and current flow]
+    </div>
+
+    <h2>3. Wiring Connection of RCCB</h2>
+    <p>Connecting an RCCB in an electrical circuit involves the following steps:</p>
+    <ol>
+        <li>Identify the incoming power supply lines (live and neutral).</li>
+        <li>Connect the incoming live wire to the "Line" terminal marked "L" on the RCCB.</li>
+        <li>Connect the incoming neutral wire to the "Line" terminal marked "N" on the RCCB.</li>
+        <li>Connect the outgoing live wire (to the circuit) to the "Load" terminal marked "L" on the RCCB.</li>
+        <li>Connect the outgoing neutral wire (to the circuit) to the "Load" terminal marked "N" on the RCCB.</li>
+        <li>If present, connect the earth wire directly to the main earthing terminal of the installation (RCCB does not interrupt the earth connection).</li>
+    </ol>
+
+    <div class="diagram">
+        [Diagram: Wiring connection schematic for RCCB installation]
+    </div>
+
+    <div class="note">
+        <strong>Note:</strong> Always ensure that the RCCB's current and voltage ratings are suitable for the circuit it's protecting. Installation should be carried out by a qualified electrician in compliance with local electrical codes and regulations.
+    </div>
+
+    <h2>4. Testing an RCCB</h2>
+    <p>To ensure proper functioning, RCCBs should be tested regularly:</p>
+    <ol>
+        <li>Locate the test button on the RCCB (usually marked "T" or "Test").</li>
+        <li>Press the test button.</li>
+        <li>The RCCB should trip immediately, cutting off the power supply.</li>
+        <li>If it doesn't trip, the RCCB is faulty and should be replaced by a qualified electrician.</li>
+    </ol>
+    <p>It's recommended to test RCCBs monthly and replace them if they fail the test or as per manufacturer's guidelines.</p>
+
+    <h2>5. Advantages of RCCB</h2>
+    <ul>
+        <li>Provides protection against electric shocks</li>
+        <li>Reduces the risk of electrical fires</li>
+        <li>Fast acting (typically within 30 milliseconds)</li>
+        <li>Can detect faults that circuit breakers or fuses might miss</li>
+        <li>Enhances overall electrical safety in homes and workplaces</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>RCCBs play a crucial role in electrical safety by quickly detecting and interrupting current imbalances. Proper installation, regular testing, and maintenance are essential to ensure their effectiveness in protecting against electric shocks and reducing the risk of electrical fires.</p>
+</body>
+</html>
