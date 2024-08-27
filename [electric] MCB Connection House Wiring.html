@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCB Connection House Wiring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #e74c3c;
+            text-align: center;
+        }
+        h2 {
+            color: #3498db;
+        }
+        .warning {
+            background-color: #ffecb3;
+            border-left: 5px solid #ffa000;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>MCB Connection House Wiring</h1>
+    
+    <div class="warning">
+        <strong>Warning:</strong> Electrical work can be dangerous. Always consult a licensed electrician for any electrical installations or modifications in your home.
+    </div>
+
+    <h2>What is an MCB?</h2>
+    <p>MCB stands for Miniature Circuit Breaker. It is an automatically operated electrical switch designed to protect an electrical circuit from damage caused by overload or short circuit.</p>
+
+    <h2>Steps for MCB Connection in House Wiring</h2>
+    <ol>
+        <li><strong>Turn off the main power supply:</strong> Before starting any electrical work, ensure that the main power supply to your house is turned off at the meter box.</li>
+        
+        <li><strong>Install the MCB board:</strong> Mount the MCB board securely on the wall in a dry, easily accessible location.</li>
+        
+        <li><strong>Connect the main incoming supply:</strong> 
+            <ul>
+                <li>Connect the incoming live wire (usually red or brown) to the top terminal of the main switch.</li>
+                <li>Connect the neutral wire (usually black or blue) to the neutral bar.</li>
+                <li>Connect the earth wire (usually green/yellow) to the earth bar.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Install individual MCBs:</strong> Install MCBs for different circuits (lighting, sockets, heavy appliances) in the MCB board.</li>
+        
+        <li><strong>Connect outgoing circuits:</strong> 
+            <ul>
+                <li>Connect the live wire from each circuit to the corresponding MCB.</li>
+                <li>Connect the neutral wire from each circuit to the neutral bar.</li>
+                <li>Connect the earth wire from each circuit to the earth bar.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Label the circuits:</strong> Clearly label each MCB with the area or appliance it controls.</li>
+        
+        <li><strong>Double-check connections:</strong> Ensure all connections are tight and secure.</li>
+        
+        <li><strong>Close the MCB board:</strong> Securely close the MCB board cover.</li>
+        
+        <li><strong>Turn on the main power supply:</strong> Switch on the main power and test each circuit.</li>
+    </ol>
+
+    <h2>Important Safety Considerations</h2>
+    <ul>
+        <li>Always use the correct wire sizes for each circuit.</li>
+        <li>Ensure proper earthing for all circuits and metal enclosures.</li>
+        <li>Use MCBs with appropriate amperage ratings for each circuit.</li>
+        <li>Install RCDs (Residual Current Devices) for additional safety, especially in wet areas.</li>
+        <li>Follow local electrical codes and regulations.</li>
+        <li>If in doubt, always consult a professional electrician.</li>
+    </ul>
+
+    <h2>Maintenance</h2>
+    <p>Regularly check your MCB board for any signs of overheating, burning smell, or physical damage. Test MCBs and RCDs periodically as per manufacturer's instructions.</p>
+
+    <script>
+        // This script creates a simple diagram of an MCB connection
+        const canvas = document.createElement('canvas');
+        canvas.width = 300;
+        canvas.height = 200;
+        document.body.appendChild(canvas);
+        
+        const ctx = canvas.getContext('2d');
+        
+        // Draw MCB box
+        ctx.strokeRect(50, 50, 200, 100);
+        
+        // Draw MCB switches
+        for (let i = 0; i < 4; i++) {
+            ctx.beginPath();
+            ctx.moveTo(80 + i * 50, 70);
+            ctx.lineTo(80 + i * 50, 130);
+            ctx.stroke();
+        }
+        
+        // Label
+        ctx.font = '14px Arial';
+        ctx.fillText('MCB Board', 120, 40);
+        ctx.fillText('Main Supply', 10, 100);
+        ctx.fillText('To Circuits', 260, 100);
+        
+        // Arrows
+        ctx.beginPath();
+        ctx.moveTo(40, 100);
+        ctx.lineTo(50, 100);
+        ctx.moveTo(250, 100);
+        ctx.lineTo(260, 100);
+        ctx.stroke();
+    </script>
+</body>
+</html>
