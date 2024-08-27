@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCR Commutation Techniques</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .subsection {
+            margin-left: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>SCR Commutation: Switching off Circuits</h1>
+
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>Silicon Controlled Rectifiers (SCRs) are important power electronic devices used in various applications. Understanding SCR commutation techniques is crucial for effectively controlling these devices.</p>
+    </div>
+
+    <div class="section">
+        <h2>What is Commutation?</h2>
+        <p>Commutation in SCRs refers to the process of turning off the device by reducing its anode current below the holding current. Unlike transistors, SCRs cannot be turned off by removing the gate signal; they require special commutation techniques.</p>
+    </div>
+
+    <div class="section">
+        <h2>Thyristor Class-B Commutation</h2>
+        <p>Class-B commutation, also known as natural commutation, occurs when the anode-to-cathode voltage becomes zero or reverse-biased due to the natural behavior of the circuit.</p>
+        
+        <div class="subsection">
+            <h3>Characteristics of Class-B Commutation:</h3>
+            <ul>
+                <li>Occurs in AC circuits</li>
+                <li>No external commutation circuit required</li>
+                <li>Relies on the natural zero-crossing of the AC waveform</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>SCR Commutation Techniques</h2>
+        <p>There are several methods to achieve SCR commutation:</p>
+
+        <div class="subsection">
+            <h3>1. Natural Commutation</h3>
+            <p>This occurs in AC circuits when the anode current naturally falls below the holding current due to the reversal of the supply voltage.</p>
+        </div>
+
+        <div class="subsection">
+            <h3>2. Forced Commutation</h3>
+            <p>Used in DC circuits where natural commutation is not possible. It involves using additional circuit elements to force the anode current to zero.</p>
+            
+            <h4>Types of Forced Commutation:</h4>
+            <ul>
+                <li><strong>Class A:</strong> Self-commutation by an L-C circuit</li>
+                <li><strong>Class B:</strong> Self-commutation by an L-C-R circuit</li>
+                <li><strong>Class C:</strong> Separate voltage source commutation</li>
+                <li><strong>Class D:</strong> Complementary commutation</li>
+                <li><strong>Class E:</strong> External pulse commutation</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Class-B Commutation Circuit</h2>
+        <p>In Class-B commutation, an L-C-R circuit is used to create a resonant condition that forces the SCR current to zero.</p>
+        
+        <div class="subsection">
+            <h3>Circuit Components:</h3>
+            <ul>
+                <li>Inductor (L)</li>
+                <li>Capacitor (C)</li>
+                <li>Resistor (R)</li>
+                <li>SCR</li>
+                <li>Load</li>
+            </ul>
+        </div>
+
+        <div class="subsection">
+            <h3>Working Principle:</h3>
+            <ol>
+                <li>The capacitor is initially charged to a voltage higher than the supply voltage.</li>
+                <li>When the SCR is triggered, the capacitor discharges through the SCR and the load.</li>
+                <li>The L-C circuit creates an oscillating current that reverses the SCR current.</li>
+                <li>When the SCR current falls below the holding current, the SCR turns off.</li>
+                <li>The resistor helps in damping the oscillations.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Advantages of Class-B Commutation</h2>
+        <ul>
+            <li>Simple circuit design</li>
+            <li>No need for additional power sources</li>
+            <li>Suitable for both AC and DC applications</li>
+            <li>Relatively low cost</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Disadvantages of Class-B Commutation</h2>
+        <ul>
+            <li>Limited to specific frequency ranges</li>
+            <li>Can introduce harmonics in the circuit</li>
+            <li>May require larger components for high-power applications</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Conclusion</h2>
+        <p>Understanding SCR commutation techniques, particularly Class-B commutation, is essential for designing efficient and reliable power electronic circuits. These methods allow for precise control of SCRs in both AC and DC applications, enabling their use in a wide range of industrial and consumer electronics.</p>
+    </div>
+</body>
+</html>
