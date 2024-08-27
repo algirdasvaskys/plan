@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star-Delta Contactor Sizing Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .formula {
+            background-color: #e8f4f8;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        @media screen and (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Star-Delta Contactor Sizing Guide</h1>
+    
+    <h2>Introduction</h2>
+    <p>Star-delta starting is a method used to reduce the starting current of three-phase induction motors. This guide will help you determine the correct contactor sizes for star-delta motor starting.</p>
+    
+    <h2>Step 1: Determine Motor Specifications</h2>
+    <p>Before sizing contactors, you need to know the following motor specifications:</p>
+    <ul>
+        <li>Rated power (kW or HP)</li>
+        <li>Rated voltage (V)</li>
+        <li>Rated current (A)</li>
+        <li>Power factor (cos φ)</li>
+    </ul>
+    
+    <h2>Step 2: Calculate Star and Delta Currents</h2>
+    <div class="formula">
+        <p><strong>Delta Current (I<sub>Δ</sub>):</strong> This is the rated current of the motor.</p>
+        <p><strong>Star Current (I<sub>Y</sub>):</strong> I<sub>Y</sub> = I<sub>Δ</sub> / √3 ≈ 0.58 × I<sub>Δ</sub></p>
+    </div>
+    
+    <h2>Step 3: Determine Contactor Ratings</h2>
+    <p>For star-delta starting, you need three contactors:</p>
+    <ol>
+        <li><strong>Main Contactor (K1):</strong> Rated for full delta current (I<sub>Δ</sub>)</li>
+        <li><strong>Star Contactor (K2):</strong> Rated for star current (I<sub>Y</sub>)</li>
+        <li><strong>Delta Contactor (K3):</strong> Rated for delta current (I<sub>Δ</sub>)</li>
+    </ol>
+    
+    <h2>Step 4: Select Contactor Sizes</h2>
+    <p>Choose contactors with ratings equal to or greater than the calculated currents. Use the manufacturer's sizing charts to select the appropriate contactor models.</p>
+    
+    <h2>Contactor Sizing Example</h2>
+    <p>Let's consider a motor with the following specifications:</p>
+    <ul>
+        <li>Power: 30 kW</li>
+        <li>Voltage: 400V</li>
+        <li>Rated current: 58A</li>
+    </ul>
+    
+    <table>
+        <tr>
+            <th>Contactor</th>
+            <th>Current Calculation</th>
+            <th>Minimum Rating</th>
+        </tr>
+        <tr>
+            <td>Main (K1)</td>
+            <td>I<sub>Δ</sub> = 58A</td>
+            <td>58A</td>
+        </tr>
+        <tr>
+            <td>Star (K2)</td>
+            <td>I<sub>Y</sub> = 58A / √3 ≈ 33.5A</td>
+            <td>33.5A</td>
+        </tr>
+        <tr>
+            <td>Delta (K3)</td>
+            <td>I<sub>Δ</sub> = 58A</td>
+            <td>58A</td>
+        </tr>
+    </table>
+    
+    <h2>Additional Considerations</h2>
+    <ul>
+        <li>Always round up to the next available contactor size.</li>
+        <li>Consider the switching frequency and duty cycle when selecting contactors.</li>
+        <li>Ensure the contactors are compatible with the control voltage of your system.</li>
+        <li>Consult local electrical codes and standards for specific requirements.</li>
+    </ul>
+    
+    <h2>Conclusion</h2>
+    <p>Proper sizing of star-delta contactors is crucial for the safe and efficient operation of three-phase induction motors. Always consult with a qualified electrician or engineer when designing and implementing motor control systems.</p>
+</body>
+</html>
