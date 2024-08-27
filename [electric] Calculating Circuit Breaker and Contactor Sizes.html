@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculating Circuit Breaker and Contactor Sizes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .note {
+            background-color: #e6f7ff;
+            border-left: 4px solid #1890ff;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculating Circuit Breaker and Contactor Sizes</h1>
+
+    <h2>1. Calculating Circuit Breaker Size</h2>
+    <p>To determine the appropriate circuit breaker size, follow these steps:</p>
+    <ol>
+        <li>Calculate the full load current (FLC) of the equipment.</li>
+        <li>Multiply the FLC by 125% to account for continuous loads.</li>
+        <li>Round up to the next standard circuit breaker size.</li>
+    </ol>
+    <div class="formula">
+        <strong>Formula:</strong> Circuit Breaker Size = FLC × 1.25 (rounded up)
+    </div>
+    <div class="note">
+        <strong>Note:</strong> Always consult local electrical codes and manufacturer specifications for specific requirements.
+    </div>
+
+    <h2>2. Rating of Circuit Breakers</h2>
+    <p>The rating of a circuit breaker includes several important parameters:</p>
+    <ul>
+        <li><strong>Ampere Rating:</strong> The maximum current the breaker can carry continuously.</li>
+        <li><strong>Voltage Rating:</strong> The maximum voltage the breaker can safely interrupt.</li>
+        <li><strong>Interrupting Capacity:</strong> The maximum fault current the breaker can safely interrupt.</li>
+        <li><strong>Number of Poles:</strong> Single-pole, double-pole, or three-pole, depending on the application.</li>
+    </ul>
+    <div class="note">
+        <strong>Example:</strong> A 20A, 120/240V, 10kA, double-pole circuit breaker
+    </div>
+
+    <h2>3. Sizing Contactors</h2>
+    <p>To select the appropriate contactor size, consider the following factors:</p>
+    <ol>
+        <li>Determine the full load current (FLC) of the load.</li>
+        <li>Consider the voltage and phase of the system.</li>
+        <li>Factor in the type of load (resistive, inductive, or capacitive).</li>
+        <li>Account for the duty cycle and operating frequency.</li>
+    </ol>
+    <div class="formula">
+        <strong>General Rule:</strong> Contactor Rating ≥ 115% of FLC
+    </div>
+    <p>Contactor sizes are typically given in standard ratings, such as:</p>
+    <ul>
+        <li>NEMA Sizes: 00, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</li>
+        <li>IEC Ratings: AC-1, AC-2, AC-3, AC-4 (for different load types)</li>
+    </ul>
+    <div class="note">
+        <strong>Note:</strong> Always refer to manufacturer specifications and consider factors like ambient temperature, altitude, and specific application requirements when selecting a contactor.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>Proper sizing of circuit breakers and contactors is crucial for the safe and efficient operation of electrical systems. Always consult with a qualified electrician or engineer for specific applications and to ensure compliance with local electrical codes and standards.</p>
+</body>
+</html>
