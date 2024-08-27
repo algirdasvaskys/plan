@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single-Phase Induction Motors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .motor-type {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .motor-type h2 {
+            margin-top: 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Single-Phase Induction Motors</h1>
+    
+    <div class="motor-type">
+        <h2>1. Single-Phase Induction Motor</h2>
+        <p>A single-phase induction motor is an electric motor that operates on a single-phase power supply and uses electromagnetic induction to convert electrical energy into mechanical energy.</p>
+        <h3>Working Principle:</h3>
+        <ul>
+            <li>Uses a single-phase AC power supply</li>
+            <li>Consists of a stator with a single-phase winding and a rotor (usually a squirrel cage type)</li>
+            <li>Produces a pulsating magnetic field, which alone cannot produce a starting torque</li>
+            <li>Requires additional starting mechanisms to create a rotating magnetic field</li>
+        </ul>
+    </div>
+
+    <div class="motor-type">
+        <h2>2. Capacitor Start Capacitor Run Motor</h2>
+        <p>This type of motor uses two capacitors: one for starting and another for running. It offers high starting torque and improved running performance.</p>
+        <h3>Method:</h3>
+        <ol>
+            <li>Starting:
+                <ul>
+                    <li>Both start and run capacitors are connected in parallel with the auxiliary winding</li>
+                    <li>This creates a phase difference between the main and auxiliary windings</li>
+                    <li>Results in a strong rotating magnetic field for high starting torque</li>
+                </ul>
+            </li>
+            <li>Running:
+                <ul>
+                    <li>Once the motor reaches about 75% of its rated speed, a centrifugal switch disconnects the starting capacitor</li>
+                    <li>The run capacitor remains in the circuit, improving power factor and motor efficiency</li>
+                </ul>
+            </li>
+        </ol>
+        <h3>Advantages:</h3>
+        <ul>
+            <li>High starting torque</li>
+            <li>Smooth acceleration</li>
+            <li>Improved power factor during running</li>
+            <li>Higher efficiency compared to other single-phase motors</li>
+        </ul>
+    </div>
+
+    <div class="motor-type">
+        <h2>3. Capacitor Start Induction Motor</h2>
+        <p>This motor uses a capacitor only during the starting phase to provide the initial torque.</p>
+        <h3>Method:</h3>
+        <ol>
+            <li>Starting:
+                <ul>
+                    <li>A capacitor is connected in series with the auxiliary winding</li>
+                    <li>This creates a phase difference between the main and auxiliary windings</li>
+                    <li>Produces a rotating magnetic field for starting torque</li>
+                </ul>
+            </li>
+            <li>Running:
+                <ul>
+                    <li>When the motor reaches about 75% of its rated speed, a centrifugal switch disconnects the capacitor and auxiliary winding</li>
+                    <li>The motor continues to run on the main winding alone</li>
+                </ul>
+            </li>
+        </ol>
+        <h3>Advantages:</h3>
+        <ul>
+            <li>Higher starting torque compared to split-phase motors</li>
+            <li>More economical than capacitor start capacitor run motors</li>
+            <li>Suitable for applications requiring high starting torque but not continuous high torque</li>
+        </ul>
+    </div>
+
+    <p>These single-phase induction motor types are widely used in various applications, from household appliances to industrial machinery, depending on the specific torque and efficiency requirements of the application.</p>
+</body>
+</html>
