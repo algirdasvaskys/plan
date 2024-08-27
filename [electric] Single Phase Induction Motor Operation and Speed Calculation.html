@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Phase Induction Motor Operation and Speed Calculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .note {
+            background-color: #e6f3ff;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Single Phase Induction Motor Operation and Speed Calculation</h1>
+
+    <h2>Single Phase Induction Motor Operation</h2>
+    <p>A single-phase induction motor is an electric motor that operates on a single-phase power supply. It consists of two main components:</p>
+    <ol>
+        <li>Stator: The stationary part of the motor with a single-phase winding.</li>
+        <li>Rotor: The rotating part, typically a squirrel-cage rotor.</li>
+    </ol>
+    <p>The operation of a single-phase induction motor can be explained in the following steps:</p>
+    <ol>
+        <li>When power is applied to the stator winding, it creates a pulsating magnetic field.</li>
+        <li>This pulsating field can be resolved into two rotating magnetic fields of equal magnitude, rotating in opposite directions.</li>
+        <li>These fields induce currents in the rotor, which interact with the magnetic fields to produce torque.</li>
+        <li>However, the opposing torques cancel each other out, so the motor doesn't start on its own.</li>
+        <li>To overcome this, single-phase motors use various starting methods (like split-phase, capacitor-start, or shaded-pole designs) to create a rotating magnetic field and provide starting torque.</li>
+        <li>Once the motor starts rotating, it continues to run due to the interaction between the induced rotor currents and the stator's magnetic field.</li>
+    </ol>
+
+    <h2>Motor RPM and Synchronous Speed</h2>
+    <p>To understand motor RPM (Revolutions Per Minute) and synchronous speed, we need to define a few terms:</p>
+    <ul>
+        <li><strong>Synchronous Speed (N<sub>s</sub>):</strong> The speed of rotation of the magnetic field in the stator.</li>
+        <li><strong>Actual Rotor Speed (N):</strong> The actual speed at which the rotor rotates.</li>
+        <li><strong>Slip (s):</strong> The difference between synchronous speed and actual rotor speed, expressed as a fraction of synchronous speed.</li>
+    </ul>
+
+    <h3>Calculating Synchronous Speed</h3>
+    <p>The synchronous speed of an induction motor is determined by two factors:</p>
+    <ol>
+        <li>The frequency of the power supply (f)</li>
+        <li>The number of poles in the stator winding (P)</li>
+    </ol>
+    <p>The formula for calculating synchronous speed is:</p>
+    <div class="formula">
+        N<sub>s</sub> = (120 * f) / P
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>N<sub>s</sub> is the synchronous speed in RPM</li>
+        <li>f is the frequency in Hz</li>
+        <li>P is the number of poles</li>
+    </ul>
+
+    <h3>Calculating Motor RPM</h3>
+    <p>The actual motor RPM is always slightly less than the synchronous speed due to slip. To calculate motor RPM, we use the concept of slip:</p>
+    <div class="formula">
+        s = (N<sub>s</sub> - N) / N<sub>s</sub>
+    </div>
+    <p>Rearranging this formula, we get:</p>
+    <div class="formula">
+        N = N<sub>s</sub> * (1 - s)
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>N is the actual motor speed in RPM</li>
+        <li>N<sub>s</sub> is the synchronous speed in RPM</li>
+        <li>s is the slip (typically between 0.02 and 0.05 for normal operating conditions)</li>
+    </ul>
+
+    <div class="note">
+        <strong>Note:</strong> The slip varies depending on the motor load. At no load, the slip is very small, and the motor runs close to synchronous speed. As the load increases, the slip increases, and the motor speed decreases.
+    </div>
+
+    <h3>Example Calculation</h3>
+    <p>Let's calculate the synchronous speed and motor RPM for a 4-pole single-phase induction motor operating on a 60 Hz power supply, with a slip of 0.03 (3%).</p>
+    <ol>
+        <li>Calculate synchronous speed:
+            <div class="formula">
+                N<sub>s</sub> = (120 * f) / P = (120 * 60) / 4 = 1800 RPM
+            </div>
+        </li>
+        <li>Calculate motor RPM:
+            <div class="formula">
+                N = N<sub>s</sub> * (1 - s) = 1800 * (1 - 0.03) = 1746 RPM
+            </div>
+        </li>
+    </ol>
+
+    <p>In this example, the synchronous speed is 1800 RPM, and the actual motor speed is 1746 RPM.</p>
+</body>
+</html>
