@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical Engineering Circuit Analysis Methods</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .method {
+            background-color: #f9f9f9;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .method h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        .formula {
+            background-color: #e8f4f8;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Electrical Engineering Circuit Analysis Methods</h1>
+    
+    <p>Circuit analysis is a fundamental skill in electrical engineering. It involves analyzing electrical circuits to determine various electrical quantities such as voltage, current, power, and impedance. Here are some of the most common methods used in circuit analysis:</p>
+
+    <div class="method">
+        <h3>1. Ohm's Law</h3>
+        <p>Ohm's Law is the foundation of circuit analysis. It describes the relationship between voltage (V), current (I), and resistance (R) in an electrical circuit.</p>
+        <p class="formula">V = I * R</p>
+        <p>This law is used to calculate any of these three quantities when the other two are known.</p>
+    </div>
+
+    <div class="method">
+        <h3>2. Kirchhoff's Current Law (KCL)</h3>
+        <p>KCL states that the sum of currents entering a node is equal to the sum of currents leaving that node.</p>
+        <p class="formula">Σ I(entering) = Σ I(leaving)</p>
+        <p>This law is used to analyze current distribution in complex circuits.</p>
+    </div>
+
+    <div class="method">
+        <h3>3. Kirchhoff's Voltage Law (KVL)</h3>
+        <p>KVL states that the sum of all voltages around any closed loop in a circuit must equal zero.</p>
+        <p class="formula">Σ V = 0</p>
+        <p>This law is used to analyze voltage distribution in complex circuits.</p>
+    </div>
+
+    <div class="method">
+        <h3>4. Nodal Analysis</h3>
+        <p>Nodal analysis is based on KCL and involves solving for node voltages in a circuit. It's particularly useful for circuits with voltage sources.</p>
+        <p>Steps:</p>
+        <ol>
+            <li>Choose a reference node (ground)</li>
+            <li>Identify the other nodes</li>
+            <li>Apply KCL to each node</li>
+            <li>Solve the resulting system of equations</li>
+        </ol>
+    </div>
+
+    <div class="method">
+        <h3>5. Mesh Analysis</h3>
+        <p>Mesh analysis is based on KVL and involves solving for mesh currents in a circuit. It's particularly useful for circuits with current sources.</p>
+        <p>Steps:</p>
+        <ol>
+            <li>Identify meshes in the circuit</li>
+            <li>Assign mesh currents</li>
+            <li>Apply KVL to each mesh</li>
+            <li>Solve the resulting system of equations</li>
+        </ol>
+    </div>
+
+    <div class="method">
+        <h3>6. Superposition Theorem</h3>
+        <p>The superposition theorem states that in a linear circuit with multiple sources, the total response is the sum of the responses caused by each source acting alone.</p>
+        <p>Steps:</p>
+        <ol>
+            <li>Turn off all but one source</li>
+            <li>Calculate the circuit response</li>
+            <li>Repeat for each source</li>
+            <li>Sum up all the individual responses</li>
+        </ol>
+    </div>
+
+    <div class="method">
+        <h3>7. Thévenin's Theorem</h3>
+        <p>Thévenin's theorem states that any linear circuit can be replaced by an equivalent circuit consisting of a voltage source in series with a resistance.</p>
+        <p>Steps:</p>
+        <ol>
+            <li>Remove the load from the original circuit</li>
+            <li>Calculate the open-circuit voltage (Thévenin voltage)</li>
+            <li>Calculate the short-circuit current</li>
+            <li>Calculate the Thévenin resistance</li>
+        </ol>
+    </div>
+
+    <div class="method">
+        <h3>8. Norton's Theorem</h3>
+        <p>Norton's theorem is the dual of Thévenin's theorem. It states that any linear circuit can be replaced by an equivalent circuit consisting of a current source in parallel with a resistance.</p>
+        <p>Steps:</p>
+        <ol>
+            <li>Remove the load from the original circuit</li>
+            <li>Calculate the short-circuit current (Norton current)</li>
+            <li>Calculate the open-circuit voltage</li>
+            <li>Calculate the Norton resistance</li>
+        </ol>
+    </div>
+
+    <p>These methods form the core of electrical engineering circuit analysis. Mastering these techniques allows engineers to analyze and design complex electrical systems efficiently.</p>
+</body>
+</html>
