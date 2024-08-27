@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wattmeter Connection in Circuits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .wattmeter-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px auto;
+            display: block;
+        }
+        .problem {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wattmeter Connection in Circuits</h1>
+
+    <p>A wattmeter is an instrument used to measure the electric power (or the rate of energy transfer) in a circuit. Understanding how to properly connect a wattmeter is crucial for accurate power measurements.</p>
+
+    <h2>Types of Wattmeter Connections</h2>
+
+    <p>There are two main types of wattmeter connections:</p>
+
+    <ol>
+        <li><strong>Low Power Factor (LPF) Connection</strong></li>
+        <li><strong>High Power Factor (HPF) Connection</strong></li>
+    </ol>
+
+    <h2>1. Low Power Factor (LPF) Connection</h2>
+
+    <p>In the LPF connection:</p>
+    <ul>
+        <li>The current coil is connected in series with the load.</li>
+        <li>The potential coil is connected across the load.</li>
+    </ul>
+
+    <svg class="wattmeter-diagram" viewBox="0 0 400 200">
+        <rect x="50" y="50" width="100" height="60" fill="none" stroke="black" />
+        <text x="100" y="85" text-anchor="middle">Wattmeter</text>
+        <line x1="0" y1="80" x2="50" y2="80" stroke="black" />
+        <line x1="150" y1="80" x2="400" y2="80" stroke="black" />
+        <rect x="300" y="50" width="60" height="60" fill="none" stroke="black" />
+        <text x="330" y="85" text-anchor="middle">Load</text>
+        <line x1="50" y1="130" x2="300" y2="130" stroke="black" stroke-dasharray="5,5" />
+        <text x="200" y="30" text-anchor="middle">LPF Connection</text>
+    </svg>
+
+    <p>This connection is used when the circuit has a low power factor (typically less than 0.5).</p>
+
+    <h2>2. High Power Factor (HPF) Connection</h2>
+
+    <p>In the HPF connection:</p>
+    <ul>
+        <li>The potential coil is connected before the current coil.</li>
+        <li>The current coil is still in series with the load.</li>
+    </ul>
+
+    <svg class="wattmeter-diagram" viewBox="0 0 400 200">
+        <rect x="50" y="50" width="100" height="60" fill="none" stroke="black" />
+        <text x="100" y="85" text-anchor="middle">Wattmeter</text>
+        <line x1="0" y1="80" x2="50" y2="80" stroke="black" />
+        <line x1="150" y1="80" x2="400" y2="80" stroke="black" />
+        <rect x="300" y="50" width="60" height="60" fill="none" stroke="black" />
+        <text x="330" y="85" text-anchor="middle">Load</text>
+        <line x1="0" y1="130" x2="50" y2="130" stroke="black" stroke-dasharray="5,5" />
+        <text x="200" y="30" text-anchor="middle">HPF Connection</text>
+    </svg>
+
+    <p>This connection is used when the circuit has a high power factor (typically greater than 0.5).</p>
+
+    <h2>Choosing the Correct Connection</h2>
+
+    <p>The choice between LPF and HPF connections depends on the power factor of the circuit:</p>
+    <ul>
+        <li>For power factors less than 0.5, use the LPF connection.</li>
+        <li>For power factors greater than 0.5, use the HPF connection.</li>
+    </ul>
+
+    <p>Using the correct connection ensures more accurate power measurements, especially in circuits with very high or very low power factors.</p>
+
+    <div class="problem">
+        <h2>Problem: Wattmeter Connection</h2>
+        <p><strong>Question:</strong> A wattmeter is to be connected in a circuit with a power factor of 0.8. The load draws a current of 5A at 220V. Which type of connection should be used, and what would be the expected wattmeter reading?</p>
+        
+        <p><strong>Solution:</strong></p>
+        <ol>
+            <li>Given power factor = 0.8, which is greater than 0.5, we should use the HPF connection.</li>
+            <li>To calculate the expected wattmeter reading:
+                <ul>
+                    <li>Power = Voltage × Current × Power Factor</li>
+                    <li>P = 220V × 5A × 0.8</li>
+                    <li>P = 880 Watts</li>
+                </ul>
+            </li>
+        </ol>
+        <p><strong>Answer:</strong> Use the High Power Factor (HPF) connection. The expected wattmeter reading would be 880 Watts.</p>
+    </div>
+</body>
+</html>
