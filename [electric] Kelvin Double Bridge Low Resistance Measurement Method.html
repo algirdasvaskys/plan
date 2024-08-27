@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelvin Double Bridge: Low Resistance Measurement Method</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .problem {
+            background-color: #e6f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .solution {
+            background-color: #e6ffe6;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kelvin Double Bridge: Low Resistance Measurement Method</h1>
+
+    <h2>Introduction</h2>
+    <p>The Kelvin Double Bridge is a precision method used for measuring very low resistances, typically in the range of 1 Ω or less. It's an improvement over the Wheatstone bridge, which becomes inaccurate for low resistance measurements due to the effects of contact and lead resistances.</p>
+
+    <h2>Principle</h2>
+    <p>The Kelvin Double Bridge uses a double set of ratio arms to eliminate the effects of lead and contact resistances. It consists of two bridge circuits: the main bridge and an auxiliary bridge.</p>
+
+    <h2>Circuit Diagram</h2>
+    <p>[A circuit diagram would be inserted here, but as I cannot generate images, I'll describe it textually]</p>
+    <p>The circuit consists of:</p>
+    <ul>
+        <li>Unknown resistance (R<sub>x</sub>)</li>
+        <li>Standard resistance (R<sub>s</sub>)</li>
+        <li>Two pairs of ratio arms (R<sub>1</sub>, R<sub>2</sub> and r<sub>1</sub>, r<sub>2</sub>)</li>
+        <li>Galvanometer (G)</li>
+        <li>Battery (B)</li>
+    </ul>
+
+    <h2>Working Principle</h2>
+    <p>When the bridge is balanced (no current through the galvanometer), the following equation holds:</p>
+    <div class="formula">
+        R<sub>x</sub> / R<sub>s</sub> = R<sub>1</sub> / R<sub>2</sub> = r<sub>1</sub> / r<sub>2</sub>
+    </div>
+
+    <h2>Advantages</h2>
+    <ul>
+        <li>High accuracy for very low resistance measurements</li>
+        <li>Eliminates errors due to lead and contact resistances</li>
+        <li>Suitable for precision measurements in laboratories</li>
+    </ul>
+
+    <h2>Limitations</h2>
+    <ul>
+        <li>Complex setup compared to simpler bridge circuits</li>
+        <li>Requires a high-quality standard resistor</li>
+        <li>Not suitable for high resistance measurements</li>
+    </ul>
+
+    <h2>Problem Solving</h2>
+    <div class="problem">
+        <h3>Problem 1</h3>
+        <p>In a Kelvin Double Bridge, R<sub>1</sub> = 100 Ω, R<sub>2</sub> = 10 Ω, r<sub>1</sub> = 10 Ω, r<sub>2</sub> = 1 Ω, and R<sub>s</sub> = 0.1 Ω. Calculate the unknown resistance R<sub>x</sub>.</p>
+    </div>
+
+    <div class="solution">
+        <h3>Solution</h3>
+        <p>Using the balance equation: R<sub>x</sub> / R<sub>s</sub> = R<sub>1</sub> / R<sub>2</sub> = r<sub>1</sub> / r<sub>2</sub></p>
+        <p>R<sub>x</sub> / 0.1 = 100 / 10 = 10 / 1 = 10</p>
+        <p>R<sub>x</sub> = 0.1 × 10 = 1 Ω</p>
+        <p>Therefore, the unknown resistance R<sub>x</sub> is 1 Ω.</p>
+    </div>
+
+    <div class="problem">
+        <h3>Problem 2</h3>
+        <p>A Kelvin Double Bridge is used to measure a low resistance. The standard resistor R<sub>s</sub> is 0.01 Ω. The ratio arms are set such that R<sub>1</sub> = 1000 Ω, R<sub>2</sub> = 100 Ω, r<sub>1</sub> = 100 Ω, and r<sub>2</sub> = 10 Ω. What is the value of the unknown resistance R<sub>x</sub>?</p>
+    </div>
+
+    <div class="solution">
+        <h3>Solution</h3>
+        <p>Using the balance equation: R<sub>x</sub> / R<sub>s</sub> = R<sub>1</sub> / R<sub>2</sub> = r<sub>1</sub> / r<sub>2</sub></p>
+        <p>R<sub>x</sub> / 0.01 = 1000 / 100 = 100 / 10 = 10</p>
+        <p>R<sub>x</sub> = 0.01 × 10 = 0.1 Ω</p>
+        <p>Therefore, the unknown resistance R<sub>x</sub> is 0.1 Ω.</p>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The Kelvin Double Bridge is a powerful tool for measuring very low resistances with high accuracy. By understanding its principles and applying them correctly, engineers and scientists can make precise measurements in various applications, from electrical component testing to material characterization.</p>
+</body>
+</html>
