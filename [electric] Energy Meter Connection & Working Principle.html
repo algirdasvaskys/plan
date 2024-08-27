@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Meter: Connection & Working Principle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .meter-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .meter-diagram::after {
+            content: "Energy Meter Diagram";
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Energy Meter: Connection & Working Principle</h1>
+
+    <h2>1. Introduction</h2>
+    <p>An energy meter, also known as an electricity meter or electric meter, is a device that measures the amount of electrical energy consumed by a residence, business, or electrically powered device. It is a crucial component in the electrical distribution system, allowing utility companies to bill customers accurately for their energy usage.</p>
+
+    <h2>2. Types of Energy Meters</h2>
+    <p>There are several types of energy meters, including:</p>
+    <ul>
+        <li>Electromechanical Induction Meters</li>
+        <li>Electronic Meters</li>
+        <li>Smart Meters</li>
+    </ul>
+    <p>This document will focus primarily on the working principle of electronic meters, as they are the most common type in modern installations.</p>
+
+    <h2>3. Connection of an Energy Meter</h2>
+    <p>An energy meter is typically connected between the utility company's power supply and the consumer's electrical installation. The basic connection involves:</p>
+    <ol>
+        <li>Two incoming phase wires from the utility company</li>
+        <li>Two outgoing phase wires to the consumer's main switchboard</li>
+        <li>One neutral wire</li>
+    </ol>
+    <p>In a single-phase system, there will be one phase wire and one neutral wire. In a three-phase system, there will be three phase wires and one neutral wire.</p>
+
+    <div class="meter-diagram"></div>
+
+    <h2>4. Working Principle of an Electronic Energy Meter</h2>
+    <p>An electronic energy meter operates on the principle of digital sampling of voltage and current signals. The process involves several steps:</p>
+
+    <h3>4.1 Voltage and Current Sensing</h3>
+    <p>The meter uses voltage and current transformers to step down the input voltage and current to levels suitable for electronic measurement.</p>
+
+    <h3>4.2 Analog-to-Digital Conversion</h3>
+    <p>The analog voltage and current signals are converted into digital form using analog-to-digital converters (ADCs).</p>
+
+    <h3>4.3 Multiplication and Integration</h3>
+    <p>A microcontroller multiplies the digitized voltage and current values to calculate instantaneous power. It then integrates this power over time to determine the energy consumed.</p>
+
+    <h3>4.4 Pulse Generation</h3>
+    <p>The microcontroller generates pulses proportional to the calculated energy. Each pulse represents a fixed amount of energy consumed.</p>
+
+    <h3>4.5 Display and Communication</h3>
+    <p>The accumulated energy consumption is displayed on an LCD or LED display. In smart meters, this data can also be transmitted to the utility company through various communication protocols.</p>
+
+    <h2>5. Key Components of an Electronic Energy Meter</h2>
+    <ul>
+        <li>Voltage and Current Transformers</li>
+        <li>Analog-to-Digital Converters</li>
+        <li>Microcontroller</li>
+        <li>Display Unit</li>
+        <li>Power Supply Unit</li>
+        <li>Communication Module (for smart meters)</li>
+    </ul>
+
+    <h2>6. Accuracy and Calibration</h2>
+    <p>Energy meters are designed to be highly accurate, typically within ±0.5% to ±2% depending on the class of the meter. Regular calibration is essential to maintain this accuracy over time.</p>
+
+    <h2>7. Conclusion</h2>
+    <p>Energy meters play a vital role in the electrical distribution system, enabling accurate measurement and billing of electrical energy consumption. Understanding their connection and working principle is crucial for electrical engineers, technicians, and even consumers to ensure proper installation, maintenance, and usage of these devices.</p>
+</body>
+</html>
