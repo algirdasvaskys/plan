@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase Failure Relay and Protection Systems</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+        }
+        @media (max-width: 600px) {
+            .diagram {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Phase Failure Relay and Protection Systems</h1>
+
+    <h2>1. Phase Failure Relay (PFR)</h2>
+    <p>A Phase Failure Relay (PFR) is a protective device used in electrical systems to detect and respond to phase failures or imbalances in three-phase power supplies. Its main functions include:</p>
+    <ul>
+        <li>Detecting loss of one or more phases</li>
+        <li>Monitoring phase sequence</li>
+        <li>Identifying voltage imbalances</li>
+    </ul>
+    <p>PFRs are crucial in preventing damage to three-phase motors and other equipment that can be harmed by operating under unbalanced conditions.</p>
+
+    <h2>2. How Relays Work</h2>
+    <p>Relays are electromagnetic switches that use a small electrical current to control a larger current. The basic components of a relay include:</p>
+    <ul>
+        <li>Electromagnet</li>
+        <li>Armature</li>
+        <li>Spring</li>
+        <li>Contacts (Normally Open and Normally Closed)</li>
+    </ul>
+    <p>When the relay is energized, the electromagnet attracts the armature, which changes the state of the contacts. This allows the relay to control high-power circuits with a low-power signal.</p>
+
+    <h2>3. Phase Protection Relay Wiring Diagram</h2>
+    <div class="diagram" id="wiringDiagram"></div>
+
+    <h2>4. Phase Sequence</h2>
+    <p>Phase sequence, also known as phase rotation, refers to the order in which the voltage waveforms of a three-phase system reach their peak values. The two possible sequences are:</p>
+    <ul>
+        <li>Positive sequence (ABC): Phases reach their peaks in the order A, B, C</li>
+        <li>Negative sequence (ACB): Phases reach their peaks in the order A, C, B</li>
+    </ul>
+    <p>Maintaining the correct phase sequence is crucial for the proper operation of three-phase equipment, especially motors, as reversing the sequence can cause motors to rotate in the opposite direction.</p>
+
+    <script>
+        function drawWiringDiagram() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 600;
+            canvas.height = 400;
+            document.getElementById('wiringDiagram').appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+
+            // Draw the three-phase power supply
+            ctx.beginPath();
+            ctx.moveTo(50, 50);
+            ctx.lineTo(50, 350);
+            ctx.moveTo(80, 50);
+            ctx.lineTo(80, 350);
+            ctx.moveTo(110, 50);
+            ctx.lineTo(110, 350);
+            ctx.stroke();
+
+            // Label the phases
+            ctx.fillText("L1", 45, 40);
+            ctx.fillText("L2", 75, 40);
+            ctx.fillText("L3", 105, 40);
+
+            // Draw the PFR
+            ctx.strokeRect(200, 150, 100, 100);
+            ctx.fillText("PFR", 235, 205);
+
+            // Draw connections to PFR
+            ctx.beginPath();
+            ctx.moveTo(50, 200);
+            ctx.lineTo(200, 200);
+            ctx.moveTo(80, 200);
+            ctx.lineTo(200, 180);
+            ctx.moveTo(110, 200);
+            ctx.lineTo(200, 220);
+            ctx.stroke();
+
+            // Draw output connections
+            ctx.beginPath();
+            ctx.moveTo(300, 200);
+            ctx.lineTo(550, 200);
+            ctx.stroke();
+
+            // Draw and label the load
+            ctx.strokeRect(450, 150, 100, 100);
+            ctx.fillText("Load", 485, 205);
+        }
+
+        drawWiringDiagram();
+    </script>
+</body>
+</html>
