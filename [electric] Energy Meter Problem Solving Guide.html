@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Meter Problem Solving Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .example {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Energy Meter Problem Solving Guide</h1>
+
+    <h2>Introduction</h2>
+    <p>Energy meters are devices used to measure the amount of electrical energy consumed by a circuit or electrical equipment. Solving problems related to energy meters requires understanding key concepts and formulas. This guide will walk you through the process of solving energy meter problems and provide examples.</p>
+
+    <h2>Key Concepts</h2>
+    <ul>
+        <li><strong>Meter Constant (K):</strong> The number of revolutions of the meter disc per unit of energy (usually kWh).</li>
+        <li><strong>Revolutions:</strong> The number of times the meter disc rotates.</li>
+        <li><strong>Time:</strong> The duration for which the energy consumption is measured.</li>
+        <li><strong>Power:</strong> The rate at which energy is consumed, measured in watts (W) or kilowatts (kW).</li>
+        <li><strong>Energy:</strong> The total electrical energy consumed, typically measured in kilowatt-hours (kWh).</li>
+    </ul>
+
+    <h2>Basic Formulas</h2>
+    <div class="formula">
+        <p>1. Energy (kWh) = (Number of revolutions) / (Meter constant)</p>
+        <p>2. Power (kW) = (Energy in kWh) / (Time in hours)</p>
+        <p>3. Time (hours) = (Energy in kWh) / (Power in kW)</p>
+    </div>
+
+    <h2>Problem-Solving Steps</h2>
+    <ol>
+        <li>Identify the given information in the problem statement.</li>
+        <li>Determine which formula is appropriate for the problem.</li>
+        <li>Substitute the known values into the formula.</li>
+        <li>Solve for the unknown variable.</li>
+        <li>Check the units and ensure the answer makes sense.</li>
+    </ol>
+
+    <h2>Example Problems</h2>
+
+    <div class="example">
+        <h3>Example 1: Calculating Energy Consumption</h3>
+        <p><strong>Problem:</strong> An energy meter has a constant of 600 revolutions per kWh. If the meter disc makes 4800 revolutions in 2 hours, calculate the power consumed.</p>
+        <p><strong>Solution:</strong></p>
+        <ol>
+            <li>Given:
+                <ul>
+                    <li>Meter constant (K) = 600 rev/kWh</li>
+                    <li>Number of revolutions = 4800</li>
+                    <li>Time = 2 hours</li>
+                </ul>
+            </li>
+            <li>Calculate energy:
+                <br>Energy (kWh) = Revolutions / Meter constant
+                <br>Energy = 4800 / 600 = 8 kWh
+            </li>
+            <li>Calculate power:
+                <br>Power (kW) = Energy (kWh) / Time (hours)
+                <br>Power = 8 kWh / 2 h = 4 kW
+            </li>
+        </ol>
+        <p><strong>Answer:</strong> The power consumed is 4 kW.</p>
+    </div>
+
+    <div class="example">
+        <h3>Example 2: Finding Meter Constant</h3>
+        <p><strong>Problem:</strong> An energy meter is connected to a load of 5 kW. The meter disc makes 90 revolutions in 3 minutes. Calculate the meter constant.</p>
+        <p><strong>Solution:</strong></p>
+        <ol>
+            <li>Given:
+                <ul>
+                    <li>Power = 5 kW</li>
+                    <li>Number of revolutions = 90</li>
+                    <li>Time = 3 minutes = 0.05 hours</li>
+                </ul>
+            </li>
+            <li>Calculate energy:
+                <br>Energy (kWh) = Power (kW) × Time (hours)
+                <br>Energy = 5 kW × 0.05 h = 0.25 kWh
+            </li>
+            <li>Calculate meter constant:
+                <br>Meter constant (rev/kWh) = Revolutions / Energy (kWh)
+                <br>Meter constant = 90 / 0.25 = 360 rev/kWh
+            </li>
+        </ol>
+        <p><strong>Answer:</strong> The meter constant is 360 revolutions per kWh.</p>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>Solving energy meter problems requires a good understanding of the relationships between energy, power, time, and the meter's characteristics. By following the steps outlined in this guide and practicing with various problems, you can improve your skills in solving energy meter numericals.</p>
+</body>
+</html>
