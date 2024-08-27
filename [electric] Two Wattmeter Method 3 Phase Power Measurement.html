@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Wattmeter Method: 3 Phase Power Measurement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .phasor-diagram {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            margin: 20px auto;
+            display: block;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Two Wattmeter Method: 3 Phase Power Measurement</h1>
+    
+    <h2>Introduction</h2>
+    <p>The Two Wattmeter Method is a widely used technique for measuring power in a three-phase system. It allows for the measurement of total power using only two wattmeters, making it an efficient and cost-effective approach.</p>
+    
+    <h2>Principle</h2>
+    <p>The method is based on the principle that the total power in a balanced or unbalanced three-phase system can be measured using two wattmeters connected appropriately.</p>
+    
+    <h2>Connection Diagram</h2>
+    <p>In the Two Wattmeter Method:</p>
+    <ul>
+        <li>One current coil of a wattmeter is connected in series with one line (e.g., R phase).</li>
+        <li>The corresponding voltage coil is connected between this line and the third line (B phase).</li>
+        <li>The second wattmeter is similarly connected, with its current coil in the third line (B phase) and its voltage coil between B and Y phases.</li>
+    </ul>
+    
+    <h2>Phasor Diagram</h2>
+    <canvas id="phasorDiagram" class="phasor-diagram"></canvas>
+    
+    <h2>Power Calculation</h2>
+    <p>The total power in the three-phase system is given by the algebraic sum of the two wattmeter readings:</p>
+    <div class="formula">
+        P<sub>total</sub> = W<sub>1</sub> + W<sub>2</sub>
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>P<sub>total</sub> is the total three-phase power</li>
+        <li>W<sub>1</sub> is the reading of the first wattmeter</li>
+        <li>W<sub>2</sub> is the reading of the second wattmeter</li>
+    </ul>
+    
+    <h2>Power Factor Determination</h2>
+    <p>The power factor of the system can be determined from the ratio of the two wattmeter readings:</p>
+    <div class="formula">
+        tan φ = √3 * (W<sub>1</sub> - W<sub>2</sub>) / (W<sub>1</sub> + W<sub>2</sub>)
+    </div>
+    <p>Where φ is the phase angle between voltage and current.</p>
+    
+    <h2>Advantages</h2>
+    <ul>
+        <li>Requires only two wattmeters, reducing cost and complexity</li>
+        <li>Applicable to both balanced and unbalanced loads</li>
+        <li>Can measure power factor in addition to total power</li>
+    </ul>
+    
+    <h2>Limitations</h2>
+    <ul>
+        <li>Not suitable for very low power factor loads (below 0.5)</li>
+        <li>Requires careful interpretation when one wattmeter reading is negative</li>
+    </ul>
+    
+    <script>
+        const canvas = document.getElementById('phasorDiagram');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        canvas.width = 500;
+        canvas.height = 300;
+        
+        // Draw phasor diagram
+        function drawPhasorDiagram() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Set origin to center of canvas
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            
+            // Draw axes
+            ctx.beginPath();
+            ctx.moveTo(-220, 0);
+            ctx.lineTo(220, 0);
+            ctx.moveTo(0, -150);
+            ctx.lineTo(0, 150);
+            ctx.strokeStyle = '#888';
+            ctx.stroke();
+            
+            // Draw voltage phasors
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(173, -100);  // VR
+            ctx.moveTo(0, 0);
+            ctx.lineTo(0, 200);     // VY
+            ctx.moveTo(0, 0);
+            ctx.lineTo(-173, -100); // VB
+            ctx.strokeStyle = 'blue';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Draw current phasors
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(130, -75);   // IR
+            ctx.moveTo(0, 0);
+            ctx.lineTo(0, 150);     // IY
+            ctx.moveTo(0, 0);
+            ctx.lineTo(-130, -75);  // IB
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+            
+            // Label phasors
+            ctx.font = '14px Arial';
+            ctx.fillStyle = 'blue';
+            ctx.fillText('VR', 180, -105);
+            ctx.fillText('VY', 5, 215);
+            ctx.fillText('VB', -190, -105);
+            
+            ctx.fillStyle = 'red';
+            ctx.fillText('IR', 135, -80);
+            ctx.fillText('IY', 5, 165);
+            ctx.fillText('IB', -145, -80);
+            
+            // Reset transformation
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+        
+        drawPhasorDiagram();
+    </script>
+</body>
+</html>
