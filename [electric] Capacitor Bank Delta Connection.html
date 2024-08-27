@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitor Bank Delta Connection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .advantages {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .advantages h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Why Capacitor Banks Are Connected in Delta Configuration</h1>
+    
+    <p>Capacitor banks are commonly used in electrical power systems for power factor correction and voltage regulation. These banks are typically connected in a delta configuration rather than a star (wye) configuration. Let's explore the reasons behind this preference.</p>
+
+    <h2>Delta Connection of Capacitors</h2>
+
+    <p>In a delta connection, the capacitors are connected between the three phases of the power system, forming a triangle. This configuration offers several advantages over the star connection.</p>
+
+    <div class="advantages">
+        <h3>Advantages of Delta Connection:</h3>
+        <ol>
+            <li><strong>Higher Voltage Rating:</strong> Each capacitor in a delta connection experiences the full line-to-line voltage, which is √3 times the phase voltage. This allows for better utilization of the capacitor's voltage rating.</li>
+            <li><strong>Increased Reactive Power:</strong> For the same capacitance value, a delta connection provides 3 times more reactive power compared to a star connection.</li>
+            <li><strong>Improved Harmonics Handling:</strong> Delta connections naturally block the flow of triple-n harmonics (3rd, 9th, 15th, etc.), which can be beneficial in power systems.</li>
+            <li><strong>Simplified Switching:</strong> In delta connections, each capacitor can be switched independently without affecting the others, allowing for more flexible control of reactive power.</li>
+            <li><strong>No Neutral Connection:</strong> Delta configurations don't require a neutral connection, which can simplify installation and reduce costs.</li>
+        </ol>
+    </div>
+
+    <h2>Delta vs. Star Connection Diagram</h2>
+
+    <svg class="diagram" viewBox="0 0 400 300">
+        <!-- Delta Connection -->
+        <polygon points="50,250 150,50 250,250" fill="none" stroke="#3498db" stroke-width="2"/>
+        <circle cx="50" cy="250" r="5" fill="#3498db"/>
+        <circle cx="150" cy="50" r="5" fill="#3498db"/>
+        <circle cx="250" cy="250" r="5" fill="#3498db"/>
+        <text x="70" y="280" fill="#3498db">Delta</text>
+        
+        <!-- Star Connection -->
+        <line x1="300" y1="150" x2="350" y2="50" stroke="#e74c3c" stroke-width="2"/>
+        <line x1="300" y1="150" x2="350" y2="250" stroke="#e74c3c" stroke-width="2"/>
+        <line x1="300" y1="150" x2="400" y2="150" stroke="#e74c3c" stroke-width="2"/>
+        <circle cx="300" cy="150" r="5" fill="#e74c3c"/>
+        <circle cx="350" cy="50" r="5" fill="#e74c3c"/>
+        <circle cx="350" cy="250" r="5" fill="#e74c3c"/>
+        <circle cx="400" cy="150" r="5" fill="#e74c3c"/>
+        <text x="320" y="280" fill="#e74c3c">Star</text>
+    </svg>
+
+    <h2>Conclusion</h2>
+
+    <p>While star connections have their uses in certain applications, the delta connection is preferred for capacitor banks in power systems due to its numerous advantages. The delta configuration allows for better voltage utilization, increased reactive power compensation, improved harmonic handling, and more flexible control options. These benefits make delta-connected capacitor banks more efficient and cost-effective for power factor correction and voltage regulation in electrical power systems.</p>
+
+</body>
+</html>
