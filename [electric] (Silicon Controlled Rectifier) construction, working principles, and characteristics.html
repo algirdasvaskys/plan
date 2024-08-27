@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCR: Construction, Working & Characteristics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .scr-diagram {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            display: block;
+        }
+        .characteristics {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>SCR: Construction, Working & Characteristics</h1>
+    
+    <h2>1. SCR Construction</h2>
+    <p>A Silicon Controlled Rectifier (SCR) is a four-layer semiconductor device with three terminals: Anode, Cathode, and Gate. Its construction consists of alternating P-type and N-type silicon layers:</p>
+    <ul>
+        <li>P-type layer (Anode)</li>
+        <li>N-type layer</li>
+        <li>P-type layer</li>
+        <li>N-type layer (Cathode)</li>
+    </ul>
+    <canvas id="scrDiagram" class="scr-diagram"></canvas>
+
+    <h2>2. Working Principle</h2>
+    <p>The SCR operates based on the following principles:</p>
+    <ol>
+        <li><strong>Off State:</strong> In the absence of gate current, the SCR blocks current flow in both directions.</li>
+        <li><strong>Turn-On:</strong> When a positive voltage is applied to the gate relative to the cathode, and the anode is positive with respect to the cathode, the SCR turns on and conducts current.</li>
+        <li><strong>Latching:</strong> Once turned on, the SCR continues to conduct even if the gate signal is removed, as long as the anode current remains above the holding current.</li>
+        <li><strong>Turn-Off:</strong> The SCR turns off when the anode current falls below the holding current or when the anode-cathode voltage is reversed.</li>
+    </ol>
+
+    <h2>3. Characteristics</h2>
+    <p>The SCR exhibits the following key characteristics:</p>
+    <ul>
+        <li><strong>Forward Blocking:</strong> High resistance when forward-biased but not triggered.</li>
+        <li><strong>Forward Conduction:</strong> Low resistance when triggered and forward-biased.</li>
+        <li><strong>Reverse Blocking:</strong> High resistance when reverse-biased.</li>
+        <li><strong>Gate Trigger Current:</strong> Minimum current required to turn on the SCR.</li>
+        <li><strong>Holding Current:</strong> Minimum anode current required to keep the SCR in conduction state.</li>
+        <li><strong>Latching Current:</strong> Minimum anode current required to maintain conduction immediately after triggering and gate signal removal.</li>
+    </ul>
+    <canvas id="characteristics" class="characteristics"></canvas>
+
+    <h2>4. Applications in Power Electronics</h2>
+    <p>SCRs are widely used in power electronics applications, including:</p>
+    <ul>
+        <li>AC to DC power conversion</li>
+        <li>Motor speed control</li>
+        <li>Light dimmers</li>
+        <li>Induction heating</li>
+        <li>Voltage regulation</li>
+        <li>Static VAR compensation</li>
+        <li>Circuit breakers</li>
+    </ul>
+
+    <script>
+        // SCR Diagram
+        const scrCanvas = document.getElementById('scrDiagram');
+        const scrCtx = scrCanvas.getContext('2d');
+
+        scrCtx.fillStyle = '#f39c12';
+        scrCtx.fillRect(50, 50, 300, 50);
+        scrCtx.fillStyle = '#3498db';
+        scrCtx.fillRect(50, 100, 300, 50);
+        scrCtx.fillStyle = '#f39c12';
+        scrCtx.fillRect(50, 150, 300, 50);
+        scrCtx.fillStyle = '#3498db';
+        scrCtx.fillRect(50, 200, 300, 50);
+
+        scrCtx.fillStyle = '#000';
+        scrCtx.font = '16px Arial';
+        scrCtx.fillText('Anode (P)', 160, 80);
+        scrCtx.fillText('N', 190, 130);
+        scrCtx.fillText('P', 190, 180);
+        scrCtx.fillText('Cathode (N)', 155, 230);
+
+        scrCtx.beginPath();
+        scrCtx.moveTo(200, 150);
+        scrCtx.lineTo(400, 150);
+        scrCtx.stroke();
+        scrCtx.fillText('Gate', 360, 140);
+
+        // Characteristics Graph
+        const charCanvas = document.getElementById('characteristics');
+        const charCtx = charCanvas.getContext('2d');
+
+        charCtx.beginPath();
+        charCtx.moveTo(50, 250);
+        charCtx.lineTo(350, 250);
+        charCtx.lineTo(350, 50);
+        charCtx.stroke();
+
+        charCtx.beginPath();
+        charCtx.moveTo(50, 250);
+        charCtx.lineTo(200, 250);
+        charCtx.lineTo(200, 150);
+        charCtx.lineTo(350, 50);
+        charCtx.stroke();
+
+        charCtx.fillStyle = '#000';
+        charCtx.font = '14px Arial';
+        charCtx.fillText('Voltage', 180, 280);
+        charCtx.fillText('Current', 10, 150);
+        charCtx.fillText('Forward', 300, 230);
+        charCtx.fillText('Reverse', 80, 230);
+        charCtx.fillText('Breakdown', 70, 70);
+        charCtx.fillText('Forward', 250, 70);
+        charCtx.fillText('Conduction', 250, 90);
+    </script>
+</body>
+</html>
