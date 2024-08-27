@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RLC Series Circuit Phasor Diagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .math {
+            font-style: italic;
+        }
+        .interactive {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .control {
+            margin: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="range"] {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>RLC Series Circuit Phasor Diagram</h1>
+    
+    <h2>Introduction</h2>
+    <p>An RLC series circuit consists of a resistor (R), an inductor (L), and a capacitor (C) connected in series. The phasor diagram is a graphical representation of the voltages and currents in this circuit, which helps visualize their magnitudes and phase relationships.</p>
+
+    <h2>Components of the RLC Circuit</h2>
+    <ul>
+        <li><strong>Resistor (R):</strong> Dissipates electrical energy as heat</li>
+        <li><strong>Inductor (L):</strong> Stores energy in a magnetic field</li>
+        <li><strong>Capacitor (C):</strong> Stores energy in an electric field</li>
+    </ul>
+
+    <h2>Phasor Diagram</h2>
+    <div class="diagram" id="phasorDiagram"></div>
+
+    <h2>Angular Velocity (ω)</h2>
+    <p>Angular velocity, denoted by ω (omega), is the rate of change of angular position with respect to time. In the context of AC circuits:</p>
+    <p class="math">ω = 2πf</p>
+    <p>Where f is the frequency of the AC source in Hertz (Hz).</p>
+
+    <h2>Impedance Triangle</h2>
+    <p>The impedance triangle is a graphical representation of the relationship between resistance, reactance, and total impedance in an AC circuit.</p>
+    <ul>
+        <li><strong>Resistance (R):</strong> The real part of impedance</li>
+        <li><strong>Reactance (X):</strong> The imaginary part of impedance
+            <ul>
+                <li>Inductive Reactance (X<sub>L</sub>): X<sub>L</sub> = ωL</li>
+                <li>Capacitive Reactance (X<sub>C</sub>): X<sub>C</sub> = 1 / (ωC)</li>
+            </ul>
+        </li>
+        <li><strong>Impedance (Z):</strong> The total opposition to current flow</li>
+    </ul>
+    <p>The magnitude of impedance is given by:</p>
+    <p class="math">|Z| = √(R² + (X<sub>L</sub> - X<sub>C</sub>)²)</p>
+
+    <h2>Interactive Controls</h2>
+    <div class="interactive">
+        <div class="control">
+            <label for="resistance">Resistance (Ω):</label>
+            <input type="range" id="resistance" min="1" max="100" value="50">
+            <span id="resistanceValue">50</span> Ω
+        </div>
+        <div class="control">
+            <label for="inductance">Inductance (H):</label>
+            <input type="range" id="inductance" min="0.001" max="0.1" step="0.001" value="0.05">
+            <span id="inductanceValue">0.05</span> H
+        </div>
+        <div class="control">
+            <label for="capacitance">Capacitance (µF):</label>
+            <input type="range" id="capacitance" min="1" max="100" value="50">
+            <span id="capacitanceValue">50</span> µF
+        </div>
+        <div class="control">
+            <label for="frequency">Frequency (Hz):</label>
+            <input type="range" id="frequency" min="1" max="1000" value="500">
+            <span id="frequencyValue">500</span> Hz
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.createElement('canvas');
+        canvas.width = 500;
+        canvas.height = 300;
+        document.getElementById('phasorDiagram').appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+
+        function drawPhasorDiagram(R, L, C, f) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const omega = 2 * Math.PI * f;
+            const XL = omega * L;
+            const XC = 1 / (omega * C * 1e-6);
+            const Z = Math.sqrt(R * R + (XL - XC) * (XL - XC));
+            
+            const scale = 200 / Z;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            // Draw axes
+            ctx.beginPath();
+            ctx.moveTo(centerX, 0);
+            ctx.lineTo(centerX, canvas.height);
+            ctx.moveTo(0, centerY);
+            ctx.lineTo(canvas.width, centerY);
+            ctx.strokeStyle = '#ccc';
+            ctx.stroke();
+            
+            // Draw resistance phasor
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(centerX + R * scale, centerY);
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+            ctx.fillStyle = 'red';
+            ctx.fillText('R', centerX + R * scale / 2, centerY - 5);
+            
+            // Draw reactance phasor
+            ctx.beginPath();
+            ctx.moveTo(centerX + R * scale, centerY);
+            ctx.lineTo(centerX + R * scale, centerY - (XL - XC) * scale);
+            ctx.strokeStyle = 'blue';
+            ctx.stroke();
+            ctx.fillStyle = 'blue';
+            ctx.fillText('XL - XC', centerX + R * scale + 5, centerY - (XL - XC) * scale / 2);
+            
+            // Draw impedance phasor
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(centerX + R * scale, centerY - (XL - XC) * scale);
+            ctx.strokeStyle = 'green';
+            ctx.stroke();
+            ctx.fillStyle = 'green';
+            ctx.fillText('Z', centerX + R * scale / 2, centerY - (XL - XC) * scale / 2);
+        }
+
+        function updatePhasorDiagram() {
+            const R = parseFloat(document.getElementById('resistance').value);
+            const L = parseFloat(document.getElementById('inductance').value);
+            const C = parseFloat(document.getElementById('capacitance').value);
+            const f = parseFloat(document.getElementById('frequency').value);
+            
+            document.getElementById('resistanceValue').textContent = R;
+            document.getElementById('inductanceValue').textContent = L.toFixed(3);
+            document.getElementById('capacitanceValue').textContent = C;
+            document.getElementById('frequencyValue').textContent = f;
+            
+            drawPhasorDiagram(R, L, C, f);
+        }
+
+        document.getElementById('resistance').addEventListener('input', updatePhasorDiagram);
+        document.getElementById('inductance').addEventListener('input', updatePhasorDiagram);
+        document.getElementById('capacitance').addEventListener('input', updatePhasorDiagram);
+        document.getElementById('frequency').addEventListener('input', updatePhasorDiagram);
+
+        updatePhasorDiagram();
+    </script>
+</body>
+</html>
