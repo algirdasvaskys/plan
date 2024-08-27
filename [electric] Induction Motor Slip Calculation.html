@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Induction Motor Slip Calculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .note {
+            background-color: #e6f3ff;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Induction Motor Slip Calculation</h1>
+    
+    <h2>Introduction</h2>
+    <p>Slip is a crucial parameter in the operation of induction motors. It represents the difference between the synchronous speed of the rotating magnetic field and the actual rotor speed. Understanding and calculating slip is essential for analyzing motor performance and efficiency.</p>
+
+    <h2>Definition of Slip</h2>
+    <p>Slip is typically expressed as a percentage or a decimal value. It is defined as the relative difference between the synchronous speed and the rotor speed.</p>
+
+    <h2>Slip Calculation Formula</h2>
+    <p>The formula for calculating slip is:</p>
+    <div class="formula">
+        Slip (s) = (Ns - Nr) / Ns
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>s = Slip</li>
+        <li>Ns = Synchronous speed (rpm)</li>
+        <li>Nr = Rotor speed (rpm)</li>
+    </ul>
+
+    <h2>Synchronous Speed Calculation</h2>
+    <p>The synchronous speed (Ns) is determined by the frequency of the power supply and the number of poles in the motor:</p>
+    <div class="formula">
+        Ns = (120 * f) / P
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>f = Frequency of the power supply (Hz)</li>
+        <li>P = Number of poles</li>
+    </ul>
+
+    <h2>Steps to Calculate Slip</h2>
+    <ol>
+        <li>Determine the synchronous speed (Ns) using the formula above.</li>
+        <li>Measure or obtain the actual rotor speed (Nr).</li>
+        <li>Apply the slip formula: s = (Ns - Nr) / Ns</li>
+        <li>Express the result as a decimal or percentage.</li>
+    </ol>
+
+    <h2>Example Calculation</h2>
+    <p>Let's calculate the slip for an induction motor with the following parameters:</p>
+    <ul>
+        <li>Frequency (f) = 60 Hz</li>
+        <li>Number of poles (P) = 4</li>
+        <li>Measured rotor speed (Nr) = 1750 rpm</li>
+    </ul>
+    <p>Step 1: Calculate synchronous speed</p>
+    <div class="formula">
+        Ns = (120 * 60) / 4 = 1800 rpm
+    </div>
+    <p>Step 2: Apply slip formula</p>
+    <div class="formula">
+        s = (1800 - 1750) / 1800 = 0.0278
+    </div>
+    <p>Step 3: Express as percentage</p>
+    <div class="formula">
+        Slip = 0.0278 * 100 = 2.78%
+    </div>
+
+    <h2>Significance of Slip</h2>
+    <p>Slip is important for several reasons:</p>
+    <ul>
+        <li>It indicates the load on the motor</li>
+        <li>It affects the motor's torque and efficiency</li>
+        <li>It helps in determining the motor's operating point</li>
+    </ul>
+
+    <div class="note">
+        <strong>Note:</strong> Typical slip values for induction motors range from 1% to 5% at full load. Higher slip values may indicate overloading or other issues.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>Understanding and calculating slip is crucial for assessing induction motor performance. By using the formulas and steps outlined above, engineers and technicians can accurately determine slip and use this information to optimize motor operation and troubleshoot potential issues.</p>
+</body>
+</html>
