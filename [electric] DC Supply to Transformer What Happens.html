@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC Supply to Transformer: What Happens?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .consequences {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>What Happens When DC Supply is Given to a Transformer?</h1>
+    
+    <p>Transformers are designed to work with alternating current (AC) power supplies. When a direct current (DC) supply is connected to a transformer, the results can be quite different and potentially harmful. Let's explore what happens in this scenario.</p>
+
+    <h2>1. Normal Transformer Operation (AC Supply)</h2>
+    <p>Before we delve into the DC scenario, let's briefly recap how a transformer normally works:</p>
+    <ul>
+        <li>A transformer has two coils: primary and secondary.</li>
+        <li>When AC is applied to the primary coil, it creates a changing magnetic field.</li>
+        <li>This changing field induces a voltage in the secondary coil.</li>
+        <li>The ratio of primary to secondary turns determines the voltage transformation.</li>
+    </ul>
+
+    <h2>2. DC Supply to Transformer</h2>
+    <p>When a DC supply is connected to a transformer, the following occurs:</p>
+    <ul>
+        <li>The primary coil receives a constant current.</li>
+        <li>This creates a steady magnetic field, not a changing one.</li>
+        <li>No voltage is induced in the secondary coil.</li>
+        <li>The transformer effectively becomes a large inductor.</li>
+    </ul>
+
+    <div class="warning">
+        <h3>Warning:</h3>
+        <p>Connecting a DC supply to a transformer can be dangerous and may damage the transformer or the power source.</p>
+    </div>
+
+    <h2>3. Consequences of DC Supply to Transformer</h2>
+    <div class="consequences">
+        <p>Several negative consequences can result from supplying DC to a transformer:</p>
+        <ol>
+            <li><strong>Overheating:</strong> The primary winding has very low resistance, leading to a large current flow and rapid heating.</li>
+            <li><strong>Core Saturation:</strong> The core material can become magnetically saturated, losing its ability to support additional magnetic flux.</li>
+            <li><strong>No Secondary Output:</strong> Since there's no changing magnetic field, no voltage is induced in the secondary winding.</li>
+            <li><strong>Damage to Power Source:</strong> The low resistance of the primary winding can draw excessive current, potentially damaging the DC power source.</li>
+            <li><strong>Transformer Damage:</strong> Prolonged exposure to DC can cause insulation breakdown and permanent damage to the transformer.</li>
+        </ol>
+    </div>
+
+    <h2>4. Practical Implications</h2>
+    <p>Understanding this behavior is important for several reasons:</p>
+    <ul>
+        <li>Safety in electrical systems design and maintenance.</li>
+        <li>Troubleshooting power supply issues in various applications.</li>
+        <li>Preventing accidental damage to transformers and power sources.</li>
+        <li>Understanding the limitations and specific use cases of transformers.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>While transformers are invaluable components in AC power systems, they are not designed to work with DC power. Applying DC to a transformer can lead to rapid overheating, potential damage, and no useful output. Always ensure that transformers are used only with appropriate AC power sources as per their design specifications.</p>
+</body>
+</html>
