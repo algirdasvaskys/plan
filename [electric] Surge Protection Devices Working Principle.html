@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surge Protection Devices: Working Principle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .interactive {
+            background-color: #e8f4f8;
+            border: 1px solid #b8d4e3;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #spd-state {
+            font-weight: bold;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Surge Protection Devices (SPDs): Working Principle</h1>
+    
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>Surge Protection Devices (SPDs), also known as Surge Arresters or Overvoltage Protection Devices, are crucial components in electrical systems. They protect sensitive equipment from voltage spikes and transients that can damage or destroy electronic devices.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Basic Working Principle</h2>
+        <p>The primary function of an SPD is to limit transient overvoltages and divert surge currents. It achieves this through the following mechanisms:</p>
+        <ol>
+            <li><strong>Voltage-dependent resistance:</strong> SPDs contain components (such as Metal Oxide Varistors or MOVs) that have high resistance at normal voltage levels but low resistance during overvoltage events.</li>
+            <li><strong>Current diversion:</strong> When a surge occurs, the SPD provides a low-impedance path to ground, diverting the excess current away from the protected equipment.</li>
+            <li><strong>Voltage clamping:</strong> SPDs limit the voltage to a safe level, typically slightly above the normal operating voltage of the protected equipment.</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Types of SPDs</h2>
+        <p>There are several types of SPDs, each with its own characteristics:</p>
+        <ul>
+            <li><strong>Voltage Switching Type:</strong> These devices (like spark gaps) create a short circuit when the voltage exceeds a threshold.</li>
+            <li><strong>Voltage Limiting Type:</strong> These devices (like MOVs) gradually increase their conductivity as voltage increases.</li>
+            <li><strong>Combination Type:</strong> These devices combine both switching and limiting technologies for enhanced protection.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>SPD Operation Stages</h2>
+        <p>The operation of an SPD can be divided into three main stages:</p>
+        <ol>
+            <li><strong>Normal operation:</strong> The SPD remains in a high-impedance state, allowing normal current flow.</li>
+            <li><strong>Surge detection:</strong> When a voltage surge is detected, the SPD quickly switches to a low-impedance state.</li>
+            <li><strong>Surge suppression:</strong> The SPD diverts the surge current to ground and clamps the voltage to a safe level.</li>
+        </ol>
+    </div>
+    
+    <div class="interactive">
+        <h2>Interactive SPD Simulation</h2>
+        <p>Click the button below to simulate a surge event and see how an SPD would respond:</p>
+        <button onclick="simulateSurge()">Simulate Surge</button>
+        <p>SPD State: <span id="spd-state">Normal Operation</span></p>
+    </div>
+
+    <script>
+        function simulateSurge() {
+            const spdState = document.getElementById('spd-state');
+            spdState.style.color = '#e74c3c';
+            spdState.textContent = 'Surge Detected! Diverting Current...';
+            
+            setTimeout(() => {
+                spdState.style.color = '#f39c12';
+                spdState.textContent = 'Clamping Voltage...';
+            }, 1000);
+            
+            setTimeout(() => {
+                spdState.style.color = '#27ae60';
+                spdState.textContent = 'Surge Suppressed. Returning to Normal Operation.';
+            }, 2000);
+            
+            setTimeout(() => {
+                spdState.textContent = 'Normal Operation';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
