@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(Direct On-Line) starter control wiring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .component {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .wiring-steps {
+            background-color: #e6f3ff;
+            border-left: 5px solid #3498db;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>DOL Starter Control Wiring Guide</h1>
+    
+    <h2>What is a DOL Starter?</h2>
+    <p>A Direct On-Line (DOL) starter is a simple and common method of starting a three-phase induction motor. It connects the motor directly to the main power supply, providing full voltage to the motor terminals.</p>
+    
+    <h2>Components of a DOL Starter</h2>
+    <div class="component">
+        <h3>1. Contactor</h3>
+        <p>The main switching device that connects and disconnects the motor from the power supply.</p>
+    </div>
+    <div class="component">
+        <h3>2. Overload Relay</h3>
+        <p>Protects the motor from overload conditions by monitoring the current drawn by the motor.</p>
+    </div>
+    <div class="component">
+        <h3>3. Circuit Breaker or Fuses</h3>
+        <p>Provides short circuit and overcurrent protection for the entire circuit.</p>
+    </div>
+    <div class="component">
+        <h3>4. Start and Stop Pushbuttons</h3>
+        <p>Used to manually control the starting and stopping of the motor.</p>
+    </div>
+    
+    <h2>DOL Starter Control Wiring Method</h2>
+    <div class="wiring-steps">
+        <h3>Step 1: Power Circuit Wiring</h3>
+        <ol>
+            <li>Connect the three-phase power supply (L1, L2, L3) to the circuit breaker or fuse unit.</li>
+            <li>From the circuit breaker, connect to the contactor's main contacts (usually labeled L1, L2, L3).</li>
+            <li>Connect the contactor's load side (usually labeled T1, T2, T3) to the motor terminals (U, V, W).</li>
+        </ol>
+    </div>
+    <div class="wiring-steps">
+        <h3>Step 2: Control Circuit Wiring</h3>
+        <ol>
+            <li>Connect one phase (e.g., L1) through the circuit breaker to the Start pushbutton (NO contact).</li>
+            <li>From the Start button, wire to the Stop pushbutton (NC contact).</li>
+            <li>From the Stop button, connect to the overload relay's normally closed (NC) contact.</li>
+            <li>Wire from the overload relay to the contactor coil (A1 terminal).</li>
+            <li>Connect the other end of the contactor coil (A2 terminal) back to the neutral or another phase.</li>
+            <li>Add a parallel connection from the contactor's auxiliary NO contact between the Start and Stop buttons to create a holding circuit.</li>
+        </ol>
+    </div>
+    <div class="wiring-steps">
+        <h3>Step 3: Overload Relay Connection</h3>
+        <ol>
+            <li>Connect the overload relay's main current-carrying paths in series with the motor leads (usually after the contactor's T1, T2, T3 terminals).</li>
+            <li>Ensure the overload relay's NC contact is wired into the control circuit as mentioned in Step 2.</li>
+        </ol>
+    </div>
+    
+    <h2>Safety Considerations</h2>
+    <ul>
+        <li>Always ensure the power is disconnected before working on the circuit.</li>
+        <li>Use appropriately rated components for the motor's voltage and current.</li>
+        <li>Follow local electrical codes and regulations.</li>
+        <li>Double-check all connections before powering on the circuit.</li>
+        <li>Consider adding indicator lights for power-on and run status.</li>
+    </ul>
+    
+    <p>This wiring method creates a basic DOL starter circuit. When the Start button is pressed, the contactor energizes, connecting the motor to the power supply. The holding circuit keeps the contactor energized even after releasing the Start button. Pressing the Stop button or a trip of the overload relay will de-energize the contactor and stop the motor.</p>
+</body>
+</html>
