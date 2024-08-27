@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Wattage Calculation: Lumen Method</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .example {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Light Wattage Calculation: The Lumen Method</h1>
+    
+    <h2>Introduction</h2>
+    <p>The Lumen Method is a widely used technique for calculating the required light wattage for a room. This method takes into account various factors to ensure proper illumination for different types of spaces and activities.</p>
+    
+    <h2>The Lumen Method Formula</h2>
+    <p>The basic formula for the Lumen Method is:</p>
+    <div class="formula">
+        Number of Luminaires = (E × A) / (N × F × UF × LLF)
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li><strong>E</strong> = Required illuminance (in lux)</li>
+        <li><strong>A</strong> = Area of the room (in square meters)</li>
+        <li><strong>N</strong> = Number of lamps per luminaire</li>
+        <li><strong>F</strong> = Lumens per lamp</li>
+        <li><strong>UF</strong> = Utilization Factor</li>
+        <li><strong>LLF</strong> = Light Loss Factor</li>
+    </ul>
+    
+    <h2>Step-by-Step Calculation Process</h2>
+    <ol>
+        <li>Determine the required illuminance (E) based on the room's purpose.</li>
+        <li>Calculate the room area (A).</li>
+        <li>Choose the type of luminaire and determine the number of lamps per luminaire (N).</li>
+        <li>Find the lumens per lamp (F) from the manufacturer's specifications.</li>
+        <li>Calculate the Room Cavity Ratio (RCR) to determine the Utilization Factor (UF).</li>
+        <li>Determine the Light Loss Factor (LLF).</li>
+        <li>Apply the formula to calculate the number of luminaires needed.</li>
+        <li>Round up to the nearest whole number for the final luminaire count.</li>
+    </ol>
+    
+    <h2>Determining Required Illuminance (E)</h2>
+    <p>The required illuminance depends on the room's purpose. Here are some common values:</p>
+    <table>
+        <tr>
+            <th>Room Type</th>
+            <th>Recommended Illuminance (lux)</th>
+        </tr>
+        <tr>
+            <td>Living Room</td>
+            <td>100-300</td>
+        </tr>
+        <tr>
+            <td>Bedroom</td>
+            <td>100-200</td>
+        </tr>
+        <tr>
+            <td>Kitchen</td>
+            <td>300-750</td>
+        </tr>
+        <tr>
+            <td>Office</td>
+            <td>300-500</td>
+        </tr>
+    </table>
+    
+    <h2>Calculating Room Cavity Ratio (RCR)</h2>
+    <p>The RCR is used to determine the Utilization Factor. The formula for RCR is:</p>
+    <div class="formula">
+        RCR = 5 × H × (L + W) / (L × W)
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li><strong>H</strong> = Cavity height (distance from work plane to luminaires)</li>
+        <li><strong>L</strong> = Room length</li>
+        <li><strong>W</strong> = Room width</li>
+    </ul>
+    
+    <h2>Light Loss Factor (LLF)</h2>
+    <p>The LLF accounts for various factors that reduce light output over time. A typical value for LLF is 0.8, but it can range from 0.6 to 0.9 depending on maintenance schedules and environmental conditions.</p>
+    
+    <h2>Example Calculation</h2>
+    <div class="example">
+        <p>Let's calculate the number of luminaires needed for an office space:</p>
+        <ul>
+            <li>Room dimensions: 10m × 8m</li>
+            <li>Ceiling height: 3m</li>
+            <li>Work plane height: 0.8m</li>
+            <li>Required illuminance: 400 lux</li>
+            <li>Luminaire: 2 lamps per fixture, 3000 lumens per lamp</li>
+            <li>LLF: 0.8</li>
+        </ul>
+        
+        <p>Step 1: Calculate room area</p>
+        <p>A = 10m × 8m = 80 m²</p>
+        
+        <p>Step 2: Calculate RCR</p>
+        <p>H = 3m - 0.8m = 2.2m</p>
+        <p>RCR = 5 × 2.2 × (10 + 8) / (10 × 8) = 2.48</p>
+        
+        <p>Step 3: Determine UF (assume 0.6 based on RCR and reflectances)</p>
+        
+        <p>Step 4: Apply the formula</p>
+        <p>Number of Luminaires = (400 × 80) / (2 × 3000 × 0.6 × 0.8) = 11.11</p>
+        
+        <p>Step 5: Round up</p>
+        <p>Final number of luminaires needed: 12</p>
+    </div>
+    
+    <h2>Conclusion</h2>
+    <p>The Lumen Method provides a systematic approach to calculating the required number of luminaires for a given space. By considering factors such as room dimensions, desired illuminance, and fixture characteristics, you can ensure proper lighting for any room. Remember to consult local building codes and lighting standards for specific requirements in your area.</p>
+</body>
+</html>
