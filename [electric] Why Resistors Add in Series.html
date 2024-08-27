@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Resistors Add in Series</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 1.1em;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Why Resistors Add in Series</h1>
+    
+    <p>When resistors are connected in series, their individual resistances add up to give the total resistance of the circuit. This principle is fundamental in electrical engineering and circuit analysis. Let's explore why this happens.</p>
+    
+    <h2>1. Basic Principle</h2>
+    <p>In a series circuit, the same current flows through each component. The voltage, however, is divided among the components.</p>
+    
+    <h2>2. Ohm's Law</h2>
+    <p>To understand why resistors add in series, we need to recall Ohm's Law:</p>
+    <p class="formula">V = I * R</p>
+    <p>Where V is voltage, I is current, and R is resistance.</p>
+    
+    <h2>3. Voltage Division</h2>
+    <p>In a series circuit with multiple resistors, the total voltage across the circuit is the sum of the voltages across each resistor:</p>
+    <p class="formula">V<sub>total</sub> = V<sub>1</sub> + V<sub>2</sub> + V<sub>3</sub> + ...</p>
+    
+    <h2>4. Applying Ohm's Law</h2>
+    <p>We can apply Ohm's Law to each resistor:</p>
+    <p class="formula">
+        V<sub>1</sub> = I * R<sub>1</sub><br>
+        V<sub>2</sub> = I * R<sub>2</sub><br>
+        V<sub>3</sub> = I * R<sub>3</sub><br>
+        ...
+    </p>
+    
+    <h2>5. Total Voltage</h2>
+    <p>Substituting these into our voltage division equation:</p>
+    <p class="formula">V<sub>total</sub> = I * R<sub>1</sub> + I * R<sub>2</sub> + I * R<sub>3</sub> + ...</p>
+    
+    <h2>6. Factoring Out Current</h2>
+    <p>Since the current (I) is the same throughout the series circuit, we can factor it out:</p>
+    <p class="formula">V<sub>total</sub> = I * (R<sub>1</sub> + R<sub>2</sub> + R<sub>3</sub> + ...)</p>
+    
+    <h2>7. Total Resistance</h2>
+    <p>The expression in parentheses represents the total resistance:</p>
+    <p class="formula">R<sub>total</sub> = R<sub>1</sub> + R<sub>2</sub> + R<sub>3</sub> + ...</p>
+    
+    <h2>Conclusion</h2>
+    <p>Therefore, we can conclude that when resistors are connected in series, their individual resistances add up to give the total resistance of the circuit. This is a direct result of how voltage divides across series components and the application of Ohm's Law.</p>
+    
+    <h2>Visual Representation</h2>
+    <div class="diagram">
+        <svg width="100%" height="100%" viewBox="0 0 600 200">
+            <line x1="50" y1="100" x2="150" y2="100" stroke="black" stroke-width="2"/>
+            <rect x="150" y="75" width="100" height="50" fill="none" stroke="black" stroke-width="2"/>
+            <text x="200" y="105" text-anchor="middle">R1</text>
+            <line x1="250" y1="100" x2="300" y2="100" stroke="black" stroke-width="2"/>
+            <rect x="300" y="75" width="100" height="50" fill="none" stroke="black" stroke-width="2"/>
+            <text x="350" y="105" text-anchor="middle">R2</text>
+            <line x1="400" y1="100" x2="450" y2="100" stroke="black" stroke-width="2"/>
+            <rect x="450" y="75" width="100" height="50" fill="none" stroke="black" stroke-width="2"/>
+            <text x="500" y="105" text-anchor="middle">R3</text>
+            <line x1="550" y1="100" x2="600" y2="100" stroke="black" stroke-width="2"/>
+            <text x="50" y="90" text-anchor="end">V+</text>
+            <text x="600" y="90" text-anchor="start">V-</text>
+            <text x="300" y="50" text-anchor="middle">R<tspan baseline-shift="sub">total</tspan> = R<tspan baseline-shift="sub">1</tspan> + R<tspan baseline-shift="sub">2</tspan> + R<tspan baseline-shift="sub">3</tspan></text>
+        </svg>
+    </div>
+    
+    <p>This diagram illustrates three resistors (R1, R2, and R3) connected in series. The total resistance is the sum of the individual resistances, as shown by the equation above the circuit.</p>
+</body>
+</html>
