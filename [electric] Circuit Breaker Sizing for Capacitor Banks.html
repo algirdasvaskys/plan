@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuit Breaker Sizing for Capacitor Banks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .formula {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .note {
+            background-color: #ffe6e6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Circuit Breaker Sizing for Capacitor Banks</h1>
+
+    <p>Properly sizing circuit breakers for capacitor banks is crucial for ensuring the safety and reliability of electrical systems. This document outlines the method for determining the appropriate circuit breaker size for capacitor bank applications.</p>
+
+    <h2>1. Understanding Capacitor Bank Currents</h2>
+    <p>Capacitor banks draw two types of currents that need to be considered when sizing circuit breakers:</p>
+    <ul>
+        <li><strong>Steady-state current:</strong> The normal operating current of the capacitor bank.</li>
+        <li><strong>Inrush current:</strong> A high-magnitude, short-duration current that occurs when the capacitor bank is energized.</li>
+    </ul>
+
+    <h2>2. Calculating Steady-State Current</h2>
+    <p>The steady-state current (I) for a three-phase capacitor bank can be calculated using the following formula:</p>
+    <div class="formula">
+        I = (Q * 1000) / (√3 * V)
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>I = Steady-state current in amperes (A)</li>
+        <li>Q = Capacitor bank rating in kVAR</li>
+        <li>V = Line-to-line voltage in volts (V)</li>
+    </ul>
+
+    <h2>3. Estimating Inrush Current</h2>
+    <p>Inrush current can be many times higher than the steady-state current. A common rule of thumb is:</p>
+    <div class="formula">
+        Inrush Current ≈ 20 to 30 times the steady-state current
+    </div>
+
+    <h2>4. Determining Circuit Breaker Rating</h2>
+    <p>To size the circuit breaker properly:</p>
+    <ol>
+        <li>Calculate the steady-state current using the formula in step 2.</li>
+        <li>Multiply the steady-state current by a factor of 1.35 to 1.5 to account for harmonics and voltage variations.</li>
+        <li>Choose a standard circuit breaker rating that is higher than this calculated value.</li>
+    </ol>
+
+    <h2>5. Verifying Inrush Current Handling</h2>
+    <p>Ensure that the selected circuit breaker can handle the estimated inrush current without tripping. This may require:
+    <ul>
+        <li>Choosing a circuit breaker with adjustable instantaneous trip settings</li>
+        <li>Selecting a breaker with a higher interrupting rating</li>
+        <li>Using specially designed capacitor-switching circuit breakers</li>
+    </ul>
+
+    <h2>6. Additional Considerations</h2>
+    <ul>
+        <li>Voltage rating: Ensure the circuit breaker's voltage rating matches or exceeds the system voltage.</li>
+        <li>Short-circuit current rating: Verify that the breaker's interrupting capacity is sufficient for the available fault current at the installation point.</li>
+        <li>Ambient temperature: Consider derating factors for high ambient temperatures.</li>
+        <li>Altitude: For installations at high altitudes, apply appropriate derating factors.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Note:</strong> Always consult relevant electrical codes and standards (e.g., NEC, IEC) and manufacturer recommendations when sizing circuit breakers for capacitor banks. In complex or critical applications, it's advisable to perform detailed studies, including transient analysis, to ensure proper protection.
+    </div>
+</body>
+</html>
