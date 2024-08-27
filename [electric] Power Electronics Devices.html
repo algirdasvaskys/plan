@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Electronics Devices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .device {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Power Electronics Devices</h1>
+
+    <div class="device">
+        <h2>1. Cycloconverter</h2>
+        <p>A cycloconverter is a power electronic device that converts AC power at one frequency to AC power at another frequency, typically lower, without an intermediate DC link.</p>
+        <p><strong>Method:</strong></p>
+        <ul>
+            <li>Uses naturally commutated thyristors or SCRs</li>
+            <li>Directly converts AC to AC</li>
+            <li>Controls the firing angle of thyristors to achieve desired output frequency</li>
+            <li>Typically used for large motor drives and induction heating</li>
+        </ul>
+    </div>
+
+    <div class="device">
+        <h2>2. Chopper</h2>
+        <p>A chopper is a static power electronic device that converts fixed DC input to a variable DC output voltage.</p>
+        <p><strong>Method:</strong></p>
+        <ul>
+            <li>Uses power semiconductor switches (e.g., MOSFETs, IGBTs)</li>
+            <li>Rapidly switches the input DC on and off</li>
+            <li>Controls the duty cycle to adjust the average output voltage</li>
+            <li>Commonly used in DC motor speed control and DC-DC converters</li>
+        </ul>
+    </div>
+
+    <div class="device">
+        <h2>3. Controlled Rectifier</h2>
+        <p>A controlled rectifier converts AC input to a controllable DC output using thyristors or other controllable switches.</p>
+        <p><strong>Method:</strong></p>
+        <ul>
+            <li>Uses thyristors (SCRs) as switching devices</li>
+            <li>Controls the firing angle of thyristors to adjust the output voltage</li>
+            <li>Can be single-phase or three-phase</li>
+            <li>Commonly used in industrial power supplies and motor drives</li>
+        </ul>
+    </div>
+
+    <div class="device">
+        <h2>4. Uncontrolled Rectifier</h2>
+        <p>An uncontrolled rectifier converts AC input to a fixed DC output using diodes.</p>
+        <p><strong>Method:</strong></p>
+        <ul>
+            <li>Uses diodes as rectifying elements</li>
+            <li>No control over the output voltage (except for input voltage changes)</li>
+            <li>Can be half-wave or full-wave, single-phase or three-phase</li>
+            <li>Commonly used in simple power supplies and battery chargers</li>
+        </ul>
+    </div>
+
+    <div class="device">
+        <h2>5. AC Voltage Controller</h2>
+        <p>An AC voltage controller is a power electronic device that varies the RMS value of the AC output voltage without changing its frequency.</p>
+        <p><strong>Method:</strong></p>
+        <ul>
+            <li>Uses thyristors or triacs as switching devices</li>
+            <li>Controls the firing angle to adjust the portion of each half-cycle that is conducted</li>
+            <li>Can be single-phase or three-phase</li>
+            <li>Commonly used in lighting control, heating applications, and soft starters for AC motors</li>
+        </ul>
+    </div>
+</body>
+</html>
