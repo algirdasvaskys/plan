@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transistor as an Oscillator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .interactive {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transistor as an Oscillator</h1>
+    
+    <h2>Introduction</h2>
+    <p>A transistor oscillator is an electronic circuit that uses a transistor as an active element to generate a periodic signal. Oscillators are crucial components in many electronic devices, including radios, computers, and clocks.</p>
+    
+    <h2>How It Works</h2>
+    <p>The transistor oscillator works on the principle of positive feedback. Here's a step-by-step explanation:</p>
+    <ol>
+        <li>The transistor amplifies a small signal.</li>
+        <li>A portion of the output is fed back to the input in phase with the input signal.</li>
+        <li>This positive feedback reinforces the original signal, causing oscillations.</li>
+        <li>The frequency of oscillation is determined by the resonant circuit (usually an LC tank circuit).</li>
+    </ol>
+    
+    <h2>Types of Transistor Oscillators</h2>
+    <ul>
+        <li>Colpitts Oscillator</li>
+        <li>Hartley Oscillator</li>
+        <li>Armstrong Oscillator</li>
+        <li>Crystal Oscillator</li>
+    </ul>
+    
+    <h2>Interactive Demonstration: Colpitts Oscillator</h2>
+    <div class="interactive">
+        <p>Click the button to simulate a Colpitts oscillator and observe the output waveform.</p>
+        <button onclick="simulateOscillator()">Simulate Oscillator</button>
+        <canvas id="oscillatorCanvas" width="400" height="200"></canvas>
+    </div>
+    
+    <h2>Applications</h2>
+    <p>Transistor oscillators are used in various applications, including:</p>
+    <ul>
+        <li>Radio and television transmitters</li>
+        <li>Function generators</li>
+        <li>Clock generators for digital circuits</li>
+        <li>Frequency synthesizers</li>
+    </ul>
+    
+    <script>
+        function simulateOscillator() {
+            const canvas = document.getElementById('oscillatorCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Set up the coordinate system
+            ctx.translate(0, canvas.height / 2);
+            ctx.scale(1, -1);
+            
+            // Draw the sine wave
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            
+            for (let x = 0; x < canvas.width; x++) {
+                const y = Math.sin(x * 0.05) * 80;
+                ctx.lineTo(x, y);
+            }
+            
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Reset the transformation
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            
+            // Draw the x and y axes
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height / 2);
+            ctx.lineTo(canvas.width, canvas.height / 2);
+            ctx.moveTo(0, 0);
+            ctx.lineTo(0, canvas.height);
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>
