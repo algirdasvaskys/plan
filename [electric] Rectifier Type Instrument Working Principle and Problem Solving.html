@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectifier Type Instrument: Working Principle and Problem Solving</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .problem {
+            background-color: #f0f0f0;
+            border-left: 5px solid #3498db;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        .solution {
+            background-color: #e8f6f3;
+            border-left: 5px solid #2ecc71;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rectifier Type Instrument: Working Principle and Problem Solving</h1>
+    
+    <h2>1. Introduction</h2>
+    <p>Rectifier type instruments are widely used in electrical measurements to measure alternating current (AC) and voltage. These instruments combine the properties of both moving coil instruments and rectifiers to provide accurate measurements of AC quantities.</p>
+    
+    <h2>2. Working Principle</h2>
+    <p>The working principle of a rectifier type instrument involves the following steps:</p>
+    <ol>
+        <li>Rectification of AC input</li>
+        <li>Smoothing of rectified current</li>
+        <li>Measurement using a moving coil meter</li>
+    </ol>
+    
+    <h2>3. Components</h2>
+    <p>A typical rectifier type instrument consists of:</p>
+    <ul>
+        <li>Bridge rectifier</li>
+        <li>Moving coil meter movement</li>
+        <li>Resistors for current limiting and range selection</li>
+        <li>Capacitor for smoothing (in some designs)</li>
+    </ul>
+    
+    <h2>4. Working Process</h2>
+    <p>The working process can be broken down into these steps:</p>
+    <ol>
+        <li>AC input is applied to the instrument</li>
+        <li>The bridge rectifier converts AC to pulsating DC</li>
+        <li>The pulsating DC is smoothed (if a capacitor is present)</li>
+        <li>The moving coil meter responds to the average value of the rectified current</li>
+        <li>The scale is calibrated to show RMS values of sinusoidal AC input</li>
+    </ol>
+    
+    <h2>5. Advantages</h2>
+    <ul>
+        <li>Can measure both AC and DC quantities</li>
+        <li>High sensitivity</li>
+        <li>Wide frequency range</li>
+        <li>Low power consumption</li>
+    </ul>
+    
+    <h2>6. Limitations</h2>
+    <ul>
+        <li>Non-linear scale (crowded at lower end)</li>
+        <li>Affected by waveform distortions</li>
+        <li>Temperature sensitive</li>
+        <li>Frequency dependent (at higher frequencies)</li>
+    </ul>
+    
+    <h2>7. Problem Solving Examples</h2>
+    
+    <div class="problem">
+        <h3>Problem 1: Scale Calibration</h3>
+        <p>A rectifier type ammeter has a full-scale deflection of 1 mA DC. What would be the full-scale AC current for sinusoidal input?</p>
+    </div>
+    
+    <div class="solution">
+        <h3>Solution 1:</h3>
+        <p>For a rectifier type instrument with a bridge rectifier:</p>
+        <ul>
+            <li>Average value of rectified sinusoidal current = 0.636 × RMS value</li>
+            <li>Moving coil responds to average value</li>
+            <li>Therefore, 1 mA DC = 0.636 × RMS value</li>
+            <li>RMS value = 1 mA / 0.636 = 1.57 mA</li>
+        </ul>
+        <p>The full-scale AC current for sinusoidal input would be 1.57 mA RMS.</p>
+    </div>
+    
+    <div class="problem">
+        <h3>Problem 2: Frequency Response</h3>
+        <p>A rectifier type voltmeter reads 100V at 50 Hz. At 1 kHz, it reads 98V for the same input voltage. Calculate the percentage error at 1 kHz.</p>
+    </div>
+    
+    <div class="solution">
+        <h3>Solution 2:</h3>
+        <p>To calculate the percentage error:</p>
+        <ol>
+            <li>True value = 100V (assuming 50 Hz reading is correct)</li>
+            <li>Measured value at 1 kHz = 98V</li>
+            <li>Error = True value - Measured value = 100V - 98V = 2V</li>
+            <li>Percentage error = (Error / True value) × 100
+                = (2V / 100V) × 100 = 2%</li>
+        </ol>
+        <p>The percentage error at 1 kHz is 2%.</p>
+    </div>
+    
+    <h2>8. Conclusion</h2>
+    <p>Rectifier type instruments are versatile tools for AC measurements, offering good sensitivity and a wide frequency range. Understanding their working principle and limitations is crucial for accurate measurements and problem-solving in electrical engineering applications.</p>
+</body>
+</html>
