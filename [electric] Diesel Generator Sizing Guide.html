@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diesel Generator Sizing Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .calculator {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Diesel Generator Sizing Guide</h1>
+    
+    <h2>1. Understanding Generator Capacity</h2>
+    <p>Generator capacity is typically measured in kilowatts (kW) or kilovolt-amperes (kVA). The relationship between kW and kVA depends on the power factor:</p>
+    <ul>
+        <li>kW = kVA × Power Factor</li>
+        <li>Typical power factor for generators: 0.8</li>
+    </ul>
+
+    <h2>2. Load Calculation</h2>
+    <p>To determine the appropriate generator size, you need to calculate the total load:</p>
+    <ol>
+        <li>List all electrical equipment that will be powered by the generator</li>
+        <li>Note the power rating (in watts or kW) for each piece of equipment</li>
+        <li>Consider starting loads for motors (typically 3 times the running load)</li>
+        <li>Sum up all the loads</li>
+    </ol>
+
+    <h2>3. Sizing Considerations</h2>
+    <p>When sizing a generator, consider the following factors:</p>
+    <ul>
+        <li>Peak load requirements</li>
+        <li>Future load growth</li>
+        <li>Altitude and temperature derating</li>
+        <li>Continuous vs. standby operation</li>
+    </ul>
+
+    <h2>4. Generator Sizing Formula</h2>
+    <p>Use this general formula to determine the minimum generator size:</p>
+    <p><strong>Generator Size (kVA) = (Total Load in kW) ÷ Power Factor</strong></p>
+
+    <h2>5. Load Calculator</h2>
+    <div class="calculator">
+        <h3>Simple Load Calculator</h3>
+        <label for="totalLoad">Total Load (kW):</label>
+        <input type="number" id="totalLoad" placeholder="Enter total load in kW">
+        <label for="powerFactor">Power Factor:</label>
+        <input type="number" id="powerFactor" placeholder="Enter power factor (e.g., 0.8)" value="0.8">
+        <button onclick="calculateGeneratorSize()">Calculate Generator Size</button>
+        <p id="result"></p>
+    </div>
+
+    <h2>6. Additional Considerations</h2>
+    <ul>
+        <li>Always add a safety margin of 10-20% to the calculated size</li>
+        <li>Consider harmonic loads and their impact on sizing</li>
+        <li>Consult with a professional engineer for critical applications</li>
+    </ul>
+
+    <script>
+        function calculateGeneratorSize() {
+            const totalLoad = parseFloat(document.getElementById('totalLoad').value);
+            const powerFactor = parseFloat(document.getElementById('powerFactor').value);
+            
+            if (isNaN(totalLoad) || isNaN(powerFactor)) {
+                document.getElementById('result').innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            const generatorSize = totalLoad / powerFactor;
+            const recommendedSize = generatorSize * 1.2; // Adding 20% safety margin
+
+            document.getElementById('result').innerHTML = `
+                Minimum Generator Size: ${generatorSize.toFixed(2)} kVA<br>
+                Recommended Generator Size (with 20% margin): ${recommendedSize.toFixed(2)} kVA
+            `;
+        }
+    </script>
+</body>
+</html>
