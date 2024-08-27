@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transistor as an Amplifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .content {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transistor as an Amplifier</h1>
+    
+    <div class="content">
+        <h2>Introduction</h2>
+        <p>A transistor is a semiconductor device that can be used to amplify or switch electronic signals. One of its most common applications is as an amplifier in electronic circuits.</p>
+    </div>
+    
+    <div class="content">
+        <h2>How Transistors Work as Amplifiers</h2>
+        <p>Transistors amplify signals by controlling a large amount of current flow with a small input current. Here's a basic explanation of how it works:</p>
+        <ol>
+            <li>A small input signal is applied to the base of the transistor.</li>
+            <li>This small signal controls the flow of a much larger current between the collector and emitter.</li>
+            <li>The result is an amplified output signal that is larger than the input signal.</li>
+        </ol>
+    </div>
+    
+    <div class="content">
+        <h2>Types of Transistor Amplifiers</h2>
+        <p>There are several common configurations for transistor amplifiers:</p>
+        <ul>
+            <li>Common Emitter (CE)</li>
+            <li>Common Collector (CC)</li>
+            <li>Common Base (CB)</li>
+        </ul>
+        <p>The most commonly used configuration is the Common Emitter, as it provides good voltage, current, and power gain.</p>
+    </div>
+    
+    <div class="content">
+        <h2>Common Emitter Amplifier Circuit</h2>
+        <p>Here's a basic diagram of a common emitter amplifier circuit:</p>
+        <svg width="400" height="300" viewBox="0 0 400 300">
+            <rect x="0" y="0" width="400" height="300" fill="#fff"/>
+            <line x1="50" y1="150" x2="350" y2="150" stroke="#000" stroke-width="2"/>
+            <circle cx="200" cy="150" r="50" fill="none" stroke="#000" stroke-width="2"/>
+            <line x1="200" y1="100" x2="200" y2="50" stroke="#000" stroke-width="2"/>
+            <line x1="200" y1="200" x2="200" y2="250" stroke="#000" stroke-width="2"/>
+            <line x1="150" y1="150" x2="100" y2="150" stroke="#000" stroke-width="2"/>
+            <text x="190" y="40" font-size="12">Collector</text>
+            <text x="190" y="270" font-size="12">Emitter</text>
+            <text x="80" y="140" font-size="12">Base</text>
+            <text x="220" y="160" font-size="12">Transistor</text>
+        </svg>
+    </div>
+    
+    <div class="content">
+        <h2>Steps to Use a Transistor as an Amplifier</h2>
+        <ol>
+            <li>Choose the appropriate transistor based on your requirements (voltage, current, frequency).</li>
+            <li>Design the biasing circuit to set the correct DC operating point.</li>
+            <li>Add input and output coupling capacitors to allow AC signals to pass while blocking DC.</li>
+            <li>Include an emitter resistor for stability and to set the gain.</li>
+            <li>Add a collector resistor to convert current changes to voltage changes.</li>
+            <li>Apply the input signal to the base of the transistor.</li>
+            <li>Measure the amplified output signal at the collector.</li>
+        </ol>
+    </div>
+    
+    <div class="content">
+        <h2>Conclusion</h2>
+        <p>Transistors are fundamental components in electronic amplifiers. By understanding their operation and proper circuit design, you can create effective amplifiers for various applications in electronics and communications.</p>
+    </div>
+</body>
+</html>
