@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star-Delta Connection: Voltage and Current Behavior</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .connection-diagram {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .diagram {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Star-Delta Connection: Voltage and Current Behavior</h1>
+    
+    <h2>Introduction</h2>
+    <p>The Star-Delta connection is a method of connecting three-phase electrical systems. It's widely used in power distribution and motor starting applications. Understanding the voltage and current behavior in Star and Delta connections is crucial for electrical engineers and technicians.</p>
+    
+    <div class="connection-diagram">
+        <div class="diagram">
+            <h3>Star Connection</h3>
+            <svg width="200" height="200" viewBox="0 0 200 200">
+                <line x1="100" y1="100" x2="50" y2="50" stroke="black" stroke-width="2"/>
+                <line x1="100" y1="100" x2="150" y2="50" stroke="black" stroke-width="2"/>
+                <line x1="100" y1="100" x2="100" y2="175" stroke="black" stroke-width="2"/>
+                <circle cx="100" cy="100" r="5" fill="black"/>
+                <text x="40" y="40">R</text>
+                <text x="160" y="40">Y</text>
+                <text x="100" y="190">B</text>
+                <text x="100" y="100" dy="-10">N</text>
+            </svg>
+        </div>
+        <div class="diagram">
+            <h3>Delta Connection</h3>
+            <svg width="200" height="200" viewBox="0 0 200 200">
+                <line x1="50" y1="50" x2="150" y2="50" stroke="black" stroke-width="2"/>
+                <line x1="150" y1="50" x2="100" y2="150" stroke="black" stroke-width="2"/>
+                <line x1="100" y1="150" x2="50" y2="50" stroke="black" stroke-width="2"/>
+                <text x="40" y="40">R</text>
+                <text x="160" y="40">Y</text>
+                <text x="100" y="170">B</text>
+            </svg>
+        </div>
+    </div>
+
+    <h2>Star Connection</h2>
+    <p>In a Star (Y) connection, one end of each phase is connected to a common point called the neutral point.</p>
+    <h3>Voltage Behavior</h3>
+    <ul>
+        <li>Line Voltage (VL) = √3 × Phase Voltage (VP)</li>
+        <li>VL is measured between any two lines</li>
+        <li>VP is measured between any line and the neutral point</li>
+    </ul>
+    <h3>Current Behavior</h3>
+    <ul>
+        <li>Line Current (IL) = Phase Current (IP)</li>
+        <li>The current in each line is equal to the current in each phase</li>
+    </ul>
+
+    <h2>Delta Connection</h2>
+    <p>In a Delta (Δ) connection, the end of one phase is connected to the start of the next phase, forming a closed loop.</p>
+    <h3>Voltage Behavior</h3>
+    <ul>
+        <li>Line Voltage (VL) = Phase Voltage (VP)</li>
+        <li>The voltage across each phase is equal to the line voltage</li>
+    </ul>
+    <h3>Current Behavior</h3>
+    <ul>
+        <li>Line Current (IL) = √3 × Phase Current (IP)</li>
+        <li>The current in each line is √3 times the current in each phase</li>
+    </ul>
+
+    <h2>Comparison Table</h2>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Star Connection</th>
+            <th>Delta Connection</th>
+        </tr>
+        <tr>
+            <td>Voltage Relation</td>
+            <td>VL = √3 × VP</td>
+            <td>VL = VP</td>
+        </tr>
+        <tr>
+            <td>Current Relation</td>
+            <td>IL = IP</td>
+            <td>IL = √3 × IP</td>
+        </tr>
+        <tr>
+            <td>Power</td>
+            <td>P = √3 × VL × IL × cosφ</td>
+            <td>P = √3 × VL × IL × cosφ</td>
+        </tr>
+        <tr>
+            <td>Neutral Point</td>
+            <td>Available</td>
+            <td>Not available</td>
+        </tr>
+    </table>
+
+    <h2>Applications</h2>
+    <p>The choice between Star and Delta connections depends on the specific application:</p>
+    <ul>
+        <li>Star connections are often used in low-voltage, high-current applications</li>
+        <li>Delta connections are common in high-voltage, low-current scenarios</li>
+        <li>Star-Delta starters are used for reducing the starting current in large motors</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Understanding the voltage and current behavior in Star-Delta connections is essential for proper system design, power distribution, and troubleshooting in three-phase electrical systems. Each connection type has its advantages and is chosen based on the specific requirements of the application.</p>
+</body>
+</html>
