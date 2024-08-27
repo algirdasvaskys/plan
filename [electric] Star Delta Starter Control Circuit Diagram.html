@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Delta Starter Control Circuit Diagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .component {
+            position: absolute;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Star Delta Starter Control Circuit Diagram</h1>
+    
+    <h2>Introduction</h2>
+    <p>A Star Delta Starter is a motor starting method that reduces the start-up current for large AC motors. This method initially connects the motor windings in a star configuration to reduce the voltage, and then switches to a delta configuration for normal running operation.</p>
+    
+    <h2>Components</h2>
+    <ul>
+        <li>Main Contactor (K1)</li>
+        <li>Star Contactor (K2)</li>
+        <li>Delta Contactor (K3)</li>
+        <li>Overload Relay (F2)</li>
+        <li>Timer (K4)</li>
+        <li>Start and Stop Push Buttons</li>
+    </ul>
+    
+    <h2>Circuit Diagram</h2>
+    <div class="diagram">
+        <svg width="100%" height="100%" viewBox="0 0 600 400">
+            <!-- Main power supply -->
+            <line x1="50" y1="50" x2="550" y2="50" stroke="black" />
+            <text x="300" y="40" text-anchor="middle">Main Power Supply</text>
+            
+            <!-- Start and Stop buttons -->
+            <circle cx="100" cy="100" r="10" fill="green" />
+            <text x="100" y="130" text-anchor="middle">Start</text>
+            <circle cx="150" cy="100" r="10" fill="red" />
+            <text x="150" y="130" text-anchor="middle">Stop</text>
+            
+            <!-- Main contactor K1 -->
+            <rect x="200" y="80" width="40" height="40" fill="none" stroke="black" />
+            <text x="220" y="135" text-anchor="middle">K1</text>
+            
+            <!-- Star contactor K2 -->
+            <rect x="300" y="80" width="40" height="40" fill="none" stroke="black" />
+            <text x="320" y="135" text-anchor="middle">K2</text>
+            
+            <!-- Delta contactor K3 -->
+            <rect x="400" y="80" width="40" height="40" fill="none" stroke="black" />
+            <text x="420" y="135" text-anchor="middle">K3</text>
+            
+            <!-- Timer K4 -->
+            <rect x="250" y="200" width="100" height="40" fill="none" stroke="black" />
+            <text x="300" y="255" text-anchor="middle">Timer K4</text>
+            
+            <!-- Overload relay F2 -->
+            <rect x="400" y="200" width="40" height="40" fill="none" stroke="black" />
+            <text x="420" y="255" text-anchor="middle">F2</text>
+            
+            <!-- Motor -->
+            <circle cx="300" cy="350" r="30" fill="none" stroke="black" />
+            <text x="300" y="355" text-anchor="middle">Motor</text>
+        </svg>
+    </div>
+    
+    <h2>Working Method</h2>
+    <ol>
+        <li><strong>Initial State:</strong> All contactors are open, and the motor is not running.</li>
+        <li><strong>Start Button Press:</strong> When the start button is pressed, the main contactor K1 and star contactor K2 close.</li>
+        <li><strong>Star Connection:</strong> The motor windings are connected in a star configuration, reducing the voltage across each winding to 1/√3 of the supply voltage.</li>
+        <li><strong>Timer Activation:</strong> Simultaneously, the timer K4 is activated.</li>
+        <li><strong>Acceleration:</strong> The motor accelerates with reduced torque and current.</li>
+        <li><strong>Timer Expiry:</strong> After a preset time (typically 5-10 seconds), the timer K4 triggers.</li>
+        <li><strong>Transition:</strong> The star contactor K2 opens, and after a brief delay, the delta contactor K3 closes.</li>
+        <li><strong>Delta Connection:</strong> The motor windings are now connected in a delta configuration, receiving full supply voltage.</li>
+        <li><strong>Normal Operation:</strong> The motor continues to run at full speed and torque.</li>
+        <li><strong>Overload Protection:</strong> The overload relay F2 monitors the current and trips if an overload occurs.</li>
+        <li><strong>Stopping:</strong> When the stop button is pressed, all contactors open, and the motor stops.</li>
+    </ol>
+    
+    <h2>Advantages</h2>
+    <ul>
+        <li>Reduces initial starting current (typically to about 1/3 of direct online starting)</li>
+        <li>Reduces voltage dips in the power supply system</li>
+        <li>Provides smoother acceleration for the motor and connected load</li>
+        <li>Suitable for high inertia loads</li>
+    </ul>
+    
+    <h2>Applications</h2>
+    <p>Star Delta starters are commonly used in industrial settings for large motors (typically above 5 HP) where reduced starting current is necessary. Applications include:</p>
+    <ul>
+        <li>Pumps</li>
+        <li>Compressors</li>
+        <li>Conveyor systems</li>
+        <li>Fans</li>
+        <li>Crushers</li>
+    </ul>
+</body>
+</html>
