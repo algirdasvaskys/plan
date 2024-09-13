@@ -29,6 +29,10 @@
             align-items: center;
             color: white;
             font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            cursor: pointer;
         }
         .burst.inflated {
             transform: scale(1.5);
@@ -44,117 +48,52 @@
     </style>
 </head>
 <body>
-    <div class="burst-container">
-<div id="burst1" class="burst">[training] A09 Forward Tipping Dumper</div>
-<div id="burst1" class="burst">[Ladder logic] normal open and normal close contacts in the Ladder logic</div>
-<div id="burst1" class="burst">[motor] Running a Three Phase Motor on Single Phase Supply</div>
-<div id="burst1" class="burst">[plc] ENI Module Programming and Configuration</div>
-<div id="burst1" class="burst">[Electric] NICEIC Guide to Domestic Periodic Inspection Testing and Reporting</div>
-<div id="burst1" class="burst">[motor] Forward Reserve Wye-Delta Motor Control Diagram</div>
-<div id="burst1" class="burst">car fuel cost Calculator</div>
-<div id="burst1" class="burst">Testing - Fuse</div>
-<div id="burst1" class="burst">Testing - Switch</div>
-<div id="burst1" class="burst">Diagram - Motor</div>
-<div id="burst1" class="burst">Testing - Relay</div>
-<div id="burst1" class="burst">College - Wiring</div>
-<div id="burst1" class="burst">Autodcad 2D - Plynth</div>
-<div id="burst1" class="burst">Operating</div>
-<div id="burst1" class="burst">Forklift driving</div>
-<div id="burst1" class="burst">Mortgage Calculator</div>
-        <div id="burst1" class="burst">Training</div>
-        <div id="burst2" class="burst">Test</div>
-        <div id="burst3" class="burst">Civils, dumper, shuttering</div>
-        <div id="burst4" class="burst">Conduit and Trunking Systems</div>
-        <div id="burst5" class="burst">Civil engineering</div>
-        <div id="burst6" class="burst">Underground utilities</div>
-        <div id="burst7" class="burst">College SWA</div>
-
+    <div id="burst-container" class="burst-container">
     </div>
 
-    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const burstElements = document.querySelectorAll('.burst');
-            const urls = [
-'https://algirdasvaskys.github.io/plan/[training]%20A09%20Forward%20Tipping%20Dumper%20[completed].html',
-// [training] A09 Forward Tipping Dumper [completed]
-'https://algirdasvaskys.github.io/plan/[Ladder%20logic]%20normal%20open%20and%20normal%20close%20contacts%20in%20the%20Ladder%20logic.html',
-// [Ladder logic] normal open and normal close contacts in the Ladder logic
-'https://algirdasvaskys.github.io/plan/[motor]%20Three%20Phase%20Motor%20with%20Single%20Phase%20Supply',
-// [motor] Running a Three Phase Motor on Single Phase Supply
+        async function fetchGitHubFiles() {
+            const apiUrl = 'https://api.github.com/repos/algirdasvaskys/plan/contents/';
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            return data.filter(file => file.name.endsWith('.html'));
+        }
 
-'https://algirdasvaskys.github.io/plan/[plc]%20ENI%20Module%20Programming%20and%20Configuration',
-// [plc] ENI Module Programming and Configuration
-'https://algirdasvaskys.github.io/plan/[Electric]%20NICEIC%20Guide%20to%20Domestic%20Periodic%20Inspection%20Testing%20and%20Reporting',
-// [Electric] NICEIC Guide to Domestic Periodic Inspection Testing and Reporting
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
 
-'https://algirdasvaskys.github.io/plan/[motor]%20Forward%20Reserve%20Wye-Delta%20Motor%20Control%20Diagram',
-// "[motor] Forward Reserve Wye-Delta Motor Control Diagram"
-                
-'https://algirdasvaskys.github.io/plan/carfuelcostcalculator',
-// URL for carfuelcostcalculator calculator
+        async function createBursts() {
+            const files = await fetchGitHubFiles();
+            shuffleArray(files);
+            const selectedFiles = files.slice(0, 10);
 
-'https://algirdasvaskys.github.io/plan/testingfuse',
-// URL for testing fuse
-'https://algirdasvaskys.github.io/plan/testingswitch',
-// URL for testing switch
-                
-'https://raw.githubusercontent.com/algirdasvaskys/work/main/305200074_806410593846247_2627087210931605234_n.jpg', 
-// URL for Motor diagram
-'https://algirdasvaskys.github.io/plan/testingrelay',
-// URL for testing relay
-'https://raw.githubusercontent.com/algirdasvaskys/work/main/275984755_5259066870792971_1186986335630654734_n.jpg',
-// URL for 
-'https://raw.githubusercontent.com/algirdasvaskys/work/main/1599247556807.jfif',
-// URL for 
-'https://algirdasvaskys.github.io/plan/operating',
-// URL for operating
-'https://algirdasvaskys.github.io/plan/forklift',
-// URL for forklift
-'https://algirdasvaskys.github.io/plan/mortgagecalculator',
-// URL for mortgage calculator
-                'https://algirdasvaskys.github.io/plan/training', 
-// URL for Training
-                'https://algirdasvaskys.github.io/plan/test',                   
-// URL for Test
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/13458648_1191904104175955_5126249990314862461_o.jpg',              
- // URL for Civil engineering,  assistant with shuttering, assisting with plasterboard, with plastering, carpentry, floor laying
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/20150323_131846.jpg',                
- // URL for Conduit and Trunking Systems College of West Anglia 
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/13474980_1191903884175977_5835093673817173491_o.jpg',                   
-// URL for Civil engineering, AD plants, solar farms, assistig digger driver, dumper driving
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/IMG_2474.JPG',               
- // URL for Rodding cable enclosures, Tracing underground cables, cctv drainage, pas128, Autocad, plot
-                'https://raw.githubusercontent.com/algirdasvaskys/work/main/Terminating%20SWA.png',
-// URL College SWA
-            ];
+            const container = document.getElementById('burst-container');
 
-            burstElements.forEach((burstElement, index) => {
-                let isInflated = false;
-                burstElement.style.top = `${Math.random() * 90}vh`;
-                burstElement.style.left = `${Math.random() * 90}vw`;
+            selectedFiles.forEach((file, index) => {
+                const burst = document.createElement('div');
+                burst.className = 'burst';
+                burst.textContent = file.name.replace('.html', '');
+                burst.style.top = `${Math.random() * 90}vh`;
+                burst.style.left = `${Math.random() * 90}vw`;
 
-                burstElement.addEventListener('click', () => {
-                    isInflated = !isInflated;
-                    if (isInflated) {
-                        burstElement.classList.add('inflated');
-                        setTimeout(() => {
-                            window.location.href = urls[index];  // Redirect to the respective URL
-                        }, 1000);
-                    } else {
-                        burstElement.classList.remove('inflated');
-                    }
+                burst.addEventListener('click', () => {
+                    burst.classList.add('inflated');
+                    setTimeout(() => {
+                        window.open(`https://algirdasvaskys.github.io/plan/${file.name}`, '_blank');
+                    }, 1000);
                 });
+
+                container.appendChild(burst);
             });
-        });
+        }
+
+        document.addEventListener('DOMContentLoaded', createBursts);
     </script>
 </body>
 </html>
-
-
-
-
-
-
 
 
