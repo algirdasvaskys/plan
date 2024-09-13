@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Image Slider</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .slider-container {
+      max-width: 800px;
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .slider-image {
+      max-width: 100%;
+      height: auto;
+      display: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .slider-image.active {
+      display: block;
+    }
+    .slider-navigation {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .slider-navigation-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      margin: 0 5px 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .slider-navigation-dot.active {
+      background-color: #fff;
+    }
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+    .slider-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .slider-button.prev {
+      left: 10px;
+    }
+    .slider-button.next {
+      right: 10px;
+    }
+    @media (max-width: 600px) {
+      .slider-button {
+        padding: 8px 12px;
+        font-size: 16px;
+      }
+      .slider-navigation-dot {
+        width: 10px;
+        height: 10px;
+        margin: 0 4px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slider-container">
+    <div id="imageContainer"></div>
+    <div class="slider-navigation" id="navigationDots"></div>
+    <button class="slider-button prev" id="prevButton">&#10094;</button>
+    <button class="slider-button next" id="nextButton">&#10095;</button>
+  </div>
+
+  <script>
+    const imageContainer = document.getElementById('imageContainer');
+    const navigationDots = document.getElementById('navigationDots');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    let currentImageIndex = 0;
+    let intervalId;
+
+    // Generate image elements and navigation dots
+    for (let i = 1; i <= 19; i++) {
+      const img = document.createElement('img');
+      img.src = `https://algirdasvaskys.github.io/try/${i}.jpg`;
+      img.alt = `Image ${i}`;
+      img.className = 'slider-image';
+      if (i === 1) img.classList.add('active');
+      imageContainer.appendChild(img);
+
+      const dot = document.createElement('span');
+      dot.className = 'slider-navigation-dot';
+      if (i === 1) dot.classList.add('active');
+      dot.addEventListener('click', () => showImage(i - 1));
+      navigationDots.appendChild(dot);
+    }
+
+    const sliderImages = document.querySelectorAll(".slider-image");
+    const dots = document.querySelectorAll(".slider-navigation-dot");
+
+    function showImage(index) {
+      sliderImages[currentImageIndex].classList.remove("active");
+      dots[currentImageIndex].classList.remove("active");
+      currentImageIndex = index;
+      sliderImages[currentImageIndex].classList.add("active");
+      dots[currentImageIndex].classList.add("active");
+    }
+
+    function nextImage() {
+      let nextIndex = (currentImageIndex + 1) % sliderImages.length;
+      showImage(nextIndex);
+    }
+
+    function prevImage() {
+      let prevIndex = (currentImageIndex - 1 + sliderImages.length) % sliderImages.length;
+      showImage(prevIndex);
+    }
+
+    function startAutoSlide() {
+      intervalId = setInterval(nextImage, 1000); // Change image every 5 seconds
+    }
+
+    function stopAutoSlide() {
+      clearInterval(intervalId);
+    }
+
+    prevButton.addEventListener('click', () => {
+      prevImage();
+      stopAutoSlide();
+      startAutoSlide();
+    });
+
+    nextButton.addEventListener('click', () => {
+      nextImage();
+      stopAutoSlide();
+      startAutoSlide();
+    });
+
+    imageContainer.addEventListener('mouseover', stopAutoSlide);
+    imageContainer.addEventListener('mouseout', startAutoSlide);
+
+    startAutoSlide();
+  </script>
+</body>
+</html>
+
+
+Services.html
