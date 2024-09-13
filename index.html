@@ -1,224 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>test &amp; Installation</title>
-  <style>
-    body {
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%);
-      overflow: hidden;
-      animation: rotate 10s linear infinite;
-    }
-    .star {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      background: #fffff;
-      animation: twinkle 3s infinite;
-    }
-    .star:nth-child(1) {
-      top: 10%;
-      left: 20%;
-      animation-delay: 1s;
-    }
-    .star:nth-child(2) {
-      top: 20%;
-      left: 50%;
-      animation-delay: 0.5s;
-    }
-    .star:nth-child(3) {
-      top: 30%;
-      left: 80%;
-      animation-delay: 1.5s;
-    }
-    @keyframes twinkle {
-      0% {
-        opacity: 0;
-        transform: scale(0);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0);
-      }
-    }
-    @keyframes rotate {
-      from {
-        transform: rotateZ(0deg);
-      }
-      to {
-        transform: rotateZ(360deg);
-      }
-    }
-    @keyframes scroll {
-      from {
-        background-position: 0% 0%;
-      }
-      to {
-        background-position: 100% 100%;
-      }
-    }
-    body {
-      background-size: 300% 300%;
-      animation: scroll 10s linear infinite;
-    }
-    .sun {
-      position: absolute;
-      top: 20%;
-      right: 0%;
-      width: 200px;
-      height: 200px;
-      margin: -200px 0 0 -100px;
-      background-image: radial-gradient(circle, #f6ff00 0%, #ffcb00 30%, #ffad00 50%, #ff8f00 70%, #ff6f00 100%);
-      background-size: cover;
-      border-radius: 50%;
-      animation: sun-rotation 20s linear infinite;
-      animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-      box-shadow: 0 0 80px 40px rgba(255, 191, 0, 0.5);
-      filter: blur(20px);
-    }
-    @keyframes sun-rotation {
-      0% {
-        transform: rotateZ(0deg);
-      }
-      25% {
-        transform: rotateZ(90deg);
-      }
-      50% {
-        transform: rotateZ(180deg);
-      }
-      75% {
-        transform: rotateZ(270deg);
-      }
-      100% {
-        transform: rotateZ(360deg);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Courses After NVQ Level 2 in Electrical Installation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .course-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33.333% - 20px);
+            box-sizing: border-box;
+        }
+        .course-item h3 {
+            margin-top: 0;
+        }
+        .course-item p {
+            margin-bottom: 10px;
+        }
+        .requirements {
+            font-weight: bold;
+            color: #555;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="shooting-star"></div>
-  <div class="sun"></div>
+    <h1>Next Courses in the UK after Completing NVQ Level 2 in Electrical Installation</h1>
+    <p>Congratulations on completing your NVQ Level 2 in Performing Engineering Operations (Electrical Installation)! Here are some courses you can consider for further advancement, along with their minimum requirements for enrollment:</p>
+
+    <div class="course-list">
+        <div class="course-item">
+            <h3>NVQ Level 3 in Electrical Installation</h3>
+            <p>This course builds on your existing knowledge and skills, preparing you for more complex electrical installation work and supervisory roles.</p>
+            <p class="requirements">Minimum Requirements: NVQ Level 2 in Electrical Installation, relevant work experience, and basic knowledge of electrical principles.</p>
+            <a href="https://www.cityandguilds.com/qualifications-and-apprenticeships/building-services-industry/electrical-installation/2357-electrical-installation#tab=information" class="btn">Learn More</a>
+        </div>
+        <div class="course-item">
+            <h3>City & Guilds 2391-52 Inspection and Testing</h3>
+            <p>This qualification is for those looking to carry out initial verification and periodic inspection and testing of electrical installations.</p>
+            <p class="requirements">Minimum Requirements: NVQ Level 3 in Electrical Installation or equivalent, experience in electrical installation, and a basic understanding of inspection and testing principles.</p>
+            <a href="https://www.cityandguilds.com/qualifications-and-apprenticeships/building-services-industry/electrical-installation/2391-electrical-inspection-verification#tab=information" class="btn">Learn More</a>
+        </div>
+        <div class="course-item">
+            <h3>HNC/HND in Electrical and Electronic Engineering</h3>
+            <p>The Higher National Certificate and Diploma provide a deeper understanding of electrical engineering principles and practical skills.</p>
+            <p class="requirements">Minimum Requirements: A-levels (including Mathematics and Physics) or equivalent, NVQ Level 3, and relevant work experience.</p>
+            <a href="https://www.ucas.com/explore/subjects/electrical-and-electronic-engineering" class="btn">Learn More</a>
+        </div>
+        <div class="course-item">
+            <h3>BS 7671 18th Edition Wiring Regulations</h3>
+            <p>This course covers the latest wiring regulations, essential for ensuring your work complies with current standards.</p>
+            <p class="requirements">Minimum Requirements: Basic knowledge of electrical installation practices, preferably NVQ Level 2 or Level 3 in Electrical Installation.</p>
+            <a href="https://www.theiet.org/18th-edition/" class="btn">Learn More</a>
+        </div>
+        <div class="course-item">
+            <h3>Apprenticeship in Electrical Installation</h3>
+            <p>Combining work-based training with study, apprenticeships offer a pathway to becoming a fully qualified electrician.</p>
+            <p class="requirements">Minimum Requirements: NVQ Level 2 in Electrical Installation, GCSEs in Mathematics, English, and Science, and a willingness to learn and work in the field.</p>
+            <a href="https://www.apprenticeships.gov.uk/apprentices/browse-by-interests/engineering-and-manufacturing/electrical" class="btn">Learn More</a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for interactive elements can be added here
+    </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>test &amp; Installation</title>
-  <style>
-    body {
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%);
-      overflow: hidden;
-      animation: rotate 10s linear infinite;
-    }
-    .star {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      background: #fffff;
-      animation: twinkle 3s infinite;
-    }
-    .star:nth-child(1) {
-      top: 10%;
-      left: 20%;
-      animation-delay: 1s;
-    }
-    .star:nth-child(2) {
-      top: 20%;
-      left: 50%;
-      animation-delay: 0.5s;
-    }
-    .star:nth-child(3) {
-      top: 30%;
-      left: 80%;
-      animation-delay: 1.5s;
-    }
-    @keyframes twinkle {
-      0% {
-        opacity: 0;
-        transform: scale(0);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0);
-      }
-    }
-    @keyframes rotate {
-      from {
-        transform: rotateZ(0deg);
-      }
-      to {
-        transform: rotateZ(360deg);
-      }
-    }
-    @keyframes scroll {
-      from {
-        background-position: 0% 0%;
-      }
-      to {
-        background-position: 100% 100%;
-      }
-    }
-    body {
-      background-size: 300% 300%;
-      animation: scroll 10s linear infinite;
-    }
-    .sun {
-      position: absolute;
-      top: 20%;
-      right: 0%;
-      width: 200px;
-      height: 200px;
-      margin: -200px 0 0 -100px;
-      background-image: radial-gradient(circle, #f6ff00 0%, #ffcb00 30%, #ffad00 50%, #ff8f00 70%, #ff6f00 100%);
-      background-size: cover;
-      border-radius: 50%;
-      animation: sun-rotation 20s linear infinite;
-      animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-      box-shadow: 0 0 80px 40px rgba(255, 191, 0, 0.5);
-      filter: blur(20px);
-    }
-    @keyframes sun-rotation {
-      0% {
-        transform: rotateZ(0deg);
-      }
-      25% {
-        transform: rotateZ(90deg);
-      }
-      50% {
-        transform: rotateZ(180deg);
-      }
-      75% {
-        transform: rotateZ(270deg);
-      }
-      100% {
-        transform: rotateZ(360deg);
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="shooting-star"></div>
-  <div class="sun"></div>
-</body>
-</html>
-
-
