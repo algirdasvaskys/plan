@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Engineering Certifications in Lithuania</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .certification-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .certification-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: calc(33.33% - 20px);
+            min-width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .certification-card:hover {
+            transform: translateY(-5px);
+        }
+        .certification-card h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        .certification-card p {
+            margin-bottom: 15px;
+        }
+        .certification-card a {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .certification-card a:hover {
+            background-color: #2980b9;
+        }
+        #drawPersonContainer {
+            text-align: center;
+            margin-top: 30px;
+        }
+        #drawPersonCanvas {
+            border: 1px solid #ddd;
+            cursor: crosshair;
+        }
+        #clearButton {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #clearButton:hover {
+            background-color: #c0392b;
+        }
+        @media (max-width: 768px) {
+            .certification-card {
+                width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .certification-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Civil Engineering Certifications - congratulations</h1>
+    <div class="certification-container">
+        <div class="certification-card">
+            <h3>Structural Engineering</h3>
+            <p>Advanced certification in structural analysis and design, approved by NARIC Lithuania.</p>
+            <a href="https://www.skvc.lt/default/en/" target="_blank">Learn More</a>
+        </div>
+        <div class="certification-card">
+            <h3>Geotechnical Engineering</h3>
+            <p>Specialized certification in soil mechanics and foundation engineering, recognized by NARIC.</p>
+            <a href="https://www.vgtu.lt/index.php?lang=2" target="_blank">Course Details</a>
+        </div>
+        <div class="certification-card">
+            <h3>Transportation Engineering</h3>
+            <p>Certification focusing on road and railway design, approved by Lithuanian authorities.</p>
+            <a href="https://www.ktu.edu/en/" target="_blank">Enroll Now</a>
+        </div>
+        <div class="certification-card">
+            <h3>Environmental Engineering</h3>
+            <p>NARIC-approved certification in sustainable civil engineering practices and environmental impact assessment.</p>
+            <a href="https://www.vu.lt/en/" target="_blank">Program Overview</a>
+        </div>
+        <div class="certification-card">
+            <h3>Construction Management</h3>
+            <p>Advanced certification in project management and construction techniques, recognized in Lithuania.</p>
+            <a href="https://www.mruni.eu/en/" target="_blank">Register Here</a>
+        </div>
+        <div class="certification-card">
+            <h3>Water Resources Engineering</h3>
+            <p>Specialized certification in hydraulics and water management systems, NARIC-approved.</p>
+            <a href="https://www.lsu.lt/en/" target="_blank">Explore Curriculum</a>
+        </div>
+        <div class="certification-card">
+            <h3>Land Surveying</h3>
+            <p>Comprehensive certification in land measurement, mapping, and boundary determination techniques.</p>
+            <a href="https://www.vgtu.lt/index.php?lang=2" target="_blank">Certification Details</a>
+        </div>
+        <div class="certification-card">
+            <h3>Underground Surveying</h3>
+            <p>Specialized certification in subterranean mapping and surveying for tunnels, mines, and underground structures.</p>
+            <a href="https://www.ktu.edu/en/" target="_blank">Learn More</a>
+        </div>
+    </div>
+
+    <div id="drawPersonContainer">
+        <h2>Draw a Person</h2>
+        <canvas id="drawPersonCanvas" width="300" height="300"></canvas>
+        <br>
+        <button id="clearButton">Clear Drawing</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('drawPersonCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        function startDrawing(e) {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        canvas.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent("mousedown", {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }, false);
+
+        canvas.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent("mousemove", {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }, false);
+
+        canvas.addEventListener('touchend', function(e) {
+            const mouseEvent = new MouseEvent("mouseup", {});
+            canvas.dispatchEvent(mouseEvent);
+        }, false);
+
+        document.getElementById('clearButton').addEventListener('click', clearCanvas);
+
+        // Set initial canvas background to white
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    </script>
+</body>
+</html>
+
+
