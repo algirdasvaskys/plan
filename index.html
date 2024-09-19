@@ -1,265 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deep Progressive House Set (Dj Continuous Mix) · Johnny M - source - YouTube</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      flex-direction: column;
-    }
-
-    #player {
-      display: none;
-    }
-
-    .container {
-      text-align: center;
-      width: 100%;
-    }
-
-    .controls {
-      margin-top: 20px;
-    }
-
-    .controls button {
-      background-color: #444;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 1em;
-    }
-
-    .controls button:hover {
-      background-color: #666;
-    }
-
-    .controls input[type="range"] {
-      width: 300px;
-    }
-
-    .burst-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin-top: 50px;
-    }
-
-    .burst {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
-      background-color: #3498db;
-      border-radius: 50%;
-      transition: transform 0.5s ease, background-color 0.5s ease;
-    }
-
-    .burst.inflated {
-      transform: translate(-50%, -50%) scale(1.5);
-      background-color: #e74c3c;
-    }
-  </style>
-  <script src="https://www.youtube.com/iframe_api"></script>
-</head>
-
-<body>
-  <div class="container">
-    <div class="controls">
-      <button id="play">Play</button>
-      <button id="pause">Pause</button>
-      <label for="volume">Volume: </label>
-      <input type="range" id="volume" min="0" max="100" value="50">
-    </div>
-    <h1>Deep Progressive House Set (Dj Continuous Mix) · Johnny M - source - YouTube</h1>
-    <div id="player"></div>
-  </div>
-  <div class="burst-container">
-    <div id="burst" class="burst"></div>
-  </div>
-
-  <script>
-    var player;
-    var videoId = 'Y4SW4u_KSo0'; // Video ID 
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '0',
-        width: '0',
-        videoId: videoId,
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          showinfo: 0,
-          modestbranding: 1,
-          loop: 1,
-          playlist: videoId
-        },
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    function onPlayerReady(event) {
-      event.target.playVideo();
-      document.getElementById('player').style.display = 'block';
-    }
-
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
-        player.playVideo();
-      }
-    }
-
-    document.getElementById('play').addEventListener('click', function() {
-      player.playVideo();
-    });
-
-    document.getElementById('pause').addEventListener('click', function() {
-      player.pauseVideo();
-    });
-
-    document.getElementById('volume').addEventListener('input', function() {
-      player.setVolume(this.value);
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const burstElement = document.getElementById('burst');
-      let isInflated = false;
-
-      burstElement.addEventListener('click', () => {
-        isInflated = !isInflated;
-        if (isInflated) {
-          burstElement.classList.add('inflated');
-          setTimeout(() => {
-            window.open('https://algirdasvaskys.github.io/plan/step');  // Replace with the actual URL
-          }, 1250);
-        } else {
-          burstElement.classList.remove('inflated');
-        }
-      });
-    });
-  </script>
-</body>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide In Screens</title>
+    <title>Working Relationships</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-        }
-
-        .menu {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            color: white;
-            transition: left 0.3s;
-            padding: 15px;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin: 15px 0;
-        }
-
-        .menu a:hover {
-            background-color: #575757;
-        }
-
-        .content {
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
         }
-
-        .open-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
+        h1, h2 {
+            color: #2c3e50;
         }
-
-        .close-btn {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+        .accordion {
+            background-color: #f1f1f1;
+            color: #444;
             cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+            margin-bottom: 5px;
         }
-
-        .close-btn:hover {
-            background-color: #575757;
+        .active, .accordion:hover {
+            background-color: #ddd;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+        }
+        .interactive-box {
+            border: 2px solid #3498db;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .interactive-box h3 {
+            color: #3498db;
+        }
+        .do-dont {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .do, .dont {
+            width: 48%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .do {
+            background-color: #e6fff2;
+        }
+        .dont {
+            background-color: #ffe6e6;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .do-dont {
+                flex-direction: column;
+            }
+            .do, .dont {
+                width: 100%;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <h1>Working Relationships</h1>
 
-   <button class="open-btn" onclick="openMenu()">☰ Open Menu</button>
+    <!-- Previous accordion sections remain the same -->
 
-    <div class="menu" id="menu">
-        <button class="close-btn" onclick="closeMenu()">✕ Close Menu</button>
-        <h2>Menu</h2>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#" onclick="openServices()">Services</a>
-        <a href="#" onclick="openContact()">Contact</a>
+    <button class="accordion">Building Good Relationships</button>
+    <div class="panel">
+        <h3>Ways to Build Good Working Relationships</h3>
+        <ul>
+            <li>Recognize differences in personality and temperament</li>
+            <li>Treat colleagues politely and with respect</li>
+            <li>Cooperate and assist willingly with requests</li>
+            <li>Communicate about problems, changes, or proposals</li>
+            <li>Be honest about mistakes and report them promptly</li>
+            <li>Address relationship breakdowns honestly and fairly</li>
+        </ul>
+
+        <h3>Factors That Can Upset Good Working Relationships</h3>
+        <ul>
+            <li>Allowing personal differences to affect work relationships</li>
+            <li>Colleagues not pulling their weight (laziness, incompetence, absenteeism)</li>
+            <li>Ignoring company rules, regulations, or safe working practices</li>
+            <li>Poor personal appearance and hygiene</li>
+            <li>Favoritism or unfair treatment by managers and supervisors</li>
+        </ul>
+
+        <p>Remember, the company image depends partly on how workers are judged by customers. Your work, behavior, and interactions with colleagues all contribute to this image.</p>
     </div>
 
-    <div class="content">
-        <h1>Welcome</h1>
-        <p></p>
+    <div class="interactive-box">
+        <h3>Reflect on Building Good Relationships</h3>
+        <p>Consider the following scenarios and think about how you would handle them:</p>
+        <div class="do-dont">
+            <div class="do">
+                <h4>Do:</h4>
+                <ul>
+                    <li>Offer help to a struggling colleague</li>
+                    <li>Communicate openly about workplace issues</li>
+                    <li>Respect different opinions and personalities</li>
+                </ul>
+            </div>
+            <div class="dont">
+                <h4>Don't:</h4>
+                <ul>
+                    <li>Gossip about coworkers</li>
+                    <li>Ignore safety regulations</li>
+                    <li>Let personal differences affect work</li>
+                </ul>
+            </div>
+        </div>
+        <p>How would you apply these principles in your workplace? Write down specific actions you can take to build better working relationships.</p>
     </div>
 
     <script>
-        function openMenu() {
-            document.getElementById("menu").style.left = "0";
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
         }
-
-        function closeMenu() {
-            document.getElementById("menu").style.left = "-250px";
-        }
-
-      function openContact() {
-      window.open('https://algirdasvaskys.github.io/plan/contact us.html', '_blank');
-    }
-
-  
-
-
     </script>
-
 </body>
 </html>
-
-
-
-
-
