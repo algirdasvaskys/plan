@@ -1,114 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Think Big! - Think Big - source - YouTube</title>
+  <title>YouTube Video Example</title>
   <style>
-    body, html {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #000;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
-      flex-direction: column;
+      height: 100vh;
+      background-color: #f0f0f0;
     }
-
     #player {
-      display: none;
-    }
-
-    .container {
-      text-align: center;
       width: 100%;
-    }
-
-    .controls {
-      margin-top: 20px;
-    }
-
-    .controls button {
-      background-color: #444;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 1em;
-    }
-
-    .controls button:hover {
-      background-color: #666;
-    }
-
-    .controls input[type="range"] {
-      width: 300px;
-    }
-
-    .burst-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin-top: 50px;
-    }
-
-    .burst {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
-      background-color: #3498db;
-      border-radius: 50%;
-      transition: transform 0.5s ease, background-color 0.5s ease;
-    }
-
-    .burst.inflated {
-      transform: translate(-50%, -50%) scale(1.5);
-      background-color: #e74c3c;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100vh;
     }
   </style>
   <script src="https://www.youtube.com/iframe_api"></script>
 </head>
-
 <body>
-  <div class="container">
-    <div class="controls">
-      <button id="play">Play</button>
-      <button id="pause">Pause</button>
-      <label for="volume">Volume: </label>
-      <input type="range" id="volume" min="0" max="100" value="50">
-    </div>
-    <h1>Think Big! - Think Big - source - YouTube</h1>
-    <div id="player"></div>
-  </div>
-  <div class="burst-container">
-    <div id="burst" class="burst"></div>
-  </div>
+  <div id="player"></div>
 
   <script>
-    var player;
-    var videoId = 'Ob8WToOcvEs'; // Video ID 
+    var url = 'https://www.youtube.com/watch?v=X84r4Op-hQ4';
+    var videoId = getYouTubeVideoId(url);
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        height: '0',
-        width: '0',
         videoId: videoId,
         playerVars: {
           autoplay: 1,
-          controls: 0,
-          showinfo: 0,
-          modestbranding: 1,
-          loop: 1,
-          playlist: videoId
+          controls: 1
         },
         events: {
           'onReady': onPlayerReady,
@@ -118,150 +43,27 @@
     }
 
     function onPlayerReady(event) {
-      event.target.playVideo();
-      document.getElementById('player').style.display = 'block';
+      console.log('YouTube player is ready');
     }
 
     function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        console.log('Video started playing');
+      }
       if (event.data === YT.PlayerState.ENDED) {
-        player.playVideo();
+        console.log('Video playback ended');
       }
     }
 
-    document.getElementById('play').addEventListener('click', function() {
-      player.playVideo();
-    });
-
-    document.getElementById('pause').addEventListener('click', function() {
-      player.pauseVideo();
-    });
-
-    document.getElementById('volume').addEventListener('input', function() {
-      player.setVolume(this.value);
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const burstElement = document.getElementById('burst');
-      let isInflated = false;
-
-      burstElement.addEventListener('click', () => {
-        isInflated = !isInflated;
-        if (isInflated) {
-          burstElement.classList.add('inflated');
-          setTimeout(() => {
-            window.open('https://algirdasvaskys.github.io/plan/step');  // Replace with the actual URL
-          }, 1250);
-        } else {
-          burstElement.classList.remove('inflated');
-        }
-      });
-    });
+    function getYouTubeVideoId(url) {
+      var videoId = '';
+      var match = url.match(/[?&]v=([^&]+)/);
+      if (match) {
+        videoId = match[1];
+      }
+      return videoId;
+    }
   </script>
 </body>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide In Screens</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-        }
-
-        .menu {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            color: white;
-            transition: left 0.3s;
-            padding: 15px;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin: 15px 0;
-        }
-
-        .menu a:hover {
-            background-color: #575757;
-        }
-
-        .content {
-            padding: 20px;
-        }
-
-        .open-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        .close-btn {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        .close-btn:hover {
-            background-color: #575757;
-        }
-    </style>
-</head>
-<body>
-
-    <button class="open-btn" onclick="openMenu()">☰ Open Menu</button>
-
-    <div class="menu" id="menu">
-        <button class="close-btn" onclick="closeMenu()">✕ Close Menu</button>
-        <h2>Menu</h2>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-    </div>
-
-<script>
-    function openMenu() {
-        document.getElementById("menu").style.left = "0";
-    }
-
-    function closeMenu() {
-        document.getElementById("menu").style.left = "-250px";
-    }
-</script>
-
-
-    <div class="content">
-        <h1>Welcome</h1>
-        <p></p>
-    </div>
-
-    <script>
-        function openMenu() {
-            document.getElementById("menu").style.left = "0";
-        }
-
-        function closeMenu() {
-            document.getElementById("menu").style.left = "-250px";
-        }
-    </script>
-
-</body>
 </html>
-
-
-
 
