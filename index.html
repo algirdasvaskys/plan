@@ -1,328 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Basic Regex Data Extraction Simulation</title>
-    <style>
-        :root {
-            --primary-color: #007acc;
-            --secondary-color: #6c757d;
-            --background-color: #f8f9fa;
-            --text-color: #333;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1, h2 {
-            color: var(--primary-color);
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"], textarea, select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-        }
-
-        textarea {
-            height: 100px;
-        }
-
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #005999;
-        }
-
-        #output {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-        }
-
-        pre {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 4px;
-            padding: 15px;
-            overflow-x: auto;
-        }
-
-        .tabs {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        .tab {
-            padding: 10px 15px;
-            background-color: #e9ecef;
-            border: 1px solid #dee2e6;
-            border-bottom: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .tab.active {
-            background-color: white;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .tab-content {
-            display: none;
-            border: 1px solid #dee2e6;
-            padding: 20px;
-            background-color: white;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f8f9fa;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>YouTube Video Example</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    #player {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100vh;
+    }
+  </style>
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Visual Basic Regex Data Extraction Simulation</h1>
-        <p>This page simulates the extraction of data using regular expressions, similar to Visual Basic.</p>
+  <div id="player"></div>
 
-        <div class="tabs">
-            <div class="tab active" data-tab="simulation">Simulation</div>
-            <div class="tab" data-tab="code">Code</div>
-            <div class="tab" data-tab="explanation">Explanation</div>
-        </div>
+  <script>
+    var url = 'https://www.youtube.com/watch?v=LZmUfUBqE-s';
+    var videoId = getYouTubeVideoId(url);
 
-        <div id="simulation" class="tab-content active">
-            <h2>Regex Data Extraction Simulation</h2>
-            <div class="form-group">
-                <label for="inputText">Enter text:</label>
-                <textarea id="inputText" placeholder="e.g., The price is $10.99 and quantity is 5."></textarea>
-            </div>
-            <div class="form-group">
-                <label for="regexPattern">Regular Expression Pattern:</label>
-                <select id="regexPattern">
-                    <option value="\d+">Numbers (\d+)</option>
-                    <option value="[A-Za-z]+">Words ([A-Za-z]+)</option>
-                    <option value="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b">Email addresses</option>
-                    <option value="\b(?:\d{1,3}\.){3}\d{1,3}\b">IP addresses</option>
-                    <option value="\b\d{3}[-.]?\d{3}[-.]?\d{4}\b">Phone numbers (US)</option>
-                    <option value="#[a-fA-F0-9]{6}">Hex color codes</option>
-                    <option value="\b(?:https?://|www\.)\S+\b">URLs</option>
-                    <option value="\d{1,2}/\d{1,2}/\d{4}">Dates (MM/DD/YYYY)</option>
-                    <option value="\b[A-Z]{2}\d{2}\s?\d{4}\s?\d{4}\s?\d{4}\s?\d{4}\b">IBAN (International Bank Account Number)</option>
-                    <option value="\b[A-Z]{5}\d{4}[A-Z]\b">Postal codes (UK)</option>
-                    <option value="\b\d{5}(-\d{4})?\b">ZIP codes (US)</option>
-                    <option value="\b(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})\b">MAC addresses</option>
-                    <option value="\b[1-9]\d{3}\b">Years (1000-9999)</option>
-                    <option value="\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b">IPv4 addresses</option>
-                    <option value="\b([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}\b">IPv6 addresses</option>
-                    <option value="\b[A-Z][a-z]{2,}\b">Capitalized words</option>
-                    <option value="\b[A-Z]+\b">All uppercase words</option>
-                    <option value="\b[a-z]+\b">All lowercase words</option>
-                    <option value="[!@#$%^&*()_+\-=\[\]{};':\"\\|,.<>\/?]">Special characters</option>
-                    <option value="\b\w+(?:[-']\w+)*\b">Hyphenated words</option>
-                    <option value="\b(?:0?[1-9]|1[0-2]):[0-5][0-9]\s?(?:AM|PM)\b">Time (12-hour format)</option>
-                    <option value="\b(?:[01][0-9]|2[0-3]):[0-5][0-9]\b">Time (24-hour format)</option>
-                    <option value="\b(?:(?:https?|ftp)://)?(?:www\.)?[a-z0-9-]+(?:\.[a-z]{2,})+(?:/[^\s]*)?\b">URLs (flexible)</option>
-                    <option value="\b(?:\+\d{1,3}\s?)?(?:\(\d{1,4}\)|\d{1,4})[-.\s]?\d{1,4}[-.\s]?\d{1,9}\b">International phone numbers</option>
-                    <option value="\b[A-Z][a-z]+(?:\s[A-Z][a-z]+)+\b">Full names (First Last)</option>
-                    <option value="\b(?:[A-Z][a-z]*\.?\s?){2,3}\b">Abbreviated names (J. Doe)</option>
-                    <option value="\b[A-Z0-9]{10,}\b">Product codes (10+ alphanumeric)</option>
-                    <option value="\b(?:[1-9]|[1-9][0-9]|100)\%\b">Percentages (1-100%)</option>
-                    <option value="\b(?:0|[1-9][0-9]*)(?:\.[0-9]+)?\b">Decimal numbers</option>
-                    <option value="\b-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?\b">Positive and negative numbers</option>
-                    <option value="\b[A-Z]{3}\b">Three-letter acronyms</option>
-                    <option value="\b(?:[MDCLXVI])M*(?:C[MD]|D?C{0,3})(?:X[CL]|L?X{0,3})(?:I[XV]|V?I{0,3})\b">Roman numerals</option>
-                    <option value="\b[A-Z]{2}\d{6}[A-Z]?\b">Passport numbers</option>
-                    <option value="\b(?:0x|0X)?[A-Fa-f0-9]+\b">Hexadecimal numbers</option>
-                    <option value="\b[01]+\b">Binary numbers</option>
-                    <option value="\b[A-Z]{3}[0-9]{3}\b">Airport codes</option>
-                    <option value="\b(?:[A-Z]{2,4}[0-9]{1,4}|[A-Z]{1,3}[-\s]?[0-9]{1,4})\b">License plate numbers</option>
-                    <option value="\b(?:(?:https?://)?(?:www\.)?youtube\.com/watch\?v=|youtu\.be/)([a-zA-Z0-9_-]{11})\b">YouTube video IDs</option>
-                    <option value="\b[A-Z]{2}-[A-Z]{2}-\d{4}-[A-Z]{3}-\d{3}\b">ISBN-13 (books)</option>
-                    <option value="\b[A-Z]{3}[0-9]{4}[A-Z]\b">Canadian postal codes</option>
-                    <option value="\b[A-Z]{1,2}[0-9][A-Z0-9]? [0-9][ABD-HJLNP-UW-Z]{2}\b">UK postcodes</option>
-                    <option value="\b[A-Z]{2}\d{7}\b">US Social Security Numbers</option>
-                    <option value="\b[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}\b">UK National Insurance Numbers</option>
-                    <option value="\b[A-Z]{2}[0-9]{6}[A-Z]\b">Irish PPS Numbers</option>
-                    <option value="\b[1-9][0-9]{3}(?:-(?:(?:0[1-9]|1[0-2])(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])(?:29|30)|(?:0[13578]|1[02])31)|(?:[1-9][0-9](?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)0229)\b">Valid dates (YYYY-MM-DD)</option>
-                    <option value="\b(?:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12})\b">UUIDs</option>
-                    <option value="\b(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b">Valid IP octets (0-255)</option>
-                    <option value="\b(?:(?:https?|ftp)://)?(?:www\.)?[a-z0-9-]+\.[a-z]{2,}(?:/[^\s]*)?\b">Domain names</option>
-                    <option value="\b[A-Z][a-z]+day\b">Days of the week</option>
-                    <option value="\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\b">Months of the year</option>
-                    <option value="\b(?:[1-9]|[1-2][0-9]|3[01])(?:st|nd|rd|th)\b">Ordinal dates (1st, 2nd, 3rd, etc.)</option>
-                    <option value="\b[A-Z][a-z]+\s(?:Avenue|Lane|Road|Boulevard|Drive|Street|Ave|Dr|Rd|Blvd|Ln|St)\.?\b">Street names</option>
-                    <option value="\b[A-Z]{3,4}\b">Stock ticker symbols</option>
-                    <option value="\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*,\s*[A-Z]{2}\s*\d{5}(?:-\d{4})?\b">US city, state, ZIP</option>
-                    <option value="\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*,\s*[A-Z]{2}\b">US city, state</option>
-                    <option value="\b(?:0|[1-9][0-9]*)(?:\.[0-9]{1,2})?\b">Currency (without symbol)</option>
-                    <option value="\$\s?[0-9]+(?:\.[0-9]{2})?\b">US Dollar amounts</option>
-                    <option value="£\s?[0-9]+(?:\.[0-9]{2})?\b">British Pound amounts</option>
-                    <option value="€\s?[0-9]+(?:\.[0-9]{2})?\b">Euro amounts</option>
-                    <option value="\b(?:[0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}\b">MAC addresses (with colons)</option>
-                    <option value="\b(?:[0-9A-Fa-f]{2}-){5}[0-9A-Fa-f]{2}\b">MAC addresses (with hyphens)</option>
-                    <option value="\b(?:(?:\+|00)[1-9]\d{0,3}[\s.-]?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\b">Phone numbers (flexible format)</option>
-                    <option value="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b">Email addresses (case insensitive)</option>
-                    <option value="\b(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(?:embed\/)?(?:v\/)?(?:shorts\/)?([a-zA-Z0-9_-]{11})\b">YouTube video URLs</option>
-                    <option value="\b(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:#!\/)?@?([a-zA-Z0-9_]{1,15})(?:\/status\/\d+)?\b">Twitter profile URLs</option>
-                    <option value="\b(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]*)\b">Facebook profile/page URLs</option>
-                    <option value="\b(?:https?:\/\/)?(?:www\.)?linkedin\.com\/(?:in|company)\/([a-zA-Z0-9_-]+)\b">LinkedIn profile/company URLs</option>
-                    <option value="\b(?:https?:\/\/)?(?:www\.)?instagram\.com\/([a-zA-Z0-9_\.]+)\b">Instagram profile URLs</option>
-                    <option value="\b[A-Z]{1,2}[0-9][A-Z0-9]? [0-9][ABD-HJLNP-UW-Z]{2}\b">UK postcodes</option>
-                    <option value="\b[ABCEGHJKLMNPRSTVXY]\d[A-Z] \d[A-Z]\d\b">Canadian postcodes</option>
-                    <option value="\b\d{5}(?:[-\s]\d{4})?\b">US ZIP codes (5 or 9 digit)</option>
-                    <option value="\b(?:[0-9]{4}-){3}[0-9]{4}\b">Credit card numbers</option>
-                    <option value="\b(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})\b">Date (DD/MM/YYYY or DD-MM-YYYY or DD.MM.YYYY)</option>
-                    <option value="\b(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?\b">Valid URLs (complex)</option>
-                    <option value="\b(?:[a-zA-Z]:)?(?:(?:[\\\/](?:[^\\\/:*?"<>|\r\n]+))*[\\\/]?)\b">File paths</option>
-                    <option value="\b(?:[1-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])){3}\b">Valid IP addresses</option>
-                    <option value="\b(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}\b">IPv6 addresses</option>
-                    <option value="\b(?:0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d\b">Date (DD-MM-YYYY, DD/MM/YYYY, DD.MM.YYYY)</option>
-                    <option value="\b(?:[0-1]?[0-9]|2[0-3]):[0-5][0-9](?::[0-5][0-9])?\b">Time (HH:MM or HH:MM:SS, 24-hour)</option>
-                    <option value="\b(?:(?:GMT|UTC)(?:[-+]\d{1,2}(?::\d{2})?)?)\b">Timezone abbreviations</option>
-                    <option value="\b[A-Z]{3}-[A-Z]{3}\b">Currency pairs (e.g., USD-EUR)</option>
-                    <option value="\b(?:[A-Z][a-z]{2,}\s?){2,}\b">Person names (First Last, First Middle Last)</option>
-                    <option value="\b(?:[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*,\s*[A-Z]{2},\s*\d{5}(?:-\d{4})?)\b">US address (City, State ZIP)</option>
-                    <option value="\b(?:[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*,\s*[A-Z]{2}\s*\d{5}(?:-\d{4})?\b">US address (flexible)</option>
-                    <option value="\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*,\s*[A-Z]{2}\b">US City, State</option>
-                    <option value="\b[1-9]\d{0,2}(?:,\d{3})*(?:\.\d{1,2})?\b">Numbers with thousands separators</option>
-                    <option value="\b(?:0x|0X)[0-9a-fA-F]+\b">Hexadecimal numbers (with 0x prefix)</option>
-                    <option value="\b[01]+\b">Binary numbers</option>
-                    <option value="\b[0-7]+\b">Octal numbers</option>
-                    <option value="\b[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?\b">Scientific notation</option>
-                    <option value="\b(?:(?:\+|00)(?:1|44|33|49|39|34|31|47|46|45|41|43|32|352|353|358|356|357|354|420|421|36|48|351|30|371|370|372|385|381|386|359|40|7|380|375|373|374))?[1-9]\d{4,14}\b">International phone numbers</option>
-                    <option value="\b[A-Z0-9]{3,}\b">Stock symbols</option>
-                    <option value="\b[A-Z]{3}\b">Currency codes (e.g., USD, EUR, GBP)</option>
-                    <option value="\b[1-9]\d*(?:st|nd|rd|th)\b">Ordinal numbers (1st, 2nd, 3rd, etc.)</option>
-                    <option value="\b(?:0?[1-9]|[12][0-9]|3[01])(?:st|nd|rd|th)\s+(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b">Dates in words (1st January 2021)</option>
-                    <option value="\b(?:[A-Z][a-z]+\s?)+,\s*[A-Z]{2}\s*\d{5}(-\d{4})?\b">US City, State ZIP (flexible)</option>
-                    <option value="\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+(?:Avenue|Lane|Road|Boulevard|Drive|Street|Ave|Dr|Rd|Blvd|Ln|St)\.?\b">Street names (flexible)</option>
-                </select>
-            </div>
-            <button id="extractBtn">Extract Data</button>
-            <div id="output"></div>
-        </div>
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 1
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
 
-        <div id="code" class="tab-content">
-            <h2>Visual Basic Code</h2>
-            <pre><code>Dim pattern As String = "\d+"
-Dim input As String = "The price is $10.99."
-Dim matches As MatchCollection = Regex.Matches(input, pattern)
-Dim total As Integer = 0
-For Each match As Match In matches
-    total += Convert.ToInt32(match.Value)
-Next</code></pre>
-        </div>
+    function onPlayerReady(event) {
+      console.log('YouTube player is ready');
+    }
 
-        <div id="explanation" class="tab-content">
-            <h2>Code Explanation</h2>
-            <p>The Visual Basic code demonstrates how to use regular expressions to extract data from a string:</p>
-            <ul>
-                <li>It defines a regex pattern (in this case, <code>\d+</code> to match one or more digits).</li>
-                <li>It uses <code>Regex.Matches()</code> to find all matches in the input string.</li>
-                <li>It iterates through the matches, converts each to an integer, and adds them to a total.</li>
-            </ul>
-            <p>In our simulation:</p>
-            <ul>
-                <li>You can enter any text containing various types of data.</li>
-                <li>You can choose from 100 pre-defined regex patterns or enter your own.</li>
-                <li>The simulation extracts all matches based on the selected pattern.</li>
-                <li>It displays each match and its position in the input string.</li>
-            </ul>
-            <p>This simulation expands on the original example by allowing custom input and a wide range of regex patterns, providing a more comprehensive and educational experience in working with regular expressions.</p>
-        </div>
-    </div>
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        console.log('Video started playing');
+      }
+      if (event.data === YT.PlayerState.ENDED) {
+        console.log('Video playback ended');
+      }
+    }
 
-    <script>
-        const inputText = document.getElementById('inputText');
-        const regexPattern = document.getElementById('regexPattern');
-        const extractBtn = document.getElementById('extractBtn');
-        const output = document.getElementById('output');
-
-        extractBtn.addEventListener('click', () => {
-            const input = inputText.value;
-            const pattern = regexPattern.value;
-            const regex = new RegExp(pattern, 'g');
-            const matches = input.match(regex);
-
-            if (matches) {
-                let resultHtml = `<p>Extracted ${matches.length} match(es).</p>`;
-                resultHtml += '<table><tr><th>Match</th><th>Position</th></tr>';
-
-                let match;
-                while ((match = regex.exec(input)) !== null) {
-                    resultHtml += `<tr><td>${match[0]}</td><td>${match.index}</td></tr>`;
-                }
-
-                resultHtml += '</table>';
-                output.innerHTML = resultHtml;
-            } else {
-                output.innerHTML = '<p>No matches found.</p>';
-            }
-        });
-
-        // Tab functionality
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.tab).classList.add('active');
-            });
-        });
-    </script>
+    function getYouTubeVideoId(url) {
+      var videoId = '';
+      var match = url.match(/[?&]v=([^&]+)/);
+      if (match) {
+        videoId = match[1];
+      }
+      return videoId;
+    }
+  </script>
 </body>
 </html>
