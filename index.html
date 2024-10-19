@@ -1,261 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
+<h1>Using Tower Lights with Industrial Machines</h1>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Think Big! - source - YouTube</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      flex-direction: column;
-    }
+<p>Ever wonder about those colorful lights on industrial machines? Let's explore tower lights and how they work!</p>
 
-    #player {
-      display: none;
-    }
+<h2>What Are Tower Lights?</h2>
 
-    .container {
-      text-align: center;
-      width: 100%;
-    }
+<p>Tower lights are visual indicators that show a machine's status. They typically have three colors:</p>
 
-    .controls {
-      margin-top: 20px;
-    }
+<ul>
 
-    .controls button {
-      background-color: #444;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 1em;
-    }
+<li><span style="color: red;">Red</span>: Machine is running</li>
 
-    .controls button:hover {
-      background-color: #666;
-    }
+<li><span style="color: green;">Green</span>: Machine is stopped</li>
 
-    .controls input[type="range"] {
-      width: 300px;
-    }
+<li><span style="color: orange;">Orange</span>: Machine has tripped</li>
 
-    .burst-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin-top: 50px;
-    }
+</ul>
 
-    .burst {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
-      background-color: #3498db;
-      border-radius: 50%;
-      transition: transform 0.5s ease, background-color 0.5s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-    }
+<h2>Setting Up Your Tower Light</h2>
 
-    .burst.inflated {
-      transform: translate(-50%, -50%) scale(1.5);
-      background-color: #e74c3c;
-    }
-  </style>
-  <script src="https://www.youtube.com/iframe_api"></script>
-</head>
+<h3>What You'll Need:</h3>
 
-<body>
-  <div class="container">
-    <div class="controls">
-      <button id="play">Play</button>
-      <button id="pause">Pause</button>
-      <label for="volume">Volume: </label>
-      <input type="range" id="volume" min="0" max="100" value="50">
-    </div>
-    <h1>Think Big! - source - YouTube</h1>
-    <div id="player"></div>
-  </div>
-  <div class="burst-container">
-    <div id="burst" class="burst">data set</div>
-  </div>
+<ul>
 
-  <script>
-    var player;
-    var videoId = 'Ob8WToOcvEs'; // Video ID 
+<li>Tower light (5-wire model)</li>
 
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '0',
-        width: '0',
-        videoId: videoId,
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          showinfo: 0,
-          modestbranding: 1,
-          loop: 1,
-          playlist: videoId
-        },
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
+<li>24V DC power supply (SMPS)</li>
 
-    function onPlayerReady(event) {
-      event.target.playVideo();
-      document.getElementById('player').style.display = 'block';
-    }
+<li>MCB (circuit breaker)</li>
 
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
-        player.playVideo();
-      }
-    }
+<li>Contactor</li>
 
-    document.getElementById('play').addEventListener('click', function() {
-      player.playVideo();
-    });
+<li>Overload relay</li>
 
-    document.getElementById('pause').addEventListener('click', function() {
-      player.pauseVideo();
-    });
+<li>Wires and terminal blocks</li>
 
-    document.getElementById('volume').addEventListener('input', function() {
-      player.setVolume(this.value);
-    });
+</ul>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const burstElement = document.getElementById('burst');
-      let isInflated = false;
+<h3>Wiring Steps:</h3>
 
-      burstElement.addEventListener('click', () => {
-        isInflated = !isInflated;
-        if (isInflated) {
-          burstElement.classList.add('inflated');
-          setTimeout(() => {
-            window.open('https://algirdasvaskys.github.io/plan/step');  // Replace with the actual URL
-          }, 1250);
-        } else {
-          burstElement.classList.remove('inflated');
-        }
-      });
-    });
-  </script>
-</body>
+<ol>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide In Screens</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-        }
+<li>Connect AC power to the SMPS through the MCB</li>
 
-        .menu {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            color: white;
-            transition: left 0.3s;
-            padding: 15px;
-        }
+<li>Wire the SMPS output to the tower light's power input</li>
 
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin: 15px 0;
-        }
+<li>Connect the orange light to the overload relay's NO contact</li>
 
-        .menu a:hover {
-            background-color: #575757;
-        }
+<li>Wire the red light to the contactor's NO contact</li>
 
-        .content {
-            padding: 20px;
-        }
+<li>Connect the green light to the contactor's NC contact</li>
 
-        .open-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
+<li>Wire the buzzer in parallel with the orange light</li>
 
-        .close-btn {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
+</ol>
 
-        .close-btn:hover {
-            background-color: #575757;
-        }
-    </style>
-</head>
-<body>
+<h2>How It Works</h2>
 
-   <button class="open-btn" onclick="openMenu()">☰ Open Menu</button>
+<ul>
 
-    <div class="menu" id="menu">
-        <button class="close-btn" onclick="closeMenu()">✕ Close Menu</button>
-        <h2>Menu</h2>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#" onclick="openServices()">Services</a>
-        <a href="#" onclick="openContact()">Contact</a>
-    </div>
+<li>Green light on: Machine is off</li>
 
-    <div class="content">
-        <h1>Welcome</h1>
-        <p></p>
-    </div>
+<li>Red light on: Machine is running</li>
 
-    <script>
-        function openMenu() {
-            document.getElementById("menu").style.left = "0";
-        }
+<li>Orange light + buzzer: Machine has tripped</li>
 
-        function closeMenu() {
-            document.getElementById("menu").style.left = "-250px";
-        }
+</ul>
 
-      function openContact() {
-      window.open('https://algirdasvaskys.github.io/plan/contact us.html', '_blank');
-    }
-    </script>
+<h2>Testing Your Setup</h2>
 
-</body>
-</html>
+<ol>
+
+<li>Turn on the MCB: Green light should come on</li>
+
+<li>Start the machine: Red light should activate</li>
+
+<li>Stop the machine: Green light returns</li>
+
+<li>Trip the machine: Orange light and buzzer activate</li>
+
+</ol>
+
+<p>Tower lights make it easy to monitor your machines from a distance. They improve safety and help quickly identify issues.</p>
+
+<p>Remember to always follow proper safety procedures when working with electrical equipment!</p>
