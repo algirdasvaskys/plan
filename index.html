@@ -1,125 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced HTML Example</title>
+    <title>Visual Basic Web Interaction - Simulator</title>
     <style>
+        :root {
+            --primary-color: #0078d4;
+            --secondary-color: #28a745;
+            --background-color: #f0f0f0;
+            --text-color: #333;
+        }
+
         body {
             font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            padding: 20px;
         }
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        nav {
+        h1, h2 {
+            color: var(--primary-color);
+        }
+
+        .simulation-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .code-area, .browser-area {
+            width: 48%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .code-area {
+            background-color: #f8f8f8;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .browser-area {
+            background-color: white;
+        }
+
+        .controls {
+            margin-top: 20px;
             display: flex;
             justify-content: center;
-            background: #444;
+            gap: 10px;
         }
 
-        nav a {
+        button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
             color: white;
-            padding: 1rem;
-            text-decoration: none;
-            transition: background 0.3s;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        nav a:hover {
-            background: #555;
+        button:hover {
+            background-color: #005a9e;
         }
 
-        main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 2rem;
+        .highlight {
+            background-color: yellow;
+            transition: background-color 0.3s ease;
         }
 
-        article {
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 1rem;
-            padding: 1rem;
-            width: calc(33.333% - 2rem);
-            transition: transform 0.3s;
-        }
-
-        article:hover {
-            transform: scale(1.05);
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            article {
-                width: calc(50% - 2rem);
-            }
-        }
-
-        @media (max-width: 480px) {
-            article {
-                width: calc(100% - 2rem);
-            }
+        #log {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
         }
     </style>
 </head>
-
 <body>
-    <header>
-        <h1>Welcome to ProtocolEcho</h1>
-    </header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <main>
-        <article>
-            <h2>Article 1</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisi nec arcu luctus varius.</p>
-        </article>
-        <article>
-            <h2>Article 2</h2>
-            <p>Nullam non turpis ac leo bibendum posuere. Integer ullamcorper lacus vitae arcu efficitur, id facilisis justo dignissim.</p>
-        </article>
-        <article>
-            <h2>Article 3</h2>
-            <p>Morbi sit amet purus vitae ligula ultrices venenatis. Quisque ut libero et nunc varius ultrices.</p>
-        </article>
-    </main>
-    <footer>
-        <p>&copy; 2024 ProtocolEcho. All rights reserved.</p>
-    </footer>
+    <div class="container">
+        <h1>Visual Basic Web Interaction Simulator</h1>
+        <p>This simulator demonstrates how Visual Basic can interact with web elements using the example.com website.</p>
+
+        <div class="simulation-area">
+            <div class="code-area" id="codeArea">
+Imports SHDocVw
+
+Public Class WebInteractionExample
+    Public Sub InteractWithExampleDomain()
+        Dim explorer As New InternetExplorer()
+        explorer.Navigate("https://www.example.com")
+        While explorer.Busy
+            Threading.Thread.Sleep(100)
+        End While
+        
+        Dim heading As IHTMLElement = explorer.Document.getElementsByTagName("h1")(0)
+        Console.WriteLine("Heading text: " & heading.innerText)
+        
+        Dim paragraph As IHTMLElement = explorer.Document.getElementsByTagName("p")(0)
+        Console.WriteLine("Paragraph text: " & paragraph.innerText)
+        
+        Dim link As IHTMLElement = explorer.Document.getElementsByTagName("a")(0)
+        link.click()
+        
+        explorer.Quit()
+    End Sub
+End Class
+            </div>
+            <div class="browser-area" id="browserArea">
+                <h1>Example Domain</h1>
+                <p>This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.</p>
+                <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="runBtn">Run Simulation</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <div id="log"></div>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const articles = document.querySelectorAll('article');
-            articles.forEach(article => {
-                article.addEventListener('click', () => {
-                    alert(article.querySelector('h2').textContent);
-                });
-            });
-        });
+        const codeArea = document.getElementById('codeArea');
+        const browserArea = document.getElementById('browserArea');
+        const runBtn = document.getElementById('runBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const log = document.getElementById('log');
+
+        function simulateExecution() {
+            log.innerHTML = '';
+            const steps = [
+                { action: 'navigate', element: browserArea, message: 'Navigating to https://www.example.com' },
+                { action: 'highlight', element: browserArea.querySelector('h1'), message: 'Found heading element' },
+                { action: 'log', message: 'Heading text: Example Domain' },
+                { action: 'highlight', element: browserArea.querySelector('p'), message: 'Found paragraph element' },
+                { action: 'log', message: 'Paragraph text: This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.' },
+                { action: 'highlight', element: browserArea.querySelector('a'), message: 'Found link element' },
+                { action: 'click', element: browserArea.querySelector('a'), message: 'Clicked on link' },
+                { action: 'log', message: 'Simulation complete' }
+            ];
+
+            let i = 0;
+            function executeStep() {
+                if (i < steps.length) {
+                    const step = steps[i];
+                    switch (step.action) {
+                        case 'navigate':
+                        case 'highlight':
+                            step.element.classList.add('highlight');
+                            setTimeout(() => step.element.classList.remove('highlight'), 1000);
+                            break;
+                        case 'click':
+                            step.element.classList.add('highlight');
+                            setTimeout(() => step.element.classList.remove('highlight'), 1000);
+                            break;
+                    }
+                    log.innerHTML += `${step.message}<br>`;
+                    i++;
+                    setTimeout(executeStep, 1500);
+                }
+            }
+            executeStep();
+        }
+
+        function reset() {
+            log.innerHTML = '';
+            browserArea.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
+        }
+
+        runBtn.addEventListener('click', simulateExecution);
+        resetBtn.addEventListener('click', reset);
     </script>
 </body>
-
 </html>
 
