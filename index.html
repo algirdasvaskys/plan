@@ -3,192 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Basic Web Interaction - Simulator</title>
+    <title>Effects of Dropping 10-Year Gilt Bond Yields</title>
     <style>
-        :root {
-            --primary-color: #0078d4;
-            --secondary-color: #28a745;
-            --background-color: #f0f0f0;
-            --text-color: #333;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        h1, h2 {
-            color: var(--primary-color);
+        h1 {
+            color: #333;
+            text-align: center;
         }
-
-        .simulation-area {
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 1.5em;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .content {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
         }
-
-        .code-area, .browser-area {
-            width: 48%;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        .content p {
+            flex: 1;
+            margin-right: 20px;
+            line-height: 1.6;
+        }
+        .content canvas {
+            flex: 1;
+        }
+        footer {
+            text-align: center;
             padding: 10px;
-        }
-
-        .code-area {
-            background-color: #f8f8f8;
-            font-family: monospace;
-            white-space: pre-wrap;
-        }
-
-        .browser-area {
-            background-color: white;
-        }
-
-        .controls {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #005a9e;
-        }
-
-        .highlight {
-            background-color: yellow;
-            transition: background-color 0.3s ease;
-        }
-
-        #log {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: monospace;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Visual Basic Web Interaction Simulator</h1>
-        <p>This simulator demonstrates how Visual Basic can interact with web elements using the example.com website.</p>
+        <h1>Effects of Dropping 10-Year Gilt Bond Yields</h1>
 
-        <div class="simulation-area">
-            <div class="code-area" id="codeArea">
-Imports SHDocVw
-
-Public Class WebInteractionExample
-    Public Sub InteractWithExampleDomain()
-        Dim explorer As New InternetExplorer()
-        explorer.Navigate("https://www.example.com")
-        While explorer.Busy
-            Threading.Thread.Sleep(100)
-        End While
-        
-        Dim heading As IHTMLElement = explorer.Document.getElementsByTagName("h1")(0)
-        Console.WriteLine("Heading text: " & heading.innerText)
-        
-        Dim paragraph As IHTMLElement = explorer.Document.getElementsByTagName("p")(0)
-        Console.WriteLine("Paragraph text: " & paragraph.innerText)
-        
-        Dim link As IHTMLElement = explorer.Document.getElementsByTagName("a")(0)
-        link.click()
-        
-        explorer.Quit()
-    End Sub
-End Class
-            </div>
-            <div class="browser-area" id="browserArea">
-                <h1>Example Domain</h1>
-                <p>This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.</p>
-                <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+        <div class="section">
+            <div class="section-title">Interest Rates and Borrowing Costs</div>
+            <div class="content">
+                <p>
+                    Lower interest rates: A drop in gilt yields generally leads to lower interest rates across the economy since gilt yields are often a benchmark for other interest rates.
+                    Cheaper borrowing: Both businesses and consumers can borrow at lower costs, which can stimulate investment and spending.
+                </p>
+                <canvas id="interestRatesChart"></canvas>
             </div>
         </div>
 
-        <div class="controls">
-            <button id="runBtn">Run Simulation</button>
-            <button id="resetBtn">Reset</button>
+        <div class="section">
+            <div class="section-title">Investment and Economic Growth</div>
+            <div class="content">
+                <p>
+                    Increased investment: Lower borrowing costs can encourage businesses to invest more in capital projects, potentially leading to higher economic growth.
+                    Consumer spending: Consumers might be more willing to take out loans for big-ticket items like houses and cars, boosting consumer spending.
+                </p>
+                <canvas id="investmentChart"></canvas>
+            </div>
         </div>
 
-        <div id="log"></div>
+        <div class="section">
+            <div class="section-title">Inflation</div>
+            <div class="content">
+                <p>
+                    Potential rise in inflation: Increased spending and investment can lead to higher demand for goods and services, which might push prices up, contributing to inflation.
+                </p>
+                <canvas id="inflationChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Stock Market</div>
+            <div class="content">
+                <p>
+                    Positive effect on equities: Lower yields on bonds make equities (stocks) more attractive as an investment, potentially driving up stock prices.
+                    Dividend yields: Investors may seek higher returns from dividend-yielding stocks, increasing their prices.
+                </p>
+                <canvas id="stockMarketChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Currency Value</div>
+            <div class="content">
+                <p>
+                    Weaker currency: Lower bond yields can lead to a decrease in the value of the currency (GBP in the case of gilt bonds) since investors seek higher returns elsewhere.
+                    Trade balance: A weaker currency may improve the trade balance by making exports cheaper and imports more expensive.
+                </p>
+                <canvas id="currencyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Bond Prices</div>
+            <div class="content">
+                <p>
+                    Inverse relationship: Bond prices and yields have an inverse relationship; when yields drop, bond prices rise. Current bondholders benefit from capital gains.
+                </p>
+                <canvas id="bondPricesChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Pension Funds and Savings</div>
+            <div class="content">
+                <p>
+                    Impact on pensions: Lower yields can be problematic for pension funds, which rely on returns from bonds to meet their future liabilities. This might lead to increased contributions or reduced benefits.
+                    Savings returns: Savers may see lower returns on fixed-income investments, prompting a search for alternative investments.
+                </p>
+                <canvas id="pensionsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Government Finances</div>
+            <div class="content">
+                <p>
+                    Debt servicing costs: The government benefits from lower costs to service its existing debt, potentially freeing up public funds for other uses.
+                </p>
+                <canvas id="govFinancesChart"></canvas>
+            </div>
+        </div>
     </div>
 
+    <footer>
+        © 2024 Financial Analysis
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        const codeArea = document.getElementById('codeArea');
-        const browserArea = document.getElementById('browserArea');
-        const runBtn = document.getElementById('runBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const log = document.getElementById('log');
-
-        function simulateExecution() {
-            log.innerHTML = '';
-            const steps = [
-                { action: 'navigate', element: browserArea, message: 'Navigating to https://www.example.com' },
-                { action: 'highlight', element: browserArea.querySelector('h1'), message: 'Found heading element' },
-                { action: 'log', message: 'Heading text: Example Domain' },
-                { action: 'highlight', element: browserArea.querySelector('p'), message: 'Found paragraph element' },
-                { action: 'log', message: 'Paragraph text: This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.' },
-                { action: 'highlight', element: browserArea.querySelector('a'), message: 'Found link element' },
-                { action: 'click', element: browserArea.querySelector('a'), message: 'Clicked on link' },
-                { action: 'log', message: 'Simulation complete' }
-            ];
-
-            let i = 0;
-            function executeStep() {
-                if (i < steps.length) {
-                    const step = steps[i];
-                    switch (step.action) {
-                        case 'navigate':
-                        case 'highlight':
-                            step.element.classList.add('highlight');
-                            setTimeout(() => step.element.classList.remove('highlight'), 1000);
-                            break;
-                        case 'click':
-                            step.element.classList.add('highlight');
-                            setTimeout(() => step.element.classList.remove('highlight'), 1000);
-                            break;
+        const ctx1 = document.getElementById('interestRatesChart').getContext('2d');
+        const interestRatesChart = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Interest Rates',
+                    data: [3.5, 3.0, 2.5, 2.0, 1.5],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
-                    log.innerHTML += `${step.message}<br>`;
-                    i++;
-                    setTimeout(executeStep, 1500);
                 }
             }
-            executeStep();
-        }
+        });
 
-        function reset() {
-            log.innerHTML = '';
-            browserArea.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
-        }
+        const ctx2 = document.getElementById('investmentChart').getContext('2d');
+        const investmentChart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Investment', 'Consumer Spending'],
+                datasets: [{
+                    label: 'Economic Growth Factors',
+                    data: [10, 8],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
 
-        runBtn.addEventListener('click', simulateExecution);
-        resetBtn.addEventListener('click', reset);
+        const ctx3 = document.getElementById('inflationChart').getContext('2d');
+        const inflationChart = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Inflation Rate',
+                    data: [1.5, 1.8, 2.0, 2.3, 2.5],
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx4 = document.getElementById('stockMarketChart').getContext('2d');
+        const stockMarketChart = new Chart(ctx4, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Stock Market Index',
+                    data: [1500, 1600, 1700, 1800, 1900],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx5 = document.getElementById('currencyChart').getContext('2d');
+        const currencyChart = new Chart(ctx5, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Currency Value (GBP/USD)',
+                    data: [1.5, 1.4, 1.3, 1.2, 1.1],
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx6 = document.getElementById('bondPricesChart').getContext('2d');
+        const bondPricesChart = new Chart(ctx6, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Bond Prices',
+                    data: [100, 105, 110, 115, 120],
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx7 = document.getElementById('pensionsChart').getContext('2d');
+        const pensionsChart = new Chart(ctx7, {
+            type: 'bar',
+            data: {
+                labels: ['Pension Funds', 'Savings Returns'],
+                datasets: [{
+                    label: 'Impact on Pensions and Savings',
+                    data: [5, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx8 = document.getElementById('govFinancesChart').getContext('2d');
+        const govFinancesChart = new Chart(ctx8, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Government Debt Servicing Costs',
+                    data: [50, 45, 40, 35, 30],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     </script>
 </body>
 </html>
+
+
 
