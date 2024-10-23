@@ -1,103 +1,125 @@
-<h1>Build Your Own AC to DC Power Converter</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<p>Want to power your 12V DC devices from a wall outlet? Let's make a simple AC to DC converter!</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced HTML Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-<h2>What You'll Need:</h2>
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
 
-<ul>
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #444;
+        }
 
-<li>Step-down transformer (230V to 12V)</li>
+        nav a {
+            color: white;
+            padding: 1rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
 
-<li>Bridge rectifier (4 diodes)</li>
+        nav a:hover {
+            background: #555;
+        }
 
-<li>Capacitor (1000 microfarad)</li>
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2rem;
+        }
 
-<li>Voltage regulator (LM7812)</li>
+        article {
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+            padding: 1rem;
+            width: calc(33.333% - 2rem);
+            transition: transform 0.3s;
+        }
 
-<li>Small capacitor (1 microfarad)</li>
+        article:hover {
+            transform: scale(1.05);
+        }
 
-<li>MCB (Miniature Circuit Breaker)</li>
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
 
-<li>Wires</li>
+        @media (max-width: 768px) {
+            article {
+                width: calc(50% - 2rem);
+            }
+        }
 
-</ul>
+        @media (max-width: 480px) {
+            article {
+                width: calc(100% - 2rem);
+            }
+        }
+    </style>
+</head>
 
-<h2>Step-by-Step Guide:</h2>
+<body>
+    <header>
+        <h1>Welcome to ProtocolEcho</h1>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <main>
+        <article>
+            <h2>Article 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisi nec arcu luctus varius.</p>
+        </article>
+        <article>
+            <h2>Article 2</h2>
+            <p>Nullam non turpis ac leo bibendum posuere. Integer ullamcorper lacus vitae arcu efficitur, id facilisis justo dignissim.</p>
+        </article>
+        <article>
+            <h2>Article 3</h2>
+            <p>Morbi sit amet purus vitae ligula ultrices venenatis. Quisque ut libero et nunc varius ultrices.</p>
+        </article>
+    </main>
+    <footer>
+        <p>&copy; 2024 ProtocolEcho. All rights reserved.</p>
+    </footer>
 
-<ol>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const articles = document.querySelectorAll('article');
+            articles.forEach(article => {
+                article.addEventListener('click', () => {
+                    alert(article.querySelector('h2').textContent);
+                });
+            });
+        });
+    </script>
+</body>
 
-<li><strong>Step Down the Voltage:</strong>
+</html>
 
-<ul>
-
-<li>Connect the MCB to 230V AC power</li>
-
-<li>Wire the transformer's primary side to the MCB output</li>
-
-</ul>
-
-</li>
-
-<li><strong>Convert AC to DC:</strong>
-
-<ul>
-
-<li>Connect the transformer's secondary to the bridge rectifier</li>
-
-</ul>
-
-</li>
-
-<li><strong>Smooth the DC:</strong>
-
-<ul>
-
-<li>Add the 1000 microfarad capacitor to the rectifier output</li>
-
-</ul>
-
-</li>
-
-<li><strong>Regulate the Voltage:</strong>
-
-<ul>
-
-<li>Connect the LM7812 voltage regulator</li>
-
-<li>Add the 1 microfarad capacitor to the regulator output</li>
-
-</ul>
-
-</li>
-
-</ol>
-
-<h2>How It Works:</h2>
-
-<p>The transformer reduces the voltage. The rectifier converts AC to pulsating DC. The big capacitor smooths it out. The regulator ensures a steady 12V output.</p>
-
-<h2>Safety First:</h2>
-
-<ul>
-
-<li>Always disconnect from mains power when working on the circuit</li>
-
-<li>Use insulated tools and work on a non-conductive surface</li>
-
-<li>Double-check all connections before powering on</li>
-
-</ul>
-
-<h2>Pro Tips:</h2>
-
-<ul>
-
-<li>Use a multimeter to verify your output voltage</li>
-
-<li>Heat sinks may be needed for the voltage regulator if powering larger loads</li>
-
-<li>This basic design can be adapted for other DC voltages by changing the transformer and regulator</li>
-
-</ul>
-
-<p>This project teaches you about power conversion basics. It's great for powering small DC devices or as a learning exercise. Enjoy your homemade power supply!</p>
