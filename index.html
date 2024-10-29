@@ -3,350 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Effects of Dropping 10-Year Gilt Bond Yields</title>
+    <title>It Works by RHJ - Summary and Themes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        .section-title {
-            font-size: 1.5em;
-            color: #444;
-            margin-bottom: 10px;
-        }
-        .content {
-            display: flex;
-            justify-content: space-between;
-        }
-        .content p {
-            flex: 1;
-            margin-right: 20px;
             line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
         }
-        .content canvas {
-            flex: 1;
-        }
-        footer {
+        header {
             text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
+            background-color: #6a5acd;
+            color: white;
+        }
+        section {
+            margin: 20px 0;
+        }
+        h1, h2 {
+            color: #6a5acd;
+        }
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Effects of Dropping 10-Year Gilt Bond Yields</h1>
-
-        <div class="section">
-            <div class="section-title">Interest Rates and Borrowing Costs</div>
-            <div class="content">
-                <p>
-                    Lower interest rates: A drop in gilt yields generally leads to lower interest rates across the economy since gilt yields are often a benchmark for other interest rates.
-                    Cheaper borrowing: Both businesses and consumers can borrow at lower costs, which can stimulate investment and spending.
-                </p>
-                <canvas id="interestRatesChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Investment and Economic Growth</div>
-            <div class="content">
-                <p>
-                    Increased investment: Lower borrowing costs can encourage businesses to invest more in capital projects, potentially leading to higher economic growth.
-                    Consumer spending: Consumers might be more willing to take out loans for big-ticket items like houses and cars, boosting consumer spending.
-                </p>
-                <canvas id="investmentChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Inflation</div>
-            <div class="content">
-                <p>
-                    Potential rise in inflation: Increased spending and investment can lead to higher demand for goods and services, which might push prices up, contributing to inflation.
-                </p>
-                <canvas id="inflationChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Stock Market</div>
-            <div class="content">
-                <p>
-                    Positive effect on equities: Lower yields on bonds make equities (stocks) more attractive as an investment, potentially driving up stock prices.
-                    Dividend yields: Investors may seek higher returns from dividend-yielding stocks, increasing their prices.
-                </p>
-                <canvas id="stockMarketChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Currency Value</div>
-            <div class="content">
-                <p>
-                    Weaker currency: Lower bond yields can lead to a decrease in the value of the currency (GBP in the case of gilt bonds) since investors seek higher returns elsewhere.
-                    Trade balance: A weaker currency may improve the trade balance by making exports cheaper and imports more expensive.
-                </p>
-                <canvas id="currencyChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Bond Prices</div>
-            <div class="content">
-                <p>
-                    Inverse relationship: Bond prices and yields have an inverse relationship; when yields drop, bond prices rise. Current bondholders benefit from capital gains.
-                </p>
-                <canvas id="bondPricesChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Pension Funds and Savings</div>
-            <div class="content">
-                <p>
-                    Impact on pensions: Lower yields can be problematic for pension funds, which rely on returns from bonds to meet their future liabilities. This might lead to increased contributions or reduced benefits.
-                    Savings returns: Savers may see lower returns on fixed-income investments, prompting a search for alternative investments.
-                </p>
-                <canvas id="pensionsChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Government Finances</div>
-            <div class="content">
-                <p>
-                    Debt servicing costs: The government benefits from lower costs to service its existing debt, potentially freeing up public funds for other uses.
-                </p>
-                <canvas id="govFinancesChart"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        © 2024 Financial Analysis
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx1 = document.getElementById('interestRatesChart').getContext('2d');
-        const interestRatesChart = new Chart(ctx1, {
-            type: 'line',
-            data: {
-                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
-                datasets: [{
-                    label: 'Interest Rates',
-                    data: [3.5, 3.0, 2.5, 2.0, 1.5],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const ctx2 = document.getElementById('investmentChart').getContext('2d');
-        const investmentChart = new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['Investment', 'Consumer Spending'],
-                datasets: [{
-                    label: 'Economic Growth Factors',
-                    data: [10, 8],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const ctx3 = document.getElementById('inflationChart').getContext('2d');
-        const inflationChart = new Chart(ctx3, {
-            type: 'line',
-            data: {
-                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
-                datasets: [{
-                    label: 'Inflation Rate',
-                    data: [1.5, 1.8, 2.0, 2.3, 2.5],
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const ctx4 = document.getElementById('stockMarketChart').getContext('2d');
-        const stockMarketChart = new Chart(ctx4, {
-            type: 'line',
-            data: {
-                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
-                datasets: [{
-                    label: 'Stock Market Index',
-                    data: [1500, 1600, 1700, 1800, 1900],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const ctx5 = document.getElementById('currencyChart').getContext('2d');
-        const currencyChart = new Chart(ctx5, {
-            type: 'line',
-            data: {
-                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
-                datasets: [{
-                    label: 'Currency Value (GBP/USD)',
-                    data: [1.5, 1.4, 1.3, 1.2, 1.1],
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const ctx6 = document.getElementById('bondPricesChart').getContext('2d');
-        const bondPricesChart = new Chart(ctx6, {
-            type: 'line',
-            data: {
-                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
-                datasets: [{
-                    label: 'Bond Prices',
-                    data: [100, 105, 110, 115, 120],
-                    borderColor: 'rgba(255, 159, 64, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const ctx7 = document.getElementById('pensionsChart').getContext('2d');
-        const pensionsChart = new Chart(ctx7, {
-            type: 'bar',
-            data: {
-                labels: ['Pension Funds', 'Savings Returns'],
-                datasets: [{
-                    label: 'Impact on Pensions and Savings',
-                    data: [5, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const ctx8 = document.getElementById('govFinancesChart').getContext('2d');
-        const govFinancesChart = new Chart(ctx8, {
-            type: 'line',
-            data: {
-                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
-                datasets: [{
-                    label: 'Government Debt Servicing Costs',
-                    data: [50, 45, 40, 35, 30],
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
+    <header>
+        <h1>It Works by RHJ</h1>
+        <p>Summary and Themes</p>
+    </header>
+    <section>
+        <h2>Summary</h2>
+        <p>
+            "It Works" is a concise guide that outlines a simple formula for achieving personal success. The book emphasizes the power of focused thought and the importance of writing down clear goals. RHJ presents a method that involves believing in the desired outcome, repeatedly visualizing success, and acting with faith and persistence.
+        </p>
+    </section>
+    <section>
+        <h2>Themes</h2>
+        <ul>
+            <li><strong>Power of Belief:</strong> The book stresses that belief is a key factor in achieving goals.</li>
+            <li><strong>Visualization:</strong> Visualizing success helps to manifest it in reality.</li>
+            <li><strong>Goal Setting:</strong> Writing down specific goals is crucial to clarify and focus efforts.</li>
+            <li><strong>Persistence:</strong> Consistent effort and faith are necessary to overcome obstacles and achieve success.</li>
+        </ul>
+    </section>
 </body>
 </html>
-
-
-
