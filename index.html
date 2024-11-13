@@ -3,493 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forward Tipping Dumper Information</title>
+    <title>200+ SSH Commands for Raspberry Pi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
+            line-height: 1.6;
             color: #333;
-        }
-        .question {
-            margin: 15px 0;
-            padding: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
             background-color: #f0f0f0;
-            border-left: 5px solid #007BFF;
         }
-        .answer {
-            margin: 10px 0;
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .category {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .command {
+            background-color: #ecf0f1;
+            border-radius: 5px;
             padding: 10px;
-            background-color: #e9ecef;
-            border-left: 5px solid #28a745;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
         }
-        .question-number {
+        .command:hover {
+            background-color: #d5dbdb;
+        }
+        .command-name {
             font-weight: bold;
-            color: #007BFF;
+            color: #e74c3c;
+        }
+        .command-description {
+            margin-top: 5px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Forward Tipping Dumper Q&A</h1>
-
-    <div class="question">
-        <span class="question-number">1.</span> What is the definition of, or how can a hazard be described?
-    </div>
-    <div class="answer">
-        Danger to people, property and environment
-    </div>
-
-    <div class="question">
-        <span class="question-number">2.</span> What is the purpose of a risk assessment?
-    </div>
-    <div class="answer">
-        To control the hazard
-    </div>
-
-    <div class="question">
-        <span class="question-number">3.</span> List SIX typical subject areas that should be covered in a site induction.
-    </div>
-    <div class="answer">
-        Fire, first aid, welfare, method statement, access/egress, smoking area
-    </div>
-
-    <div class="question">
-        <span class="question-number">4.</span> What THREE duties of The Health and Safety at Work Act must employees follow?
-    </div>
-    <div class="answer">
-        Take care of yourself and others who may be affected by your actions, co-operate with employer, do not interfere with health & safety
-    </div>
-
-    <div class="question">
-        <span class="question-number">5.</span> What does The Health and Safety at Work Act require employers to do with regards specifically to plant?
-    </div>
-    <div class="answer">
-        Supply safe and maintained plant
-    </div>
-
-    <div class="question">
-        <span class="question-number">6.</span> a) What is the purpose of a Method Statement and b) What is required of the operator?
-    </div>
-    <div class="answer">
-        a) Document which gives specific instruction on how to carry out job/task safely<br>
-        b) Comply with it
-    </div>
-
-    <div class="question">
-        <span class="question-number">7.</span> Name FOUR different types or levels of sanctions that can be applied (by employers and judicial bodies) to plant operators who do not comply with, or follow legislation and regulations?
-    </div>
-    <div class="answer">
-        Dismissal, verbal warning, written warning, prosecution.
-    </div>
-
-    <div class="question">
-        <span class="question-number">8.</span> Why are plant operators generally regarded as ‘safely-critical’ workers?
-    </div>
-    <div class="answer">
-        Their actions (with the machine) could have significant H&S consequences on themselves and others.
-    </div>
-
-    <div class="question">
-        <span class="question-number">9.</span> Name THREE ways in which an operator can minimise their impact upon the environment whilst using the machine.
-    </div>
-    <div class="answer">
-        Keep engine revs low, stop oil and fuel spill, work
-    </div>
-
-    <div class="question">
-        <span class="question-number">10.</span> In what situation does a hard hat NOT need to be worn when operating a forward tipping dumper?
-    </div>
-    <div class="answer">
-        In full cab with FOPS
-    </div>
-
-    <div class="question">
-        <span class="question-number">11.</span> The operator has to use a new model of dumper i.e. swivel skip that they are unfamiliar with. What do Regulations (i.e. PUWER 98) and other guidance require the operator to have?
-    </div>
-    <div class="answer">
-        Information and training
-    </div>
-
-    <div class="question">
-        <span class="question-number">12.</span> What are the possible outcomes if being prosecuted for not complying with legislation and regulations?
-    </div>
-    <div class="answer">
-        Case dismissal, fine, prison.
-    </div>
-
-    <div class="question">
-        <span class="question-number">13.</span> The function or job role of a dumper driver, when transporting materials, is to?
-    </div>
-    <div class="answer">
-        Transport them efficiently and safely
-    </div>
-
-    <div class="question">
-        <span class="question-number">14.</span> How can a qualification or card benefit a dumper operator?
-    </div>
-    <div class="answer">
-        Shows skill achieved
-    </div>
-
-    <div class="question">
-        <span class="question-number">15.</span> Name THREE ways that a plant operator can contribute in ensuring repeat business with the client or main contractor.
-    </div>
-    <div class="answer">
-        Work safely, co-operate with others, work to lift plan/method statement, be on time
-    </div>
-
-    <div class="question">
-        <span class="question-number">16.</span> Where should the dumper’s Operator’s Manual be kept and why?
-    </div>
-    <div class="answer">
-        On the dumper for easy access
-    </div>
-
-    <div class="question">
-        <span class="question-number">17.</span> When would the skip safety strut or support be used?
-    </div>
-    <div class="answer">
-        When working under the skip
-    </div>
-
-    <div class="question">
-        <span class="question-number">18.</span> If the operator has to top-up the hydraulic oil, state TWO precautions to ensure cleanliness of the system.
-    </div>
-    <div class="answer">
-        Clean around the filler and use clean funnels
-    </div>
-
-    <div class="question">
-        <span class="question-number">19.</span> What is a possible consequence of using a tyre with a deep cut in the sidewall?
-    </div>
-    <div class="answer">
-        Bursting if overloaded
-    </div>
-
-    <div class="question">
-        <span class="question-number">20.</span> What is the purpose of a roll or ROPS frame?
-    </div>
-    <div class="answer">
-        To protect operator when machine rolls over
-    </div>
-
-    <div class="question">
-        <span class="question-number">21.</span> Using the Operator’s Manual, state the figure for tyres’ operating pressure. For tracked machines, what specific checks must be made to the track belt?
-    </div>
-    <div class="answer">
-        Note: The Operator’s Manual for the machine being used for the test MUST be available for reference by the candidate.
-    </div>
+    <h1>200+ SSH Commands for Raspberry Pi</h1>
     
-    <div class="question">
-        <span class="question-number">22.</span> Using the Operator’s Manual, state the cold-starting procedure for the machine.
-    </div>
-    <div class="answer">
-        Note: The Operator’s Manual for the machine being used for the test MUST be available for reference by the candidate.
+    <input type="text" id="searchBox" class="search-box" placeholder="Search for commands...">
+
+    <div id="commandsContainer">
+        <!-- Categories and commands will be dynamically added here -->
     </div>
 
-    <div class="question">
-        <span class="question-number">23.</span> On articulated dumpers, steering is achieved by actuating a hydraulic ram which is controlled by turning the steering wheel. a) How does the engine supply the oil flow and b) What happens to the steering when the engine stops?
-    </div>
-    <div class="answer">
-        a) Hydraulic pump<br>
-        b) Steering gets harder
-    </div>
+    <script>
+        const sshCommands = {
+            "Connection and Authentication": [
+                { name: "ssh pi@raspberrypi.local", description: "Connect to Raspberry Pi using its hostname" },
+                { name: "ssh pi@192.168.1.100", description: "Connect to Raspberry Pi using its IP address" },
+                { name: "ssh-keygen -t rsa", description: "Generate an RSA key pair for passwordless authentication" },
+                { name: "ssh-copy-id pi@raspberrypi.local", description: "Copy your public key to the Raspberry Pi for passwordless login" },
+                { name: "ssh -i ~/.ssh/id_rsa pi@raspberrypi.local", description: "Connect using a specific private key" },
+                { name: "sshpass -p 'raspberry' ssh pi@raspberrypi.local", description: "Connect using a password (not recommended for security reasons)" },
+                { name: "ssh -p 2222 pi@raspberrypi.local", description: "Connect to SSH on a non-standard port" },
+                { name: "ssh -4 pi@raspberrypi.local", description: "Force SSH to use IPv4" },
+                { name: "ssh -6 pi@raspberrypi.local", description: "Force SSH to use IPv6" },
+                { name: "ssh -q pi@raspberrypi.local", description: "Quiet mode, suppresses most warning and diagnostic messages" }
+            ],
+            "File Transfer": [
+                { name: "scp file.txt pi@raspberrypi.local:/home/pi/", description: "Copy a file to the Raspberry Pi" },
+                { name: "scp pi@raspberrypi.local:/home/pi/file.txt .", description: "Copy a file from the Raspberry Pi" },
+                { name: "scp -r folder/ pi@raspberrypi.local:/home/pi/", description: "Copy a folder to the Raspberry Pi" },
+                { name: "rsync -avz folder/ pi@raspberrypi.local:/home/pi/", description: "Sync a folder to the Raspberry Pi" },
+                { name: "sftp pi@raspberrypi.local", description: "Start an SFTP session" },
+                { name: "scp -P 2222 file.txt pi@raspberrypi.local:/home/pi/", description: "SCP with a non-standard port" },
+                { name: "rsync -avz -e 'ssh -p 2222' folder/ pi@raspberrypi.local:/home/pi/", description: "Rsync with a non-standard SSH port" },
+                { name: "scp -l 5000 largefile.zip pi@raspberrypi.local:/home/pi/", description: "Limit SCP bandwidth to 5000 Kbit/s" },
+                { name: "rsync -avz --progress folder/ pi@raspberrypi.local:/home/pi/", description: "Rsync with progress indicator" },
+                { name: "scp -p file.txt pi@raspberrypi.local:/home/pi/", description: "Preserve modification times, access times, and modes from the original file" }
+            ],
+            "Remote Commands": [
+                { name: "ssh pi@raspberrypi.local 'ls -l'", description: "Run a command on the Raspberry Pi" },
+                { name: "ssh pi@raspberrypi.local 'sudo reboot'", description: "Reboot the Raspberry Pi" },
+                { name: "ssh pi@raspberrypi.local 'sudo shutdown -h now'", description: "Shutdown the Raspberry Pi" },
+                { name: "ssh pi@raspberrypi.local 'top -n 1'", description: "View system processes" },
+                { name: "ssh pi@raspberrypi.local 'df -h'", description: "Check disk usage" },
+                { name: "ssh pi@raspberrypi.local 'free -h'", description: "Check available memory" },
+                { name: "ssh pi@raspberrypi.local 'uptime'", description: "Check system uptime" },
+                { name: "ssh pi@raspberrypi.local 'ifconfig'", description: "Display network interface configuration" },
+                { name: "ssh pi@raspberrypi.local 'sudo apt update && sudo apt upgrade -y'", description: "Update and upgrade system packages" },
+                { name: "ssh pi@raspberrypi.local 'ps aux | grep python'", description: "List running Python processes" }
+            ],
+            "Port Forwarding": [
+                { name: "ssh -L 8080:localhost:80 pi@raspberrypi.local", description: "Forward local port 8080 to Raspberry Pi's port 80" },
+                { name: "ssh -R 8080:localhost:80 pi@raspberrypi.local", description: "Forward Raspberry Pi's port 8080 to local port 80" },
+                { name: "ssh -D 9090 pi@raspberrypi.local", description: "Create a SOCKS proxy on local port 9090" },
+                { name: "ssh -L 3306:localhost:3306 pi@raspberrypi.local", description: "Forward local MySQL port to Raspberry Pi's MySQL port" },
+                { name: "ssh -L 5901:localhost:5901 pi@raspberrypi.local", description: "Forward local VNC port to Raspberry Pi's VNC port" },
+                { name: "ssh -N -L 8080:localhost:80 pi@raspberrypi.local", description: "Port forwarding without executing a remote command" },
+                { name: "ssh -g -L 8080:localhost:80 pi@raspberrypi.local", description: "Allow remote hosts to connect to local forwarded ports" },
+                { name: "ssh -L 8080:internalhost:80 pi@raspberrypi.local", description: "Forward to an internal host through the Raspberry Pi" },
+                { name: "ssh -R 52698:localhost:52698 pi@raspberrypi.local", description: "Reverse port forwarding for remote development (e.g., rmate)" },
+                { name: "ssh -L 8888:localhost:8888 pi@raspberrypi.local -N -f", description: "Background port forwarding for Jupyter Notebook" }
+            ],
+            "SSH Configuration": [
+                { name: "nano ~/.ssh/config", description: "Edit SSH client configuration file" },
+                { name: "ssh -v pi@raspberrypi.local", description: "Connect with verbose output for debugging" },
+                { name: "ssh -C pi@raspberrypi.local", description: "Enable compression for the SSH session" },
+                { name: "ssh -o 'ServerAliveInterval 60' pi@raspberrypi.local", description: "Keep connection alive by sending a packet every 60 seconds" },
+                { name: "ssh -F /path/to/config pi@raspberrypi.local", description: "Use a specific SSH config file" },
+                { name: "ssh -o 'ConnectTimeout 10' pi@raspberrypi.local", description: "Set connection timeout to 10 seconds" },
+                { name: "ssh -o 'PasswordAuthentication no' pi@raspberrypi.local", description: "Disable password authentication" },
+                { name: "ssh -o 'PubkeyAuthentication yes' pi@raspberrypi.local", description: "Enable public key authentication" },
+                { name: "ssh -o 'StrictHostKeyChecking no' pi@raspberrypi.local", description: "Disable strict host key checking (use with caution)" },
+                { name: "ssh -o 'LogLevel DEBUG3' pi@raspberrypi.local", description: "Set SSH log level to DEBUG3 for maximum verbosity" }
+            ],
+            "Security": [
+                { name: "ssh-keygen -t ed25519", description: "Generate a more secure Ed25519 key pair" },
+                { name: "ssh-audit raspberrypi.local", description: "Audit SSH server security configuration" },
+                { name: "ssh-add ~/.ssh/id_rsa", description: "Add private key to SSH agent" },
+                { name: "ssh-keygen -R raspberrypi.local", description: "Remove a host key from known_hosts file" },
+                { name: "ssh-keygen -lf ~/.ssh/id_rsa.pub", description: "Display the fingerprint of a public key" },
+                { name: "ssh-keygen -p -f ~/.ssh/id_rsa", description: "Change the passphrase of an existing private key" },
+                { name: "ssh-keyscan raspberrypi.local", description: "Gather SSH public keys from a server" },
+                { name: "ssh-agent bash", description: "Start a new shell session with SSH agent" },
+                { name: "ssh-add -l", description: "List fingerprints of all identities in the agent" },
+                { name: "ssh-keygen -t rsa -b 4096", description: "Generate a 4096-bit RSA key pair" }
+            ],
+            "Raspberry Pi Specific": [
+                { name: "ssh pi@raspberrypi.local 'sudo raspi-config'", description: "Run Raspberry Pi configuration tool" },
+                { name: "ssh pi@raspberrypi.local 'vcgencmd measure_temp'", description: "Check CPU temperature" },
+                { name: "ssh pi@raspberrypi.local 'sudo rpi-update'", description: "Update Raspberry Pi firmware" },
+                { name: "ssh pi@raspberrypi.local 'gpio readall'", description: "Read all GPIO pin states" },
+                { name: "ssh pi@raspberrypi.local 'vcgencmd get_mem arm && vcgencmd get_mem gpu'", description: "Check ARM and GPU memory split" },
+                { name: "ssh pi@raspberrypi.local 'vcgencmd measure_volts'", description: "Check core voltage" },
+                { name: "ssh pi@raspberrypi.local 'vcgencmd measure_clock arm'", description: "Check ARM CPU clock speed" },
+                { name: "ssh pi@raspberrypi.local 'sudo vcdbg log msg'", description: "View VideoCore debug messages" },
+                { name: "ssh pi@raspberrypi.local 'pinout'", description: "Display Raspberry Pi GPIO pinout information" },
+                { name: "ssh pi@raspberrypi.local 'sudo tvservice -s'", description: "Get HDMI display status" }
+            ],
+            "SSH Tunneling": [
+                { name: "ssh -f -N -L 3000:localhost:3000 pi@raspberrypi.local", description: "Create a local port forward in the background" },
+                { name: "ssh -f -N -R 8080:localhost:80 pi@raspberrypi.local", description: "Create a remote port forward in the background" },
+                { name: "ssh -f -N -D 1080 pi@raspberrypi.local", description: "Create a SOCKS proxy in the background" },
+                { name: "ssh -L 5901:localhost:5901 -L 6001:localhost:6001 pi@raspberrypi.local", description: "Multiple port forwards in a single command" },
+                { name: "ssh -f -N -L 3306:remote-db:3306 pi@raspberrypi.local", description: "Forward local port to a remote database through Raspberry Pi" },
+                { name: "autossh -M 0 -f -N -L 8080:localhost:80 pi@raspberrypi.local", description: "Use autossh to maintain a persistent tunnel" },
+                { name: "ssh -L 8888:localhost:8888 pi@raspberrypi.local jupyter notebook --no-browser", description: "Port forward and start Jupyter Notebook on Raspberry Pi" },
+                { name: "ssh -fN -L 5000:localhost:5000 -L 5555:localhost:5555 pi@raspberrypi.local", description: "Multiple port forwards for web and database access" },
+                { name: "ssh -L 2181:localhost:2181 -L 9092:localhost:9092 pi@raspberrypi.local", description: "Port forward for accessing Kafka on Raspberry Pi" },
+                { name: "ssh -L 6379:localhost:6379 pi@raspberrypi.local", description: "Port forward for accessing Redis on Raspberry Pi" }
+            ],
+            "SSH Multiplexing": [
+                { name: "ssh -o ControlMaster=auto -o ControlPath=~/.ssh/cm_%r@%h:%p -o ControlPersist=10m pi@raspberrypi.local", description: "Enable SSH connection multiplexing" },
+                { name: "ssh -O check -o ControlPath=~/.ssh/cm_%r@%h:%p pi@raspberrypi.local", description: "Check multiplexing status" },
+                { name: "ssh -O stop -o ControlPath=~/.ssh/cm_%r@%h:%p pi@raspberrypi.local", description: "Stop multiplexing for a connection" },
+                { name: "ssh -O exit -o ControlPath=~/.ssh/cm_%r@%h:%p pi@raspberrypi.local", description: "Exit multiplexing for a connection" },
+                { name: "ssh -M -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Create a master connection for multiplexing" },
+                { name: "ssh -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Use an existing multiplexed connection" },
+                { name: "ssh -O forward -L 8080:localhost:80 -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Add a port forward to an existing multiplexed connection" },
+                { name: "ssh -O cancel -L 8080:localhost:80 -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Remove a port forward from an existing multiplexed connection" },
+                { name: "ssh -O check -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Check the status of a multiplexed connection" },
+                { name: "ssh -MS ~/.ssh/cm-socket pi@raspberrypi.local", description: "Create a master connection and place it in the background" }
+            ],
+            "Advanced SSH Usage": [
+                { name: "ssh -t pi@raspberrypi.local 'top'", description: "Force pseudo-terminal allocation for interactive programs" },
+                { name: "ssh -J jumphost pi@raspberrypi.local", description: "Use a jump host to connect to Raspberry Pi" },
+                { name: "ssh -Q cipher", description: "List supported encryption algorithms" },
+                { name: "ssh -Q mac", description: "List supported MAC algorithms" },
+                { name: "ssh -Q kex", description: "List supported key exchange algorithms" },
+                { name: "ssh -Q key", description: "List supported public key algorithms" },
+                { name: "ssh -o ProxyCommand='nc -X 5 -x localhost:1080 %h %p' pi@raspberrypi.local", description: "Use a SOCKS proxy to connect" },
+                { name: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no pi@raspberrypi.local", description: "Disable host key checking (use with caution)" },
+                { name: "ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=10 pi@raspberrypi.local", description: "Configure keep-alive settings" },
+                { name: "ssh -o ControlMaster=auto -o ControlPath=/tmp/ssh_mux_%h_%p_%r -o ControlPersist=1h pi@raspberrypi.local", description: "Setup persistent multiplexing" }
+            ],
+            "SSH Key Management": [
+                { name: "ssh-keygen -t rsa -b 4096 -C 'your_email@example.com'", description: "Generate a new RSA key pair with a comment" },
+                { name: "ssh-keygen -t ed25519 -C 'your_email@example.com'", description: "Generate a new Ed25519 key pair with a comment" },
+                { name: "ssh-keygen -p -f ~/.ssh/id_rsa", description: "Change the passphrase of an existing private key" },
+                { name: "ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub", description: "Generate a public key from a private key" },
+                { name: "ssh-keygen -lf ~/.ssh/id_rsa.pub", description: "Display the fingerprint of a public key" },
+                { name: "ssh-keygen -R raspberrypi.local", description: "Remove all keys belonging to a hostname from known_hosts" },
+                { name: "ssh-keygen -H -f ~/.ssh/known_hosts", description: "Hash all hostnames and addresses in known_hosts" },
+                { name: "ssh-keygen -t rsa -b 4096 -f ~/.ssh/mykey -N ''", description: "Generate a new RSA key pair without a passphrase" },
+                { name: "ssh-keygen -e -f ~/.ssh/id_rsa.pub > ~/.ssh/id_rsa_pkcs8.pub", description: "Convert OpenSSH public key to PKCS8 format" },
+                { name: "ssh-keygen -i -f ~/.ssh/id_rsa_pkcs8.pub > ~/.ssh/id_rsa_openssh.pub", description: "Convert PKCS8 public key to OpenSSH format" }
+            ]
+        };
 
-    <div class="question">
-        <span class="question-number">24.</span> If checking the oil level using a dipstick, why must gloves be worn?
-    </div>
-    <div class="answer">
-        Stop diseases and contamination of controls
-    </div>
+        const container = document.getElementById('commandsContainer');
 
-    <div class="question">
-        <span class="question-number">25.</span> Apart from the operator, who else may need to use the machine’s Operator’s Manual?
-    </div>
-    <div class="answer">
-        Supervisor, fitter
-    </div>
+        for (const [category, commands] of Object.entries(sshCommands)) {
+            const categoryElement = document.createElement('div');
+            categoryElement.className = 'category';
+            categoryElement.innerHTML = `<h2>${category}</h2>`;
 
-    <div class="question">
-        <span class="question-number">26.</span> A dumper is classified by a manufacturer as a 6 tonne dumper. What does this mean?
-    </div>
-    <div class="answer">
-        6 tonne capacity
-    </div>
+            commands.forEach(command => {
+                const commandElement = document.createElement('div');
+                commandElement.className = 'command';
+                commandElement.innerHTML = `
+                    <span class="command-name">${command.name}</span>
+                    <div class="command-description">${command.description}</div>
+                `;
+                categoryElement.appendChild(commandElement);
+            });
 
-    <div class="question">
-        <span class="question-number">27.</span> Most site dumpers have the engine at the rear. State the main reason for this.
-    </div>
-    <div class="answer">
-        Counter balance the skip
-    </div>
+            container.appendChild(categoryElement);
+        }
 
-    <div class="question">
-        <span class="question-number">28.</span> During work, the engine starts to overheat. Explain the danger if someone tries to remove the radiator or expansion tank cap.
-    </div>
-    <div class="answer">
-        Pressurised steam
-    </div>
+        const searchBox = document.getElementById('searchBox');
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const commands = document.querySelectorAll('.command');
 
-    <div class="question">
-        <span class="question-number">29.</span> Give FOUR reasons that may cause the dumper to tip over sideways during travel.
-    </div>
-    <div class="answer">
-        Turning on a slope, turning when driving too fast, soft ground, holes
-    </div>
+            commands.forEach(command => {
+                const commandText = command.textContent.toLowerCase();
+                if (commandText.includes(searchTerm)) {
+                    command.classList.remove('hidden');
+                } else {
+                    command.classList.add('hidden');
+                }
+            });
 
-    <div class="question">
-        <span class="question-number">30.</span> a) What is the minimum distance allowed near open trenches when travelling with a dumper and b) Explain why?
-    </div>
-    <div class="answer">
-        Depth of trench away from side to stop collapse
-    </div>
- <div class="question">
-        <span class="question-number">31.</span> Why must a seat belt be worn at all times?
-    </div>
-    <div class="answer">
-        Keep operator in place when machine turns over
-    </div>
-
-    <div class="question">
-        <span class="question-number">32.</span> If the machine is being travelled or working on the public highway, including adjacent pavements and verges, the Road Traffic Act applies. a) What type of licence and which class should the operator hold and b) what is the minimum age allowed?
-    </div>
-    <div class="answer">
-        a) UK class B, up to 7.5T, over 7.5<br>
-        b) 21
-    </div>
-
-    <div class="question">
-        <span class="question-number">33.</span> When travelling on wet clay, what effect does this have on the dumper?
-    </div>
-    <div class="answer">
-        Traction becomes slippery, steering is reduced
-    </div>
-
-    <div class="question">
-        <span class="question-number">34.</span> Manufacturers must give recommendations on how to travel a dumper up and down inclines. If this information is not known first hand, what is the general rule about travelling up and down slopes?
-    </div>
-    <div class="answer">
-        Forward loaded, reverse empty
-    </div>
-
-    <div class="question">
-        <span class="question-number">35.</span> How is it possible that a dumper can still tip over when travelling on gentle gradient, even if it is not overloaded and not being driven at excessive speed?
-    </div>
-    <div class="answer">
-        Steering across the slope
-    </div>
-
-    <div class="question">
-        <span class="question-number">36.</span> a) Name THREE purposes of the raised lugs on tyres and b) what can happen to a dumper if the lugs are severely worn?
-    </div>
-    <div class="answer">
-        a) Grip and tractions<br>
-        b) No grip and steering is difficult
-    </div>
-
-    <div class="question">
-        <span class="question-number">37.</span> If setting up work in a pedestrianised area, state THREE factors that need to be taken into account.
-    </div>
-    <div class="answer">
-        Noise, fumes and barriers
-    </div>
-
-    <div class="question">
-        <span class="question-number">38.</span> Whenever possible, who should decide the positioning of the dumper when being loaded?
-    </div>
-    <div class="answer">
-        Excavator driver
-    </div>
-
-    <div class="question">
-        <span class="question-number">39.</span> The operator is asked to tip material into a new trench. State FIVE different requirements that must be considered or implemented before tipping commences.
-    </div>
-    <div class="answer">
-        Barriers or stop blocks, material being discharged, no persons in trench, shoring, permit to tip
-    </div>
-
-    <div class="question">
-        <span class="question-number">40.</span> Give TWO reasons for using a swivel skip dumper over a conventional forward tipping skip.
-    </div>
-    <div class="answer">
-        Continuous pout, restricted access
-    </div>
-<div class="question">
-        <span class="question-number">41.</span> What problems and hazards can soft ground cause to a loaded dumper?
-    </div>
-    <div class="answer">
-        Get stuck, tip over
-    </div>
-
-    <div class="question">
-        <span class="question-number">42.</span> Give TWO reasons why the dumper operator should have an understanding of the type of spoil being transported.
-    </div>
-    <div class="answer">
-        If it is liquid, movement will cause spills; clay may overload tyres
-    </div>
-
-    <div class="question">
-        <span class="question-number">43.</span> When working in a confined area or space, what danger can be present with an articulated dumper with regards to steering?
-    </div>
-    <div class="answer">
-        If too close to wall, cannot steer away
-    </div>
-
-    <div class="question">
-        <span class="question-number">44.</span> Discharging loads whilst moving is not considered best practice. Why would this be?
-    </div>
-    <div class="answer">
-        Instability could occur on uneven ground
-    </div>
-
-    <div class="question">
-        <span class="question-number">45.</span> When working in a confined area or space, name THREE hazards that can occur.
-    </div>
-    <div class="answer">
-        Visibility, fumes, noise
-    </div>
-
-    <div class="question">
-        <span class="question-number">46.</span> a) What determines the minimum distances that any part of plant and machinery has to be kept from overhead electricity lines and b) explain why a distance should be kept?
-    </div>
-    <div class="answer">
-        a) The voltage of the electricity line and type of support (e.g., metal pylons / wooden poles etc.)<br>
-        b) High voltage electricity can arc across large gaps at certain distances.
-    </div>
-
-    <div class="question">
-        <span class="question-number">47.</span> Why do high tip dumpers need particular care when tipping?
-    </div>
-    <div class="answer">
-        Centre of gravity changes
-    </div>
-
-    <div class="question">
-        <span class="question-number">48.</span> Who should determine the maximum load that should be placed into the skip of the dumper?
-    </div>
-    <div class="answer">
-        The dumper driver
-    </div>
-
-    <div class="question">
-        <span class="question-number">49.</span> State TWO requirements of using a stop block or earth bank (berm) at a trench discharging point.
-    </div>
-    <div class="answer">
-        Stop trench collapse, direct pout into hole
-    </div>
-
-    <div class="question">
-        <span class="question-number">50.</span> When forward tipping a load, the centre of gravity of the machine changes. a) What effect does this have on the dumper and b) state TWO actions to avoid accidents?
-    </div>
-    <div class="answer">
-        a) Cause movement backwards<br>
-        b) Hand brake on, gear in neutral
-    </div>
-
-    <div class="question">
-        <span class="question-number">51.</span> What may happen if the load is tipped onto a downward slope?
-    </div>
-    <div class="answer">
-        Material could roll down the slope.
-    </div>
-
-    <div class="question">
-        <span class="question-number">52.</span> Operators should lower the skip fully before driving away, particularly on swivel skips. Give TWO possible consequences if this is not carried out.
-    </div>
-    <div class="answer">
-        Centre of gravity, vision is reduced by the skip
-    </div>
-
-    <div class="question">
-        <span class="question-number">53.</span> If considering to use the dumper to transport a wide load. What needs to be taken into account?
-    </div>
-    <div class="answer">
-        Load secure and stable, travel route checked prior to travel, banks man
-    </div>
-
-    <div class="question">
-        <span class="question-number">54.</span> Name THREE problems that could occur if the skip is overloaded with a dense/compacted material.
-    </div>
-    <div class="answer">
-        Tyres/axle overloaded, skip unable to tip, machine tips forward when discharging
-    </div>
-
-    <div class="question">
-        <span class="question-number">55.</span> What is the meaning of this hand signal (being demonstrated by the tester)
-    </div>
-    <div class="answer">
-        <!-- Answer not provided -->
-    </div>
-
-    <div class="question">
-        <span class="question-number">56.</span> Larger dumpers use a turbo-charged engine. a) What is the normal procedure before switching off the engine after working and b) what happens if the procedure is not followed?
-    </div>
-    <div class="answer">
-        a) Let it idle<br>
-        b) Could damage the turbo
-    </div>
-
-    <div class="question">
-        <span class="question-number">57.</span> Before leaving the dumper for a rest break, after parking and switching off the machine, what final action must be carried out and b) why?
-    </div>
-    <div class="answer">
-        a) Isolate by removing the key and/or door locked<br>
-        b) To prevent unauthorised access
-    </div>
-
-    <div class="question">
-        <span class="question-number">58.</span> When parking the machine at the end of the shift, name THREE places where the dumper should NOT be parked.
-    </div>
-    <div class="answer">
-        Access and egress, site road, on a slope
-    </div>
-
-    <div class="question">
-        <span class="question-number">59.</span> Why should a dumper be re-fuelled at the end of the day?
-    </div>
-    <div class="answer">
-        Prevent condensation
-    </div>
-
-    <div class="question">
-        <span class="question-number">60.</span> The operator has been asked to drive the dumper onto a transporter/trailer. a) Who is responsible for the loading operations and b) state FOUR actions to be considered by the operator before loading commences.
-    </div>
-    <div class="answer">
-        a) Lorry driver<br>
-        b) Ground condition, ramp condition, overhead hazard, direction of loading
-    </div>
-
-    <div class="question">
-        <span class="question-number">61.</span> How can a qualification or card benefit a plant operator?
-    </div>
-    <div class="answer">
-        Credibility, proof of skills, better employment or promotional prospects.
-    </div>
-
-    <div class="question">
-        <span class="question-number">62.</span> What allows the wheels to follow the contours of the ground when travelling on uneven ground?
-    </div>
-    <div class="answer">
-        The pivoting of the chassis.
-    </div>
-
-
-</div>
-
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
+                const visibleCommands = category.querySelectorAll('.command:not(.hidden)');
+                if (visibleCommands.length > 0) {
+                    category.classList.remove('hidden');
+                } else {
+                    category.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 
