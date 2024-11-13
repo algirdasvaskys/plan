@@ -1,183 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raspberry Pi Web Interaction Simulator</title>
-    <style>
-        :root {
-            --primary-color: #0078d4;
-            --background-color: #f0f0f0;
-            --text-color: #333;
-        }
+<h1>Decoding Contactor and Auxiliary Contact Numbers</h1>
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
+<p>Ever wondered what those numbers on contactors mean? Let's crack the code!</p>
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+<h2>The Last Two Digits Mystery</h2>
 
-        h1, h2 {
-            color: var(--primary-color);
-        }
+<p>On contactors, you'll often see numbers like "10" or "11". Here's what they mean:</p>
 
-        .simulation-area {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
+<ul>
 
-        .code-area, .browser-area {
-            width: 48%;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-        }
+<li>First digit: Number of NO (Normally Open) contacts</li>
 
-        .code-area {
-            background-color: #f8f8f8;
-            font-family: monospace;
-            white-space: pre-wrap;
-        }
+<li>Second digit: Number of NC (Normally Closed) contacts</li>
 
-        .browser-area {
-            background-color: white;
-        }
+</ul>
 
-        .controls {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
+<p>Example: "10" means 1 NO contact, 0 NC contacts</p>
 
-        button {
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+<h2>Auxiliary Contact Numbering</h2>
 
-        button:hover {
-            background-color: #005a9e;
-        }
+<p>On auxiliary contacts, you'll see similar numbering:</p>
 
-        .highlight {
-            background-color: yellow;
-            transition: background-color 0.3s ease;
-        }
+<ul>
 
-        #log {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: monospace;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Raspberry Pi Web Interaction Simulator</h1>
-        <p>This simulator demonstrates how to interact with a Raspberry Pi using web elements.</p>
+<li>"11" means 1 NO contact, 1 NC contact</li>
 
-        <div class="simulation-area">
-            <div class="code-area" id="codeArea">
-# Python Code to Connect to Raspberry Pi
+<li>"22" means 2 NO contacts, 2 NC contacts</li>
 
-import requests
+</ul>
 
-class PiInteractionExample:
-    def connect_to_pi(self):
-        response = requests.get("http://raspberrypi.local/status")
-        print("Connected to Raspberry Pi")
-        print("Status:", response.text)
+<h2>Identifying NO/NC Without Labels</h2>
 
-    def control_led(self):
-        response = requests.post("http://raspberrypi.local/control", data={'action': 'toggle_led'})
-        print("LED toggled:", response.text)
-            </div>
-            <div class="browser-area" id="browserArea">
-                <h1>Raspberry Pi Status</h1>
-                <p>Status: Online</p>
-                <p><button id="toggleLedBtn">Toggle LED</button></p>
-            </div>
-        </div>
+<p>If the NO/NC labels are worn off, look at the terminal numbers:</p>
 
-        <div class="controls">
-            <button id="runBtn">Run Simulation</button>
-            <button id="resetBtn">Reset</button>
-        </div>
+<ul>
 
-        <div id="log"></div>
-    </div>
+<li>NO contacts: Last digits are 3 and 4 (e.g., 13-14)</li>
 
-    <script>
-        const codeArea = document.getElementById('codeArea');
-        const browserArea = document.getElementById('browserArea');
-        const runBtn = document.getElementById('runBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const log = document.getElementById('log');
-        const toggleLedBtn = document.getElementById('toggleLedBtn');
+<li>NC contacts: Last digits are 1 and 2 (e.g., 21-22)</li>
 
-        function simulateExecution() {
-            log.innerHTML = '';
-            const steps = [
-                { action: 'navigate', element: browserArea, message: 'Connecting to Raspberry Pi' },
-                { action: 'highlight', element: browserArea.querySelector('p'), message: 'Status: Online' },
-                { action: 'log', message: 'Connected to Raspberry Pi' },
-                { action: 'highlight', element: toggleLedBtn, message: 'Toggling LED' },
-                { action: 'click', element: toggleLedBtn, message: 'LED toggled' },
-                { action: 'log', message: 'Simulation complete' }
-            ];
+</ul>
 
-            let i = 0;
-            function executeStep() {
-                if (i < steps.length) {
-                    const step = steps[i];
-                    switch (step.action) {
-                        case 'navigate':
-                        case 'highlight':
-                            step.element.classList.add('highlight');
-                            setTimeout(() => step.element.classList.remove('highlight'), 1000);
-                            break;
-                        case 'click':
-                            step.element.classList.add('highlight');
-                            setTimeout(() => step.element.classList.remove('highlight'), 1000);
-                            break;
-                    }
-                    log.innerHTML += `${step.message}<br>`;
-                    i++;
-                    setTimeout(executeStep, 1500);
-                }
-            }
-            executeStep();
-        }
+<h2>The First Digit's Secret</h2>
 
-        function reset() {
-            log.innerHTML = '';
-            browserArea.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
-        }
+<p>The first digit in terminal numbers (e.g., 13-14) indicates the contact's position:</p>
 
-        runBtn.addEventListener('click', simulateExecution);
-        resetBtn.addEventListener('click', reset);
-    </script>
-</body>
-</html>
+<ul>
 
+<li>1 = First contact</li>
+
+<li>2 = Second contact</li>
+
+<li>5 = Fifth contact</li>
+
+</ul>
+
+<h2>Quick Recap</h2>
+
+<ol>
+
+<li>Last two digits on contactors show NO/NC contact count</li>
+
+<li>Terminal numbers reveal if it's NO (3-4) or NC (1-2)</li>
+
+<li>First digit in terminal numbers shows contact position</li>
+
+</ol>
+
+<p>Understanding these numbers helps you quickly identify contactor types and configurations without guesswork!</p>
