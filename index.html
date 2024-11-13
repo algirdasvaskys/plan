@@ -3,251 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>200+ SSH Commands for Raspberry Pi</title>
+    <title>Raspberry Pi Web Interaction Simulator</title>
     <style>
+        :root {
+            --primary-color: #0078d4;
+            --background-color: #f0f0f0;
+            --text-color: #333;
+        }
+
         body {
             font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
-            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            background-color: white;
             padding: 20px;
-            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
         h1, h2 {
-            color: #2c3e50;
+            color: var(--primary-color);
         }
-        .category {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        .simulation-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
         }
-        .command {
-            background-color: #ecf0f1;
+
+        .code-area, .browser-area {
+            width: 48%;
+            border: 1px solid #ddd;
             border-radius: 5px;
             padding: 10px;
-            margin-bottom: 10px;
+        }
+
+        .code-area {
+            background-color: #f8f8f8;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .browser-area {
+            background-color: white;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .command:hover {
-            background-color: #d5dbdb;
+
+        button:hover {
+            background-color: #005a9e;
         }
-        .command-name {
-            font-weight: bold;
-            color: #e74c3c;
+
+        .highlight {
+            background-color: yellow;
+            transition: background-color 0.3s ease;
         }
-        .command-description {
-            margin-top: 5px;
-        }
-        .search-box {
-            width: 100%;
+
+        #log {
+            margin-top: 20px;
             padding: 10px;
-            font-size: 16px;
-            margin-bottom: 20px;
-            border: 1px solid #bdc3c7;
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
             border-radius: 5px;
-        }
-        .hidden {
-            display: none;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
-    <h1>200+ SSH Commands for Raspberry Pi</h1>
-    
-    <input type="text" id="searchBox" class="search-box" placeholder="Search for commands...">
+    <div class="container">
+        <h1>Raspberry Pi Web Interaction Simulator</h1>
+        <p>This simulator demonstrates how to interact with a Raspberry Pi using web elements.</p>
 
-    <div id="commandsContainer">
-        <!-- Categories and commands will be dynamically added here -->
+        <div class="simulation-area">
+            <div class="code-area" id="codeArea">
+# Python Code to Connect to Raspberry Pi
+
+import requests
+
+class PiInteractionExample:
+    def connect_to_pi(self):
+        response = requests.get("http://raspberrypi.local/status")
+        print("Connected to Raspberry Pi")
+        print("Status:", response.text)
+
+    def control_led(self):
+        response = requests.post("http://raspberrypi.local/control", data={'action': 'toggle_led'})
+        print("LED toggled:", response.text)
+            </div>
+            <div class="browser-area" id="browserArea">
+                <h1>Raspberry Pi Status</h1>
+                <p>Status: Online</p>
+                <p><button id="toggleLedBtn">Toggle LED</button></p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="runBtn">Run Simulation</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <div id="log"></div>
     </div>
 
     <script>
-        const sshCommands = {
-            "Connection and Authentication": [
-                { name: "ssh pi@raspberrypi.local", description: "Connect to Raspberry Pi using its hostname" },
-                { name: "ssh pi@192.168.1.100", description: "Connect to Raspberry Pi using its IP address" },
-                { name: "ssh-keygen -t rsa", description: "Generate an RSA key pair for passwordless authentication" },
-                { name: "ssh-copy-id pi@raspberrypi.local", description: "Copy your public key to the Raspberry Pi for passwordless login" },
-                { name: "ssh -i ~/.ssh/id_rsa pi@raspberrypi.local", description: "Connect using a specific private key" },
-                { name: "sshpass -p 'raspberry' ssh pi@raspberrypi.local", description: "Connect using a password (not recommended for security reasons)" },
-                { name: "ssh -p 2222 pi@raspberrypi.local", description: "Connect to SSH on a non-standard port" },
-                { name: "ssh -4 pi@raspberrypi.local", description: "Force SSH to use IPv4" },
-                { name: "ssh -6 pi@raspberrypi.local", description: "Force SSH to use IPv6" },
-                { name: "ssh -q pi@raspberrypi.local", description: "Quiet mode, suppresses most warning and diagnostic messages" }
-            ],
-            "File Transfer": [
-                { name: "scp file.txt pi@raspberrypi.local:/home/pi/", description: "Copy a file to the Raspberry Pi" },
-                { name: "scp pi@raspberrypi.local:/home/pi/file.txt .", description: "Copy a file from the Raspberry Pi" },
-                { name: "scp -r folder/ pi@raspberrypi.local:/home/pi/", description: "Copy a folder to the Raspberry Pi" },
-                { name: "rsync -avz folder/ pi@raspberrypi.local:/home/pi/", description: "Sync a folder to the Raspberry Pi" },
-                { name: "sftp pi@raspberrypi.local", description: "Start an SFTP session" },
-                { name: "scp -P 2222 file.txt pi@raspberrypi.local:/home/pi/", description: "SCP with a non-standard port" },
-                { name: "rsync -avz -e 'ssh -p 2222' folder/ pi@raspberrypi.local:/home/pi/", description: "Rsync with a non-standard SSH port" },
-                { name: "scp -l 5000 largefile.zip pi@raspberrypi.local:/home/pi/", description: "Limit SCP bandwidth to 5000 Kbit/s" },
-                { name: "rsync -avz --progress folder/ pi@raspberrypi.local:/home/pi/", description: "Rsync with progress indicator" },
-                { name: "scp -p file.txt pi@raspberrypi.local:/home/pi/", description: "Preserve modification times, access times, and modes from the original file" }
-            ],
-            "Remote Commands": [
-                { name: "ssh pi@raspberrypi.local 'ls -l'", description: "Run a command on the Raspberry Pi" },
-                { name: "ssh pi@raspberrypi.local 'sudo reboot'", description: "Reboot the Raspberry Pi" },
-                { name: "ssh pi@raspberrypi.local 'sudo shutdown -h now'", description: "Shutdown the Raspberry Pi" },
-                { name: "ssh pi@raspberrypi.local 'top -n 1'", description: "View system processes" },
-                { name: "ssh pi@raspberrypi.local 'df -h'", description: "Check disk usage" },
-                { name: "ssh pi@raspberrypi.local 'free -h'", description: "Check available memory" },
-                { name: "ssh pi@raspberrypi.local 'uptime'", description: "Check system uptime" },
-                { name: "ssh pi@raspberrypi.local 'ifconfig'", description: "Display network interface configuration" },
-                { name: "ssh pi@raspberrypi.local 'sudo apt update && sudo apt upgrade -y'", description: "Update and upgrade system packages" },
-                { name: "ssh pi@raspberrypi.local 'ps aux | grep python'", description: "List running Python processes" }
-            ],
-            "Port Forwarding": [
-                { name: "ssh -L 8080:localhost:80 pi@raspberrypi.local", description: "Forward local port 8080 to Raspberry Pi's port 80" },
-                { name: "ssh -R 8080:localhost:80 pi@raspberrypi.local", description: "Forward Raspberry Pi's port 8080 to local port 80" },
-                { name: "ssh -D 9090 pi@raspberrypi.local", description: "Create a SOCKS proxy on local port 9090" },
-                { name: "ssh -L 3306:localhost:3306 pi@raspberrypi.local", description: "Forward local MySQL port to Raspberry Pi's MySQL port" },
-                { name: "ssh -L 5901:localhost:5901 pi@raspberrypi.local", description: "Forward local VNC port to Raspberry Pi's VNC port" },
-                { name: "ssh -N -L 8080:localhost:80 pi@raspberrypi.local", description: "Port forwarding without executing a remote command" },
-                { name: "ssh -g -L 8080:localhost:80 pi@raspberrypi.local", description: "Allow remote hosts to connect to local forwarded ports" },
-                { name: "ssh -L 8080:internalhost:80 pi@raspberrypi.local", description: "Forward to an internal host through the Raspberry Pi" },
-                { name: "ssh -R 52698:localhost:52698 pi@raspberrypi.local", description: "Reverse port forwarding for remote development (e.g., rmate)" },
-                { name: "ssh -L 8888:localhost:8888 pi@raspberrypi.local -N -f", description: "Background port forwarding for Jupyter Notebook" }
-            ],
-            "SSH Configuration": [
-                { name: "nano ~/.ssh/config", description: "Edit SSH client configuration file" },
-                { name: "ssh -v pi@raspberrypi.local", description: "Connect with verbose output for debugging" },
-                { name: "ssh -C pi@raspberrypi.local", description: "Enable compression for the SSH session" },
-                { name: "ssh -o 'ServerAliveInterval 60' pi@raspberrypi.local", description: "Keep connection alive by sending a packet every 60 seconds" },
-                { name: "ssh -F /path/to/config pi@raspberrypi.local", description: "Use a specific SSH config file" },
-                { name: "ssh -o 'ConnectTimeout 10' pi@raspberrypi.local", description: "Set connection timeout to 10 seconds" },
-                { name: "ssh -o 'PasswordAuthentication no' pi@raspberrypi.local", description: "Disable password authentication" },
-                { name: "ssh -o 'PubkeyAuthentication yes' pi@raspberrypi.local", description: "Enable public key authentication" },
-                { name: "ssh -o 'StrictHostKeyChecking no' pi@raspberrypi.local", description: "Disable strict host key checking (use with caution)" },
-                { name: "ssh -o 'LogLevel DEBUG3' pi@raspberrypi.local", description: "Set SSH log level to DEBUG3 for maximum verbosity" }
-            ],
-            "Security": [
-                { name: "ssh-keygen -t ed25519", description: "Generate a more secure Ed25519 key pair" },
-                { name: "ssh-audit raspberrypi.local", description: "Audit SSH server security configuration" },
-                { name: "ssh-add ~/.ssh/id_rsa", description: "Add private key to SSH agent" },
-                { name: "ssh-keygen -R raspberrypi.local", description: "Remove a host key from known_hosts file" },
-                { name: "ssh-keygen -lf ~/.ssh/id_rsa.pub", description: "Display the fingerprint of a public key" },
-                { name: "ssh-keygen -p -f ~/.ssh/id_rsa", description: "Change the passphrase of an existing private key" },
-                { name: "ssh-keyscan raspberrypi.local", description: "Gather SSH public keys from a server" },
-                { name: "ssh-agent bash", description: "Start a new shell session with SSH agent" },
-                { name: "ssh-add -l", description: "List fingerprints of all identities in the agent" },
-                { name: "ssh-keygen -t rsa -b 4096", description: "Generate a 4096-bit RSA key pair" }
-            ],
-            "Raspberry Pi Specific": [
-                { name: "ssh pi@raspberrypi.local 'sudo raspi-config'", description: "Run Raspberry Pi configuration tool" },
-                { name: "ssh pi@raspberrypi.local 'vcgencmd measure_temp'", description: "Check CPU temperature" },
-                { name: "ssh pi@raspberrypi.local 'sudo rpi-update'", description: "Update Raspberry Pi firmware" },
-                { name: "ssh pi@raspberrypi.local 'gpio readall'", description: "Read all GPIO pin states" },
-                { name: "ssh pi@raspberrypi.local 'vcgencmd get_mem arm && vcgencmd get_mem gpu'", description: "Check ARM and GPU memory split" },
-                { name: "ssh pi@raspberrypi.local 'vcgencmd measure_volts'", description: "Check core voltage" },
-                { name: "ssh pi@raspberrypi.local 'vcgencmd measure_clock arm'", description: "Check ARM CPU clock speed" },
-                { name: "ssh pi@raspberrypi.local 'sudo vcdbg log msg'", description: "View VideoCore debug messages" },
-                { name: "ssh pi@raspberrypi.local 'pinout'", description: "Display Raspberry Pi GPIO pinout information" },
-                { name: "ssh pi@raspberrypi.local 'sudo tvservice -s'", description: "Get HDMI display status" }
-            ],
-            "SSH Tunneling": [
-                { name: "ssh -f -N -L 3000:localhost:3000 pi@raspberrypi.local", description: "Create a local port forward in the background" },
-                { name: "ssh -f -N -R 8080:localhost:80 pi@raspberrypi.local", description: "Create a remote port forward in the background" },
-                { name: "ssh -f -N -D 1080 pi@raspberrypi.local", description: "Create a SOCKS proxy in the background" },
-                { name: "ssh -L 5901:localhost:5901 -L 6001:localhost:6001 pi@raspberrypi.local", description: "Multiple port forwards in a single command" },
-                { name: "ssh -f -N -L 3306:remote-db:3306 pi@raspberrypi.local", description: "Forward local port to a remote database through Raspberry Pi" },
-                { name: "autossh -M 0 -f -N -L 8080:localhost:80 pi@raspberrypi.local", description: "Use autossh to maintain a persistent tunnel" },
-                { name: "ssh -L 8888:localhost:8888 pi@raspberrypi.local jupyter notebook --no-browser", description: "Port forward and start Jupyter Notebook on Raspberry Pi" },
-                { name: "ssh -fN -L 5000:localhost:5000 -L 5555:localhost:5555 pi@raspberrypi.local", description: "Multiple port forwards for web and database access" },
-                { name: "ssh -L 2181:localhost:2181 -L 9092:localhost:9092 pi@raspberrypi.local", description: "Port forward for accessing Kafka on Raspberry Pi" },
-                { name: "ssh -L 6379:localhost:6379 pi@raspberrypi.local", description: "Port forward for accessing Redis on Raspberry Pi" }
-            ],
-            "SSH Multiplexing": [
-                { name: "ssh -o ControlMaster=auto -o ControlPath=~/.ssh/cm_%r@%h:%p -o ControlPersist=10m pi@raspberrypi.local", description: "Enable SSH connection multiplexing" },
-                { name: "ssh -O check -o ControlPath=~/.ssh/cm_%r@%h:%p pi@raspberrypi.local", description: "Check multiplexing status" },
-                { name: "ssh -O stop -o ControlPath=~/.ssh/cm_%r@%h:%p pi@raspberrypi.local", description: "Stop multiplexing for a connection" },
-                { name: "ssh -O exit -o ControlPath=~/.ssh/cm_%r@%h:%p pi@raspberrypi.local", description: "Exit multiplexing for a connection" },
-                { name: "ssh -M -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Create a master connection for multiplexing" },
-                { name: "ssh -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Use an existing multiplexed connection" },
-                { name: "ssh -O forward -L 8080:localhost:80 -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Add a port forward to an existing multiplexed connection" },
-                { name: "ssh -O cancel -L 8080:localhost:80 -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Remove a port forward from an existing multiplexed connection" },
-                { name: "ssh -O check -S ~/.ssh/cm-socket pi@raspberrypi.local", description: "Check the status of a multiplexed connection" },
-                { name: "ssh -MS ~/.ssh/cm-socket pi@raspberrypi.local", description: "Create a master connection and place it in the background" }
-            ],
-            "Advanced SSH Usage": [
-                { name: "ssh -t pi@raspberrypi.local 'top'", description: "Force pseudo-terminal allocation for interactive programs" },
-                { name: "ssh -J jumphost pi@raspberrypi.local", description: "Use a jump host to connect to Raspberry Pi" },
-                { name: "ssh -Q cipher", description: "List supported encryption algorithms" },
-                { name: "ssh -Q mac", description: "List supported MAC algorithms" },
-                { name: "ssh -Q kex", description: "List supported key exchange algorithms" },
-                { name: "ssh -Q key", description: "List supported public key algorithms" },
-                { name: "ssh -o ProxyCommand='nc -X 5 -x localhost:1080 %h %p' pi@raspberrypi.local", description: "Use a SOCKS proxy to connect" },
-                { name: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no pi@raspberrypi.local", description: "Disable host key checking (use with caution)" },
-                { name: "ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=10 pi@raspberrypi.local", description: "Configure keep-alive settings" },
-                { name: "ssh -o ControlMaster=auto -o ControlPath=/tmp/ssh_mux_%h_%p_%r -o ControlPersist=1h pi@raspberrypi.local", description: "Setup persistent multiplexing" }
-            ],
-            "SSH Key Management": [
-                { name: "ssh-keygen -t rsa -b 4096 -C 'your_email@example.com'", description: "Generate a new RSA key pair with a comment" },
-                { name: "ssh-keygen -t ed25519 -C 'your_email@example.com'", description: "Generate a new Ed25519 key pair with a comment" },
-                { name: "ssh-keygen -p -f ~/.ssh/id_rsa", description: "Change the passphrase of an existing private key" },
-                { name: "ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub", description: "Generate a public key from a private key" },
-                { name: "ssh-keygen -lf ~/.ssh/id_rsa.pub", description: "Display the fingerprint of a public key" },
-                { name: "ssh-keygen -R raspberrypi.local", description: "Remove all keys belonging to a hostname from known_hosts" },
-                { name: "ssh-keygen -H -f ~/.ssh/known_hosts", description: "Hash all hostnames and addresses in known_hosts" },
-                { name: "ssh-keygen -t rsa -b 4096 -f ~/.ssh/mykey -N ''", description: "Generate a new RSA key pair without a passphrase" },
-                { name: "ssh-keygen -e -f ~/.ssh/id_rsa.pub > ~/.ssh/id_rsa_pkcs8.pub", description: "Convert OpenSSH public key to PKCS8 format" },
-                { name: "ssh-keygen -i -f ~/.ssh/id_rsa_pkcs8.pub > ~/.ssh/id_rsa_openssh.pub", description: "Convert PKCS8 public key to OpenSSH format" }
-            ]
-        };
+        const codeArea = document.getElementById('codeArea');
+        const browserArea = document.getElementById('browserArea');
+        const runBtn = document.getElementById('runBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const log = document.getElementById('log');
+        const toggleLedBtn = document.getElementById('toggleLedBtn');
 
-        const container = document.getElementById('commandsContainer');
+        function simulateExecution() {
+            log.innerHTML = '';
+            const steps = [
+                { action: 'navigate', element: browserArea, message: 'Connecting to Raspberry Pi' },
+                { action: 'highlight', element: browserArea.querySelector('p'), message: 'Status: Online' },
+                { action: 'log', message: 'Connected to Raspberry Pi' },
+                { action: 'highlight', element: toggleLedBtn, message: 'Toggling LED' },
+                { action: 'click', element: toggleLedBtn, message: 'LED toggled' },
+                { action: 'log', message: 'Simulation complete' }
+            ];
 
-        for (const [category, commands] of Object.entries(sshCommands)) {
-            const categoryElement = document.createElement('div');
-            categoryElement.className = 'category';
-            categoryElement.innerHTML = `<h2>${category}</h2>`;
-
-            commands.forEach(command => {
-                const commandElement = document.createElement('div');
-                commandElement.className = 'command';
-                commandElement.innerHTML = `
-                    <span class="command-name">${command.name}</span>
-                    <div class="command-description">${command.description}</div>
-                `;
-                categoryElement.appendChild(commandElement);
-            });
-
-            container.appendChild(categoryElement);
+            let i = 0;
+            function executeStep() {
+                if (i < steps.length) {
+                    const step = steps[i];
+                    switch (step.action) {
+                        case 'navigate':
+                        case 'highlight':
+                            step.element.classList.add('highlight');
+                            setTimeout(() => step.element.classList.remove('highlight'), 1000);
+                            break;
+                        case 'click':
+                            step.element.classList.add('highlight');
+                            setTimeout(() => step.element.classList.remove('highlight'), 1000);
+                            break;
+                    }
+                    log.innerHTML += `${step.message}<br>`;
+                    i++;
+                    setTimeout(executeStep, 1500);
+                }
+            }
+            executeStep();
         }
 
-        const searchBox = document.getElementById('searchBox');
-        searchBox.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const commands = document.querySelectorAll('.command');
+        function reset() {
+            log.innerHTML = '';
+            browserArea.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
+        }
 
-            commands.forEach(command => {
-                const commandText = command.textContent.toLowerCase();
-                if (commandText.includes(searchTerm)) {
-                    command.classList.remove('hidden');
-                } else {
-                    command.classList.add('hidden');
-                }
-            });
-
-            const categories = document.querySelectorAll('.category');
-            categories.forEach(category => {
-                const visibleCommands = category.querySelectorAll('.command:not(.hidden)');
-                if (visibleCommands.length > 0) {
-                    category.classList.remove('hidden');
-                } else {
-                    category.classList.add('hidden');
-                }
-            });
-        });
+        runBtn.addEventListener('click', simulateExecution);
+        resetBtn.addEventListener('click', reset);
     </script>
 </body>
 </html>
