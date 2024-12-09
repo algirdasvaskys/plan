@@ -3,56 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mastering Your Mind Self-Discipline</title>
+    <title>Effects of US Import Tariffs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
+            padding: 0;
+            background-color: #f4f4f4;
         }
         .container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            color: #0056b3;
-        }
-        h2 {
             color: #333;
-            border-bottom: 2px solid #0056b3;
-            padding-bottom: 5px;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 1.5em;
+            color: #444;
             margin-bottom: 10px;
         }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
+        .content {
+            display: flex;
+            justify-content: space-between;
         }
-        li {
-            margin-bottom: 10px;
+        .content p {
+            flex: 1;
+            margin-right: 20px;
+            line-height: 1.6;
+        }
+        .content canvas {
+            flex: 1;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Mastering Your Mind: Self-Discipline</h1>
-        <h2>Summary</h2>
-        <p>This book by Napoleon Hill focuses on the power of self-discipline as a cornerstone for achieving success. Hill explores how mastering one's mind and emotions can lead to significant personal and professional growth. Through anecdotes and practical advice, the book emphasizes the importance of persistence, goal-setting, and a positive mental attitude.</p>
+        <h1>Effects of US Import Tariffs</h1>
 
-        <h2>Themes</h2>
-        <ul>
-            <li><strong>Self-Discipline:</strong> The foundation of personal success, self-discipline involves controlling impulses and focusing on long-term goals.</li>
-            <li><strong>Positive Mental Attitude:</strong> Maintaining a positive outlook is crucial for overcoming challenges and attracting success.</li>
-            <li><strong>Persistence:</strong> Consistent effort and determination are essential to achieving one's goals.</li>
-            <li><strong>Goal Setting:</strong> Clearly defined goals provide direction and motivation.</li>
-            <li><strong>Mindset Mastery:</strong> Understanding and controlling one's thoughts and emotions can lead to greater achievements.</li>
-        </ul>
+        <div class="section">
+            <div class="section-title">Consumer Prices</div>
+            <div class="content">
+                <p>
+                    Higher consumer prices: Import tariffs typically lead to increased prices for imported goods. This cost is often passed on to consumers, resulting in higher retail prices.
+                    Domestic alternatives: Consumers may shift to domestic products, though these might also be more expensive than pre-tariff imported goods.
+                </p>
+                <canvas id="consumerPricesChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Domestic Industry</div>
+            <div class="content">
+                <p>
+                    Protected industries: US companies competing with imports receive protection from foreign competition, potentially leading to increased domestic production.
+                    Job creation: Some domestic industries may expand and create new jobs, particularly in manufacturing sectors.
+                </p>
+                <canvas id="domesticIndustryChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Trade Balance</div>
+            <div class="content">
+                <p>
+                    Reduced imports: Higher tariffs typically lead to decreased imports as foreign goods become more expensive.
+                    Trade deficit: May help reduce trade deficit in the short term, though effects can be complex due to potential retaliation.
+                </p>
+                <canvas id="tradeBalanceChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">International Relations</div>
+            <div class="content">
+                <p>
+                    Trade tensions: Increased tariffs often lead to diplomatic tensions and potential retaliatory measures from trading partners.
+                    Global supply chains: Disruption of established international supply chains and business relationships.
+                </p>
+                <canvas id="internationalRelationsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Government Revenue</div>
+            <div class="content">
+                <p>
+                    Tariff revenue: Increased government revenue from tariff collection on imported goods.
+                    Economic impact: Potential offset by reduced tax revenue if economic growth slows.
+                </p>
+                <canvas id="governmentRevenueChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Economic Growth</div>
+            <div class="content">
+                <p>
+                    Mixed effects: While some sectors may benefit, overall economic efficiency might decrease due to reduced competition and higher input costs.
+                    Innovation impact: Reduced competition might lower incentives for innovation and productivity improvements.
+                </p>
+                <canvas id="economicGrowthChart"></canvas>
+            </div>
+        </div>
     </div>
+
+    <footer>
+        © 2024 Economic Analysis
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx1 = document.getElementById('consumerPricesChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Consumer Price Index',
+                    data: [100, 103, 106, 109, 112],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {y: {beginAtZero: false}}
+            }
+        });
+
+        const ctx2 = document.getElementById('domesticIndustryChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Manufacturing', 'Employment', 'Investment'],
+                datasets: [{
+                    label: 'Domestic Industry Growth (%)',
+                    data: [5, 3, 4],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {y: {beginAtZero: true}}
+            }
+        });
+
+        const ctx3 = document.getElementById('tradeBalanceChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Trade Deficit (Billions USD)',
+                    data: [-500, -450, -400, -375, -350],
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {y: {beginAtZero: false}}
+            }
+        });
+
+        const ctx4 = document.getElementById('internationalRelationsChart').getContext('2d');
+        new Chart(ctx4, {
+            type: 'bar',
+            data: {
+                labels: ['Trade Partners', 'Diplomatic Relations', 'Trade Agreements'],
+                datasets: [{
+                    label: 'Impact Score',
+                    data: [-2, -1.5, -1],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {y: {beginAtZero: false}}
+            }
+        });
+
+        const ctx5 = document.getElementById('governmentRevenueChart').getContext('2d');
+        new Chart(ctx5, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Tariff Revenue (Billions USD)',
+                    data: [50, 60, 70, 75, 80],
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {y: {beginAtZero: true}}
+            }
+        });
+
+        const ctx6 = document.getElementById('economicGrowthChart').getContext('2d');
+        new Chart(ctx6, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'GDP Growth Rate (%)',
+                    data: [3.0, 2.8, 2.5, 2.3, 2.1],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {y: {beginAtZero: false}}
+            }
+        });
+    </script>
 </body>
 </html>
