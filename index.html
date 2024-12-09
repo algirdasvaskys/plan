@@ -3,252 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Effects of $1 Trillion Monetary Base Reduction</title>
+    <title>Cosmic Habit Force Summary and Themes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        .section-title {
-            font-size: 1.5em;
-            color: #444;
-            margin-bottom: 10px;
-        }
-        .content {
-            display: flex;
-            justify-content: space-between;
-        }
-        .content p {
-            flex: 1;
-            margin-right: 20px;
             line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
         }
-        .content canvas {
-            flex: 1;
+        h1, h2 {
+            color: #2c3e50;
         }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        .summary, .themes {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Effects of $1 Trillion Monetary Base Reduction</h1>
-
-        <div class="section">
-            <div class="section-title">Bank Reserves</div>
-            <div class="content">
-                <p>
-                    Immediate reduction in commercial bank reserves at the Fed.
-                    Decreased ability of banks to create new money through lending.
-                    Potential need for banks to reduce lending to maintain reserve requirements.
-                </p>
-                <canvas id="bankReservesChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Money Multiplier Effect</div>
-            <div class="content">
-                <p>
-                    Contraction in broader money supply measures (M1, M2).
-                    Reduced capacity for fractional reserve banking expansion.
-                    Potential money multiplier decrease of 3-10x the initial reduction.
-                </p>
-                <canvas id="moneyMultiplierChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Credit Availability</div>
-            <div class="content">
-                <p>
-                    Tighter lending conditions for businesses and consumers.
-                    Higher borrowing costs across various loan types.
-                    Potential credit crunch in certain market segments.
-                </p>
-                <canvas id="creditChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Market Interest Rates</div>
-            <div class="content">
-                <p>
-                    Upward pressure on short-term interest rates.
-                    Higher yields on government securities.
-                    Increased cost of capital throughout the economy.
-                </p>
-                <canvas id="interestRatesChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Economic Impact</div>
-            <div class="content">
-                <p>
-                    Potential slowdown in economic growth.
-                    Reduced inflation pressure.
-                    Impact on asset prices and market valuations.
-                </p>
-                <canvas id="economicImpactChart"></canvas>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Currency Value</div>
-            <div class="content">
-                <p>
-                    Potential strengthening of currency value.
-                    Effects on international trade competitiveness.
-                    Impact on foreign exchange markets.
-                </p>
-                <canvas id="currencyValueChart"></canvas>
-            </div>
-        </div>
+    <h1>Cosmic Habit Force</h1>
+    <h2>Summary</h2>
+    <div class="summary">
+        <p><em>Cosmic Habit Force</em> by Napoleon Hill is a concept from his philosophy emphasizing that the universe operates through fixed laws and habits. Hill argues that by aligning personal habits with these universal laws, individuals can achieve success and fulfillment. The book explores the power of thought and the importance of establishing positive, constructive habits to create a successful life.</p>
     </div>
-
-    <footer>
-        © 2024 Monetary Policy Analysis
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx1 = document.getElementById('bankReservesChart').getContext('2d');
-        new Chart(ctx1, {
-            type: 'line',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                datasets: [{
-                    label: 'Bank Reserves (Trillion $)',
-                    data: [3.2, 2.7, 2.3, 2.2],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {y: {beginAtZero: false}}
-            }
-        });
-
-        const ctx2 = document.getElementById('moneyMultiplierChart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'line',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                datasets: [{
-                    label: 'Broad Money Supply (Trillion $)',
-                    data: [21.5, 20.0, 18.5, 17.5],
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {y: {beginAtZero: false}}
-            }
-        });
-
-        const ctx3 = document.getElementById('creditChart').getContext('2d');
-        new Chart(ctx3, {
-            type: 'bar',
-            data: {
-                labels: ['Commercial', 'Consumer', 'Mortgage'],
-                datasets: [{
-                    label: 'Credit Growth Rate (%)',
-                    data: [-3, -2, -4],
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {y: {beginAtZero: false}}
-            }
-        });
-
-        const ctx4 = document.getElementById('interestRatesChart').getContext('2d');
-        new Chart(ctx4, {
-            type: 'line',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                datasets: [{
-                    label: 'Interest Rates (%)',
-                    data: [4.5, 5.0, 5.3, 5.5],
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {y: {beginAtZero: false}}
-            }
-        });
-
-        const ctx5 = document.getElementById('economicImpactChart').getContext('2d');
-        new Chart(ctx5, {
-            type: 'line',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                datasets: [{
-                    label: 'GDP Growth Rate (%)',
-                    data: [2.5, 2.0, 1.5, 1.2],
-                    borderColor: 'rgba(255, 159, 64, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {y: {beginAtZero: false}}
-            }
-        });
-
-        const ctx6 = document.getElementById('currencyValueChart').getContext('2d');
-        new Chart(ctx6, {
-            type: 'line',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                datasets: [{
-                    label: 'Currency Index',
-                    data: [100, 102, 104, 105],
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {y: {beginAtZero: false}}
-            }
-        });
-    </script>
+    <h2>Themes</h2>
+    <div class="themes">
+        <ul>
+            <li><strong>The Power of Habit:</strong> Habits are powerful forces that shape our lives. Hill suggests cultivating positive habits to align with universal laws.</li>
+            <li><strong>Universal Laws:</strong> The universe operates on fixed principles, and understanding these can help individuals work in harmony with them to achieve their goals.</li>
+            <li><strong>Personal Responsibility:</strong> Success is a result of personal actions and attitudes. Taking responsibility for one's own habits is crucial for achieving desired outcomes.</li>
+            <li><strong>The Influence of Thought:</strong> Thoughts are powerful and can manifest in reality. Hill emphasizes the importance of maintaining a positive mental attitude.</li>
+            <li><strong>Persistence:</strong> Consistent effort and determination are key to overcoming obstacles and achieving long-term success.</li>
+        </ul>
+    </div>
 </body>
 </html>
