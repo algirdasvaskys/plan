@@ -3,51 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmic Habit Force Summary and Themes</title>
+    <title>OSI Model Interactive Guide</title>
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
-            line-height: 1.6;
+        }
+
+        body {
+            background: #f0f2f5;
             padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
         }
-        h1, h2 {
-            color: #2c3e50;
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        .summary, .themes {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #fff;
+
+        .osi-layer {
+            background: white;
+            margin: 10px 0;
+            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
+
+        .osi-layer:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
+
+        .layer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .layer-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+
+        .layer-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .layer-content {
+            display: none;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .active .layer-content {
+            display: block;
+        }
+
+        .protocol-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .device-list {
+            margin-top: 10px;
+            color: #666;
+        }
+
         @media (max-width: 600px) {
-            body {
-                padding: 10px;
+            .layer-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
+            
+            .layer-number {
+                margin-bottom: 5px;
+            }
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a73e8;
         }
     </style>
 </head>
 <body>
-    <h1>Cosmic Habit Force</h1>
-    <h2>Summary</h2>
-    <div class="summary">
-        <p><em>Cosmic Habit Force</em> by Napoleon Hill is a concept from his philosophy emphasizing that the universe operates through fixed laws and habits. Hill argues that by aligning personal habits with these universal laws, individuals can achieve success and fulfillment. The book explores the power of thought and the importance of establishing positive, constructive habits to create a successful life.</p>
+    <div class="container">
+        <h1 class="title">OSI Model - Open Systems Interconnection</h1>
+        
+        <div class="osi-layer" onclick="toggleLayer(this)">
+            <div class="layer-header">
+                <span class="layer-number">7</span>
+                <span class="layer-name">Application Layer</span>
+            </div>
+            <div class="layer-content">
+                <p>Provides network services directly to end-users and applications.</p>
+                <div class="protocol-list">
+                    <strong>Protocols:</strong> HTTP, FTP, SMTP, DNS, Telnet
+                </div>
+            </div>
+        </div>
+
+        <div class="osi-layer" onclick="toggleLayer(this)">
+            <div class="layer-header">
+                <span class="layer-number">6</span>
+                <span class="layer-name">Presentation Layer</span>
+            </div>
+            <div class="layer-content">
+                <p>Handles data formatting, encryption, and compression.</p>
+                <div class="protocol-list">
+                    <strong>Functions:</strong> SSL/TLS, JPEG, MPEG, ASCII
+                </div>
+            </div>
+        </div>
+
+        <div class="osi-layer" onclick="toggleLayer(this)">
+            <div class="layer-header">
+                <span class="layer-number">5</span>
+                <span class="layer-name">Session Layer</span>
+            </div>
+            <div class="layer-content">
+                <p>Manages sessions between applications.</p>
+                <div class="protocol-list">
+                    <strong>Protocols:</strong> NetBIOS, RPC, PAP
+                </div>
+            </div>
+        </div>
+
+        <div class="osi-layer" onclick="toggleLayer(this)">
+            <div class="layer-header">
+                <span class="layer-number">4</span>
+                <span class="layer-name">Transport Layer</span>
+            </div>
+            <div class="layer-content">
+                <p>Ensures reliable data delivery between end systems.</p>
+                <div class="protocol-list">
+                    <strong>Protocols:</strong> TCP, UDP
+                </div>
+                <div class="device-list">
+                    <strong>Devices:</strong> Gateway
+                </div>
+            </div>
+        </div>
+
+        <div class="osi-layer" onclick="toggleLayer(this)">
+            <div class="layer-header">
+                <span class="layer-number">3</span>
+                <span class="layer-name">Network Layer</span>
+            </div>
+            <div class="layer-content">
+                <p>Handles logical addressing and routing.</p>
+                <div class="protocol-list">
+                    <strong>Protocols:</strong> IP, ICMP, IGMP
+                </div>
+                <div class="device-list">
+                    <strong>Devices:</strong> Router
+                </div>
+            </div>
+        </div>
+
+        <div class="osi-layer" onclick="toggleLayer(this)">
+            <div class="layer-header">
+                <span class="layer-number">2</span>
+                <span class="layer-name">Data Link Layer</span>
+            </div>
+            <div class="layer-content">
+                <p>Provides node-to-node data delivery.</p>
+                <div class="protocol-list">
+                    <strong>Protocols:</strong> Ethernet, PPP, Frame Relay
+                </div>
+                <div class="device-list">
+                    <strong>Devices:</strong> Switch, Bridge
+                </div>
+            </div>
+        </div>
+
+        <div class="osi-layer" onclick="toggleLayer(this)">
+            <div class="layer-header">
+                <span class="layer-number">1</span>
+                <span class="layer-name">Physical Layer</span>
+            </div>
+            <div class="layer-content">
+                <p>Transmits raw bit streams over physical medium.</p>
+                <div class="protocol-list">
+                    <strong>Components:</strong> Cables, Signals, Binary transmission
+                </div>
+                <div class="device-list">
+                    <strong>Devices:</strong> Hub, Repeater, Cable
+                </div>
+            </div>
+        </div>
     </div>
-    <h2>Themes</h2>
-    <div class="themes">
-        <ul>
-            <li><strong>The Power of Habit:</strong> Habits are powerful forces that shape our lives. Hill suggests cultivating positive habits to align with universal laws.</li>
-            <li><strong>Universal Laws:</strong> The universe operates on fixed principles, and understanding these can help individuals work in harmony with them to achieve their goals.</li>
-            <li><strong>Personal Responsibility:</strong> Success is a result of personal actions and attitudes. Taking responsibility for one's own habits is crucial for achieving desired outcomes.</li>
-            <li><strong>The Influence of Thought:</strong> Thoughts are powerful and can manifest in reality. Hill emphasizes the importance of maintaining a positive mental attitude.</li>
-            <li><strong>Persistence:</strong> Consistent effort and determination are key to overcoming obstacles and achieving long-term success.</li>
-        </ul>
-    </div>
+
+    <script>
+        function toggleLayer(element) {
+            element.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
