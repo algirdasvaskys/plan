@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IO-Link Data Flow Visualization</title>
+    <title>PAS 63100-2024 Battery Systems Standards</title>
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #ecf0f1;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,229 +18,141 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f0f2f5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
             padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
-            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
             background: white;
+            padding: 2rem;
             border-radius: 10px;
-            padding: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .flow-diagram {
-            position: relative;
-            margin: 40px auto;
-            width: 100%;
-            height: 400px;
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        .node {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        .warning-banner {
+            background-color: var(--accent-color);
             color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 20px 0;
         }
 
-        .node:hover {
-            transform: scale(1.1);
-        }
-
-        .connection {
-            position: absolute;
-            height: 4px;
-            background: #666;
-            transform-origin: left center;
-        }
-
-        .data-packet {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-
-        .info-panel {
-            margin-top: 20px;
-            padding: 20px;
+        .key-points {
             background: #f8f9fa;
-            border-radius: 8px;
-            display: none;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .key-points h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .key-points ul {
+            list-style-type: none;
+        }
+
+        .key-points li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .key-points li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .timeline {
+            margin: 40px 0;
+            padding: 20px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            width: 15px;
+            height: 15px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            position: absolute;
+            left: -29px;
+            top: 5px;
         }
 
         @media (max-width: 768px) {
-            .flow-diagram {
-                height: 600px;
+            .container {
+                padding: 1rem;
             }
             
-            .node {
-                width: 90px;
-                height: 90px;
-                font-size: 12px;
+            h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>IO-Link Data Flow Visualization</h1>
+        <h1>PAS 63100-2024: New Battery System Standards</h1>
         
-        <div class="flow-diagram" id="flowDiagram">
-            <!-- Nodes will be created dynamically -->
+        <div class="warning-banner">
+            <strong>Important Notice:</strong> As of December 19, 2024, new regulations prohibit the installation of battery systems in loft spaces.
         </div>
 
-        <div class="info-panel" id="infoPanel">
-            <h3 id="infoPanelTitle"></h3>
-            <p id="infoPanelContent"></p>
+        <div class="key-points">
+            <h2>Key Changes</h2>
+            <ul>
+                <li>Complete ban on battery storage systems in residential loft spaces</li>
+                <li>Enhanced fire safety requirements for existing installations</li>
+                <li>New ventilation requirements for battery storage areas</li>
+                <li>Mandatory professional installation and certification</li>
+                <li>Regular inspection requirements for existing systems</li>
+            </ul>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <strong>October 2024:</strong> PAS 63100-2024 announced
+            </div>
+            <div class="timeline-item">
+                <strong>December 19, 2024:</strong> Standards come into effect
+            </div>
+            <div class="timeline-item">
+                <strong>June 2025:</strong> Deadline for existing installation compliance
+            </div>
+        </div>
+
+        <div class="key-points">
+            <h2>Required Actions</h2>
+            <ul>
+                <li>Existing loft installations must be relocated by June 2025</li>
+                <li>New installations must comply with ground-floor or basement location requirements</li>
+                <li>Professional assessment required for current installations</li>
+                <li>Updated safety certificates must be obtained</li>
+            </ul>
         </div>
     </div>
-
-    <script>
-        class DataFlowVisualization {
-            constructor() {
-                this.diagram = document.getElementById('flowDiagram');
-                this.nodes = [];
-                this.connections = [];
-                this.packets = [];
-                this.infoPanel = document.getElementById('infoPanel');
-                this.infoPanelTitle = document.getElementById('infoPanelTitle');
-                this.infoPanelContent = document.getElementById('infoPanelContent');
-                
-                this.initializeNodes();
-                this.createConnections();
-                this.startAnimation();
-            }
-
-            initializeNodes() {
-                const nodeData = [
-                    { id: 'sensor', label: 'Sensor', color: '#2196F3', x: 10, y: 40 },
-                    { id: 'iolink', label: 'IO-Link Master', color: '#4CAF50', x: 30, y: 40 },
-                    { id: 'gateway', label: 'Gateway', color: '#FF9800', x: 50, y: 40 },
-                    { id: 'cloud', label: 'Cloud', color: '#9C27B0', x: 70, y: 40 }
-                ];
-
-                nodeData.forEach(data => {
-                    const node = document.createElement('div');
-                    node.className = 'node';
-                    node.style.backgroundColor = data.color;
-                    node.style.left = `${data.x}%`;
-                    node.style.top = `${data.y}%`;
-                    node.innerHTML = data.label;
-                    
-                    node.addEventListener('click', () => this.showNodeInfo(data));
-                    
-                    this.diagram.appendChild(node);
-                    this.nodes.push(node);
-                });
-            }
-
-            createConnections() {
-                for (let i = 0; i < this.nodes.length - 1; i++) {
-                    const connection = document.createElement('div');
-                    connection.className = 'connection';
-                    
-                    const start = this.nodes[i].getBoundingClientRect();
-                    const end = this.nodes[i + 1].getBoundingClientRect();
-                    
-                    const length = end.left - start.left;
-                    const angle = Math.atan2(end.top - start.top, length);
-                    
-                    connection.style.width = `${length}px`;
-                    connection.style.transform = `rotate(${angle}rad)`;
-                    connection.style.left = `${start.left + start.width/2}px`;
-                    connection.style.top = `${start.top + start.height/2}px`;
-                    
-                    this.diagram.appendChild(connection);
-                    this.connections.push(connection);
-                }
-            }
-
-            createDataPacket() {
-                const packet = document.createElement('div');
-                packet.className = 'data-packet';
-                this.diagram.appendChild(packet);
-                return packet;
-            }
-
-            animatePacket(packet, startNode, endNode) {
-                const start = startNode.getBoundingClientRect();
-                const end = endNode.getBoundingClientRect();
-                
-                packet.style.left = `${start.left + start.width/2}px`;
-                packet.style.top = `${start.top + start.height/2}px`;
-                
-                return packet.animate([
-                    { left: `${start.left + start.width/2}px`, top: `${start.top + start.height/2}px` },
-                    { left: `${end.left + end.width/2}px`, top: `${end.top + end.height/2}px` }
-                ], {
-                    duration: 1000,
-                    easing: 'ease-in-out'
-                });
-            }
-
-            showNodeInfo(node) {
-                const info = {
-                    sensor: {
-                        title: 'Industrial Sensor',
-                        content: 'Collects real-time data including temperature, pressure, flow rate, etc. Supports IO-Link protocol for digital communication.'
-                    },
-                    iolink: {
-                        title: 'IO-Link Master',
-                        content: 'Converts sensor data to IO-Link protocol. Manages point-to-point communication with up to 8 IO-Link devices.'
-                    },
-                    gateway: {
-                        title: 'Industrial Gateway',
-                        content: 'Aggregates data from multiple IO-Link masters. Converts industrial protocols to IT protocols (e.g., MQTT, OPC UA).'
-                    },
-                    cloud: {
-                        title: 'Cloud Platform',
-                        content: 'Stores and processes sensor data. Enables remote monitoring, analytics, and integration with enterprise systems.'
-                    }
-                };
-
-                this.infoPanelTitle.textContent = info[node.id].title;
-                this.infoPanelContent.textContent = info[node.id].content;
-                this.infoPanel.style.display = 'block';
-            }
-
-            startAnimation() {
-                setInterval(() => {
-                    for (let i = 0; i < this.nodes.length - 1; i++) {
-                        setTimeout(() => {
-                            const packet = this.createDataPacket();
-                            const animation = this.animatePacket(packet, this.nodes[i], this.nodes[i + 1]);
-                            
-                            animation.onfinish = () => {
-                                packet.remove();
-                            };
-                        }, i * 1000);
-                    }
-                }, 4000);
-            }
-        }
-
-        // Initialize visualization when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            new DataFlowVisualization();
-        });
-    </script>
 </body>
 </html>
