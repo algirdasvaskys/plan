@@ -3,155 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAS 63100-2024 Battery Systems Standards</title>
+    <title>Electrical Testing Guide</title>
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --bg-color: #ecf0f1;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: var(--bg-color);
-            color: var(--primary-color);
             padding: 20px;
+            background: #f0f2f5;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
             background: white;
-            padding: 2rem;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         h1 {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 10px;
+            color: #2c3e50;
             margin-bottom: 20px;
+            text-align: center;
         }
 
-        .warning-banner {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 1rem;
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
             border-radius: 5px;
-            margin: 20px 0;
         }
 
-        .key-points {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
+        .test-section h2 {
+            color: #34495e;
+            margin-bottom: 10px;
         }
 
-        .key-points h2 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .key-points ul {
+        .steps {
             list-style-type: none;
         }
 
-        .key-points li {
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
+        .steps li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
         }
 
-        .key-points li::before {
-            content: "•";
-            color: var(--accent-color);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
         }
 
-        .timeline {
-            margin: 40px 0;
-            padding: 20px;
-            border-left: 3px solid var(--accent-color);
+        .test-values {
+            margin: 15px 0;
+            padding: 10px;
+            background: #e8f4f8;
+            border-radius: 5px;
         }
 
-        .timeline-item {
-            margin-bottom: 20px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: "";
-            width: 15px;
-            height: 15px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            position: absolute;
-            left: -29px;
-            top: 5px;
-        }
-
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .container {
-                padding: 1rem;
+                padding: 10px;
             }
-            
-            h1 {
-                font-size: 1.5rem;
+
+            .test-section {
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>PAS 63100-2024: New Battery System Standards</h1>
-        
-        <div class="warning-banner">
-            <strong>Important Notice:</strong> As of December 19, 2024, new regulations prohibit the installation of battery systems in loft spaces.
+        <h1>16 Amp Socket Outlet Circuit Testing Guide</h1>
+
+        <div class="test-section">
+            <h2>1. Continuity of CPC (Circuit Protective Conductor)</h2>
+            <div class="warning">
+                Ensure circuit is isolated before testing!
+            </div>
+            <ul class="steps">
+                <li>Disconnect circuit from supply</li>
+                <li>Short out Line and CPC at distribution board</li>
+                <li>Test resistance between Line and CPC at socket</li>
+                <li>Expected reading: < 1Ω</li>
+            </ul>
+            <div class="test-values">
+                Maximum acceptable resistance: R₂ = (L × ρ × 2) / A
+                where L = length, ρ = resistivity, A = cross-sectional area
+            </div>
         </div>
 
-        <div class="key-points">
-            <h2>Key Changes</h2>
-            <ul>
-                <li>Complete ban on battery storage systems in residential loft spaces</li>
-                <li>Enhanced fire safety requirements for existing installations</li>
-                <li>New ventilation requirements for battery storage areas</li>
-                <li>Mandatory professional installation and certification</li>
-                <li>Regular inspection requirements for existing systems</li>
+        <div class="test-section">
+            <h2>2. Polarity Testing</h2>
+            <ul class="steps">
+                <li>Check Line conductor is connected to correct terminal</li>
+                <li>Verify Neutral conductor is connected to correct terminal</li>
+                <li>Confirm Earth conductor is connected to Earth terminal</li>
+                <li>Test socket with socket tester</li>
             </ul>
         </div>
 
-        <div class="timeline">
-            <div class="timeline-item">
-                <strong>October 2024:</strong> PAS 63100-2024 announced
+        <div class="test-section">
+            <h2>3. Insulation Resistance</h2>
+            <div class="warning">
+                Use 500V DC test voltage for 230V circuits
             </div>
-            <div class="timeline-item">
-                <strong>December 19, 2024:</strong> Standards come into effect
-            </div>
-            <div class="timeline-item">
-                <strong>June 2025:</strong> Deadline for existing installation compliance
-            </div>
-        </div>
-
-        <div class="key-points">
-            <h2>Required Actions</h2>
-            <ul>
-                <li>Existing loft installations must be relocated by June 2025</li>
-                <li>New installations must comply with ground-floor or basement location requirements</li>
-                <li>Professional assessment required for current installations</li>
-                <li>Updated safety certificates must be obtained</li>
+            <ul class="steps">
+                <li>Test between Line and Neutral</li>
+                <li>Test between Line and Earth</li>
+                <li>Test between Neutral and Earth</li>
+                <li>Minimum acceptable reading: 1MΩ</li>
             </ul>
+            <div class="test-values">
+                Expected readings:
+                <br>L-N: >2MΩ
+                <br>L-E: >2MΩ
+                <br>N-E: >2MΩ
+            </div>
         </div>
     </div>
 </body>
