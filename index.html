@@ -1,47 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="author" content="John Dean">
-<title>Lawrence Microgrid</title>
-<link rel="stylesheet" href="../library/microgrid.css">
-<style>
-h5 {
-margin: -10px auto 10px;
-text-align: center;
-}
-#page {
-width: 100%;
-height: 500px;
-border: none;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Buffett - Big Opportunities</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .quote-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .principle {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .principle:hover {
+            transform: translateX(10px);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+            padding: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin: 20px 0;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideRight 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cta-button {
+            background: #ffd700;
+            color: #1a1a1a;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            margin: 20px 0;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: #ffed4a;
+        }
+
+        @media (max-width: 768px) {
+            .quote {
+                font-size: 1.2rem;
+            }
+            
+            .principle {
+                padding: 15px;
+            }
+            
+            .timeline-item {
+                margin: 15px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-<h1>Microgrid Development in Lawrence KS</h1>
-<nav>
-<ul>
-<li><a href="electricPowerHistory.html" target="page">
-Electric Power History</a></li>
-<li><a href="lawrenceHydropower.html" target="page">
-Lawrence Hydropower</a></li>
-<li><a href="areaDescription.html" target="page">
-<strong>Area Description</strong></a></li>
-<li><a href="microgridPossibilities.html" target="page">
-Microgrid Possibilities</a></li>
-<li><a href="typicalProperty.html" target="page">
-Typical Property</a></li>
-<li><a href="localEnergy.html" target="page">Local Energy</a></li>
-<li><a href="#">Collector Performance</a></li>
-<li><a href="#">Electric Power Services</a></li>
-<li><a href="#">Downtown Properties</a></li>
-<li><a href="#">Solar Shadowing</a></li>
-</ul>
-</nav>
-<h5>To bookmark or save content below, open it in a new tab by
-right-clicking the corresponding button above.</h5>
-</header>
-<iframe id="page" name="page" src="areaDescription.html"></iframe>
+    <div class="container">
+        <div class="header">
+            <h1>Warren Buffett's Wisdom</h1>
+            <h2>Big Opportunities Never Last Long</h2>
+        </div>
+
+        <div class="quote-container">
+            <div class="quote">
+                "Opportunities come infrequently. When it rains gold, put out the bucket, not the thimble."
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Key Principle #1: Quick Decision Making</h3>
+                <p>Buffett is known for making billion-dollar decisions within days or even hours when big opportunities present themselves.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Key Principle #2: Preparation is Essential</h3>
+                <p>Success comes from being prepared when opportunities arise. Study markets, companies, and trends continuously.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Key Principle #3: Size Matters</h3>
+                <p>When you find a great opportunity, invest substantially. Small investments in great opportunities won't create significant wealth.</p>
+            </div>
+        </div>
+
+        <div id="principles" class="principles-section">
+            <div class="principle" onclick="showDetail(1)">
+                <h3>Be Fearful When Others Are Greedy</h3>
+                <p>Market downturns often present the biggest opportunities.</p>
+            </div>
+
+            <div class="principle" onclick="showDetail(2)">
+                <h3>Circle of Competence</h3>
+                <p>Only invest in what you truly understand.</p>
+            </div>
+
+            <div class="principle" onclick="showDetail(3)">
+                <h3>Margin of Safety</h3>
+                <p>Always buy with a significant margin of safety.</p>
+            </div>
+        </div>
+
+        <button class="cta-button" onclick="showMore()">Learn More</button>
+    </div>
+
+    <script>
+        function showDetail(id) {
+            const details = [
+                "",
+                "During market crashes and panics, Buffett often makes his largest investments. He purchased many stocks during the 2008 financial crisis and the 2020 pandemic crash.",
+                "Buffett stays within his circle of competence by focusing on businesses he understands, avoiding tech stocks for many years.",
+                "Buffett ensures there's a significant difference between his purchase price and his estimated value of the business."
+            ];
+            
+            alert(details[id]);
+        }
+
+        function showMore() {
+            const timeline = document.querySelector('.timeline');
+            const newItem = document.createElement('div');
+            newItem.className = 'timeline-item';
+            newItem.innerHTML = `
+                <h3>Key Principle #4: Patience and Discipline</h3>
+                <p>While big opportunities don't last long, the waiting period between opportunities can be extensive. Maintain discipline and wait for the right moment.</p>
+            `;
+            timeline.appendChild(newItem);
+        }
+
+        // Add animation delay to timeline items
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.3}s`;
+        });
+    </script>
 </body>
 </html>
