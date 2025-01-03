@@ -1,290 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction to Fault Finding in Electrical Systems</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #0056b3;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2, h3 {
-            color: #007BFF;
-        }
-        .step {
-            margin-bottom: 20px;
-        }
-        .step h3 {
-            cursor: pointer;
-            user-select: none;
-            padding: 10px;
-            background-color: #e9ecef;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .step h3:hover {
-            background-color: #d6d6d6;
-        }
-        .step-content {
-            display: none;
-            padding: 10px 20px;
-            background-color: #e9ecef;
-            border-left: 4px solid #007BFF;
-            margin-top: 10px;
-            border-radius: 4px;
-        }
-        .step-content p {
-            margin: 0;
-        }
-        .faq {
-            margin-top: 40px;
-        }
-        .faq h2 {
-            margin-bottom: 20px;
-        }
-        .faq-item {
-            margin-bottom: 20px;
-        }
-        .faq-item h3 {
-            cursor: pointer;
-            user-select: none;
-            padding: 10px;
-            background-color: #e9ecef;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .faq-item h3:hover {
-            background-color: #d6d6d6;
-        }
-        .faq-content {
-            display: none;
-            padding: 10px 20px;
-            background-color: #e9ecef;
-            border-left: 4px solid #007BFF;
-            margin-top: 10px;
-            border-radius: 4px;
-        }
-        .faq-content p {
-            margin: 0;
-        }
-        .contact-form {
-            margin-top: 40px;
-        }
-        .contact-form h2 {
-            margin-bottom: 20px;
-        }
-        .contact-form form {
-            display: flex;
-            flex-direction: column;
-        }
-        .contact-form label {
-            margin-bottom: 5px;
-        }
-        .contact-form input, .contact-form textarea {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .contact-form button {
-            padding: 10px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .contact-form button:hover {
-            background-color: #0056b3;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #007BFF;
-            color: #fff;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="author" content="John Dean">
+<title>Lawrence Microgrid</title>
+<link rel="stylesheet" href="../library/microgrid.css">
+<style>
+h5 {
+margin: -10px auto 10px;
+text-align: center;
+}
+#page {
+width: 100%;
+height: 500px;
+border: none;
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>Introduction to Fault Finding in Electrical Systems</h1>
-    </header>
-    <nav>
-        <a href="#step1">Step 1</a>
-        <a href="#step2">Step 2</a>
-        <a href="#step3">Step 3</a>
-        <a href="#step4">Step 4</a>
-        <a href="#step5">Step 5</a>
-        <a href="#tips">Tips</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="container">
-        <h2>Step-by-Step Guide</h2>
-        <div class="step" id="step1">
-            <h3>Step 1: Understand the System</h3>
-            <div class="step-content">
-                <p>Before you begin fault finding, it is crucial to have a thorough understanding of the electrical system you are working with. Study the system's schematics, manuals, and any other relevant documentation.</p>
-            </div>
-        </div>
-        <div class="step" id="step2">
-            <h3>Step 2: Identify the Symptoms</h3>
-            <div class="step-content">
-                <p>Observe and document the symptoms of the fault. Note any unusual behavior, such as flickering lights, intermittent power, or strange noises, as these can provide clues to the fault's nature.</p>
-            </div>
-        </div>
-        <div class="step" id="step3">
-            <h3>Step 3: Isolate the Fault</h3>
-            <div class="step-content">
-                <p>Use systematic isolation techniques to narrow down the location of the fault. This may involve disconnecting parts of the system and testing individual components to identify the faulty part.</p>
-            </div>
-        </div>
-        <div class="step" id="step4">
-            <h3>Step 4: Test and Diagnose</h3>
-            <div class="step-content">
-                <p>Use appropriate testing equipment, such as multimeters and oscilloscopes, to diagnose the fault. Compare your measurements with expected values to pinpoint the issue.</p>
-            </div>
-        </div>
-        <div class="step" id="step5">
-            <h3>Step 5: Repair and Verify</h3>
-            <div class="step-content">
-                <p>Once the fault is identified, perform the necessary repairs. After repair, verify that the system operates correctly by re-testing and ensuring the fault has been resolved.</p>
-            </div>
-        </div>
-        <div class="step" id="tips">
-            <h3>Useful Troubleshooting Tips</h3>
-            <div class="step-content">
-                <ul>
-                    <li><strong>Check Connections:</strong> Ensure all electrical connections are secure and free from corrosion.</li>
-                    <li><strong>Look for Visual Clues:</strong> Burn marks, melted insulation, and discolored components can indicate overheating or short circuits.</li>
-                    <li><strong>Use a Logical Approach:</strong> Start from the source of power and work your way to the affected area to methodically isolate the problem.</li>
-                    <li><strong>Keep Safety in Mind:</strong> Always follow safety protocols, such as turning off power before inspecting components.</li>
-                    <li><strong>Document Findings:</strong> Keep detailed records of your observations, tests, and repairs for future reference.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="faq" id="faq">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <h3>What equipment do I need for fault finding?</h3>
-                <div class="faq-content">
-                    <p>Common equipment includes multimeters, oscilloscopes, insulation resistance testers, and circuit tracers.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3>How can I ensure my safety while troubleshooting electrical systems?</h3>
-                <div class="faq-content">
-                    <p>Always turn off the power before working on electrical systems, wear appropriate safety gear, and follow industry safety standards.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3>What are common causes of electrical faults?</h3>
-                <div class="faq-content">
-                    <p>Common causes include loose connections, damaged insulation, faulty components, and environmental factors such as moisture and heat.</p>
-                </div>
-            </div>
-        </div>
-        <div class="contact-form" id="contact">
-            <h2>Contact Us</h2>
-            <form>
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-                
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2024 Fault Finding in Electrical Systems</p>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const steps = document.querySelectorAll('.step h3');
-            steps.forEach(step => {
-                step.addEventListener('click', () => {
-                    const content = step.nextElementSibling;
-                    if (content.style.display === 'block') {
-                        content.style.display = 'none';
-                    } else {
-                        content.style.display = 'block';
-                    }
-                });
-            });
-
-            const faqItems = document.querySelectorAll('.faq-item h3');
-            faqItems.forEach(faq => {
-                faq.addEventListener('click', () => {
-                    const content = faq.nextElementSibling;
-                    if (content.style.display === 'block') {
-                        content.style.display = 'none';
-                    } else {
-                        content.style.display = 'block';
-                    }
-                });
-            });
-
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        const content = targetElement.querySelector('.step-content') || targetElement.querySelector('.faq-content');
-                        if (content && content.style.display !== 'block') {
-                            content.style.display = 'block';
-                        }
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 50,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+<header>
+<h1>Microgrid Development in Lawrence KS</h1>
+<nav>
+<ul>
+<li><a href="electricPowerHistory.html" target="page">
+Electric Power History</a></li>
+<li><a href="lawrenceHydropower.html" target="page">
+Lawrence Hydropower</a></li>
+<li><a href="areaDescription.html" target="page">
+<strong>Area Description</strong></a></li>
+<li><a href="microgridPossibilities.html" target="page">
+Microgrid Possibilities</a></li>
+<li><a href="typicalProperty.html" target="page">
+Typical Property</a></li>
+<li><a href="localEnergy.html" target="page">Local Energy</a></li>
+<li><a href="#">Collector Performance</a></li>
+<li><a href="#">Electric Power Services</a></li>
+<li><a href="#">Downtown Properties</a></li>
+<li><a href="#">Solar Shadowing</a></li>
+</ul>
+</nav>
+<h5>To bookmark or save content below, open it in a new tab by
+right-clicking the corresponding button above.</h5>
+</header>
+<iframe id="page" name="page" src="areaDescription.html"></iframe>
 </body>
 </html>
