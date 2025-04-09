@@ -1,146 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8.8 A Brief Overview of Procurement Systems</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        .section {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .highlight {
-            background-color: #ffffd9;
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-        .info-box {
-            background-color: #e8f4f8;
-            border-left: 5px solid #3498db;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .process-flow {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-        }
-        .process-step {
-            background-color: #3498db;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            flex: 1;
-            margin: 0 5px;
-        }
-        .arrow {
-            align-self: center;
-            font-size: 24px;
-            color: #3498db;
-        }
-        .criteria-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .criteria-list li {
-            margin-bottom: 10px;
-            padding-left: 25px;
+    <title>YouTube Short Embed</title>
+    <style>qq
+        .video-container {
             position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding-top: 177.78%; /* Aspect ratio for Shorts (9:16) */
         }
-        .criteria-list li::before {
-            content: "→";
+        
+        .video-container iframe {
             position: absolute;
+            top: 0;
             left: 0;
-            color: #3498db;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 480px) {
+            .video-container {
+                max-width: 100%;
+            }
+        }
+
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            background: #ff0000;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #cc0000;
         }
     </style>
 </head>
 <body>
-    <h1>8.8 A Brief Overview of Procurement Systems</h1>
-    
-    <div class="section">
-        <h2>Purpose of a Tender Process</h2>
-        <p>The procurement process is more than just making an acceptable award. It's a crucial step in:</p>
-        <ul class="criteria-list">
-            <li>Finding a capable contractor</li>
-            <li>Ensuring a successful project delivery</li>
-            <li>Setting the stage for the operational phase</li>
-        </ul>
-        <div class="info-box">
-            <p><strong>Key Insight:</strong> The focus should extend beyond procurement and construction to the project's entire lifecycle, including its operational stage.</p>
-        </div>
+    <div class="video-container">
+        <iframe
+            src="https://www.youtube.com/embed/jhl7jzb2Fvo"
+            title="YouTube Short"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
     </div>
 
-    <div class="section">
-        <h2>8.8.1 To Procure or to Tender?</h2>
-        <div class="process-flow">
-            <div class="process-step">Procuring (Owner)</div>
-            <div class="arrow">→</div>
-            <div class="process-step">Tendering (Bidders)</div>
-        </div>
-        <p><strong>Procuring:</strong> The owner's activity to organize a process for soliciting project proposals.</p>
-        <p><strong>Tendering:</strong> The bidders' activity in responding to requests for qualification (RFQ) or requests for proposals (RfP).</p>
+    <div class="controls">
+        <button onclick="playVideo()">Play</button>
+        <button onclick="pauseVideo()">Pause</button>
     </div>
 
-    <div class="section">
-        <h2>8.8.2 Relation between Delivery Model and Procurement Process</h2>
-        <h3>Design-Bid-Build Models</h3>
-        <ul class="criteria-list">
-            <li>Procured based on detailed design</li>
-            <li>Owner bears full responsibility for site data</li>
-            <li>Uses standard construction contract forms</li>
-            <li>Primary award criterion: lowest price</li>
-            <li>One-tier process often sufficient</li>
-        </ul>
+    <script>
+        let player;
 
-        <h3>Design and Build and Integrated Models</h3>
-        <ul class="criteria-list">
-            <li>Two-tier process more efficient</li>
-            <li>First tier: Prequalification</li>
-            <li>Second tier: Detailed proposal evaluation</li>
-        </ul>
+        // Initialize YouTube API
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                videoId: 'jhl7jzb2Fvo',
+                playerVars: {
+                    'playsinline': 1,
+                    'controls': 1,
+                    'rel': 0
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
 
-        <div class="info-box">
-            <p><strong>Procurement Complexity:</strong> The more complex the project-delivery model, the more complex the tender process.</p>
-        </div>
-    </div>
+        function onPlayerReady(event) {
+            console.log('Player is ready');
+        }
 
-    <div class="section">
-        <h2>Award Criteria</h2>
-        <p>Potential criteria for award include:</p>
-        <ul class="criteria-list">
-            <li>Price (when applicable)</li>
-            <li>Quality of team</li>
-            <li>Quality of partnering proposals</li>
-            <li>Quality of management processes</li>
-            <li>Time for completion</li>
-            <li>Environmental commitments (CO2 emissions, renewable energy, etc.)</li>
-            <li>Commitment to capability measurement levels</li>
-            <li>Commitment to contract offered</li>
-        </ul>
-    </div>
+        function onPlayerStateChange(event) {
+            console.log('Player state changed:', event.data);
+        }
 
-    <div class="section">
-        <h2>Key Challenge for Owners</h2>
-        <div class="info-box">
-            <p>Devise a strategy that optimizes the chance of awarding the contract to a party who will commit to the project objectives in the most outstanding way.</p>
-        </div>
-    </div>
+        function playVideo() {
+            if (player && typeof player.playVideo === 'function') {
+                player.playVideo();
+            }
+        }
 
+        function pauseVideo() {
+            if (player && typeof player.pauseVideo === 'function') {
+                player.pauseVideo();
+            }
+        }
+
+        // Load YouTube API
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
 </body>
 </html>
+
