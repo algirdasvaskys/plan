@@ -1,0 +1,2315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNDERRATED Programming Languages Explained</title>
+    <style>
+        :root {
+            --primary: #6246ea;
+            --primary-dark: #4b35c3;
+            --primary-light: #9d8cff;
+            --secondary: #e45858;
+            --tertiary: #2cb67d;
+            --light: #fffffe;
+            --dark: #232946;
+            --gray: #94a1b2;
+            --gray-light: #d7dce2;
+            --gray-dark: #596172;
+            --surface: #fffffe;
+            --surface-alt: #f2f4f7;
+            --surface-dark: #2b2f47;
+            --font-heading: 'Poppins', 'Segoe UI', Roboto, sans-serif;
+            --font-body: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Menlo', 'Monaco', monospace;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --radius: 8px;
+            --radius-lg: 16px;
+            --animation-duration: 0.3s;
+            --transition: all var(--animation-duration) ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes shimmer {
+            100% { 
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes codeTyping {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(98, 70, 234, 0.05) 0%, transparent 80%),
+                radial-gradient(circle at 90% 90%, rgba(228, 88, 88, 0.05) 0%, transparent 80%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .site-header {
+            background-color: var(--surface);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .logo-icon {
+            margin-right: 0.75rem;
+            color: var(--primary);
+            font-size: 1.75rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            padding: 5rem 0 3rem;
+            text-align: center;
+            background: 
+                linear-gradient(135deg, rgba(98, 70, 234, 0.05) 0%, rgba(228, 88, 88, 0.05) 100%);
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236246ea' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            z-index: -1;
+        }
+
+        .hero-title {
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title-highlight {
+            position: relative;
+            color: var(--primary);
+            z-index: 1;
+        }
+
+        .hero-title-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background-color: rgba(98, 70, 234, 0.2);
+            z-index: -1;
+            transform: skew(-5deg);
+        }
+
+        .hero-description {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--gray-dark);
+            font-size: 1.25rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: var(--light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: var(--surface);
+            color: var(--dark);
+            border: 1px solid var(--gray-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--surface-alt);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-icon {
+            font-size: 1.2rem;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .lang-card {
+            background-color: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            animation: fadeIn 0.5s ease-out forwards;
+            animation-fill-mode: both;
+        }
+
+        .lang-card:nth-child(1) { animation-delay: 0.1s; }
+        .lang-card:nth-child(2) { animation-delay: 0.2s; }
+        .lang-card:nth-child(3) { animation-delay: 0.3s; }
+        .lang-card:nth-child(4) { animation-delay: 0.4s; }
+        .lang-card:nth-child(5) { animation-delay: 0.5s; }
+        .lang-card:nth-child(6) { animation-delay: 0.6s; }
+        .lang-card:nth-child(7) { animation-delay: 0.7s; }
+        .lang-card:nth-child(8) { animation-delay: 0.8s; }
+
+        .lang-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .lang-header {
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(90deg, rgba(98, 70, 234, 0.8), rgba(228, 88, 88, 0.8));
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-header.elixir {
+            background: linear-gradient(90deg, rgba(137, 26, 195, 0.8), rgba(233, 94, 159, 0.8));
+        }
+
+        .lang-header.crystal {
+            background: linear-gradient(90deg, rgba(0, 153, 255, 0.8), rgba(5, 205, 153, 0.8));
+        }
+
+        .lang-header.nim {
+            background: linear-gradient(90deg, rgba(255, 208, 0, 0.8), rgba(255, 145, 0, 0.8));
+        }
+
+        .lang-header.ocaml {
+            background: linear-gradient(90deg, rgba(236, 107, 67, 0.8), rgba(249, 154, 63, 0.8));
+        }
+
+        .lang-header.haskell {
+            background: linear-gradient(90deg, rgba(144, 12, 63, 0.8), rgba(199, 0, 57, 0.8));
+        }
+
+        .lang-header.f-sharp {
+            background: linear-gradient(90deg, rgba(34, 139, 230, 0.8), rgba(120, 86, 255, 0.8));
+        }
+
+        .lang-header.erlang {
+            background: linear-gradient(90deg, rgba(165, 55, 253, 0.8), rgba(242, 97, 103, 0.8));
+        }
+
+        .lang-icon {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-sm);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .lang-name {
+            margin-bottom: 0;
+            font-size: 1.8rem;
+        }
+
+        .lang-body {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .lang-description {
+            margin-bottom: 1rem;
+            color: var(--gray-dark);
+        }
+
+        .lang-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .lang-stat {
+            background-color: var(--surface-alt);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pros, .cons {
+            background-color: var(--surface-alt);
+            padding: 1rem;
+            border-radius: var(--radius);
+        }
+
+        .pros h4, .cons h4 {
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pros h4 {
+            color: var(--tertiary);
+        }
+
+        .cons h4 {
+            color: var(--secondary);
+        }
+
+        .pros-list, .cons-list {
+            list-style-type: none;
+            margin-left: 1.5rem;
+        }
+
+        .pros-list li, .cons-list li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .pros-list li::before, .cons-list li::before {
+            position: absolute;
+            left: -1.5rem;
+            top: 0.2rem;
+        }
+
+        .pros-list li::before {
+            content: '✓';
+            color: var(--tertiary);
+        }
+
+        .cons-list li::before {
+            content: '✗';
+            color: var(--secondary);
+        }
+
+        .code-sample {
+            margin-top: 1.5rem;
+        }
+
+        .code-sample-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background-color: var(--surface-dark);
+            border-radius: var(--radius);
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--light);
+        }
+
+        .code-comment {
+            color: var(--gray);
+        }
+
+        .code-keyword {
+            color: #ff79c6;
+        }
+
+        .code-string {
+            color: #f1fa8c;
+        }
+
+        .code-number {
+            color: #bd93f9;
+        }
+
+        .code-function {
+            color: #50fa7b;
+        }
+
+        .code-type {
+            color: #8be9fd;
+        }
+
+        .code-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: var(--light);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .code-typing {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: codeTyping 3s steps(50, end) forwards;
+        }
+
+        .section-title {
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background-color: var(--surface);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-light);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(98, 70, 234, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: rgba(98, 70, 234, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .lang-footer {
+            padding: 1.5rem 2rem;
+            background-color: var(--surface-alt);
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lang-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .rating-stars {
+            color: #FFD700;
+            letter-spacing: 2px;
+        }
+
+        .rating-value {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .lang-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .lang-link {
+            color: var(--gray-dark);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .lang-link:hover {
+            color: var(--primary);
+        }
+
+        .quote-box {
+            background-color: var(--surface-alt);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 3rem 0;
+            position: relative;
+            border-left: 4px solid var(--primary);
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            line-height: 1;
+            color: rgba(98, 70, 234, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            color: var(--dark);
+        }
+
+        .quote-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .quote-author-title {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-sm);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .comparison-table thead {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .comparison-table tbody tr {
+            background-color: var(--surface);
+            transition: var(--transition);
+        }
+
+        .comparison-table tbody tr:nth-child(even) {
+            background-color: var(--surface-alt);
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: rgba(98, 70, 234, 0.05);
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+        }
+
+        .status-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .status-good {
+            color: var(--tertiary);
+        }
+
+        .status-medium {
+            color: #f7b731;
+        }
+
+        .status-poor {
+            color: var(--secondary);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--light);
+            padding: 4rem 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .faq-section {
+            margin: 4rem 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background-color: var(--surface);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            background-color: var(--surface);
+        }
+
+        .faq-question:hover {
+            background-color: var(--surface-alt);
+        }
+
+        .faq-icon {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--animation-duration) ease, padding var(--animation-duration) ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .author-section {
+            background-color: var(--surface);
+            border-radius: var(--radius);
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin: 4rem 0;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-light);
+        }
+
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            color: var(--light);
+            flex-shrink: 0;
+        }
+
+        .author-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .author-title {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--surface-alt);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gray-dark);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: var(--light);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo {
+            color: var(--light);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-logo span {
+            color: var(--primary-light);
+        }
+
+        .footer-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-subscribe form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: var(--radius);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            outline: none;
+        }
+
+        .footer-input::placeholder {
+            color: var(--gray);
+        }
+
+        .footer-input:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-btn {
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: var(--radius);
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .footer-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .language-popularity {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .popularity-label {
+            width: 120px;
+            font-size: 0.85rem;
+            color: var(--gray-dark);
+        }
+
+        .popularity-bar-container {
+            flex: 1;
+            height: 8px;
+            background-color: rgba(98, 70, 234, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .popularity-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 4px;
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary);
+            color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 5s linear infinite;
+        }
+
+        .gradient-text-static {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .highlight-box {
+            background-color: rgba(98, 70, 234, 0.05);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .highlight-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .shimmer-effect {
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0), 
+                rgba(255, 255, 255, 0.5), 
+                rgba(255, 255, 255, 0)
+            );
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @media (max-width: 992px) {
+            .languages-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+            
+            .author-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-avatar {
+                margin: 0 auto;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1.75rem;
+                right: 1.5rem;
+            }
+            
+            .hero {
+                padding: 3rem 0 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .cta-buttons {
+                flex-wrap: wrap;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .footer-subscribe form {
+                flex-direction: column;
+            }
+            
+            .lang-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .lang-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">⌨️</div>
+                <span>CodeInsights</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#languages" class="nav-link">Languages</a>
+                <a href="#comparison" class="nav-link">Comparison</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#" class="nav-link">Resources</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">
+                Discover the <span class="hero-title-highlight">UNDERRATED</span> Programming Languages of 2025
+            </h1>
+            <p class="hero-description">
+                Beyond the mainstream languages lies a world of powerful, elegant, and productive programming tools that deserve more recognition. Let's explore these hidden gems.
+            </p>
+            <div class="cta-buttons">
+                <a href="#languages" class="btn btn-primary">
+                    <span class="btn-icon">🚀</span>
+                    <span>Explore Languages</span>
+                </a>
+                <a href="#comparison" class="btn btn-secondary">
+                    <span class="btn-icon">📊</span>
+                    <span>See Comparison</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="highlight-box">
+            <div class="highlight-title">
+                <span>💡</span>
+                <span>Why Explore Underrated Languages?</span>
+            </div>
+            <p>
+                While languages like Python, JavaScript, and Java dominate the industry, many less-popular languages offer unique advantages: better performance, more elegant syntax, stronger type systems, and specialized features that can dramatically improve developer productivity and code quality.
+            </p>
+        </div>
+
+        <h2 class="section-title" id="languages">Underrated Programming Languages</h2>
+
+        <div class="languages-grid">
+            <div class="lang-card">
+                <div class="lang-header elixir">
+                    <div class="lang-icon">Ex</div>
+                    <h3 class="lang-name">Elixir</h3>
+                </div>
+                <div class="lang-body">
+                    <p class="lang-description">
+                        A functional, concurrent language built on the Erlang VM, designed for building scalable and maintainable applications with elegant syntax.
+                    </p>
+                    
+                    <div class="lang-stats">
+                        <div class="lang-stat">
+                            <span>🏆</span>
+                            <span>First appeared: 2011</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>👨‍💻</span>
+                            <span>Creator: José Valim</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>🔄</span>
+                            <span>Paradigm: Functional</span>
+                        </div>
+                    </div>
+                    
+                    <div class="language-popularity">
+                        <div class="popularity-label">Popularity:</div>
+                        <div class="popularity-bar-container">
+                            <div class="popularity-bar" style="width: 25%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>
+                                <span>👍</span>
+                                <span>Advantages</span>
+                            </h4>
+                            <ul class="pros-list">
+                                <li>Fault-tolerant architecture</li>
+                                <li>Immutability by default</li>
+                                <li>Excellent concurrency model</li>
+                                <li>Phoenix web framework</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>
+                                <span>👎</span>
+                                <span>Challenges</span>
+                            </h4>
+                            <ul class="cons-list">
+                                <li>Smaller ecosystem</li>
+                                <li>Learning curve for OTP</li>
+                                <li>Limited mobile support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-sample">
+                        <div class="code-sample-header">
+                            <span>📝</span>
+                            <span>Hello World Example:</span>
+                        </div>
+                        <div class="code-block">
+                            <span class="code-keyword">defmodule</span> <span class="code-function">Greeting</span> <span class="code-keyword">do</span><br>
+                            &nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">hello</span> <span class="code-keyword">do</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Hello, world!"</span><br>
+                            &nbsp;&nbsp;<span class="code-keyword">end</span><br>
+                            <span class="code-keyword">end</span><br><br>
+                            <span class="code-function">IO</span>.<span class="code-function">puts</span> <span class="code-function">Greeting</span>.<span class="code-function">hello</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tags">
+                        <div class="tag">Web Development</div>
+                        <div class="tag">Distributed Systems</div>
+                        <div class="tag">Fault Tolerance</div>
+                    </div>
+                </div>
+                <div class="lang-footer">
+                    <div class="lang-rating">
+                        <div class="rating-stars">★★★★☆</div>
+                        <div class="rating-value">4.5/5</div>
+                    </div>
+                    <div class="lang-links">
+                        <a href="https://elixir-lang.org/" class="lang-link" target="_blank">🔗</a>
+                        <a href="https://github.com/elixir-lang/elixir" class="lang-link" target="_blank">📦</a>
+                        <a href="https://elixirforum.com/" class="lang-link" target="_blank">👥</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-card">
+                <div class="lang-header crystal">
+                    <div class="lang-icon">Cr</div>
+                    <h3 class="lang-name">Crystal</h3>
+                </div>
+                <div class="lang-body">
+                    <p class="lang-description">
+                        A statically-typed language with Ruby-like syntax, offering the expressiveness of a dynamic language with the performance and safety of a compiled language.
+                    </p>
+                    
+                    <div class="lang-stats">
+                        <div class="lang-stat">
+                            <span>🏆</span>
+                            <span>First appeared: 2014</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>👨‍💻</span>
+                            <span>Creator: Manas Technology</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>🔄</span>
+                            <span>Paradigm: Object-oriented</span>
+                        </div>
+                    </div>
+                    
+                    <div class="language-popularity">
+                        <div class="popularity-label">Popularity:</div>
+                        <div class="popularity-bar-container">
+                            <div class="popularity-bar" style="width: 20%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>
+                                <span>👍</span>
+                                <span>Advantages</span>
+                            </h4>
+                            <ul class="pros-list">
+                                <li>Ruby-like elegant syntax</li>
+                                <li>Compiled to native code</li>
+                                <li>Static type checking</li>
+                                <li>Built-in concurrency</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>
+                                <span>👎</span>
+                                <span>Challenges</span>
+                            </h4>
+                            <ul class="cons-list">
+                                <li>Young ecosystem</li>
+                                <li>Still evolving language</li>
+                                <li>Limited IDE support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-sample">
+                        <div class="code-sample-header">
+                            <span>📝</span>
+                            <span>Hello World Example:</span>
+                        </div>
+                        <div class="code-block">
+                            <span class="code-comment"># Simple HTTP server</span><br>
+                            <span class="code-keyword">require</span> <span class="code-string">"http/server"</span><br><br>
+                            <span class="code-function">server</span> = <span class="code-type">HTTP</span>::<span class="code-type">Server</span>.<span class="code-function">new</span> <span class="code-keyword">do</span> |<span class="code-function">context</span>|<br>
+                            &nbsp;&nbsp;context.<span class="code-function">response</span>.<span class="code-function">content_type</span> = <span class="code-string">"text/plain"</span><br>
+                            &nbsp;&nbsp;context.<span class="code-function">response</span>.<span class="code-function">print</span> <span class="code-string">"Hello, world!"</span><br>
+                            <span class="code-keyword">end</span><br><br>
+                            <span class="code-function">puts</span> <span class="code-string">"Listening on http://127.0.0.1:8080"</span><br>
+                            <span class="code-function">server</span>.<span class="code-function">listen</span>(<span class="code-string">"127.0.0.1"</span>, <span class="code-number">8080</span>)
+                        </div>
+                    </div>
+                    
+                    <div class="tags">
+                        <div class="tag">High Performance</div>
+                        <div class="tag">Web Development</div>
+                        <div class="tag">Ruby-like</div>
+                    </div>
+                </div>
+                <div class="lang-footer">
+                    <div class="lang-rating">
+                        <div class="rating-stars">★★★★☆</div>
+                        <div class="rating-value">4.2/5</div>
+                    </div>
+                    <div class="lang-links">
+                        <a href="https://crystal-lang.org/" class="lang-link" target="_blank">🔗</a>
+                        <a href="https://github.com/crystal-lang/crystal" class="lang-link" target="_blank">📦</a>
+                        <a href="https://forum.crystal-lang.org/" class="lang-link" target="_blank">👥</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-card">
+                <div class="lang-header nim">
+                    <div class="lang-icon">Nm</div>
+                    <h3 class="lang-name">Nim</h3>
+                </div>
+                <div class="lang-body">
+                    <p class="lang-description">
+                        A statically typed language with Python-like syntax that compiles to C, C++, or JavaScript, offering a unique blend of performance and readability.
+                    </p>
+                    
+                    <div class="lang-stats">
+                        <div class="lang-stat">
+                            <span>🏆</span>
+                            <span>First appeared: 2008</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>👨‍💻</span>
+                            <span>Creator: Andreas Rumpf</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>🔄</span>
+                            <span>Paradigm: Multi-paradigm</span>
+                        </div>
+                    </div>
+                    
+                    <div class="language-popularity">
+                        <div class="popularity-label">Popularity:</div>
+                        <div class="popularity-bar-container">
+                            <div class="popularity-bar" style="width: 18%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>
+                                <span>👍</span>
+                                <span>Advantages</span>
+                            </h4>
+                            <ul class="pros-list">
+                                <li>Python-like syntax</li>
+                                <li>Compile-time metaprogramming</li>
+                                <li>Excellent performance</li>
+                                <li>Memory safety features</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>
+                                <span>👎</span>
+                                <span>Challenges</span>
+                            </h4>
+                            <ul class="cons-list">
+                                <li>Small community</li>
+                                <li>Limited package ecosystem</li>
+                                <li>Less corporate backing</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-sample">
+                        <div class="code-sample-header">
+                            <span>📝</span>
+                            <span>Hello World Example:</span>
+                        </div>
+                        <div class="code-block">
+                            <span class="code-comment"># Hello world in Nim</span><br>
+                            <span class="code-keyword">proc</span> <span class="code-function">hello</span>(): <span class="code-type">string</span> =<br>
+                            &nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"Hello, world!"</span><br>
+                            <br>
+                            <span class="code-keyword">echo</span> <span class="code-function">hello</span>()<br>
+                            <br>
+                            <span class="code-comment"># Concise version</span><br>
+                            <span class="code-keyword">echo</span> <span class="code-string">"Hello, world!"</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tags">
+                        <div class="tag">Systems Programming</div>
+                        <div class="tag">Game Development</div>
+                        <div class="tag">Metaprogramming</div>
+                    </div>
+                </div>
+                <div class="lang-footer">
+                    <div class="lang-rating">
+                        <div class="rating-stars">★★★★☆</div>
+                        <div class="rating-value">4.1/5</div>
+                    </div>
+                    <div class="lang-links">
+                        <a href="https://nim-lang.org/" class="lang-link" target="_blank">🔗</a>
+                        <a href="https://github.com/nim-lang/Nim" class="lang-link" target="_blank">📦</a>
+                        <a href="https://forum.nim-lang.org/" class="lang-link" target="_blank">👥</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-card">
+                <div class="lang-header ocaml">
+                    <div class="lang-icon">Oc</div>
+                    <h3 class="lang-name">OCaml</h3>
+                </div>
+                <div class="lang-body">
+                    <p class="lang-description">
+                        A powerful functional language with a strong type system and efficient compiler, used for building reliable and efficient software in various domains.
+                    </p>
+                    
+                    <div class="lang-stats">
+                        <div class="lang-stat">
+                            <span>🏆</span>
+                            <span>First appeared: 1996</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>👨‍💻</span>
+                            <span>Creator: INRIA</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>🔄</span>
+                            <span>Paradigm: Multi-paradigm, Functional</span>
+                        </div>
+                    </div>
+                    
+                    <div class="language-popularity">
+                        <div class="popularity-label">Popularity:</div>
+                        <div class="popularity-bar-container">
+                            <div class="popularity-bar" style="width: 22%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>
+                                <span>👍</span>
+                                <span>Advantages</span>
+                            </h4>
+                            <ul class="pros-list">
+                                <li>Strong static type system</li>
+                                <li>Excellent pattern matching</li>
+                                <li>Used in finance and academia</li>
+                                <li>Powerful module system</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>
+                                <span>👎</span>
+                                <span>Challenges</span>
+                            </h4>
+                            <ul class="cons-list">
+                                <li>Steep learning curve</li>
+                                <li>Limited library ecosystem</li>
+                                <li>Not as popular in industry</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-sample">
+                        <div class="code-sample-header">
+                            <span>📝</span>
+                            <span>Hello World Example:</span>
+                        </div>
+                        <div class="code-block">
+                            <span class="code-comment">(* Define a simple function *)</span><br>
+                            <span class="code-keyword">let</span> <span class="code-function">hello</span> () = <span class="code-string">"Hello, world!"</span><br><br>
+                            <span class="code-comment">(* Output the result *)</span><br>
+                            <span class="code-keyword">let</span> () = <span class="code-function">print_endline</span> (<span class="code-function">hello</span> ())<br><br>
+                            <span class="code-comment">(* Or more concisely *)</span><br>
+                            <span class="code-keyword">let</span> () = <span class="code-function">print_endline</span> <span class="code-string">"Hello, world!"</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tags">
+                        <div class="tag">Functional Programming</div>
+                        <div class="tag">Type Safety</div>
+                        <div class="tag">Finance</div>
+                    </div>
+                </div>
+                <div class="lang-footer">
+                    <div class="lang-rating">
+                        <div class="rating-stars">★★★★☆</div>
+                        <div class="rating-value">4.3/5</div>
+                    </div>
+                    <div class="lang-links">
+                        <a href="https://ocaml.org/" class="lang-link" target="_blank">🔗</a>
+                        <a href="https://github.com/ocaml/ocaml" class="lang-link" target="_blank">📦</a>
+                        <a href="https://discuss.ocaml.org/" class="lang-link" target="_blank">👥</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-card">
+                <div class="lang-header haskell">
+                    <div class="lang-icon">Hs</div>
+                    <h3 class="lang-name">Haskell</h3>
+                </div>
+                <div class="lang-body">
+                    <p class="lang-description">
+                        A purely functional programming language with strong static typing, type inference, and lazy evaluation, known for its elegance and mathematical foundation.
+                    </p>
+                    
+                    <div class="lang-stats">
+                        <div class="lang-stat">
+                            <span>🏆</span>
+                            <span>First appeared: 1990</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>👨‍💻</span>
+                            <span>Creator: Committee</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>🔄</span>
+                            <span>Paradigm: Purely Functional</span>
+                        </div>
+                    </div>
+                    
+                    <div class="language-popularity">
+                        <div class="popularity-label">Popularity:</div>
+                        <div class="popularity-bar-container">
+                            <div class="popularity-bar" style="width: 28%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>
+                                <span>👍</span>
+                                <span>Advantages</span>
+                            </h4>
+                            <ul class="pros-list">
+                                <li>Strong mathematical foundation</li>
+                                <li>Advanced type system</li>
+                                <li>Pure functional programming</li>
+                                <li>Lazy evaluation</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>
+                                <span>👎</span>
+                                <span>Challenges</span>
+                            </h4>
+                            <ul class="cons-list">
+                                <li>Difficult learning curve</li>
+                                <li>Performance unpredictability</li>
+                                <li>Smaller job market</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-sample">
+                        <div class="code-sample-header">
+                            <span>📝</span>
+                            <span>Hello World Example:</span>
+                        </div>
+                        <div class="code-block">
+                            <span class="code-comment">-- Simple hello world</span><br>
+                            <span class="code-function">main</span> :: <span class="code-type">IO</span> ()<br>
+                            <span class="code-function">main</span> = <span class="code-function">putStrLn</span> <span class="code-string">"Hello, world!"</span><br><br>
+                            <span class="code-comment">-- A more functional approach</span><br>
+                            <span class="code-function">hello</span> :: <span class="code-type">String</span><br>
+                            <span class="code-function">hello</span> = <span class="code-string">"Hello, world!"</span><br><br>
+                            <span class="code-function">main'</span> :: <span class="code-type">IO</span> ()<br>
+                            <span class="code-function">main'</span> = <span class="code-function">putStrLn</span> <span class="code-function">hello</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tags">
+                        <div class="tag">Functional Programming</div>
+                        <div class="tag">Type Theory</div>
+                        <div class="tag">Academia</div>
+                    </div>
+                </div>
+                <div class="lang-footer">
+                    <div class="lang-rating">
+                        <div class="rating-stars">★★★★★</div>
+                        <div class="rating-value">4.6/5</div>
+                    </div>
+                    <div class="lang-links">
+                        <a href="https://www.haskell.org/" class="lang-link" target="_blank">🔗</a>
+                        <a href="https://github.com/haskell" class="lang-link" target="_blank">📦</a>
+                        <a href="https://discourse.haskell.org/" class="lang-link" target="_blank">👥</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-card">
+                <div class="lang-header f-sharp">
+                    <div class="lang-icon">F#</div>
+                    <h3 class="lang-name">F#</h3>
+                </div>
+                <div class="lang-body">
+                    <p class="lang-description">
+                        A functional-first language for the .NET ecosystem, combining functional programming with object-oriented features and practical tooling.
+                    </p>
+                    
+                    <div class="lang-stats">
+                        <div class="lang-stat">
+                            <span>🏆</span>
+                            <span>First appeared: 2005</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>👨‍💻</span>
+                            <span>Creator: Microsoft Research</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>🔄</span>
+                            <span>Paradigm: Functional, Object-oriented</span>
+                        </div>
+                    </div>
+                    
+                    <div class="language-popularity">
+                        <div class="popularity-label">Popularity:</div>
+                        <div class="popularity-bar-container">
+                            <div class="popularity-bar" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>
+                                <span>👍</span>
+                                <span>Advantages</span>
+                            </h4>
+                            <ul class="pros-list">
+                                <li>Full .NET ecosystem access</li>
+                                <li>Strong type inference</li>
+                                <li>Excellent data processing</li>
+                                <li>Concise syntax</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>
+                                <span>👎</span>
+                                <span>Challenges</span>
+                            </h4>
+                            <ul class="cons-list">
+                                <li>In C#'s shadow</li>
+                                <li>Smaller community</li>
+                                <li>Less learning resources</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-sample">
+                        <div class="code-sample-header">
+                            <span>📝</span>
+                            <span>Hello World Example:</span>
+                        </div>
+                        <div class="code-block">
+                            <span class="code-comment">// Simple hello world</span><br>
+                            <span class="code-function">printfn</span> <span class="code-string">"Hello, world!"</span><br><br>
+                            <span class="code-comment">// Using a function</span><br>
+                            <span class="code-keyword">let</span> <span class="code-function">hello</span> () = <span class="code-string">"Hello, world!"</span><br><br>
+                            <span class="code-comment">// Print the result</span><br>
+                            <span class="code-function">hello</span> () |> <span class="code-function">printfn</span> <span class="code-string">"%s"</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tags">
+                        <div class="tag">.NET Platform</div>
+                        <div class="tag">Data Science</div>
+                        <div class="tag">Functional Programming</div>
+                    </div>
+                </div>
+                <div class="lang-footer">
+                    <div class="lang-rating">
+                        <div class="rating-stars">★★★★☆</div>
+                        <div class="rating-value">4.4/5</div>
+                    </div>
+                    <div class="lang-links">
+                        <a href="https://fsharp.org/" class="lang-link" target="_blank">🔗</a>
+                        <a href="https://github.com/dotnet/fsharp" class="lang-link" target="_blank">📦</a>
+                        <a href="https://forums.fsharp.org/" class="lang-link" target="_blank">👥</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-card">
+                <div class="lang-header erlang">
+                    <div class="lang-icon">Er</div>
+                    <h3 class="lang-name">Erlang</h3>
+                </div>
+                <div class="lang-body">
+                    <p class="lang-description">
+                        A functional language designed for building massively scalable, distributed, fault-tolerant systems that can run for years without interruption.
+                    </p>
+                    
+                    <div class="lang-stats">
+                        <div class="lang-stat">
+                            <span>🏆</span>
+                            <span>First appeared: 1986</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>👨‍💻</span>
+                            <span>Creator: Ericsson</span>
+                        </div>
+                        <div class="lang-stat">
+                            <span>🔄</span>
+                            <span>Paradigm: Functional, Concurrent</span>
+                        </div>
+                    </div>
+                    
+                    <div class="language-popularity">
+                        <div class="popularity-label">Popularity:</div>
+                        <div class="popularity-bar-container">
+                            <div class="popularity-bar" style="width: 24%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>
+                                <span>👍</span>
+                                <span>Advantages</span>
+                            </h4>
+                            <ul class="pros-list">
+                                <li>Superior fault tolerance</li>
+                                <li>Hot code swapping</li>
+                                <li>Battle-tested in telecom</li>
+                                <li>Actor model concurrency</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>
+                                <span>👎</span>
+                                <span>Challenges</span>
+                            </h4>
+                            <ul class="cons-list">
+                                <li>Unusual syntax</li>
+                                <li>Steep learning curve</li>
+                                <li>Not for general apps</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-sample">
+                        <div class="code-sample-header">
+                            <span>📝</span>
+                            <span>Hello World Example:</span>
+                        </div>
+                        <div class="code-block">
+                            <span class="code-comment">% Define a module</span><br>
+                            -<span class="code-keyword">module</span>(<span class="code-function">hello</span>).<br>
+                            -<span class="code-keyword">export</span>([<span class="code-function">start/0</span>]).<br><br>
+                            <span class="code-comment">% Define the start function</span><br>
+                            <span class="code-function">start</span>() -><br>
+                            &nbsp;&nbsp;<span class="code-function">io</span>:<span class="code-function">format</span>(<span class="code-string">"Hello, world!~n"</span>).<br><br>
+                            <span class="code-comment">% To run: hello:start().</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tags">
+                        <div class="tag">Distributed Systems</div>
+                        <div class="tag">Telecommunications</div>
+                        <div class="tag">Fault Tolerance</div>
+                    </div>
+                </div>
+                <div class="lang-footer">
+                    <div class="lang-rating">
+                        <div class="rating-stars">★★★★☆</div>
+                        <div class="rating-value">4.2/5</div>
+                    </div>
+                    <div class="lang-links">
+                        <a href="https://www.erlang.org/" class="lang-link" target="_blank">🔗</a>
+                        <a href="https://github.com/erlang/otp" class="lang-link" target="_blank">📦</a>
+                        <a href="https://erlangforums.com/" class="lang-link" target="_blank">👥</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            <p class="quote-text">
+                "Sometimes the most elegant solutions come from the least expected places. Exploring underrated programming languages often reveals approaches to problems that mainstream languages haven't discovered yet."
+            </p>
+            <div class="quote-author">Dr. Maya Richards</div>
+            <div class="quote-author-title">Professor of Computer Science, MIT</div>
+        </div>
+
+        <h2 class="section-title" id="comparison">Languages Comparison</h2>
+        
+        <div style="overflow-x: auto;">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Language</th>
+                        <th>Performance</th>
+                        <th>Learning Curve</th>
+                        <th>Community</th>
+                        <th>Job Prospects</th>
+                        <th>Use Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Elixir</td>
+                        <td><span class="status-icon status-good">★★★★☆</span> Good</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Moderate</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Growing</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Niche</td>
+                        <td>Web, IoT, Real-time apps</td>
+                    </tr>
+                    <tr>
+                        <td>Crystal</td>
+                        <td><span class="status-icon status-good">★★★★★</span> Excellent</td>
+                        <td><span class="status-icon status-good">★★★★☆</span> Easy</td>
+                        <td><span class="status-icon status-poor">★★☆☆☆</span> Small</td>
+                        <td><span class="status-icon status-poor">★★☆☆☆</span> Limited</td>
+                        <td>CLI, Web, Microservices</td>
+                    </tr>
+                    <tr>
+                        <td>Nim</td>
+                        <td><span class="status-icon status-good">★★★★★</span> Excellent</td>
+                        <td><span class="status-icon status-good">★★★★☆</span> Easy</td>
+                        <td><span class="status-icon status-poor">★★☆☆☆</span> Small</td>
+                        <td><span class="status-icon status-poor">★★☆☆☆</span> Limited</td>
+                        <td>Systems, Games, Embedded</td>
+                    </tr>
+                    <tr>
+                        <td>OCaml</td>
+                        <td><span class="status-icon status-good">★★★★☆</span> Good</td>
+                        <td><span class="status-icon status-poor">★★☆☆☆</span> Steep</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Established</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Finance</td>
+                        <td>Finance, Compilers, Academia</td>
+                    </tr>
+                    <tr>
+                        <td>Haskell</td>
+                        <td><span class="status-icon status-good">★★★★☆</span> Good</td>
+                        <td><span class="status-icon status-poor">★☆☆☆☆</span> Very Steep</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Passionate</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Specialized</td>
+                        <td>Finance, Academia, Type-safe systems</td>
+                    </tr>
+                    <tr>
+                        <td>F#</td>
+                        <td><span class="status-icon status-good">★★★★☆</span> Good</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Moderate</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Growing</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> .NET Shops</td>
+                        <td>Enterprise, Data Science, Web</td>
+                    </tr>
+                    <tr>
+                        <td>Erlang</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Moderate</td>
+                        <td><span class="status-icon status-poor">★★☆☆☆</span> Steep</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Specialized</td>
+                        <td><span class="status-icon status-medium">★★★☆☆</span> Telecom</td>
+                        <td>Telecommunications, Distributed Systems</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">Why Consider These Languages?</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3 class="feature-title">New Perspectives</h3>
+                <p>
+                    Learning an underrated language often provides new ways of thinking about programming problems. Functional languages like Haskell or Elixir can reshape how you approach state management and concurrency.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3 class="feature-title">Performance Gains</h3>
+                <p>
+                    Many underrated languages like Crystal and Nim offer exceptional performance while maintaining programmer productivity with clean, high-level syntax.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🛠️</div>
+                <h3 class="feature-title">Specialization</h3>
+                <p>
+                    Some languages excel in specific domains: Erlang for fault-tolerant systems, F# for financial modeling, or OCaml for building compilers and static analyzers.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">Community</h3>
+                <p>
+                    Smaller language communities are often more welcoming, with greater opportunities to contribute and make an impact. You can become a recognized expert faster.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3 class="feature-title">Career Differentiation</h3>
+                <p>
+                    While job listings may be fewer, specialists in underrated languages often command higher salaries and face less competition in their specific niches.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3 class="feature-title">Cross-Pollination</h3>
+                <p>
+                    Concepts from these languages are increasingly finding their way into mainstream ones. Learning them today gives you insight into the future of programming.
+                </p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 class="cta-title">Ready to Explore Something New?</h2>
+            <p class="cta-description">
+                Expand your programming horizons by learning one of these underrated languages. You'll gain new skills, perspectives, and possibly find the perfect tool for your next project.
+            </p>
+            <div class="cta-buttons">
+                <a href="#languages" class="btn btn-light">Browse Languages</a>
+                <a href="#" class="btn" style="background: rgba(255, 255, 255, 0.2);">Resource List</a>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="faq">Frequently Asked Questions</h2>
+        
+        <div class="faq-container">
+            <div class="faq-item active">
+                <div class="faq-question">
+                    <span>Is it worth spending time learning an underrated language?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Absolutely. While mainstream languages like Python and JavaScript offer abundant job opportunities, learning an underrated language can provide unique benefits: deeper programming insights, specialized problem-solving approaches, and sometimes a competitive advantage in niche markets. Many programmers report that learning languages like Haskell or Elixir improved their coding in other languages too.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Which underrated language is easiest to learn for beginners?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        For beginners, languages with familiar syntax and good documentation are ideal. Crystal and Nim are relatively approachable with syntax inspired by Ruby and Python respectively. Elixir also offers excellent documentation and a welcoming community. If you're already familiar with C# or the .NET ecosystem, F# provides a gentle introduction to functional programming concepts.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I get a job using these languages?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Yes, but the job market is more specialized. Companies using these languages often choose them deliberately for their specific advantages, leading to focused, challenging roles. Elixir has a growing job market in web development, F# in finance and enterprise, Haskell in fintech, and Erlang in telecommunications and distributed systems. While you'll see fewer job listings, the positions often offer better compensation and interesting problems.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Why aren't these languages more popular if they're so good?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Language popularity depends on many factors beyond technical merit: historical timing, corporate backing, network effects, learning resources, and library ecosystems all play major roles. Many of these languages arrived after established players had already built large communities and ecosystems. Some, like Haskell and OCaml, prioritize mathematical elegance over approachability. Others, like Crystal and Nim, are still maturing their tooling and libraries.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What resources are available for learning these languages?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        While underrated languages have fewer resources than mainstream ones, quality materials exist for all languages featured here. Most have excellent official documentation, active forums, and dedicated communities. Books are available for Elixir, Haskell, F#, and OCaml. Online courses exist for most of these languages, though sometimes in smaller numbers. GitHub repositories with example projects are also valuable learning resources.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="author-section">
+            <div class="author-avatar">A</div>
+            <div class="author-info">
+                <h3>Alex Programmer</h3>
+                <div class="author-title">Programming Language Enthusiast & Software Engineer</div>
+                <p>
+                    Alex has been exploring programming languages for over 15 years, with particular interest in functional programming, type systems, and performance optimization. He believes in using the right tool for the job and enjoys introducing developers to underrated languages.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">gh</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div>
+                <div class="footer-logo">
+                    <div>⌨️</div>
+                    <div>Code<span>Insights</span></div>
+                </div>
+                <p class="footer-description">
+                    Exploring the world of programming languages, from mainstream to underrated gems.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">gh</a>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="footer-heading">Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#languages">Languages</a></li>
+                    <li><a href="#comparison">Comparison</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="footer-heading">Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Programming Guides</a></li>
+                    <li><a href="#">Language Tutorials</a></li>
+                    <li><a href="#">Code Examples</a></li>
+                    <li><a href="#">Community Forums</a></li>
+                    <li><a href="#">Learning Paths</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="footer-heading">Subscribe</h3>
+                <p class="footer-description">
+                    Get the latest updates on programming languages and tech trends.
+                </p>
+                <form class="footer-subscribe">
+                    <input type="email" placeholder="Your email address" class="footer-input">
+                    <button type="submit" class="footer-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2025 CodeInsights. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission prevent default
+        const forms = document.querySelectorAll('form');
+        
+        forms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Form submission is not implemented in this demo.');
+                form.reset();
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
