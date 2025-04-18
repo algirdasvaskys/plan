@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Chrome Extensions For Developers</title>
+    <style>
+        :root {
+            --blue: #4285F4;
+            --red: #EA4335;
+            --yellow: #FBBC05;
+            --green: #34A853;
+            --dark: #202124;
+            --light: #F8F9FA;
+            --gray: #5F6368;
+            --gray-light: #DADCE0;
+            --surface: #FFFFFF;
+            --shadow: rgba(60, 64, 67, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Google Sans', 'Segoe UI', 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--blue), var(--red), var(--yellow), var(--green));
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-top: 20px;
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            background-color: var(--surface);
+            color: var(--dark);
+            border: 1px solid var(--gray-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover {
+            background-color: rgba(66, 133, 244, 0.08);
+            box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--blue);
+            color: white;
+            border-color: var(--blue);
+            box-shadow: 0 2px 6px rgba(66, 133, 244, 0.3);
+        }
+        
+        .search-bar {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid var(--gray-light);
+            border-radius: 24px;
+            font-size: 1rem;
+            box-shadow: 0 1px 6px rgba(60, 64, 67, 0.1);
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+            outline: none;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 4px 12px rgba(60, 64, 67, 0.15);
+            border-color: var(--blue);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+        
+        .extensions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .extension-card {
+            background-color: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(60, 64, 67, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid var(--gray-light);
+        }
+        
+        .extension-card:hover {
+            box-shadow: 0 12px 24px rgba(60, 64, 67, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .card-header {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .extension-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .extension-details {
+            flex: 1;
+        }
+        
+        .extension-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--dark);
+        }
+        
+        .extension-author {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .extension-rating {
+            display: flex;
+            align-items: center;
+            margin-top: 4px;
+        }
+        
+        .stars {
+            color: var(--yellow);
+            margin-right: 5px;
+        }
+        
+        .rating-value {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .extension-users {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .extension-description {
+            font-size: 0.95rem;
+            color: var(--dark);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .tag {
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .tag.category {
+            background-color: rgba(66, 133, 244, 0.1);
+            color: var(--blue);
+        }
+        
+        .tag.feature {
+            background-color: rgba(52, 168, 83, 0.1);
+            color: var(--green);
+        }
+        
+        .tag.pricing {
+            background-color: rgba(251, 188, 5, 0.1);
+            color: #F57C00;
+        }
+        
+        .card-footer {
+            padding: 14px 20px;
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .install-btn {
+            background-color: var(--blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .install-btn:hover {
+            background-color: #3B78E7;
+            box-shadow: 0 2px 6px rgba(66, 133, 244, 0.3);
+        }
+        
+        .btn-icon {
+            margin-right: 6px;
+        }
+        
+        .more-info {
+            color: var(--blue);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .more-info:hover {
+            text-decoration: underline;
+        }
+        
+        .info-icon {
+            margin-left: 4px;
+        }
+        
+        .extension-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+        
+        .badge-popular {
+            background-color: var(--red);
+            color: white;
+        }
+        
+        .badge-new {
+            background-color: var(--green);
+            color: white;
+        }
+        
+        .badge-top {
+            background-color: var(--blue);
+            color: white;
+        }
+        
+        .load-more {
+            display: block;
+            margin: 30px auto;
+            background-color: transparent;
+            color: var(--blue);
+            border: 1px solid var(--blue);
+            padding: 10px 24px;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .load-more:hover {
+            background-color: rgba(66, 133, 244, 0.08);
+            box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        
+        .modal-content {
+            background-color: var(--surface);
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 24px 38px rgba(0, 0, 0, 0.14), 0 9px 46px rgba(0, 0, 0, 0.12);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            padding: 24px 30px;
+            background-color: var(--blue);
+            color: white;
+            position: relative;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .modal-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-section {
+            margin-bottom: 24px;
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .features-list {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 24px;
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: bold;
+        }
+        
+        .screenshots {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        
+        .screenshot {
+            border-radius: 8px;
+            border: 1px solid var(--gray-light);
+            box-shadow: 0 2px 6px rgba(60, 64, 67, 0.1);
+            overflow: hidden;
+            flex: 0 0 auto;
+            width: 300px;
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .use-case {
+            background-color: rgba(66, 133, 244, 0.05);
+            border-left: 4px solid var(--blue);
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 16px;
+        }
+        
+        .use-case-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--blue);
+        }
+        
+        .modal-footer {
+            padding: 20px 30px;
+            background-color: var(--light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--gray-light);
+        }
+        
+        .modal-install-btn {
+            background-color: var(--blue);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .modal-install-btn:hover {
+            background-color: #3B78E7;
+            box-shadow: 0 2px 6px rgba(66, 133, 244, 0.3);
+        }
+        
+        .rating-breakdown {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .rating-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-right: 16px;
+            color: var(--dark);
+        }
+        
+        .rating-bars {
+            flex: 1;
+        }
+        
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        
+        .rating-label {
+            font-size: 0.85rem;
+            width: 30px;
+            margin-right: 8px;
+        }
+        
+        .bar-background {
+            flex: 1;
+            height: 8px;
+            background-color: var(--gray-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            background-color: var(--yellow);
+            border-radius: 4px;
+        }
+        
+        .rating-count {
+            font-size: 0.85rem;
+            margin-left: 8px;
+            color: var(--gray);
+            width: 60px;
+        }
+        
+        .similar-extensions {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        
+        .similar-card {
+            flex: 0 0 auto;
+            width: 160px;
+            background-color: var(--surface);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(60, 64, 67, 0.1);
+            border: 1px solid var(--gray-light);
+            transition: all 0.2s ease;
+        }
+        
+        .similar-card:hover {
+            box-shadow: 0 4px 12px rgba(60, 64, 67, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .similar-icon {
+            width: 100%;
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .similar-icon span {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .similar-details {
+            padding: 12px;
+        }
+        
+        .similar-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .similar-rating {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+        
+        .similar-stars {
+            color: var(--yellow);
+            margin-right: 4px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px 0;
+            border-top: 1px solid var(--gray-light);
+            color: var(--gray);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--gray);
+        }
+        
+        .no-results-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.7;
+        }
+        
+        .no-results-message {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .no-results-sub {
+            font-size: 0.95rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .extensions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .modal-content {
+                margin: 0;
+            }
+            
+            .screenshots, .similar-extensions {
+                gap: 12px;
+            }
+            
+            .screenshot {
+                width: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Best Chrome Extensions For Developers</h1>
+            <p class="subtitle">Boost your productivity and enhance your workflow with these essential Chrome tools</p>
+        </header>
+        
+        <div class="search-bar">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search for extensions...">
+            <span class="search-icon">🔍</span>
+        </div>
+        
+        <div class="filters" id="filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="debugging">Debugging</button>
+            <button class="filter-btn" data-category="design">Design</button>
+            <button class="filter-btn" data-category="productivity">Productivity</button>
+            <button class="filter-btn" data-category="testing">Testing</button>
+            <button class="filter-btn" data-category="seo">SEO</button>
+            <button class="filter-btn" data-category="accessibility">Accessibility</button>
+            <button class="filter-btn" data-category="code">Code Tools</button>
+        </div>
+        
+        <div class="extensions-grid" id="extensionsGrid">
+            <!-- Extensions will be dynamically rendered here -->
+        </div>
+        
+        <div class="no-results" id="noResults" style="display: none;">
+            <div class="no-results-icon">🔍</div>
+            <p class="no-results-message">No extensions found</p>
+            <p class="no-results-sub">Try adjusting your search or filter criteria</p>
+        </div>
+        
+        <button class="load-more" id="loadMoreBtn">Load More Extensions</button>
+        
+        <footer class="footer">
+            <p>© 2025 Developer Extensions Guide • Updated April 2025</p>
+        </footer>
+    </div>
+    
+    <div class="modal" id="extensionModal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalHeader">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-subtitle" id="modalSubtitle"></p>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3 class="section-title">Overview</h3>
+                    <p id="modalDescription"></p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="section-title">Key Features</h3>
+                    <ul class="features-list" id="modalFeatures">
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="section-title">Screenshots</h3>
+                    <div class="screenshots" id="modalScreenshots">
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="section-title">Use Cases</h3>
+                    <div id="modalUseCases">
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="section-title">Ratings & Reviews</h3>
+                    <div class="rating-breakdown">
+                        <div class="rating-number" id="modalRatingNumber"></div>
+                        <div class="rating-bars">
+                            <div class="rating-bar">
+                                <div class="rating-label">5 ★</div>
+                                <div class="bar-background">
+                                    <div class="bar-fill" style="width: 80%;"></div>
+                                </div>
+                                <div class="rating-count">80%</div>
+                            </div>
+                            <div class="rating-bar">
+                                <div class="rating-label">4 ★</div>
+                                <div class="bar-background">
+                                    <div class="bar-fill" style="width: 15%;"></div>
+                                </div>
+                                <div class="rating-count">15%</div>
+                            </div>
+                            <div class="rating-bar">
+                                <div class="rating-label">3 ★</div>
+                                <div class="bar-background">
+                                    <div class="bar-fill" style="width: 3%;"></div>
+                                </div>
+                                <div class="rating-count">3%</div>
+                            </div>
+                            <div class="rating-bar">
+                                <div class="rating-label">2 ★</div>
+                                <div class="bar-background">
+                                    <div class="bar-fill" style="width: 1%;"></div>
+                                </div>
+                                <div class="rating-count">1%</div>
+                            </div>
+                            <div class="rating-bar">
+                                <div class="rating-label">1 ★</div>
+                                <div class="bar-background">
+                                    <div class="bar-fill" style="width: 1%;"></div>
+                                </div>
+                                <div class="rating-count">1%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="section-title">Similar Extensions</h3>
+                    <div class="similar-extensions" id="modalSimilar">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <span id="modalUsers"></span>
+                </div>
+                <a href="#" class="modal-install-btn" id="modalInstallBtn">
+                    <span class="btn-icon">+</span> Add to Chrome
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Extension data
+            const extensions = [
+                {
+                    id: 1,
+                    name: "React Developer Tools",
+                    icon: "⚛️",
+                    iconColor: "#61DAFB",
+                    author: "Facebook",
+                    rating: 4.8,
+                    users: "3M+",
+                    description: "Adds React debugging tools to the Chrome Developer Tools. Allows inspection of React component hierarchies in the Chrome Developer Tools.",
+                    categories: ["debugging", "code"],
+                    features: ["Component Inspection", "Performance Profiling"],
+                    pricing: "Free",
+                    badge: "popular",
+                    features_detailed: [
+                        "Inspect React component hierarchy",
+                        "View and edit component props and state",
+                        "Performance profiling for React apps",
+                        "Track component renders and reason for updates",
+                        "Time travel debugging in React applications",
+                        "Works with React and React Native"
+                    ],
+                    screenshots: [
+                        "Component tree view showing hierarchy",
+                        "Props and state inspection panel",
+                        "Performance profiler with render information"
+                    ],
+                    useCases: [
+                        {
+                            title: "Debug Component Rendering Issues",
+                            description: "Identify unnecessary re-renders and optimization opportunities in your React components."
+                        },
+                        {
+                            title: "Inspect Component State & Props",
+                            description: "View and modify component props and state in real-time to diagnose and fix issues."
+                        }
+                    ],
+                    similar: [
+                        {name: "Vue Devtools", icon: "🟢", iconColor: "#41B883", rating: 4.7},
+                        {name: "Redux DevTools", icon: "🟣", iconColor: "#764ABC", rating: 4.7},
+                        {name: "Angular DevTools", icon: "🔴", iconColor: "#DD0031", rating: 4.6}
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "Lighthouse",
+                    icon: "🔆",
+                    iconColor: "#F44B21",
+                    author: "Google",
+                    rating: 4.7,
+                    users: "2M+",
+                    description: "An open-source, automated tool for improving the quality of web pages. Audits performance, accessibility, progressive web apps, SEO, and more.",
+                    categories: ["performance", "seo", "accessibility", "testing"],
+                    features: ["Performance Audits", "Accessibility Checks", "SEO Analysis"],
+                    pricing: "Free",
+                    badge: "top",
+                    features_detailed: [
+                        "Performance metrics and optimization suggestions",
+                        "Accessibility compliance audits",
+                        "Progressive Web App validation",
+                        "SEO best practices checking",
+                        "Best practices for web development",
+                        "Detailed reports with actionable insights"
+                    ],
+                    screenshots: [
+                        "Performance score overview dashboard",
+                        "Detailed audit list with recommendations",
+                        "Timeline of performance metrics"
+                    ],
+                    useCases: [
+                        {
+                            title: "Optimize Site Performance",
+                            description: "Identify performance bottlenecks and get actionable recommendations to improve page load times."
+                        },
+                        {
+                            title: "Ensure Accessibility Compliance",
+                            description: "Check your site against WCAG guidelines and find accessibility issues before they affect users."
+                        }
+                    ],
+                    similar: [
+                        {name: "PageSpeed Insights", icon: "🚀", iconColor: "#4285F4", rating: 4.6},
+                        {name: "Wave Evaluation", icon: "🌊", iconColor: "#1C75BC", rating: 4.5},
+                        {name: "SEO META", icon: "🔍", iconColor: "#34A853", rating: 4.4}
+                    ]
+                },
+                {
+                    id: 3,
+                    name: "JSON Formatter",
+                    icon: "{ }",
+                    iconColor: "#F9A825",
+                    author: "Callum Locke",
+                    rating: 4.9,
+                    users: "1.5M+",
+                    description: "Makes JSON easy to read. Open a JSON file or type in a URL to JSON data, and this extension will format it with syntax highlighting.",
+                    categories: ["debugging", "productivity"],
+                    features: ["Syntax Highlighting", "Collapsible Nodes", "Raw/Parsed Toggle"],
+                    pricing: "Free",
+                    badge: "popular",
+                    features_detailed: [
+                        "Automatic JSON detection and formatting",
+                        "Syntax highlighting with customizable themes",
+                        "Collapsible tree view for nested objects",
+                        "Toggle between raw and formatted JSON",
+                        "Support for large JSON files",
+                        "URL parameters are automatically parsed"
+                    ],
+                    screenshots: [
+                        "Formatted JSON with syntax highlighting",
+                        "Collapsed view of complex nested objects",
+                        "Raw and formatted toggle view"
+                    ],
+                    useCases: [
+                        {
+                            title: "API Response Inspection",
+                            description: "Easily read and navigate through complex API responses without having to use external tools."
+                        },
+                        {
+                            title: "Configuration File Editing",
+                            description: "Format and verify JSON configuration files to ensure they're valid and properly structured."
+                        }
+                    ],
+                    similar: [
+                        {name: "JSON Viewer", icon: "📋", iconColor: "#FFA000", rating: 4.7},
+                        {name: "JSON Beautifier", icon: "✨", iconColor: "#FB8C00", rating: 4.6},
+                        {name: "JSONView", icon: "🔍", iconColor: "#F57F17", rating: 4.8}
+                    ]
+                },
+                {
+                    id: 4,
+                    name: "CSS Peeper",
+                    icon: "👁️",
+                    iconColor: "#EC407A",
+                    author: "CSS Peeper",
+                    rating: 4.8,
+                    users: "800K+",
+                    description: "A CSS viewer tailored for designers. Extract CSS and build beautiful style guides from any website with just one click.",
+                    categories: ["design", "css"],
+                    features: ["Color Palette Extraction", "Font Inspection", "Asset Extraction"],
+                    pricing: "Free / Pro",
+                    badge: "top",
+                    features_detailed: [
+                        "Extract complete color palette from any website",
+                        "Inspect specific element styling with ease",
+                        "Export CSS properties as JSON or CSS",
+                        "Download assets directly from the interface",
+                        "Create style guides automatically",
+                        "Typography inspection and analysis"
+                    ],
+                    screenshots: [
+                        "Color palette extraction view",
+                        "Element style inspection panel",
+                        "Asset gallery for easy downloading"
+                    ],
+                    useCases: [
+                        {
+                            title: "Design Inspiration",
+                            description: "Extract color schemes and typography details from inspirational websites to inform your own designs."
+                        },
+                        {
+                            title: "Competitor Analysis",
+                            description: "Analyze design patterns and styling approaches used by competitors in your industry."
+                        }
+                    ],
+                    similar: [
+                        {name: "WhatFont", icon: "🔠", iconColor: "#D81B60", rating: 4.5},
+                        {name: "ColorZilla", icon: "🎨", iconColor: "#8E24AA", rating: 4.7},
+                        {name: "Fonts Ninja", icon: "🥷", iconColor: "#5E35B1", rating: 4.6}
+                    ]
+                },
+                {
+                    id: 5,
+                    name: "axe DevTools",
+                    icon: "♿",
+                    iconColor: "#00C853",
+                    author: "Deque Systems",
+                    rating: 4.6,
+                    users: "400K+",
+                    description: "Tests your website for accessibility issues directly in Chrome DevTools. Find and fix accessibility problems during development.",
+                    categories: ["accessibility", "testing"],
+                    features: ["WCAG Compliance Checks", "Issues Highlighting", "Guided Remediation"],
+                    pricing: "Free / Pro",
+                    badge: "",
+                    features_detailed: [
+                        "Automated WCAG 2.0, 2.1, and 2.2 compliance testing",
+                        "Visual highlighting of accessibility issues",
+                        "Detailed explanations of each issue",
+                        "Suggestions for fixing problems",
+                        "Compatible with modern frameworks",
+                        "Integration with CI/CD pipelines (Pro)"
+                    ],
+                    screenshots: [
+                        "Accessibility issues summary dashboard",
+                        "Highlighted elements with issues on the page",
+                        "Detailed issue explanation with fix recommendations"
+                    ],
+                    useCases: [
+                        {
+                            title: "WCAG Compliance Validation",
+                            description: "Ensure your website meets accessibility standards and legal requirements before launch."
+                        },
+                        {
+                            title: "Accessibility-First Development",
+                            description: "Integrate accessibility testing into your development workflow to catch issues early."
+                        }
+                    ],
+                    similar: [
+                        {name: "WAVE Evaluation", icon: "🌊", iconColor: "#1B5E20", rating: 4.5},
+                        {name: "Accessibility Insights", icon: "🔍", iconColor: "#2E7D32", rating: 4.7},
+                        {name: "Siteimprove", icon: "📊", iconColor: "#388E3C", rating: 4.4}
+                    ]
+                },
+                {
+                    id: 6,
+                    name: "WhatFont",
+                    icon: "🔤",
+                    iconColor: "#7B1FA2",
+                    author: "Chenyu Zheng",
+                    rating: 4.7,
+                    users: "900K+",
+                    description: "The easiest way to identify fonts on web pages. Just hover on any text to see what font it is, including size, weight, and color.",
+                    categories: ["design", "typography"],
+                    features: ["Font Identification", "Font Metrics", "Color Info"],
+                    pricing: "Free",
+                    badge: "",
+                    features_detailed: [
+                        "Instant font family identification on hover",
+                        "Font size and line height information",
+                        "Font weight and style details",
+                        "Color values in multiple formats (HEX, RGB, HSL)",
+                        "Support for web fonts (Google Fonts, Adobe Fonts, etc.)",
+                        "Works with nested elements and complex layouts"
+                    ],
+                    screenshots: [
+                        "Font identification tooltip on hover",
+                        "Detailed typography information panel",
+                        "Color value extraction view"
+                    ],
+                    useCases: [
+                        {
+                            title: "Typography Research",
+                            description: "Quickly identify fonts used on websites for inspiration or competitive analysis."
+                        },
+                        {
+                            title: "Brand Consistency Checks",
+                            description: "Verify that typography across your website matches your brand guidelines."
+                        }
+                    ],
+                    similar: [
+                        {name: "Fonts Ninja", icon: "🥷", iconColor: "#6A1B9A", rating: 4.6},
+                        {name: "Font Finder", icon: "🔠", iconColor: "#8E24AA", rating: 4.4},
+                        {name: "TypeWonder", icon: "🔡", iconColor: "#9C27B0", rating: 4.3}
+                    ]
+                },
+                {
+                    id: 7,
+                    name: "Web Vitals",
+                    icon: "📊",
+                    iconColor: "#2196F3",
+                    author: "Google",
+                    rating: 4.8,
+                    users: "500K+",
+                    description: "Measure essential metrics for a healthy site. This extension measures the Core Web Vitals, which are metrics related to speed, responsiveness, and visual stability.",
+                    categories: ["performance", "seo", "testing"],
+                    features: ["Core Web Vitals Metrics", "Real-time Monitoring", "Performance Insights"],
+                    pricing: "Free",
+                    badge: "new",
+                    features_detailed: [
+                        "Measures LCP (Largest Contentful Paint)",
+                        "Measures FID (First Input Delay)",
+                        "Measures CLS (Cumulative Layout Shift)",
+                        "Real-time metrics as you browse",
+                        "Historical data for visited pages",
+                        "Color-coded performance indicators"
+                    ],
+                    screenshots: [
+                        "Core Web Vitals metrics dashboard",
+                        "Performance timeline across page load",
+                        "Detailed breakdown of each metric"
+                    ],
+                    useCases: [
+                        {
+                            title: "SEO Performance Optimization",
+                            description: "Monitor and improve Core Web Vitals to boost search engine rankings and user experience."
+                        },
+                        {
+                            title: "Performance Budgeting",
+                            description: "Set and maintain performance budgets by continuously monitoring key metrics."
+                        }
+                    ],
+                    similar: [
+                        {name: "Lighthouse", icon: "🔆", iconColor: "#1976D2", rating: 4.7},
+                        {name: "PageSpeed Insights", icon: "🚀", iconColor: "#0D47A1", rating: 4.6},
+                        {name: "Performance Analyzer", icon: "⚡", iconColor: "#1565C0", rating: 4.5}
+                    ]
+                },
+                {
+                    id: 8,
+                    name: "ColorZilla",
+                    icon: "🎨",
+                    iconColor: "#673AB7",
+                    author: "Alex Sirota",
+                    rating: 4.8,
+                    users: "2.5M+",
+                    description: "Advanced color picker, eyedropper, color analyzer and other colorful goodies. Get a color reading from any point in your browser.",
+                    categories: ["design", "colors"],
+                    features: ["Color Picker", "Eyedropper", "CSS Gradient Generator"],
+                    pricing: "Free",
+                    badge: "popular",
+                    features_detailed: [
+                        "Advanced Eyedropper for any element color",
+                        "Color history with recently picked colors",
+                        "Color analyzer for any pixel on page",
+                        "CSS gradient generator and editor",
+                        "Page color palette generation",
+                        "Multiple color format support (HEX, RGB, HSL)"
+                    ],
+                    screenshots: [
+                        "Color eyedropper in action",
+                        "Color palette extraction from webpage",
+                        "CSS gradient generator interface"
+                    ],
+                    useCases: [
+                        {
+                            title: "UI Color Consistency",
+                            description: "Extract exact colors from designs to ensure consistent implementation in your code."
+                        },
+                        {
+                            title: "Color Scheme Development",
+                            description: "Build and refine color palettes by sampling existing designs and websites."
+                        }
+                    ],
+                    similar: [
+                        {name: "Eye Dropper", icon: "👁️", iconColor: "#5E35B1", rating: 4.6},
+                        {name: "CSS Peeper", icon: "👁️", iconColor: "#512DA8", rating: 4.8},
+                        {name: "Color Picker", icon: "🔍", iconColor: "#4527A0", rating: 4.5}
+                    ]
+                },
+                {
+                    id: 9,
+                    name: "VisBug",
+                    icon: "🐞",
+                    iconColor: "#FF5722",
+                    author: "Google",
+                    rating: 4.5,
+                    users: "250K+",
+                    description: "Open source web design debug tools built with JavaScript. Edit any webpage visually like in design tools, inspect and understand layout structures.",
+                    categories: ["design", "debugging", "css"],
+                    features: ["Visual Editing", "Layout Inspection", "Design Tweaking"],
+                    pricing: "Free",
+                    badge: "new",
+                    features_detailed: [
+                        "Drag, resize, and move elements visually",
+                        "Edit text directly on the page",
+                        "Inspect and modify CSS properties",
+                        "Measure distances between elements",
+                        "Grid and flexbox visualizers",
+                        "Screenshot and export capabilities"
+                    ],
+                    screenshots: [
+                        "Visual element editing interface",
+                        "CSS grid visualization overlay",
+                        "Distance measurement between elements"
+                    ],
+                    useCases: [
+                        {
+                            title: "Rapid Prototyping",
+                            description: "Quickly test design changes directly in the browser without modifying code."
+                        },
+                        {
+                            title: "Design Implementation QA",
+                            description: "Verify that implemented designs match specifications by visually testing alternatives."
+                        }
+                    ],
+                    similar: [
+                        {name: "PerfectPixel", icon: "📏", iconColor: "#E64A19", rating: 4.6},
+                        {name: "CSS Peeper", icon: "👁️", iconColor: "#D84315", rating: 4.8},
+                        {name: "WhatFont", icon: "🔤", iconColor: "#BF360C", rating: 4.7}
+                    ]
+                },
+                {
+                    id: 10,
+                    name: "Wappalyzer",
+                    icon: "🔍",
+                    iconColor: "#2962FF",
+                    author: "Wappalyzer",
+                    rating: 4.8,
+                    users: "1M+",
+                    description: "Uncovers the technologies used on websites. It detects content management systems, ecommerce platforms, web servers, JavaScript frameworks, analytics tools, and more.",
+                    categories: ["productivity", "debugging"],
+                    features: ["Technology Detection", "CMS Identification", "Stack Analysis"],
+                    pricing: "Free / Premium",
+                    badge: "top",
+                    features_detailed: [
+                        "Identifies over 1,500 technologies and services",
+                        "Detects programming languages and frameworks",
+                        "Recognizes CMS and ecommerce platforms",
+                        "Identifies analytics, marketing, and tracking tools",
+                        "Browser fingerprinting detection",
+                        "Export technology stacks (Premium)"
+                    ],
+                    screenshots: [
+                        "Technology stack breakdown panel",
+                        "Detailed version information display",
+                        "Technology categories overview"
+                    ],
+                    useCases: [
+                        {
+                            title: "Competitive Analysis",
+                            description: "Understand what technologies competitors are using to inform your tech stack decisions."
+                        },
+                        {
+                            title: "Security Assessment",
+                            description: "Identify outdated or vulnerable technologies running on websites you're evaluating."
+                        }
+                    ],
+                    similar: [
+                        {name: "BuiltWith", icon: "🏗️", iconColor: "#1565C0", rating: 4.6},
+                        {name: "Ghostery", icon: "👻", iconColor: "#0D47A1", rating: 4.5},
+                        {name: "TechSnipr", icon: "🔎", iconColor: "#0277BD", rating: 4.3}
+                    ]
+                },
+                {
+                    id: 11,
+                    name: "Redux DevTools",
+                    icon: "🟣",
+                    iconColor: "#764ABC",
+                    author: "Redux",
+                    rating: 4.9,
+                    users: "1.2M+",
+                    description: "Debugging application state changes for Redux applications. Provides power-ups for your Redux development workflow including time travel debugging.",
+                    categories: ["debugging", "code"],
+                    features: ["State Inspection", "Time Travel", "Action Tracing"],
+                    pricing: "Free",
+                    badge: "popular",
+                    features_detailed: [
+                        "Monitor all dispatched Redux actions",
+                        "Time travel debugging to previous states",
+                        "State diff viewer between actions",
+                        "Import/export Redux state snapshots",
+                        "Action replay and hot reloading",
+                        "Works with most Redux middlewares"
+                    ],
+                    screenshots: [
+                        "Redux state tree visualization",
+                        "Action log with time travel controls",
+                        "State diff comparison view"
+                    ],
+                    useCases: [
+                        {
+                            title: "Complex State Debugging",
+                            description: "Track down state management issues by inspecting each action and resulting state change."
+                        },
+                        {
+                            title: "Reproducing User Flows",
+                            description: "Capture and replay user interactions by exporting and importing action sequences."
+                        }
+                    ],
+                    similar: [
+                        {name: "React DevTools", icon: "⚛️", iconColor: "#61DAFB", rating: 4.8},
+                        {name: "MobX DevTools", icon: "🔄", iconColor: "#FF9800", rating: 4.5},
+                        {name: "Vuex DevTools", icon: "🟢", iconColor: "#41B883", rating: 4.7}
+                    ]
+                },
+                {
+                    id: 12,
+                    name: "Apollo Client Devtools",
+                    icon: "🚀",
+                    iconColor: "#311C87",
+                    author: "Apollo",
+                    rating: 4.7,
+                    users: "300K+",
+                    description: "GraphQL debugging tools for Apollo Client. Inspect queries, mutations, and caching behavior in GraphQL applications.",
+                    categories: ["debugging", "code"],
+                    features: ["Query Inspector", "Cache Explorer", "GraphQL Explorer"],
+                    pricing: "Free",
+                    badge: "",
+                    features_detailed: [
+                        "Watch active queries and their results",
+                        "Inspect the Apollo Client cache",
+                        "View and manipulate local state",
+                        "Execute queries against your schema",
+                        "Trace GraphQL operations in real-time",
+                        "Track performance metrics for operations"
+                    ],
+                    screenshots: [
+                        "GraphQL query inspector interface",
+                        "Apollo cache explorer view",
+                        "Query execution playground"
+                    ],
+                    useCases: [
+                        {
+                            title: "GraphQL Query Optimization",
+                            description: "Identify inefficient or redundant GraphQL queries and optimize data fetching patterns."
+                        },
+                        {
+                            title: "Cache Management",
+                            description: "Debug client-side caching issues and verify data normalization strategies."
+                        }
+                    ],
+                    similar: [
+                        {name: "GraphQL Network", icon: "📊", iconColor: "#E535AB", rating: 4.5},
+                        {name: "Altair GraphQL", icon: "🔗", iconColor: "#6B66FF", rating: 4.6},
+                        {name: "GraphQL Playground", icon: "🎮", iconColor: "#B22CC5", rating: 4.4}
+                    ]
+                },
+                {
+                    id: 13,
+                    name: "Responsive Viewer",
+                    icon: "📱",
+                    iconColor: "#4CAF50",
+                    author: "MediaLab Solutions",
+                    rating: 4.6,
+                    users: "450K+",
+                    description: "Show multiple screens in one view. Test responsive layouts by viewing them at different device resolutions simultaneously.",
+                    categories: ["design", "testing", "responsive"],
+                    features: ["Multi-device Preview", "Custom Viewports", "Screenshot Tool"],
+                    pricing: "Free",
+                    badge: "",
+                    features_detailed: [
+                        "Simultaneous display of multiple device viewports",
+                        "40+ predefined device presets",
+                        "Create and save custom device sizes",
+                        "Take screenshots of all devices at once",
+                        "Synchronize scrolling across viewports",
+                        "Touch event simulation"
+                    ],
+                    screenshots: [
+                        "Multi-device responsive preview grid",
+                        "Custom viewport configuration panel",
+                        "Synchronized scrolling across devices"
+                    ],
+                    useCases: [
+                        {
+                            title: "Responsive Design Testing",
+                            description: "Verify that your website functions properly across multiple device sizes simultaneously."
+                        },
+                        {
+                            title: "Cross-device Bug Identification",
+                            description: "Quickly identify layout issues that only appear at specific breakpoints."
+                        }
+                    ],
+                    similar: [
+                        {name: "Window Resizer", icon: "🔳", iconColor: "#388E3C", rating: 4.5},
+                        {name: "Multi-Screen", icon: "🖥️", iconColor: "#2E7D32", rating: 4.4},
+                        {name: "Viewport Simulator", icon: "📊", iconColor: "#1B5E20", rating: 4.3}
+                    ]
+                },
+                {
+                    id: 14,
+                    name: "WAVE Evaluation Tool",
+                    icon: "🌊",
+                    iconColor: "#1976D2",
+                    author: "WebAIM",
+                    rating: 4.7,
+                    users: "350K+",
+                    description: "Evaluate web content for accessibility issues directly within your browser. Identifies WCAG errors, alerts, features, structural elements, and aria.",
+                    categories: ["accessibility", "testing"],
+                    features: ["WCAG Evaluation", "Visual Feedback", "Detailed Reports"],
+                    pricing: "Free",
+                    badge: "",
+                    features_detailed: [
+                        "Visual feedback about accessibility directly on the page",
+                        "Identifies WCAG accessibility errors and warnings",
+                        "Highlights structural elements and ARIA attributes",
+                        "No data is sent to remote servers for privacy",
+                        "Check contrast ratios for text elements",
+                        "Evaluates page structure and navigation"
+                    ],
+                    screenshots: [
+                        "Accessibility issues highlighted on page",
+                        "Detailed accessibility report panel",
+                        "Color contrast analyzer in action"
+                    ],
+                    useCases: [
+                        {
+                            title: "WCAG Compliance Testing",
+                            description: "Verify that your website meets accessibility standards and identify issues before they affect users."
+                        },
+                        {
+                            title: "Structural Semantics Verification",
+                            description: "Ensure your webpage has proper semantic structure for assistive technologies."
+                        }
+                    ],
+                    similar: [
+                        {name: "axe DevTools", icon: "♿", iconColor: "#0D47A1", rating: 4.6},
+                        {name: "Accessibility Insights", icon: "🔍", iconColor: "#01579B", rating: 4.5},
+                        {name: "ARC Toolkit", icon: "🧰", iconColor: "#0288D1", rating: 4.4}
+                    ]
+                },
+                {
+                    id: 15,
+                    name: "Pesticide for Chrome",
+                    icon: "🐜",
+                    iconColor: "#E91E63",
+                    author: "Adam Morse",
+                    rating: 4.8,
+                    users: "200K+",
+                    description: "Inserts the Pesticide CSS into the current page, outlining each element to better see placement on the page. Great for visual debugging of layouts.",
+                    categories: ["debugging", "css", "design"],
+                    features: ["Element Outlining", "Layout Debugging", "Toggle Outlines"],
+                    pricing: "Free",
+                    badge: "",
+                    features_detailed: [
+                        "Outlines all elements on a page",
+                        "Different colors for nested elements",
+                        "Toggle outlines on/off with a single click",
+                        "Customize outline colors (in settings)",
+                        "Focus on specific elements or element types",
+                        "Helps identify layout issues and overflow problems"
+                    ],
+                    screenshots: [
+                        "Page with all elements outlined",
+                        "Nested elements with color-coded outlines",
+                        "Toggle interface for enabling/disabling"
+                    ],
+                    useCases: [
+                        {
+                            title: "Layout Debugging",
+                            description: "Quickly identify positioning issues, margin collapsing, and unexpected layouts."
+                        },
+                        {
+                            title: "Container Boundary Visualization",
+                            description: "See exactly where elements begin and end to diagnose spacing problems."
+                        }
+                    ],
+                    similar: [
+                        {name: "Outliner", icon: "📏", iconColor: "#C2185B", rating: 4.6},
+                        {name: "CSS Grid Highlighter", icon: "🔲", iconColor: "#880E4F", rating: 4.5},
+                        {name: "Layout Debugger", icon: "🔍", iconColor: "#AD1457", rating: 4.4}
+                    ]
+                },
+                {
+                    id: 16,
+                    name: "Dimensions",
+                    icon: "📏",
+                    iconColor: "#FF9800",
+                    author: "Felix Niklas",
+                    rating: 4.6,
+                    users: "150K+",
+                    description: "Measure distances and alignments of elements on a webpage. A simple tool that makes it easy to see dimensions, margins, and positions.",
+                    categories: ["design", "css"],
+                    features: ["Distance Measurement", "Alignment Guides", "Element Dimensions"],
+                    pricing: "Free",
+                    badge: "",
+                    features_detailed: [
+                        "Measure distances between any elements",
+                        "Display width, height, and positions",
+                        "Show margin and padding for elements",
+                        "Alignment guides to check proper alignment",
+                        "Color-coded measurement overlays",
+                        "Cross-browser compatibility"
+                    ],
+                    screenshots: [
+                        "Element measurement with distances displayed",
+                        "Alignment guides showing proper alignment",
+                        "Margin and padding visualization"
+                    ],
+                    useCases: [
+                        {
+                            title: "Design Implementation Verification",
+                            description: "Ensure that spacing and alignment in implementation matches design specifications exactly."
+                        },
+                        {
+                            title: "Layout Consistency Checking",
+                            description: "Verify consistent spacing and alignment across similar UI components."
+                        }
+                    ],
+                    similar: [
+                        {name: "Page Ruler", icon: "📐", iconColor: "#F57C00", rating: 4.5},
+                        {name: "Measure It", icon: "📊", iconColor: "#EF6C00", rating: 4.4},
+                        {name: "PerfectPixel", icon: "👁️", iconColor: "#E65100", rating: 4.7}
+                    ]
+                },
+                {
+                    id: 17,
+                    name: "daily.dev",
+                    icon: "📰",
+                    iconColor: "#5D5CDE",
+                    author: "daily.dev",
+                    rating: 4.9,
+                    users: "300K+",
+                    description: "Get programming news and articles directly in your new tab. All content is curated by the community to ensure high quality and relevance.",
+                    categories: ["productivity", "learning"],
+                    features: ["Personalized Feed", "Bookmarks", "Community Curation"],
+                    pricing: "Free",
+                    badge: "new",
+                    features_detailed: [
+                        "Personalized developer news feed",
+                        "Filter by topics and technologies",
+                        "Save articles for later reading",
+                        "Community upvoting system for quality content",
+                        "Dark and light themes",
+                        "Cross-device synchronization"
+                    ],
+                    screenshots: [
+                        "Personalized news feed in new tab",
+                        "Article reading view with comments",
+                        "Topic customization interface"
+                    ],
+                    useCases: [
+                        {
+                            title: "Continuous Learning",
+                            description: "Stay updated with the latest development trends and technologies without actively searching for content."
+                        },
+                        {
+                            title: "Discovery of New Tools",
+                            description: "Discover new libraries, frameworks, and development techniques through curated articles."
+                        }
+                    ],
+                    similar: [
+                        {name: "Dev News", icon: "📱", iconColor: "#5C6BC0", rating: 4.7},
+                        {name: "Devhunt", icon: "🔎", iconColor: "#3949AB", rating: 4.6},
+                        {name: "CodeNews", icon: "📊", iconColor: "#303F9F", rating: 4.5}
+                    ]
+                },
+                {
+                    id: 18,
+                    name: "CSS Scan",
+                    icon: "🔎",
+                    iconColor: "#9C27B0",
+                    author: "CSS Scan",
+                    rating: 4.9,
+                    users: "400K+",
+                    description: "Instantly extract CSS and copy any element's style with a single click. Visualize CSS styles while hovering over elements.",
+                    categories: ["css", "design", "productivity"],
+                    features: ["One-click CSS Copying", "Visual Style Preview", "Color Picking"],
+                    pricing: "Premium",
+                    badge: "top",
+                    features_detailed: [
+                        "Hover over any element to view its CSS",
+                        "Copy complete CSS with a single click",
+                        "Extract specific properties only",
+                        "View computed styles in real-time",
+                        "Color picker for any element",
+                        "Export styles in multiple formats"
+                    ],
+                    screenshots: [
+                        "CSS properties panel on element hover",
+                        "One-click CSS copy interface",
+                        "Color picker in action"
+                    ],
+                    useCases: [
+                        {
+                            title: "Fast Style Replication",
+                            description: "Quickly extract and reuse styles from existing websites without using DevTools."
+                        },
+                        {
+                            title: "Design System Implementation",
+                            description: "Extract exact styles from design system examples to ensure consistency."
+                        }
+                    ],
+                    similar: [
+                        {name: "CSS Peeper", icon: "👁️", iconColor: "#7B1FA2", rating: 4.8},
+                        {name: "Stylebot", icon: "🎨", iconColor: "#6A1B9A", rating: 4.6},
+                        {name: "CSSViewer", icon: "👓", iconColor: "#4A148C", rating: 4.5}
+                    ]
+                },
+                {
+                    id: 19,
+                    name: "GitHub Repository Size",
+                    icon: "📦",
+                    iconColor: "#424242",
+                    author: "Harsh Vakharia",
+                    rating: 4.7,
+                    users: "250K+",
+                    description: "Displays repository and file size on GitHub. See the size of any repo before cloning, and individual file sizes throughout the repository.",
+                    categories: ["productivity", "git"],
+                    features: ["Repository Size Display", "File Size Display", "Directory Size Calculation"],
+                    pricing: "Free",
+                    badge: "",
+                    features_detailed: [
+                        "Shows repository size on main repository page",
+                        "Displays size of each file in file browser",
+                        "Calculates directory sizes",
+                        "Shows download size for cloning",
+                        "Indicates large files that might cause issues",
+                        "Works with private repositories"
+                    ],
+                    screenshots: [
+                        "Repository size display on GitHub repo",
+                        "File sizes shown in GitHub file browser",
+                        "Directory size calculation view"
+                    ],
+                    useCases: [
+                        {
+                            title: "Repository Size Evaluation",
+                            description: "Assess repo size before cloning to avoid surprises with large repositories."
+                        },
+                        {
+                            title: "Large File Identification",
+                            description: "Identify unnecessarily large files that should be removed or added to gitignore."
+                        }
+                    ],
+                    similar: [
+                        {name: "OctoLinker", icon: "🔗", iconColor: "#616161", rating: 4.7},
+                        {name: "Refined GitHub", icon: "✨", iconColor: "#212121", rating: 4.9},
+                        {name: "GitHub File Size", icon: "📋", iconColor: "#757575", rating: 4.5}
+                    ]
+                },
+                {
+                    id: 20,
+                    name: "Refined GitHub",
+                    icon: "✨",
+                    iconColor: "#212121",
+                    author: "Sindre Sorhus",
+                    rating: 4.9,
+                    users: "350K+",
+                    description: "Simplifies the GitHub interface and adds useful features. Makes GitHub more usable through dozens of small UI enhancements.",
+                    categories: ["productivity", "git"],
+                    features: ["UI Enhancements", "Keyboard Shortcuts", "PR Improvements"],
+                    pricing: "Free",
+                    badge: "popular",
+                    features_detailed: [
+                        "Shows repo size and download times",
+                        "Adds file download button",
+                        "Enhances pull request diffs and reviews",
+                        "Adds reaction avatars to comments",
+                        "Highlights owned repositories in feed",
+                        "Adds one-click merge conflict resolution buttons"
+                    ],
+                    screenshots: [
+                        "Enhanced GitHub PR interface",
+                        "File explorer with additional features",
+                        "Comment section with reaction avatars"
+                    ],
+                    useCases: [
+                        {
+                            title: "Streamlined Code Reviews",
+                            description: "Review pull requests more efficiently with enhanced diff views and navigation tools."
+                        },
+                        {
+                            title: "GitHub Workflow Optimization",
+                            description: "Speed up common GitHub tasks with shortcuts and UI enhancements."
+                        }
+                    ],
+                    similar: [
+                        {name: "OctoTree", icon: "🌳", iconColor: "#424242", rating: 4.8},
+                        {name: "GitHub Repository Size", icon: "📦", iconColor: "#616161", rating: 4.7},
+                        {name: "GitHub Dark Theme", icon: "🌙", iconColor: "#757575", rating: 4.6}
+                    ]
+                },
+                {
+                    id: 21,
+                    name: "npmhub",
+                    icon: "📦",
+                    iconColor: "#CB3837",
+                    author: "Federico Brigante",
+                    rating: 4.7,
+                    users: "100K+",
+                    description: "Explore npm dependencies directly on GitHub repo pages. See package details and statistics without leaving GitHub.",
+                    categories: ["productivity", "npm", "git"],
+                    features: ["Dependency Exploration", "Version Info", "Package Stats"],
+                    pricing: "Free",
+                    badge: "",
+                    features_detailed: [
+                        "Lists dependencies in package.json files",
+                        "Shows dependency descriptions and versions",
+                        "Highlights outdated packages",
+                        "Links directly to npm package pages",
+                        "Works with devDependencies and peerDependencies",
+                        "Displays package download statistics"
+                    ],
+                    screenshots: [
+                        "Dependencies list on GitHub repository",
+                        "Package details with version information",
+                        "Download statistics for dependencies"
+                    ],
+                    useCases: [
+                        {
+                            title: "Package Evaluation",
+                            description: "Quickly assess the dependencies of a project before considering adoption."
+                        },
+                        {
+                            title: "Dependency Management",
+                            description: "Identify outdated or potentially problematic dependencies in your projects."
+                        }
+                    ],
+                    similar: [
+                        {name: "Package Hub", icon: "📊", iconColor: "#B9131A", rating: 4.5},
+                        {name: "npm Graph", icon: "📈", iconColor: "#E53935", rating: 4.4},
+                        {name: "Dependo", icon: "🔗", iconColor: "#C62828", rating: 4.3}
+                    ]
+                },
+                {
+                    id: 22,
+                    name: "SVG Export",
+                    icon: "🖼️",
+                    iconColor: "#FF5722",
+                    author: "Mike Williamson",
+                    rating: 4.8,
+                    users: "150K+",
+                    description: "Find and download all SVG assets on a webpage. Extract vector graphics for reuse in your own projects.",
+                    categories: ["design", "assets"],
+                    features: ["SVG Detection", "One-click Download", "Batch Export"],
+                    pricing: "Free",
+                    badge: "",
+                    features_detailed: [
+                        "Automatically detects all SVGs on a page",
+                        "One-click download of individual SVGs",
+                        "Batch export all SVGs at once",
+                        "Shows preview of detected SVGs",
+                        "Extracts inline and background SVGs",
+                        "Copies SVG code to clipboard"
+                    ],
+                    screenshots: [
+                        "SVG detection results panel",
+                        "Preview gallery of found SVGs",
+                        "Batch export interface"
+                    ],
+                    useCases: [
+                        {
+                            title: "Asset Collection",
+                            description: "Gather vector assets from websites for inspiration or reference in your designs."
+                        },
+                        {
+                            title: "Icon Extraction",
+                            description: "Extract icon sets from websites for analysis or reuse in your projects."
+                        }
+                    ],
+                    similar: [
+                        {name: "SVG Grabber", icon: "🖌️", iconColor: "#E64A19", rating: 4.7},
+                        {name: "Image Downloader", icon: "📷", iconColor: "#D84315", rating: 4.6},
+                        {name: "Asset Collector", icon: "💾", iconColor: "#BF360C", rating: 4.4}
+                    ]
+                },
+                {
+                    id: 23,
+                    name: "Fonts Ninja",
+                    icon: "🥷",
+                    iconColor: "#9C27B0",
+                    author: "Fonts Ninja",
+                    rating: 4.8,
+                    users: "200K+",
+                    description: "Identify fonts on any website, try them in your designs, and bookmark them for later use. More advanced than simple font identification tools.",
+                    categories: ["design", "typography"],
+                    features: ["Font Identification", "Font Testing", "Typography Details"],
+                    pricing: "Free / Pro",
+                    badge: "",
+                    features_detailed: [
+                        "Identify fonts from any website",
+                        "Test identified fonts in your own text",
+                        "Bookmark fonts for future reference",
+                        "Get font details (foundry, price, similar fonts)",
+                        "Export font stacks for use in your projects",
+                        "Sync fonts across devices (Pro)"
+                    ],
+                    screenshots: [
+                        "Font identification in action",
+                        "Font testing panel with custom text",
+                        "Font bookmarks collection view"
+                    ],
+                    useCases: [
+                        {
+                            title: "Typography Research",
+                            description: "Research and collect fonts used by leading websites in your industry."
+                        },
+                        {
+                            title: "Font Selection",
+                            description: "Test how specific fonts look with your own content before purchasing or implementing."
+                        }
+                    ],
+                    similar: [
+                        {name: "WhatFont", icon: "🔤", iconColor: "#7B1FA2", rating: 4.7},
+                        {name: "FontFace Ninja", icon: "👤", iconColor: "#6A1B9A", rating: 4.6},
+                        {name: "Type Sample", icon: "🔠", iconColor: "#4A148C", rating: 4.5}
+                    ]
+                },
+                {
+                    id: 24,
+                    name: "BrowserStack Live",
+                    icon: "🌐",
+                    iconColor: "#F44336",
+                    author: "BrowserStack",
+                    rating: 4.6,
+                    users: "300K+",
+                    description: "Test your website instantly in different browsers and operating systems. Access real devices and browsers without leaving Chrome.",
+                    categories: ["testing", "compatibility"],
+                    features: ["Cross-browser Testing", "Real Device Access", "Screenshot Testing"],
+                    pricing: "Free Trial / Paid",
+                    badge: "",
+                    features_detailed: [
+                        "Test on 2000+ real browsers and devices",
+                        "One-click access to different OS/browser combinations",
+                        "Local testing of development environments",
+                        "Integrated developer tools",
+                        "Screenshot comparison across browsers",
+                        "Geolocation testing"
+                    ],
+                    screenshots: [
+                        "Browser and device selection interface",
+                        "Testing in progress on multiple devices",
+                        "Screenshot comparison view"
+                    ],
+                    useCases: [
+                        {
+                            title: "Cross-browser Compatibility",
+                            description: "Ensure your website functions correctly across different browsers and operating systems."
+                        },
+                        {
+                            title: "Mobile Responsiveness Testing",
+                            description: "Test on real mobile devices without needing physical access to those devices."
+                        }
+                    ],
+                    similar: [
+                        {name: "LambdaTest", icon: "🧪", iconColor: "#D32F2F", rating: 4.5},
+                        {name: "CrossBrowserTesting", icon: "🔄", iconColor: "#C62828", rating: 4.5},
+                        {name: "Responsive Viewer", icon: "📱", iconColor: "#B71C1C", rating: 4.6}
+                    ]
+                }
+            ];
+            
+            const extensionsGrid = document.getElementById('extensionsGrid');
+            const searchInput = document.getElementById('searchInput');
+            const noResults = document.getElementById('noResults');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const filters = document.getElementById('filters');
+            const extensionModal = document.getElementById('extensionModal');
+            const closeModal = document.getElementById('closeModal');
+            
+            let filteredExtensions = [...extensions];
+            let displayedItems = 12;
+            const incrementItems = 6;
+            
+            // Create extension cards
+            function renderExtensions() {
+                extensionsGrid.innerHTML = '';
+                
+                if (filteredExtensions.length === 0) {
+                    noResults.style.display = 'block';
+                    loadMoreBtn.style.display = 'none';
+                    return;
+                }
+                
+                noResults.style.display = 'none';
+                
+                const itemsToDisplay = Math.min(displayedItems, filteredExtensions.length);
+                
+                for (let i = 0; i < itemsToDisplay; i++) {
+                    const extension = filteredExtensions[i];
+                    createExtensionCard(extension);
+                }
+                
+                // Show/hide load more button
+                if (displayedItems >= filteredExtensions.length) {
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    loadMoreBtn.style.display = 'block';
+                }
+            }
+            
+            // Create a single extension card
+            function createExtensionCard(extension) {
+                const card = document.createElement('div');
+                card.className = 'extension-card';
+                card.dataset.id = extension.id;
+                
+                // Create badge if it exists
+                let badgeHTML = '';
+                if (extension.badge) {
+                    let badgeClass = '';
+                    if (extension.badge === 'popular') badgeClass = 'badge-popular';
+                    if (extension.badge === 'new') badgeClass = 'badge-new';
+                    if (extension.badge === 'top') badgeClass = 'badge-top';
+                    
+                    badgeHTML = `<span class="extension-badge ${badgeClass}">${extension.badge}</span>`;
+                }
+                
+                card.innerHTML = `
+                    ${badgeHTML}
+                    <div class="card-header">
+                        <div class="extension-icon" style="background-color: ${extension.iconColor}">
+                            ${extension.icon}
+                        </div>
+                        <div class="extension-details">
+                            <h3 class="extension-name">${extension.name}</h3>
+                            <div class="extension-author">by ${extension.author}</div>
+                            <div class="extension-rating">
+                                <span class="stars">★</span>
+                                <span class="rating-value">${extension.rating}</span>
+                                <span class="extension-users"> · ${extension.users} users</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="extension-description">${extension.description}</p>
+                        <div class="tag-container">
+                            ${extension.categories.slice(0, 2).map(category => 
+                                `<span class="tag category">${capitalizeFirstLetter(category)}</span>`
+                            ).join('')}
+                            ${extension.features.slice(0, 2).map(feature => 
+                                `<span class="tag feature">${feature}</span>`
+                            ).join('')}
+                            <span class="tag pricing">${extension.pricing}</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="more-info">More details <span class="info-icon">→</span></a>
+                        <a href="#" class="install-btn"><span class="btn-icon">+</span> Add to Chrome</a>
+                    </div>
+                `;
+                
+                // Open modal on click
+                card.addEventListener('click', (e) => {
+                    if (!e.target.closest('.install-btn')) {
+                        openModal(extension);
+                    }
+                });
+                
+                extensionsGrid.appendChild(card);
+            }
+            
+            // Filter extensions based on search input and category
+            function filterExtensions() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+                
+                filteredExtensions = extensions.filter(extension => {
+                    // Filter by category
+                    const categoryMatch = activeCategory === 'all' || extension.categories.includes(activeCategory);
+                    
+                    // Filter by search term
+                    const searchMatch = searchTerm === '' || 
+                        extension.name.toLowerCase().includes(searchTerm) ||
+                        extension.description.toLowerCase().includes(searchTerm) ||
+                        extension.categories.some(cat => cat.toLowerCase().includes(searchTerm)) ||
+                        extension.features.some(feat => feat.toLowerCase().includes(searchTerm));
+                    
+                    return categoryMatch && searchMatch;
+                });
+                
+                // Reset displayed items when filtering
+                displayedItems = 12;
+                renderExtensions();
+            }
+            
+            // Search input event
+            searchInput.addEventListener('input', filterExtensions);
+            
+            // Category filter buttons
+            filters.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    e.target.classList.add('active');
+                    
+                    // Filter extensions
+                    filterExtensions();
+                }
+            });
+            
+            // Load more button - FIXED EVENT HANDLER
+            loadMoreBtn.addEventListener('click', function() {
+                displayedItems += incrementItems;
+                renderExtensions();
+                console.log("Load more clicked, now showing", displayedItems, "items");
+            });
+            
+            // Open modal with extension details
+            function openModal(extension) {
+                // Set modal header background color
+                document.getElementById('modalHeader').style.backgroundColor = extension.iconColor;
+                
+                // Populate modal content
+                document.getElementById('modalTitle').textContent = extension.name;
+                document.getElementById('modalSubtitle').textContent = `by ${extension.author}`;
+                document.getElementById('modalDescription').textContent = extension.description;
+                document.getElementById('modalRatingNumber').textContent = extension.rating;
+                document.getElementById('modalUsers').textContent = `${extension.users} users`;
+                
+                // Features list
+                const featuresList = document.getElementById('modalFeatures');
+                featuresList.innerHTML = '';
+                extension.features_detailed.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = feature;
+                    featuresList.appendChild(li);
+                });
+                
+                // Screenshots
+                const screenshotsContainer = document.getElementById('modalScreenshots');
+                screenshotsContainer.innerHTML = '';
+                extension.screenshots.forEach(screenshot => {
+                    const screenshotDiv = document.createElement('div');
+                    screenshotDiv.className = 'screenshot';
+                    // Using a placeholder for the image
+                    screenshotDiv.innerHTML = `
+                        <div style="width: 100%; height: 180px; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; color: #757575;">
+                            ${screenshot}
+                        </div>
+                    `;
+                    screenshotsContainer.appendChild(screenshotDiv);
+                });
+                
+                // Use cases
+                const useCasesContainer = document.getElementById('modalUseCases');
+                useCasesContainer.innerHTML = '';
+                extension.useCases.forEach(useCase => {
+                    const useCaseDiv = document.createElement('div');
+                    useCaseDiv.className = 'use-case';
+                    useCaseDiv.innerHTML = `
+                        <div class="use-case-title">${useCase.title}</div>
+                        <p>${useCase.description}</p>
+                    `;
+                    useCasesContainer.appendChild(useCaseDiv);
+                });
+                
+                // Similar extensions
+                const similarContainer = document.getElementById('modalSimilar');
+                similarContainer.innerHTML = '';
+                extension.similar.forEach(similar => {
+                    const similarDiv = document.createElement('div');
+                    similarDiv.className = 'similar-card';
+                    similarDiv.innerHTML = `
+                        <div class="similar-icon">
+                            <span style="background-color: ${similar.iconColor}">${similar.icon}</span>
+                        </div>
+                        <div class="similar-details">
+                            <div class="similar-name">${similar.name}</div>
+                            <div class="similar-rating">
+                                <span class="similar-stars">★</span>
+                                <span>${similar.rating}</span>
+                            </div>
+                        </div>
+                    `;
+                    similarContainer.appendChild(similarDiv);
+                });
+                
+                // Update install button
+                document.getElementById('modalInstallBtn').textContent = extension.pricing.includes('Free') ? '+ Add to Chrome' : '+ Buy & Install';
+                
+                // Show modal
+                extensionModal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+            
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                extensionModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            });
+            
+            // Close modal when clicking outside content
+            extensionModal.addEventListener('click', (e) => {
+                if (e.target === extensionModal) {
+                    extensionModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Helper function to capitalize first letter
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            
+            // Initialize
+            renderExtensions();
+            
+            // Add console log to verify the load more button is working
+            console.log("Extension presentation initialized. Initial display count:", displayedItems);
+        });
+    </script>
+</body>
+</html>
