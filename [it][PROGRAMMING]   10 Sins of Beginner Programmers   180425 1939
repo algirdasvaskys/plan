@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Sins of Beginner Programmers</title>
+    <style>
+        :root {
+            --primary: #ff5252;
+            --secondary: #3d5afe;
+            --dark: #212121;
+            --light: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding: 20px;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background-color: var(--primary);
+            border-radius: 5px;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+        
+        .author {
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--dark);
+            opacity: 0.7;
+        }
+        
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide h2 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .slide h2 .number {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .slide p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .slide .code-example {
+            background-color: var(--dark);
+            color: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        
+        .slide .tip {
+            background-color: rgba(61, 90, 254, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 10px 15px;
+            margin-top: 15px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background-color: #ddd;
+            margin-top: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary);
+            width: 10%;
+            transition: width 0.5s ease;
+        }
+        
+        .timer {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .slider-container {
+                height: 550px;
+            }
+            
+            .slide {
+                padding: 20px;
+            }
+            
+            .slide h2 {
+                font-size: 1.5rem;
+            }
+            
+            .slide p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>10 Sins of Beginner Programmers</h1>
+            <p class="subtitle">Common pitfalls to avoid on your coding journey</p>
+            <p class="author">by</p>
+        </header>
+        
+        <div class="slider-container">
+            <div class="slide active">
+                <h2><span class="number">1</span>Not Using Version Control</h2>
+                <p>Working without Git or another version control system is like writing without saving. You risk losing work and have no way to track changes or collaborate effectively.</p>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> Learn basic Git commands (init, add, commit, push, pull) and use them daily. Create a GitHub account and start versioning your projects today.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">2</span>Poor Variable Naming</h2>
+                <p>Using unclear variable names makes code hard to understand and maintain.</p>
+                <div class="code-example">
+                    // Bad<br>
+                    let x = 86400;<br><br>
+                    
+                    // Good<br>
+                    let secondsInDay = 86400;
+                </div>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> Name variables according to their purpose, not their content. Be descriptive but concise.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">3</span>Not Writing Comments</h2>
+                <p>Good code is self-documenting, but comments help explain WHY something is done, not just WHAT is done.</p>
+                <div class="code-example">
+                    // Calculate discount for loyal customers<br>
+                    // who have been with us for over 5 years<br>
+                    if (customerYears > 5) {<br>
+                    &nbsp;&nbsp;price = price * 0.85;<br>
+                    }
+                </div>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> Comment on the why, not the how. The code already shows how.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">4</span>Copy-Pasting Code</h2>
+                <p>Duplicating code leads to maintenance nightmares. If you need to fix a bug, you'll need to fix it in multiple places.</p>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> Follow the DRY principle (Don't Repeat Yourself). If you're copy-pasting code, you probably need a function or class.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">5</span>Ignoring Error Handling</h2>
+                <p>Not handling exceptions or errors properly can lead to unexpected crashes or security vulnerabilities.</p>
+                <div class="code-example">
+                    try {<br>
+                    &nbsp;&nbsp;// Code that might fail<br>
+                    &nbsp;&nbsp;readUserData(userId);<br>
+                    } catch (error) {<br>
+                    &nbsp;&nbsp;// Handle the error gracefully<br>
+                    &nbsp;&nbsp;console.error("Failed to read user data:", error);<br>
+                    &nbsp;&nbsp;showFallbackUI();<br>
+                    }
+                </div>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> Always anticipate what could go wrong, and handle it appropriately.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">6</span>Not Testing Your Code</h2>
+                <p>Relying solely on manual testing wastes time and misses edge cases. Automated tests save time in the long run.</p>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> Learn about unit testing, integration testing, and test-driven development (TDD). Start with simple test cases for your functions.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">7</span>Overcomplicating Solutions</h2>
+                <p>Using complex patterns or approaches when a simple solution would work better. Remember KISS (Keep It Simple, Stupid).</p>
+                <div class="code-example">
+                    // Overcomplicated<br>
+                    function isEven(num) {<br>
+                    &nbsp;&nbsp;return num.toString(2).charAt(num.toString(2).length - 1) === '0';<br>
+                    }<br><br>
+                    
+                    // Simple<br>
+                    function isEven(num) {<br>
+                    &nbsp;&nbsp;return num % 2 === 0;<br>
+                    }
+                </div>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> Optimize for code readability and maintainability first, performance second.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">8</span>Not Learning Keyboard Shortcuts</h2>
+                <p>Using the mouse for everything slows you down. IDE shortcuts dramatically increase productivity.</p>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> Learn 2-3 new shortcuts each week. Common ones: duplicate line, move line up/down, multi-cursor selection, find/replace, and quick navigation.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">9</span>Not Reading Documentation</h2>
+                <p>Relying solely on tutorials or Stack Overflow without reading official documentation leads to misunderstandings and sub-optimal solutions.</p>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> Before using a new library or framework, spend time reading its documentation. Most have excellent "Getting Started" guides.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">10</span>Not Getting Code Reviews</h2>
+                <p>Working in isolation prevents learning from others. Code reviews help catch bugs, improve design, and share knowledge.</p>
+                <div class="tip">
+                    <strong>Pro Tip:</strong> If you don't have teammates, join coding communities, open-source projects, or coding forums where you can share your code for feedback.
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" id="prev">Previous</button>
+            <button class="btn" id="next">Next</button>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+        
+        <div class="timer" id="timer">60 seconds remaining</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            const progressBar = document.getElementById('progress');
+            const timerEl = document.getElementById('timer');
+            
+            let currentSlide = 0;
+            let timeRemaining = 60; // 60 seconds = 1 minute
+            let timer;
+            
+            // Update slide
+            function showSlide(n) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Show the current slide
+                slides[n].classList.add('active');
+                
+                // Update progress bar
+                const progressPercentage = ((n + 1) / slides.length) * 100;
+                progressBar.style.width = progressPercentage + '%';
+                
+                // Disable prev button on first slide
+                if (n === 0) {
+                    prevBtn.disabled = true;
+                    prevBtn.style.opacity = 0.5;
+                } else {
+                    prevBtn.disabled = false;
+                    prevBtn.style.opacity = 1;
+                }
+                
+                // Disable next button on last slide
+                if (n === slides.length - 1) {
+                    nextBtn.disabled = true;
+                    nextBtn.style.opacity = 0.5;
+                } else {
+                    nextBtn.disabled = false;
+                    nextBtn.style.opacity = 1;
+                }
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            }
+            
+            // Next slide
+            function nextSlide() {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            }
+            
+            // Auto advance
+            function startTimer() {
+                timer = setInterval(function() {
+                    timeRemaining--;
+                    
+                    // Update timer display
+                    timerEl.textContent = timeRemaining + ' seconds remaining';
+                    
+                    // Auto advance to next slide every 6 seconds
+                    if (timeRemaining % 6 === 0 && currentSlide < slides.length - 1) {
+                        nextSlide();
+                    }
+                    
+                    // End of presentation
+                    if (timeRemaining <= 0) {
+                        clearInterval(timer);
+                        timerEl.textContent = 'Time\'s up!';
+                    }
+                }, 1000);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+            
+            // Initialize
+            showSlide(currentSlide);
+            startTimer();
+        });
+    </script>
+</body>
+</html>
