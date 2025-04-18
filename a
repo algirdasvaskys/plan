@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Tech Myths Debunked in 1min</title>
+    <style>
+        :root {
+            --primary: #00bcd4;
+            --secondary: #ff4081;
+            --dark: #263238;
+            --light: #eceff1;
+            --true: #4caf50;
+            --false: #f44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding: 20px;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+        
+        h1 {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+        
+        .author {
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--dark);
+            opacity: 0.7;
+        }
+        
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide h2 {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .slide h2 .number {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .myth {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .myth-label {
+            background-color: var(--false);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .myth-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .reality {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .reality-label {
+            background-color: var(--true);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .reality-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        
+        .evidence {
+            background-color: rgba(0, 188, 212, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 10px 15px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            opacity: 0.85;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background-color: #ddd;
+            margin-top: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            width: 10%;
+            transition: width 0.5s ease;
+        }
+        
+        .timer {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 5px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .slider-container {
+                height: 550px;
+            }
+            
+            .slide {
+                padding: 20px;
+            }
+            
+            .slide h2 {
+                font-size: 1.5rem;
+            }
+            
+            .reality-text, .myth-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>10 Tech Myths Debunked</h1>
+            <p class="subtitle">Separating tech fact from fiction in 60 seconds</p>
+            <p class="author">by </p>
+        </header>
+        
+        <div class="slider-container">
+            <div class="slide active">
+                <h2><span class="number">1</span>More Megapixels = Better Photos</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">Higher megapixel count always means better camera quality.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        Sensor size, lens quality, and image processing are far more important than raw megapixel count. A 12MP camera with good components can outperform a 48MP camera with inferior components.
+                    </div>
+                </div>
+                <div class="evidence">
+                    This is why flagship phones like iPhones often have fewer megapixels than budget phones but take better photos.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">2</span>Charging Overnight Ruins Batteries</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">Leaving your phone charging overnight will destroy the battery.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        Modern devices have smart charging features that stop charging when the battery is full. While keeping a battery at 100% constantly isn't ideal, overnight charging won't significantly harm modern lithium-ion batteries.
+                    </div>
+                </div>
+                <div class="evidence">
+                    Most phones now use "trickle charging" when reaching capacity, and some even learn your habits to optimize charging schedules.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">3</span>Mac Computers Don't Get Viruses</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">Apple computers are immune to malware and viruses.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        While macOS has certain security advantages, no operating system is immune to malware. Macs have fewer viruses primarily because they have a smaller market share, making them less attractive targets.
+                    </div>
+                </div>
+                <div class="evidence">
+                    Mac-specific malware is increasingly common as Apple's market share grows, with several major macOS malware strains discovered in recent years.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">4</span>Private Browsing Makes You Anonymous</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">Incognito or private browsing mode makes you completely anonymous online.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        Private browsing only prevents your browser from saving your history locally. Your internet service provider, employers, websites, and network administrators can still see your activity.
+                    </div>
+                </div>
+                <div class="evidence">
+                    For actual privacy, you'd need additional tools like a VPN, and even then complete anonymity is difficult to achieve.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">5</span>Closing Apps Saves Battery</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">Constantly closing background apps improves battery life.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        Modern smartphones automatically manage background apps efficiently. Constantly force-closing apps can use more battery since apps need to fully restart when opened again, rather than resuming from a suspended state.
+                    </div>
+                </div>
+                <div class="evidence">
+                    Both Apple and Google have confirmed that force-closing apps does not improve battery life and can actually hurt performance.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">6</span>More RAM Always Means Faster Performance</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">More RAM always makes a computer faster.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        RAM is just one component affecting performance. Once you have sufficient RAM for your tasks, adding more provides diminishing returns. CPU speed, storage type (SSD vs HDD), and software optimization often matter more.
+                    </div>
+                </div>
+                <div class="evidence">
+                    For example, a computer with 8GB RAM and an SSD will typically outperform one with 16GB RAM and a traditional hard drive for most everyday tasks.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">7</span>Airport X-Rays Damage Electronics</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">Airport security scanners will erase data or damage electronic devices.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        Modern airport X-ray machines use low-level radiation that is not powerful enough to affect solid-state memory, flash drives, or other modern electronic components.
+                    </div>
+                </div>
+                <div class="evidence">
+                    While very old magnetic media (like floppy disks) could be affected, today's solid-state storage is completely safe going through airport security.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">8</span>Higher Refresh Rates Drain Battery Faster</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">Higher screen refresh rates (90Hz, 120Hz) always significantly reduce battery life.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        While higher refresh rates can use more power, modern devices use adaptive refresh rates that dynamically adjust based on what you're doing. Many devices only use higher rates when needed, minimizing battery impact.
+                    </div>
+                </div>
+                <div class="evidence">
+                    Tests show that with adaptive refresh technology, the difference in battery life between 60Hz and 120Hz can be as little as 5-10% in real-world usage.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">9</span>5G Causes Health Problems</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">5G cellular technology is dangerous to human health.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        Scientific consensus confirms that 5G technology, which uses non-ionizing radiation, does not pose health risks at the levels used for cellular communications. Multiple studies have found no evidence linking 5G to adverse health effects.
+                    </div>
+                </div>
+                <div class="evidence">
+                    The World Health Organization and numerous regulatory agencies worldwide have confirmed that 5G operates well within established safety guidelines.
+                </div>
+            </div>
+            
+            <div class="slide">
+                <h2><span class="number">10</span>Cloud Storage Is Less Secure</h2>
+                <div class="myth">
+                    <span class="myth-label">MYTH</span>
+                    <span class="myth-text">Storing data in the cloud is always less secure than local storage.</span>
+                </div>
+                <div class="reality">
+                    <span class="reality-label">FACT</span>
+                    <div class="reality-text">
+                        Reputable cloud services use enterprise-grade security, encryption, and regular security audits. For most users, major cloud providers offer better security than personal devices, which can be lost, stolen, or compromised by malware.
+                    </div>
+                </div>
+                <div class="evidence">
+                    Major cloud breaches usually involve compromised passwords or social engineering rather than infrastructure weaknesses. Using strong passwords and two-factor authentication makes cloud storage very secure.
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" id="prev">Previous</button>
+            <button class="btn" id="next">Next</button>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+        
+        <div class="timer" id="timer">60 seconds remaining</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            const progressBar = document.getElementById('progress');
+            const timerEl = document.getElementById('timer');
+            
+            let currentSlide = 0;
+            let timeRemaining = 60; // 60 seconds = 1 minute
+            let timer;
+            
+            // Update slide
+            function showSlide(n) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Show the current slide
+                slides[n].classList.add('active');
+                
+                // Update progress bar
+                const progressPercentage = ((n + 1) / slides.length) * 100;
+                progressBar.style.width = progressPercentage + '%';
+                
+                // Disable prev button on first slide
+                if (n === 0) {
+                    prevBtn.disabled = true;
+                    prevBtn.style.opacity = 0.5;
+                } else {
+                    prevBtn.disabled = false;
+                    prevBtn.style.opacity = 1;
+                }
+                
+                // Disable next button on last slide
+                if (n === slides.length - 1) {
+                    nextBtn.disabled = true;
+                    nextBtn.style.opacity = 0.5;
+                } else {
+                    nextBtn.disabled = false;
+                    nextBtn.style.opacity = 1;
+                }
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            }
+            
+            // Next slide
+            function nextSlide() {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            }
+            
+            // Auto advance
+            function startTimer() {
+                timer = setInterval(function() {
+                    timeRemaining--;
+                    
+                    // Update timer display
+                    timerEl.textContent = timeRemaining + ' seconds remaining';
+                    
+                    // Auto advance to next slide every 6 seconds
+                    if (timeRemaining % 6 === 0 && currentSlide < slides.length - 1) {
+                        nextSlide();
+                    }
+                    
+                    // End of presentation
+                    if (timeRemaining <= 0) {
+                        clearInterval(timer);
+                        timerEl.textContent = 'Time\'s up!';
+                    }
+                }, 1000);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+            
+            // Touch navigation for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            const slider = document.querySelector('.slider-container');
+            
+            slider.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            slider.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const threshold = 50; // minimum pixel distance for swipe
+                
+                if (touchEndX + threshold < touchStartX) {
+                    // Swipe left, go to next slide
+                    nextSlide();
+                } else if (touchEndX > touchStartX + threshold) {
+                    // Swipe right, go to previous slide
+                    prevSlide();
+                }
+            }
+            
+            // Initialize
+            showSlide(currentSlide);
+            startTimer();
+        });
+    </script>
+</body>
+</html>
+
