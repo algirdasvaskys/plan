@@ -1,141 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Britain Building Again</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .banner {
-            background: url('path_to_image.jpg') no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 50px 0;
-            text-align: center;
-        }
-        .highlight {
-            background-color: #f8f9fa;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .section-title {
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>YouTube Video Example</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    #player {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100vh;
+    }
+  </style>
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
+  <div id="player"></div>
 
-    <header class="banner">
-        <h1>Get Britain Building Again</h1>
-        <p>The dream of homeownership is now out of reach for too many young people.</p>
-    </header>
+  <script>
+    var url = 'https://www.youtube.com/watch?v=kxUyIUHAzkg&list=RD9UqOOpllX8c&index=29';
+    var videoId = getYouTubeVideoId(url);
 
-    <div class="container">
-        <section>
-            <h2 class="section-title">Labour's Housing Policy</h2>
-            <p>Labour will get Britain building again, creating jobs across England, with 1.5 million new homes over the next parliament.</p>
-            
-            <div class="highlight">
-                <h3>National Policy Planning Framework</h3>
-                <p>We will immediately update the National Policy Planning Framework to undo damaging Conservative changes, including restoring mandatory housing targets.</p>
-                <p>Labour will take tough action to ensure planning authorities have up-to-date Local Plans and reform and strengthen the presumption in favour of sustainable development.</p>
-            </div>
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 1
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
 
-            <p>Labour will support local authorities by funding additional planning officers, through increasing the rate of the stamp duty surcharge paid by non-UK residents. We will ensure local communities continue to shape housebuilding in their area, but where necessary Labour will not be afraid to make full use of intervention powers to build the houses we need.</p>
-        </section>
+    function onPlayerReady(event) {
+      console.log('YouTube player is ready');
+    }
 
-        <section>
-            <h2 class="section-title">Brownfield First Approach</h2>
-            <p>Labour will take a brownfield first approach, prioritising the development of previously used land wherever possible, and fast-tracking approval of urban brownfield sites. But brownfield development alone will not be enough to meet our housing need.</p>
-        </section>
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        console.log('Video started playing');
+      }
+      if (event.data === YT.PlayerState.ENDED) {
+        console.log('Video playback ended');
+      }
+    }
 
-        <section>
-            <h2 class="section-title">Preserving the Green Belt</h2>
-            <p>Labour is committed to preserving the green belt which has served England’s towns and cities well over many decades. Under the Conservatives, greenbelt land is regularly released for development but haphazardly and often for speculative housebuilding. Without changing its purpose or general extent, Labour will take a more strategic approach to greenbelt land designation and release to build more homes in the right places.</p>
-            <p>The release of lower quality ‘grey belt’ land will be prioritised and we will introduce ‘golden rules’ to ensure development benefits communities and nature.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">New Towns and Urban Extensions</h2>
-            <p>In partnership with local leaders and communities, a Labour government will build a new generation of new towns, inspired by the proud legacy of the 1945 Labour government. Alongside urban extensions and regeneration projects, these will form part of a series of large-scale new communities across England.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Cross-Boundary Strategic Planning</h2>
-            <p>Housing need in England cannot be met without planning for growth on a larger than local scale so we will introduce effective new mechanisms for cross-boundary strategic planning. Labour will require all Combined and Mayoral Authorities to strategically plan for housing growth in their areas. We will give Combined Authorities new planning powers along with new freedoms and flexibilities to make better use of grant funding.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Reforming Compulsory Purchase</h2>
-            <p>Labour will further reform compulsory purchase compensation rules to improve land assembly, speed up site delivery, and deliver housing, infrastructure, amenity, and transport benefits in the public interest.</p>
-            <p>We will take steps to ensure that for specific types of development schemes, landowners are awarded fair compensation rather than inflated prices based on the prospect ofplanning permission.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Increasing Social and Affordable Housing</h2>
-            <p>Labour will deliver the biggest increase in social and affordable housebuilding in a generation. We will strengthen planning obligations to ensure new developments provide more affordable homes; make changes to the Affordable Homes Programme to ensure that it delivers more homes from existing funding; and support councils and housing associations to build their capacity and make a greater contribution to affordable housing supply.</p>
-            <p>Labour will prioritize the building of new social rented homes and better protect our existing stock by reviewing the increased right to buy discounts introduced in 2012 and increasing protections on newly-built social housing.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">High-Quality and Sustainable Homes</h2>
-            <p>Labour wants exemplary development to be the norm not the exception. We will take steps to ensure we are building more high-quality, well-designed, and sustainable homes and creating places that increase climate resilience and promote nature recovery. We will implement solutions to unlock the building of homes affected by nutrient neutrality without weakening environmental protections.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Supporting First-Time Buyers</h2>
-            <p>Labour will work with local authorities to give first-time buyers the first chance to buy homes and end the farce of entire developments being sold off to international investors before houses are even built. And we will introduce a permanent, comprehensive mortgage guarantee scheme to support first-time buyers who struggle to save for a large deposit, with lower mortgage costs.</p>
-        </section>
-
-        <section class="highlight">
-            <h2 class="section-title">Economic Growth Across the Country</h2>
-            <p>Every town and city across the country has a vital contribution to make to our economy. But too many areas have been held back because decisions are often taken in Westminster, and not by local leaders who understand local ambitions and strengths. This means we fail to make the most of the contribution everyone can make, hampering economic growth. So, Labour will transfer power out of Westminster, and into our communities, with landmark devolution legislation to take back control.</p>
-            
-            <p>In England, Labour will deepen devolution settlements for existing Combined Authorities. We will also widen devolution to more areas, encouraging local authorities to come together and take on new powers. Towns and cities will be able to take hold of the tools they need to pursue growth, create jobs, and improve living standards. Local areas will be able to gain new powers over transport, adult education and skills, housing and planning, and employment support. We will ensure those places have the strong governance arrangements, capacity, and capability to deliver, providing central support where needed.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Local Growth Plans</h2>
-            <p>At the centre of our approach is a new statutory requirement for Local Growth Plans that cover towns and cities across the country. Local leaders will work with major employers, universities, colleges, and industry bodies to produce long-term plans that identify growth sectors and put in place the programmes and infrastructure they need to thrive. These will align with our national industrial strategy.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Governance and Financial Stability</h2>
-            <p>Labour will review the governance arrangements for Combined Authorities to unblock decision making. We will provide greater flexibility with integrated settlements for Mayoral Combined Authorities that can show exemplary management of public money. On housing and planning we will seek to consolidate powers to allow for improved decision making.</p>
-            <p>Our approach will require partnership with local authorities. Local government is facing acute financial challenges because of the Conservatives’ economic mismanagement which sent interest rates soaring, along with their failures on public services. To provide greater stability, a Labour government will give councils multi-year funding settlements and end wasteful competitive bidding. We recognize good jobs deliver better services that local communities can rely on. Labour will provide capacity and support to councils, and will overhaul the local audit system, so taxpayers get better value for money.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Improving Public Services</h2>
-            <p>Improving public services is essential to growing our economy across the country. Public service workers have a critical role to play, but services are suffering from recruitment and retention crises. Labour will act to improve public service workers’ living standards throughout the parliament, and ensure any independent mechanisms have the confidence of all involved.</p>
-        </section>
-
-        <section class="highlight">
-            <h2 class="section-title">Driving Growth Across the UK</h2>
-            <p>Labour will empower local leaders across the UK to drive growth. We will build on the achievements and potential of the Devolved Administrations, recognizing the need for an approach that respects the distinctiveness of each nation whilst ensuring that the UK remains more than the sum of its parts.</p>
-            <p>Our partnership approach will ensure there is a strong voice for Scotland, Wales, and Northern Ireland in our Union. We will work with the Scottish Parliament, the Senedd, and the Northern Ireland Assembly to deliver economic growth and high-quality public services in every community.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Business and Industry Partnerships</h2>
-            <p>Labour will take action to create a business environment that supports innovation and growth. We will work with businesses to ensure they have access to the finance they need to grow, and we will support them to export, innovate, and improve productivity. We will also work with industry to ensure that we have the skills that businesses need, now and in the future.</p>
-            <p>We will ensure that businesses are able to access government support in a straightforward and timely manner, and we will work to remove unnecessary regulatory burdens. Our approach will be underpinned by a commitment to fairness - we will ensure that businesses pay their fair share of tax, and we will take action to tackle tax avoidance and evasion.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Sustainable Economic Growth</h2>
-            <p>Labour is committed to building a green economy that protects our environment and meets our climate targets. We will take action to reduce carbon emissions, improve energy efficiency, and invest in renewable energy. We will also support industries to transition to low-carbon technologies and practices, and we will invest in the skills and infrastructure needed to support a green economy.</p>
-            <p>We will ensure that our approach to economic growth is inclusive, ensuring that all communities benefit from growth and that no one is left behind. We will take action to reduce regional inequalities and ensure that everyone has access to good jobs, high-quality public services, and a decent standard of living.</p>
-        </section>
-    </div>
-
-    <footer class="text-center py-4">
-        <p>&copy; 2024 Labour Party. All rights reserved.</p>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    function getYouTubeVideoId(url) {
+      var videoId = '';
+      var match = url.match(/[?&]v=([^&]+)/);
+      if (match) {
+        videoId = match[1];
+      }
+      return videoId;
+    }
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
 
