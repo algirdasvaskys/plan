@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 1rem;
+            background: #f0f0f0;
+        }
+
+        #chat-box {
+            border: 1px solid #ccc;
+            background: white;
+            height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: flex;
+            gap: 5px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 8px 12px;
+            font-size: 1rem;
+        }
+
+        .message {
+            margin-bottom: 5px;
+        }
+
+        .message strong {
+            color: #2c3e50;
+        }
+
+        .message span {
+            color: #34495e;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>AJAX Chat</h2>
+
+    <div id="chat-box"></div>
+
+    <form id="chat-form">
+        <input type="text" id="username" placeholder="Your name" required>
+        <input type="text" id="message" placeholder="Type a message..." required>
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+        // Fetch messages from server
+        function fetchMessages() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "get_messages.php", true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const messages = JSON.parse(xhr.responseText);
+                    const chatBox = document.getElementById("chat-box");
+                    chatBox.innerHTML = messages.map(msg =>
+                        `<div class="message"><strong>${escapeHTML(msg.username)}</strong>: <span>${escapeHTML(msg.message)}</span></div>`
+                    ).join('');
+                    chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll
+                }
+            };
+            xhr.send();
+        }
+
+        // Send message to server
+        document.getElementById("chat-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const message = document.getElementById("message").value;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "post_message.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.getElementById("message").value = '';
+                    fetchMessages();
+                }
+            };
+            xhr.send(`username=${encodeURIComponent(username)}&message=${encodeURIComponent(message)}`);
+        });
+
+        // Escape HTML to prevent XSS
+        function escapeHTML(str) {
+            return str.replace(/[&<>"']/g, function (m) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                }[m];
+            });
+        }
+
+        // Poll messages every 2 seconds
+        setInterval(fetchMessages, 2000);
+        window.onload = fetchMessages;
+    </script>
+
+</body>
+</html>
