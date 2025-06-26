@@ -1,130 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fullscreen YouTube Player</title>
+  <meta charset="UTF-8">
+  <title>YouTube Video Example</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: black;
-      overflow: hidden;
-      font-family: sans-serif;
-    }
-
-    #player {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-
-    #overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      height: 100vh;
+      background-color: #f0f0f0;
     }
-
-    #overlay:hover {
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .play-button {
-      background: #ff0000;
-      color: white;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s ease;
-    }
-
-    .play-button:hover {
-      transform: scale(1.05);
+    #player {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100vh;
     }
   </style>
   <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-
   <div id="player"></div>
-  <div id="overlay">
-    <button class="play-button">Click to Play</button>
-  </div>
 
   <script>
-    const url = 'https://www.youtube.com/shorts/G5gZtQy-nFk';
-    const videoId = extractVideoId(url);
-    let player;
-    let isReady = false;
-
-    function extractVideoId(url) {
-      try {
-        const parsed = new URL(url);
-        if (parsed.searchParams.has('v')) {
-          return parsed.searchParams.get('v');
-        }
-        const segments = parsed.pathname.split('/');
-        const last = segments[segments.length - 1];
-        return last.length === 11 ? last : '';
-      } catch {
-        return '';
-      }
-    }
+    var url = 'https://www.youtube.com/watch?v=5DjYEOLQvZQ&list=RDxoLqZerDjQM&index=2';
+    var videoId = getYouTubeVideoId(url);
 
     function onYouTubeIframeAPIReady() {
-      if (!videoId) {
-        alert('Invalid YouTube URL');
-        return;
-      }
-
       player = new YT.Player('player', {
         videoId: videoId,
         playerVars: {
-          autoplay: 0,
-          controls: 1,
-          modestbranding: 1,
-          rel: 0,
-          playsinline: 1,
+          autoplay: 1,
+          controls: 1
         },
         events: {
-          onReady: () => {
-            isReady = true;
-          }
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
         }
       });
     }
 
-    // Play on overlay click
-    document.getElementById('overlay').addEventListener('click', () => {
-      if (isReady && player && typeof player.playVideo === 'function') {
-        player.playVideo();
-        document.getElementById('overlay').style.display = 'none';
-      } else {
-        // Wait a bit and try again
-        setTimeout(() => {
-          if (isReady && player && typeof player.playVideo === 'function') {
-            player.playVideo();
-            document.getElementById('overlay').style.display = 'none';
-          } else {
-            alert('Player not ready. Please try again.');
-          }
-        }, 500);
+    function onPlayerReady(event) {
+      console.log('YouTube player is ready');
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        console.log('Video started playing');
       }
-    });
+      if (event.data === YT.PlayerState.ENDED) {
+        console.log('Video playback ended');
+      }
+    }
+
+    function getYouTubeVideoId(url) {
+      var videoId = '';
+      var match = url.match(/[?&]v=([^&]+)/);
+      if (match) {
+        videoId = match[1];
+      }
+      return videoId;
+    }
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
