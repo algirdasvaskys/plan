@@ -2,173 +2,209 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Safety Relay Circuit Simulation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Raspberry Pi GPIO Pinout</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
       margin: 0;
-      padding: 2rem 1rem;
+      padding: 2rem;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 2rem;
-    }
-
-    .board {
-      background: #2c3e50;
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    .title {
-      text-align: center;
-      color: white;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .gpio {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      gap: 4px;
-      justify-content: center;
-    }
-
-    .pin {
-      width: 160px;
-      height: 30px;
-      display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: transform 0.2s;
     }
 
-    .pin:hover {
-      transform: scale(1.05);
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
     }
 
-    .gpio .left {
-      justify-self: end;
-    }
-
-    .gpio .right {
-      justify-self: start;
-    }
-
-    /* Color Coding */
-    .power { background: #e74c3c; }      /* Red */
-    .ground { background: #7f8c8d; }     /* Gray */
-    .gpio-pin { background: #3498db; }   /* Blue */
-    .i2c { background: #9b59b6; }        /* Purple */
-    .spi { background: #f1c40f; color: #000; } /* Yellow */
-    .uart { background: #1abc9c; }       /* Teal */
-
-    .details {
-      background: white;
-      padding: 1rem;
+    .relay-panel {
+      background: #fff;
+      padding: 2rem;
       border-radius: 10px;
-      max-width: 300px;
-      flex: 1;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 800px;
+      width: 100%;
     }
 
-    .details h2 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+    .terminal {
+      text-align: center;
+      padding: 0.5rem;
+      background: #f7f7f7;
+      border: 1px solid #ccc;
+      border-radius: 6px;
     }
 
-    .details p {
-      font-size: 0.9rem;
-      line-height: 1.4;
+    .terminal label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
     }
 
-    .placeholder {
-      color: #888;
-      font-style: italic;
+    .led {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 8px;
+      border: 1px solid #999;
     }
 
-    @media (max-width: 768px) {
-      .pin {
-        width: 140px;
-        height: 28px;
-        font-size: 0.65rem;
-      }
+    .on { background: green; }
+    .off { background: red; }
+    .neutral { background: gray; }
+
+    .status-display {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .power-section {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .power-section input {
+      margin-left: 5px;
     }
   </style>
 </head>
 <body>
 
-  <!-- GPIO Layout -->
-  <div class="board">
-    <div class="title">Raspberry Pi GPIO Header (40 Pins)</div>
-    <div class="gpio">
-      <!-- Left Column (odd pins) -->
-      <div class="pin power left" onclick="showDetails('Pin 1 (3.3V)', '3.3V power output. Max ~50mA.')">1 - 3.3V</div>
-      <div class="pin i2c left" onclick="showDetails('Pin 3 (GPIO2 / SDA1)', 'I2C data line. Used with I2C devices.')">3 - GPIO2 SDA1</div>
-      <div class="pin i2c left" onclick="showDetails('Pin 5 (GPIO3 / SCL1)', 'I2C clock line. Used with I2C devices.')">5 - GPIO3 SCL1</div>
-      <div class="pin gpio-pin left" onclick="showDetails('Pin 7 (GPIO4)', 'General-purpose digital I/O pin.')">7 - GPIO4</div>
-      <div class="pin ground left" onclick="showDetails('Pin 9 (GND)', 'Ground pin. Connect to 0V.')">9 - GND</div>
-      <div class="pin gpio-pin left" onclick="showDetails('Pin 11 (GPIO17)', 'General-purpose digital I/O pin.')">11 - GPIO17</div>
-      <div class="pin gpio-pin left" onclick="showDetails('Pin 13 (GPIO27)', 'General-purpose digital I/O pin.')">13 - GPIO27</div>
-      <div class="pin ground left" onclick="showDetails('Pin 15 (GND)', 'Ground pin.')">15 - GND</div>
-      <div class="pin gpio-pin left" onclick="showDetails('Pin 17 (GPIO22)', 'General-purpose digital I/O pin.')">17 - GPIO22</div>
-      <div class="pin spi left" onclick="showDetails('Pin 19 (GPIO10 / MOSI)', 'SPI MOSI: Master Out Slave In.')">19 - GPIO10 MOSI</div>
-      <div class="pin ground left" onclick="showDetails('Pin 21 (GND)', 'Ground pin.')">21 - GND</div>
-      <div class="pin spi left" onclick="showDetails('Pin 23 (GPIO11 / SCLK)', 'SPI Clock.')">23 - GPIO11 SCLK</div>
-      <div class="pin spi left" onclick="showDetails('Pin 25 (GPIO8 / CE0)', 'SPI Chip Enable 0.')">25 - GPIO8 CE0</div>
-      <div class="pin ground left" onclick="showDetails('Pin 27 (GND)', 'Ground pin.')">27 - GND</div>
-      <div class="pin gpio-pin left" onclick="showDetails('Pin 29 (GPIO5)', 'General-purpose digital I/O pin.')">29 - GPIO5</div>
-      <div class="pin gpio-pin left" onclick="showDetails('Pin 31 (GPIO6)', 'General-purpose digital I/O pin.')">31 - GPIO6</div>
-      <div class="pin gpio-pin left" onclick="showDetails('Pin 33 (GPIO13)', 'PWM capable GPIO pin.')">33 - GPIO13 PWM</div>
-      <div class="pin ground left" onclick="showDetails('Pin 35 (GND)', 'Ground pin.')">35 - GND</div>
-      <div class="pin gpio-pin left" onclick="showDetails('Pin 37 (GPIO26)', 'General-purpose digital I/O pin.')">37 - GPIO26</div>
+  <h1>🔌 Safety Relay Terminal Simulation</h1>
 
-      <!-- Right Column (even pins) -->
-      <div class="pin power right" onclick="showDetails('Pin 2 (5V)', '5V power output. Direct from regulator.')">2 - 5V</div>
-      <div class="pin power right" onclick="showDetails('Pin 4 (5V)', '5V power output.')">4 - 5V</div>
-      <div class="pin ground right" onclick="showDetails('Pin 6 (GND)', 'Ground pin.')">6 - GND</div>
-      <div class="pin uart right" onclick="showDetails('Pin 8 (GPIO14 / TXD)', 'UART Transmit (TX). Used for serial communication.')">8 - GPIO14 TX</div>
-      <div class="pin uart right" onclick="showDetails('Pin 10 (GPIO15 / RXD)', 'UART Receive (RX). Used for serial input.')">10 - GPIO15 RX</div>
-      <div class="pin ground right" onclick="showDetails('Pin 12 (GND)', 'Ground pin.')">12 - GND</div>
-      <div class="pin gpio-pin right" onclick="showDetails('Pin 14 (GPIO18)', 'PWM capable GPIO pin.')">14 - GPIO18 PWM</div>
-      <div class="pin gpio-pin right" onclick="showDetails('Pin 16 (GPIO23)', 'General-purpose digital I/O pin.')">16 - GPIO23</div>
-      <div class="pin power right" onclick="showDetails('Pin 18 (3.3V)', '3.3V power output.')">18 - 3.3V</div>
-      <div class="pin gpio-pin right" onclick="showDetails('Pin 20 (GPIO24)', 'General-purpose digital I/O pin.')">20 - GPIO24</div>
-      <div class="pin gpio-pin right" onclick="showDetails('Pin 22 (GPIO25)', 'General-purpose digital I/O pin.')">22 - GPIO25</div>
-      <div class="pin ground right" onclick="showDetails('Pin 24 (GND)', 'Ground pin.')">24 - GND</div>
-      <div class="pin spi right" onclick="showDetails('Pin 26 (GPIO7 / CE1)', 'SPI Chip Enable 1.')">26 - GPIO7 CE1</div>
-      <div class="pin i2c right" onclick="showDetails('Pin 28 (GPIO1 / ID_SC)', 'ID EEPROM Clock (used internally).')">28 - GPIO1 ID_SC</div>
-      <div class="pin i2c right" onclick="showDetails('Pin 30 (GPIO0 / ID_SD)', 'ID EEPROM Data (used internally).')">30 - GPIO0 ID_SD</div>
-      <div class="pin gpio-pin right" onclick="showDetails('Pin 32 (GPIO12)', 'PWM capable GPIO.')">32 - GPIO12 PWM</div>
-      <div class="pin spi right" onclick="showDetails('Pin 34 (GPIO9 / MISO)', 'SPI MISO: Master In Slave Out.')">34 - GPIO9 MISO</div>
-      <div class="pin gpio-pin right" onclick="showDetails('Pin 36 (GPIO16)', 'General-purpose digital I/O pin.')">36 - GPIO16</div>
-      <div class="pin gpio-pin right" onclick="showDetails('Pin 38 (GPIO20)', 'General-purpose digital I/O pin.')">38 - GPIO20</div>
-      <div class="pin gpio-pin right" onclick="showDetails('Pin 40 (GPIO21)', 'General-purpose digital I/O pin.')">40 - GPIO21</div>
+  <div class="power-section">
+    <label><strong>Power Supply</strong>: A1 (+24V) / A2 (0V)
+      <input type="checkbox" id="power" checked onchange="updateRelay()"> ON
+    </label>
+  </div>
+
+  <div class="relay-panel">
+    <!-- Inputs -->
+    <div class="terminal">
+      <label>S11 →</label>
+      +24V Source
+    </div>
+    <div class="terminal">
+      <label>S12</label>
+      <input type="checkbox" id="s12" checked onchange="updateRelay()"> NC Input 1
+      <span id="led-s12" class="led"></span>
+    </div>
+    <div class="terminal">
+      <label>S21 →</label>
+      +24V Source
+    </div>
+    <div class="terminal">
+      <label>S22</label>
+      <input type="checkbox" id="s22" checked onchange="updateRelay()"> NC Input 2
+      <span id="led-s22" class="led"></span>
+    </div>
+
+    <!-- Reset Circuit -->
+    <div class="terminal">
+      <label>Y1 →</label>
+      Reset Button
+    </div>
+    <div class="terminal">
+      <label>Y2</label>
+      <input type="checkbox" id="reset" onchange="updateRelay()"> Reset Pressed
+      <span id="led-reset" class="led"></span>
+    </div>
+
+    <!-- Power Terminals -->
+    <div class="terminal">
+      <label>A1</label>
+      +24V DC
+    </div>
+    <div class="terminal">
+      <label>A2</label>
+      0V (GND)
+    </div>
+
+    <!-- Outputs -->
+    <div class="terminal">
+      <label>13</label>
+      NO Output
+    </div>
+    <div class="terminal">
+      <label>14</label>
+      <span id="led-out1" class="led neutral"></span> Relay Output
+    </div>
+    <div class="terminal">
+      <label>23</label>
+      NO Output
+    </div>
+    <div class="terminal">
+      <label>24</label>
+      <span id="led-out2" class="led neutral"></span> Relay Output
     </div>
   </div>
 
-  <!-- Details Panel -->
-  <div class="details" id="details">
-    <h2>Pin Details</h2>
-    <p class="placeholder">Click on any GPIO pin to see its description here.</p>
+  <div class="status-display" id="statusText">
+    Waiting for reset...
   </div>
 
   <script>
-    function showDetails(title, description) {
-      const panel = document.getElementById('details');
-      panel.innerHTML = `
-        <h2>${title}</h2>
-        <p>${description}</p>
-      `;
+    let relayReady = false;
+
+    function updateRelay() {
+      const power = document.getElementById('power').checked;
+      const s12 = document.getElementById('s12').checked;
+      const s22 = document.getElementById('s22').checked;
+      const reset = document.getElementById('reset').checked;
+
+      const out1 = document.getElementById('led-out1');
+      const out2 = document.getElementById('led-out2');
+      const ledS12 = document.getElementById('led-s12');
+      const ledS22 = document.getElementById('led-s22');
+      const ledReset = document.getElementById('led-reset');
+      const status = document.getElementById('statusText');
+
+      ledS12.className = 'led ' + (s12 ? 'on' : 'off');
+      ledS22.className = 'led ' + (s22 ? 'on' : 'off');
+      ledReset.className = 'led ' + (reset ? 'on' : 'neutral');
+
+      if (!power) {
+        relayReady = false;
+        out1.className = 'led neutral';
+        out2.className = 'led neutral';
+        status.textContent = '🔌 Power OFF';
+        return;
+      }
+
+      if (!s12 || !s22) {
+        relayReady = false;
+        out1.className = 'led off';
+        out2.className = 'led off';
+        status.textContent = '🛑 Fault: Safety Inputs Open';
+        return;
+      }
+
+      if (!relayReady && reset) {
+        relayReady = true;
+      }
+
+      if (relayReady) {
+        out1.className = 'led on';
+        out2.className = 'led on';
+        status.textContent = '✅ Relay Energized';
+      } else {
+        out1.className = 'led off';
+        out2.className = 'led off';
+        status.textContent = 'Waiting for reset...';
+      }
     }
+
+    updateRelay();
   </script>
+
 </body>
 </html>
