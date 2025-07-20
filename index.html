@@ -1,210 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Safety Relay Circuit Simulation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <title>YouTube Shorts Embed</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
+    html, body {
       margin: 0;
-      padding: 2rem;
+      padding: 0;
+      height: 100%;
+      background-color: #f0f0f0;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
     }
-
-    h1 {
-      color: #2c3e50;
-      margin-bottom: 1.5rem;
-    }
-
-    .relay-panel {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      max-width: 800px;
+    #player {
       width: 100%;
-    }
-
-    .terminal {
-      text-align: center;
-      padding: 0.5rem;
-      background: #f7f7f7;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    .terminal label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 0.3rem;
-    }
-
-    .led {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-left: 8px;
-      border: 1px solid #999;
-    }
-
-    .on { background: green; }
-    .off { background: red; }
-    .neutral { background: gray; }
-
-    .status-display {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .power-section {
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .power-section input {
-      margin-left: 5px;
+      max-width: 360px;
+      aspect-ratio: 9 / 16;
     }
   </style>
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-
-  <h1>🔌 Safety Relay Terminal Simulation</h1>
-
-  <div class="power-section">
-    <label><strong>Power Supply</strong>: A1 (+24V) / A2 (0V)
-      <input type="checkbox" id="power" checked onchange="updateRelay()"> ON
-    </label>
-  </div>
-
-  <div class="relay-panel">
-    <!-- Inputs -->
-    <div class="terminal">
-      <label>S11 →</label>
-      +24V Source
-    </div>
-    <div class="terminal">
-      <label>S12</label>
-      <input type="checkbox" id="s12" checked onchange="updateRelay()"> NC Input 1
-      <span id="led-s12" class="led"></span>
-    </div>
-    <div class="terminal">
-      <label>S21 →</label>
-      +24V Source
-    </div>
-    <div class="terminal">
-      <label>S22</label>
-      <input type="checkbox" id="s22" checked onchange="updateRelay()"> NC Input 2
-      <span id="led-s22" class="led"></span>
-    </div>
-
-    <!-- Reset Circuit -->
-    <div class="terminal">
-      <label>Y1 →</label>
-      Reset Button
-    </div>
-    <div class="terminal">
-      <label>Y2</label>
-      <input type="checkbox" id="reset" onchange="updateRelay()"> Reset Pressed
-      <span id="led-reset" class="led"></span>
-    </div>
-
-    <!-- Power Terminals -->
-    <div class="terminal">
-      <label>A1</label>
-      +24V DC
-    </div>
-    <div class="terminal">
-      <label>A2</label>
-      0V (GND)
-    </div>
-
-    <!-- Outputs -->
-    <div class="terminal">
-      <label>13</label>
-      NO Output
-    </div>
-    <div class="terminal">
-      <label>14</label>
-      <span id="led-out1" class="led neutral"></span> Relay Output
-    </div>
-    <div class="terminal">
-      <label>23</label>
-      NO Output
-    </div>
-    <div class="terminal">
-      <label>24</label>
-      <span id="led-out2" class="led neutral"></span> Relay Output
-    </div>
-  </div>
-
-  <div class="status-display" id="statusText">
-    Waiting for reset...
-  </div>
+  <div id="player"></div>
 
   <script>
-    let relayReady = false;
+    var url = 'https://www.youtube.com/shorts/atOF_2kZECg';
+    var videoId = getYouTubeVideoId(url);
 
-    function updateRelay() {
-      const power = document.getElementById('power').checked;
-      const s12 = document.getElementById('s12').checked;
-      const s22 = document.getElementById('s22').checked;
-      const reset = document.getElementById('reset').checked;
-
-      const out1 = document.getElementById('led-out1');
-      const out2 = document.getElementById('led-out2');
-      const ledS12 = document.getElementById('led-s12');
-      const ledS22 = document.getElementById('led-s22');
-      const ledReset = document.getElementById('led-reset');
-      const status = document.getElementById('statusText');
-
-      ledS12.className = 'led ' + (s12 ? 'on' : 'off');
-      ledS22.className = 'led ' + (s22 ? 'on' : 'off');
-      ledReset.className = 'led ' + (reset ? 'on' : 'neutral');
-
-      if (!power) {
-        relayReady = false;
-        out1.className = 'led neutral';
-        out2.className = 'led neutral';
-        status.textContent = '🔌 Power OFF';
-        return;
-      }
-
-      if (!s12 || !s22) {
-        relayReady = false;
-        out1.className = 'led off';
-        out2.className = 'led off';
-        status.textContent = '🛑 Fault: Safety Inputs Open';
-        return;
-      }
-
-      if (!relayReady && reset) {
-        relayReady = true;
-      }
-
-      if (relayReady) {
-        out1.className = 'led on';
-        out2.className = 'led on';
-        status.textContent = '✅ Relay Energized';
-      } else {
-        out1.className = 'led off';
-        out2.className = 'led off';
-        status.textContent = 'Waiting for reset...';
-      }
+    function getYouTubeVideoId(url) {
+      // Support both shorts and regular YouTube URLs
+      const shortsMatch = url.match(/shorts\/([a-zA-Z0-9_-]{11})/);
+      const regularMatch = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+      if (shortsMatch) return shortsMatch[1];
+      if (regularMatch) return regularMatch[1];
+      return ''; // fallback
     }
 
-    updateRelay();
-  </script>
+    var player;
 
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 1,
+          modestbranding: 1,
+          rel: 0,
+          fs: 0
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      console.log('YouTube player is ready');
+      event.target.playVideo();
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        console.log('Video started playing');
+      }
+      if (event.data === YT.PlayerState.ENDED) {
+        console.log('Video playback ended');
+      }
+    }
+  </script>
 </body>
 </html>
