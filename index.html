@@ -1,150 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Advanced Reactometer Simulator</title>
-<style>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
     body {
-        font-family: Arial, sans-serif;
-        background: #121212;
-        color: white;
-        text-align: center;
-        padding: 20px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
     }
-    h1 {
-        font-size: 2em;
-        color: #00ff99;
-        margin-bottom: 10px;
+    #player {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100vh;
     }
-    .highlight {
-        background: rgba(255, 255, 0, 0.2);
-        padding: 4px 8px;
-        border-radius: 5px;
-        color: #ffeb3b;
-        font-weight: bold;
-    }
-    .led {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        margin: 20px auto;
-        background: radial-gradient(circle, #333, #000);
-        box-shadow: 0 0 10px #000;
-        transition: background 0.2s, box-shadow 0.2s;
-    }
-    .led.on {
-        background: radial-gradient(circle, #ff0000, #880000);
-        box-shadow: 0 0 25px red;
-    }
-    button {
-        font-size: 1.2em;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        background: #2196f3;
-        color: white;
-        cursor: pointer;
-        margin-top: 15px;
-    }
-    button:disabled {
-        background: #555;
-        cursor: not-allowed;
-    }
-    .results {
-        margin-top: 20px;
-        font-size: 1.2em;
-    }
-    .key-info {
-        margin-top: 30px;
-        text-align: left;
-        background: rgba(255,255,255,0.05);
-        padding: 15px;
-        border-radius: 10px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .key-info h2 {
-        color: #ff9800;
-        font-size: 1.3em;
-    }
-    @media (max-width: 600px) {
-        h1 { font-size: 1.6em; }
-    }
-</style>
+  </style>
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
+  <div id="player"></div>
 
-<h1>⚡ Reactometer Simulator ⚡</h1>
-<p>Click <span class="highlight">"Start Test"</span> and hit <span class="highlight">"React Now!"</span> as soon as the LED lights up!</p>
+  <script>
+    var url = 'https://www.youtube.com/watch?v=cwSHnr4XiCI';
+    var videoId = getYouTubeVideoId(url);
 
-<div class="led" id="led"></div>
-<button id="startBtn">Start Test</button>
-<button id="reactBtn" disabled>React Now!</button>
-
-<div class="results" id="results"></div>
-
-<div class="key-info">
-    <h2>📌 Key Useful Information</h2>
-    <ul>
-        <li><span class="highlight">Reaction Time</span> is measured in milliseconds (ms).</li>
-        <li>In <span class="highlight">Arduino</span>, we use <code>millis()</code> to count time.</li>
-        <li><span class="highlight">Serial.begin(9600);</span> starts data transfer at 9600 baud.</li>
-        <li><code>Serial.print()</code> sends data without a newline. <code>Serial.println()</code> adds a newline.</li>
-        <li>Human average reaction time: <span class="highlight">200–250 ms</span>.</li>
-        <li>Pressing too early = cheat attempt detection in this simulator.</li>
-    </ul>
-</div>
-
-<script>
-    const led = document.getElementById("led");
-    const startBtn = document.getElementById("startBtn");
-    const reactBtn = document.getElementById("reactBtn");
-    const results = document.getElementById("results");
-
-    let startTime, timerId, waitingForLED = false, ledOn = false;
-
-    startBtn.addEventListener("click", () => {
-        results.textContent = "";
-        startBtn.disabled = true;
-        reactBtn.disabled = false;
-        waitingForLED = true;
-        led.classList.remove("on");
-
-        // Random delay between 1-5s like Arduino random(1000,5000)
-        const delay = Math.floor(Math.random() * 4000) + 1000;
-        timerId = setTimeout(() => {
-            led.classList.add("on");
-            startTime = performance.now();
-            ledOn = true;
-        }, delay);
-    });
-
-    reactBtn.addEventListener("click", () => {
-        if (!waitingForLED) return;
-
-        if (!ledOn) {
-            // Early press
-            clearTimeout(timerId);
-            results.innerHTML = `<span style="color:red;">Too early! ⏱</span> Wait for the LED to light up.`;
-            reset();
-            return;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 1
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
         }
-
-        const reactionTime = Math.floor(performance.now() - startTime);
-        results.innerHTML = `<span class="highlight">Reaction time:</span> ${reactionTime} ms`;
-        reset();
-    });
-
-    function reset() {
-        ledOn = false;
-        waitingForLED = false;
-        led.classList.remove("on");
-        startBtn.disabled = false;
-        reactBtn.disabled = true;
+      });
     }
-</script>
 
+    function onPlayerReady(event) {
+      console.log('YouTube player is ready');
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        console.log('Video started playing');
+      }
+      if (event.data === YT.PlayerState.ENDED) {
+        console.log('Video playback ended');
+      }
+    }
+
+    function getYouTubeVideoId(url) {
+      var videoId = '';
+      var match = url.match(/[?&]v=([^&]+)/);
+      if (match) {
+        videoId = match[1];
+      }
+      return videoId;
+    }
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
