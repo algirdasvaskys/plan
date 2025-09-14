@@ -1,79 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title></title>
-  <style>
-    body {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f0f0f0;
-    }
-    #player {
-      width: 100%;
-      max-width: 100%;
-      height: 100%;
-      max-height: 100vh;
-    }
-  </style>
-  <script src="https://www.youtube.com/iframe_api"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art of Money-Getting by P. T. Barnum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-  <div id="player"></div>
-
-  <script>
-    var url = 'https://www.youtube.com/watch?v=cwSHnr4XiCI';
-    var videoId = getYouTubeVideoId(url);
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        videoId: videoId,
-        playerVars: {
-          autoplay: 1,
-          controls: 1
-        },
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    function onPlayerReady(event) {
-      console.log('YouTube player is ready');
-    }
-
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.PLAYING) {
-        console.log('Video started playing');
-      }
-      if (event.data === YT.PlayerState.ENDED) {
-        console.log('Video playback ended');
-      }
-    }
-
-    function getYouTubeVideoId(url) {
-      var videoId = '';
-      var match = url.match(/[?&]v=([^&]+)/);
-      if (match) {
-        videoId = match[1];
-      }
-      return videoId;
-    }
-  </script>
+    <header>
+        <h1>The Art of Money-Getting</h1>
+        <p>by P. T. Barnum</p>
+    </header>
+    <main>
+        <section>
+            <h2>Summary</h2>
+            <p>
+                "The Art of Money-Getting," also known as "Golden Rules for Making Money," is a guide by P. T. Barnum, a famous 19th-century showman and businessman. The book shares insights on achieving financial success through practical advice and personal anecdotes, emphasizing character, ethics, and smart financial practices.
+            </p>
+        </section>
+        <section>
+            <h2>Themes</h2>
+            <ul>
+                <li>
+                    <strong>Integrity:</strong> Barnum underscores the importance of honesty in business. Maintaining a good reputation is crucial for long-term success, as trustworthiness attracts customers and partners.
+                </li>
+                <li>
+                    <strong>Perseverance:</strong> Success does not come overnight. Barnum highlights the need for persistence and resilience to overcome challenges and achieve financial goals.
+                </li>
+                <li>
+                    <strong>Prudence:</strong> Wise financial management is critical. Barnum advises against impulsive decisions and unnecessary risks, emphasizing the importance of cautious investments.
+                </li>
+                <li>
+                    <strong>Adaptability:</strong> Embracing change and innovation can open new avenues for success. Barnum encourages staying informed about market trends and being flexible in strategies.
+                </li>
+                <li>
+                    <strong>Hard Work:</strong> There is no substitute for hard work. Barnum believes dedication and effort are fundamental to achieving prosperity and encourages industriousness.
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 MasterKeySociety</p>
+    </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
