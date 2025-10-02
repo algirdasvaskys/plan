@@ -1,79 +1,886 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Lessons Summary</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        h1 {
-            text-align: center;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 20px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <title>Calibration & SOP Accessibility Audit</title>
+  <meta name="description" content="Audit tool to verify calibration sticker validity and SOP/work instruction accessibility." />
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #12151a;
+      --panel-2: #171b22;
+      --text: #e6eefc;
+      --muted: #b6c2d9;
+      --accent: #66e2a2;
+      --accent-2: #5bc0ff;
+      --danger: #ff6b6b;
+      --warn: #ffb020;
+      --ok: #7dffa0;
+      --outline: #304357;
+      --focus: #a4d1ff;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fbff;
+        --panel: #ffffff;
+        --panel-2: #f5f8fc;
+        --text: #152131;
+        --muted: #475a77;
+        --accent: #0e9f6e;
+        --accent-2: #0b82d9;
+        --danger: #b00020;
+        --warn: #b35b00;
+        --ok: #0a7f3f;
+        --outline: #d6e2f0;
+        --focus: #134fcf;
+      }
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      line-height: 1.45;
+    }
+
+    /* Layout */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem clamp(0.75rem, 3vw, 2rem);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    header.app-header {
+      display: grid;
+      gap: 0.75rem;
+      background: var(--panel);
+      padding: 1rem;
+      border: 1px solid var(--outline);
+      border-radius: 12px;
+    }
+
+    header .title {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      color: var(--text);
+      border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--outline));
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+    }
+
+    /* Controls bar */
+    .toolbar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .toolbar > * {
+      flex: 1 1 auto;
+      min-width: 140px;
+    }
+
+    /* Cards/sections */
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--outline);
+      border-radius: 12px;
+      padding: clamp(0.75rem, 2vw, 1rem);
+    }
+    .card h2, .card h3 {
+      margin-top: 0;
+    }
+
+    /* Form controls */
+    label {
+      font-weight: 600;
+    }
+    input[type="text"], input[type="date"], input[type="time"], input[type="search"], select, textarea {
+      width: 100%;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--outline);
+      border-radius: 10px;
+      padding: 0.6rem 0.7rem;
+      font-size: 1rem;
+    }
+    input::placeholder, textarea::placeholder {
+      color: var(--muted);
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+      transform: translateY(1px);
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 960px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 10px;
+      border: 1px solid var(--outline);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel-2);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 0.6rem 0.7rem;
+      border-bottom: 1px solid var(--outline);
+      vertical-align: middle;
+    }
+    th {
+      background: var(--panel);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      text-align: left;
+    }
+    tr.status-ok { background: color-mix(in srgb, var(--ok) 8%, transparent); }
+    tr.status-warn { background: color-mix(in srgb, var(--warn) 10%, transparent); }
+    tr.status-danger { background: color-mix(in srgb, var(--danger) 10%, transparent); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: var(--accent-2);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 0.6rem 0.9rem;
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn.secondary { background: var(--accent); }
+    .btn.ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--outline);
+    }
+    .btn.danger { background: var(--danger); }
+    .btn.warn { background: var(--warn); color: black; }
+
+    /* Details/Summary */
+    details {
+      background: var(--panel-2);
+      border: 1px dashed var(--outline);
+      border-radius: 10px;
+      padding: 0.5rem 0.75rem;
+    }
+    details > summary {
+      cursor: pointer;
+      font-weight: 700;
+      outline: none;
+    }
+    details[open] > summary {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Alerts */
+    .alert {
+      border-left: 4px solid var(--warn);
+      background: color-mix(in srgb, var(--warn) 10%, transparent);
+      color: var(--text);
+      padding: 0.75rem 0.9rem;
+      border-radius: 8px;
+    }
+    .alert.ok {
+      border-left-color: var(--ok);
+      background: color-mix(in srgb, var(--ok) 10%, transparent);
+    }
+    .alert.bad {
+      border-left-color: var(--danger);
+      background: color-mix(in srgb, var(--danger) 12%, transparent);
+    }
+
+    /* Focus visibility */
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    /* Print */
+    @media print {
+      .toolbar, .no-print { display: none !important; }
+      body { background: white; color: black; }
+      .card { border-color: #999; }
+      th, td { border-color: #aaa; }
+    }
+
+    /* Signature */
+    .signature {
+      display: grid;
+      gap: 0.6rem;
+    }
+    .sig-pad {
+      width: 100%;
+      height: 160px;
+      background: white;
+      border: 2px dashed var(--outline);
+      border-radius: 10px;
+      touch-action: none;
+    }
+    .sig-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Helpers */
+    .muted { color: var(--muted); }
+    .sr-only {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
+      border: 0;
+    }
+    .right { text-align: right; }
+    .chip {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      border: 1px solid var(--outline);
+      background: var(--panel);
+    }
+  </style>
 </head>
 <body>
-    <h1>Life Lessons Summary</h1>
-    <ul>
-        <li>
-            <h2>Create Lasting Memories</h2>
-            <p>Emphasizes the importance of cherishing experiences that lead to nostalgic memories. Suggests actively seeking out new experiences and saying yes to spontaneous events.</p>
-        </li>
-        <li>
-            <h2>Boldly Request More</h2>
-            <p>Encourages asking for more than you think you deserve, whether it's discounts, opportunities, or raises. Highlights the power of being bold in seeking advancement and not fearing rejection.</p>
-        </li>
-        <li>
-            <h2>Prioritize Freedom Over Money</h2>
-            <p>Discusses the value of financial independence and making mindful choices that align with personal freedom. Recommends asking key questions before spending money to ensure it aligns with long-term goals.</p>
-        </li>
-        <li>
-            <h2>Find Natural Happiness Sources</h2>
-            <p>Discusses the addictive nature of dopamine and suggests seeking healthier sources of happiness like reading and writing. Encourages choosing activities that contribute to personal growth rather than temporary pleasure.</p>
-        </li>
-        <li>
-            <h2>Balance Work and Rest</h2>
-            <p>Advocates for balancing hard work with adequate rest to avoid burnout and regrets. Suggests that true rewards come from experiencing life and collecting meaningful experiences.</p>
-        </li>
-        <li>
-            <h2>Curate Ideas</h2>
-            <p>Encourages being a curator of ideas rather than focusing on being entirely original. Recommends blending existing ideas creatively to generate new and valuable insights.</p>
-        </li>
-        <li>
-            <h2>Experiment</h2>
-            <p>Advises against excessive planning and promotes learning through small experiments. Emphasizes the importance of taking action and testing ideas to make progress.</p>
-        </li>
-        <li>
-            <h2>Embrace Chaos</h2>
-            <p>Argues that chaos is a natural part of life and suggests taking action despite chaotic circumstances. Proposes that waiting for the perfect moment may hinder personal growth and success.</p>
-        </li>
-        <li>
-            <h2>Explore Diverse Industries</h2>
-            <p>Encourages exploring different industries to bring fresh ideas and perspectives to current work. Suggests that combining ideas from various fields can lead to innovative solutions and career advancement.</p>
-        </li>
-        <li>
-            <h2>Community Involvement</h2>
-            <p>Highlights the benefits of getting involved in the local community for personal connections and a sense of belonging. Shares a story of positive experiences gained by actively engaging with the community.</p>
-        </li>
-        <li>
-            <h2>Clear Workspace, Clear Mind</h2>
-            <p>Advocates for a clean and organized workspace to promote clarity of thought and productivity. Suggests that a clutter-free environment can enhance learning and creativity.</p>
-        </li>
-        <li>
-            <h2>Live Authentically</h2>
-            <p>Draws on experiences with individuals close to the end of life to emphasize the importance of authenticity and taking risks. Encourages living courageously, being true to oneself, and not being held back by fear of judgment.</p>
-        </li>
-    </ul>
+  <div class="wrap">
+    <header class="app-header" role="banner">
+      <div class="title">
+        <h1 style="margin:0;">Calibration Sticker & SOP Accessibility Audit</h1>
+        <span class="badge" aria-label="Compliant with WCAG-conscious patterns">A11y Enhanced</span>
+        <span class="badge">Offline-capable</span>
+      </div>
+      <p class="muted">Use this tool to verify that all instruments have in-date calibration stickers and that SOPs/work instructions are accessible to staff.</p>
+      <div class="toolbar no-print" role="group" aria-label="Global controls">
+        <button class="btn" id="btnSave" type="button">Save Progress</button>
+        <button class="btn ghost" id="btnLoad" type="button">Load Saved</button>
+        <button class="btn warn" id="btnExport" type="button">Export JSON</button>
+        <button class="btn secondary" id="btnPrint" type="button">Print</button>
+        <button class="btn ghost" id="btnInstallSW" type="button" aria-describedby="swNote">Enable Offline</button>
+      </div>
+      <p id="swNote" class="sr-only">The Enable Offline button registers a service worker for offline caching.</p>
+    </header>
+
+    <section class="card" aria-labelledby="sec-overview">
+      <h2 id="sec-overview">Quick Overview</h2>
+      <div class="grid-3">
+        <div class="alert" id="kpi-total">Total instruments: 0</div>
+        <div class="alert ok" id="kpi-in-date">In-date: 0</div>
+        <div class="alert bad" id="kpi-out-date">Expired/Unknown: 0</div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="sec-scope">
+      <h2 id="sec-scope">Audit Scope</h2>
+      <div class="grid-2">
+        <div>
+          <label for="siteName">Site/Area</label>
+          <input id="siteName" name="siteName" type="text" placeholder="e.g., Lab A - Metrology Room" autocomplete="organization" />
+        </div>
+        <div>
+          <label for="auditor">Auditor</label>
+          <input id="auditor" name="auditor" type="text" placeholder="Full name" autocomplete="name" />
+        </div>
+        <div>
+          <label for="auditDate">Audit Date</label>
+          <input id="auditDate" name="auditDate" type="date" />
+        </div>
+        <div>
+          <label for="shift">Shift</label>
+          <select id="shift" name="shift">
+            <option value="">Select...</option>
+            <option>Day</option>
+            <option>Evening</option>
+            <option>Night</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="sec-sop">
+      <h2 id="sec-sop">SOPs & Work Instructions Accessibility</h2>
+      <details>
+        <summary>Checklist</summary>
+        <ul>
+          - SOPs are accessible at point of use (printed or digital).
+          - Latest controlled versions available; obsolete copies removed.
+          - Staff know where to find and how to open SOPs digitally.
+          - Access does not require personal licenses unavailable to operators.
+          - SOPs reflect equipment model/firmware currently in use.
+        </ul>
+      </details>
+
+      <div class="grid-2" style="margin-top:0.5rem;">
+        <div>
+          <label for="sopAccessMethod">Primary Access Method</label>
+          <select id="sopAccessMethod" name="sopAccessMethod">
+            <option value="">Select...</option>
+            <option>Printed binders</option>
+            <option>Document control system (intranet)</option>
+            <option>QR codes at station</option>
+            <option>Shared drive</option>
+            <option>LMS/Quality system</option>
+          </select>
+        </div>
+        <div>
+          <label for="sopAccessibilityScore">Accessibility Rating</label>
+          <select id="sopAccessibilityScore" name="sopAccessibilityScore" aria-describedby="scoreDesc">
+            <option value="">Select...</option>
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Good</option>
+            <option value="3">3 - Adequate</option>
+            <option value="2">2 - Poor</option>
+            <option value="1">1 - Critical</option>
+          </select>
+          <div id="scoreDesc" class="muted">Consider ease of access, version control, and user familiarity.</div>
+        </div>
+        <div class="grid-2" style="grid-column: 1 / -1;">
+          <div>
+            <label for="sopNotes">Notes</label>
+            <textarea id="sopNotes" rows="3" placeholder="Observations, e.g., binder missing section for instrument X, DMS outage, etc."></textarea>
+          </div>
+          <div>
+            <fieldset>
+              <legend>Evidence</legend>
+              <label><input type="checkbox" id="evBinder" /> Binder present</label><br />
+              <label><input type="checkbox" id="evQR" /> QR codes valid</label><br />
+              <label><input type="checkbox" id="evDMS" /> DMS accessible on terminals</label>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="sec-cal">
+      <h2 id="sec-cal">Calibration Stickers Audit</h2>
+      <div class="grid-2">
+        <div>
+          <label for="search">Filter Instruments</label>
+          <input id="search" type="search" placeholder="Search by tag, location, model..." aria-controls="tblInstruments" />
+        </div>
+        <div class="right">
+          <button id="btnAddRow" class="btn" type="button">Add Instrument</button>
+        </div>
+      </div>
+
+      <div class="table-wrap" role="region" aria-label="Instruments table">
+        <table id="tblInstruments">
+          <thead>
+            <tr>
+              <th scope="col">Tag/ID</th>
+              <th scope="col">Location</th>
+              <th scope="col">Model</th>
+              <th scope="col">Serial</th>
+              <th scope="col">Cal Date</th>
+              <th scope="col">Due Date</th>
+              <th scope="col">Sticker Present</th>
+              <th scope="col">Status</th>
+              <th scope="col">Notes</th>
+              <th scope="col" class="sr-only">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rows">
+            <!-- Rows injected dynamically -->
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">Status logic: Due date past = Expired; within 30 days = Warning; otherwise OK. Missing sticker = Warning.</p>
+    </section>
+
+    <section class="card" aria-labelledby="sec-sign">
+      <h2 id="sec-sign">Sign-off</h2>
+      <div class="grid-2">
+        <div class="signature">
+          <label for="sigName">Name (typed)</label>
+          <input id="sigName" type="text" placeholder="Auditor name" />
+          <canvas id="sigPad" class="sig-pad" aria-label="Signature pad"></canvas>
+          <div class="sig-actions">
+            <button class="btn ghost" id="sigClear" type="button">Clear</button>
+            <button class="btn" id="sigSave" type="button">Attach Signature</button>
+            <span id="sigMeta" class="chip" aria-live="polite"></span>
+          </div>
+        </div>
+        <div>
+          <label for="finalComments">Final Comments</label>
+          <textarea id="finalComments" rows="6" placeholder="Summary conclusions, required actions, references to CAPA, etc."></textarea>
+          <div style="margin-top:0.5rem;">
+            <button id="btnFinalize" class="btn danger" type="button">Finalize Audit</button>
+            <span id="finalStatus" class="chip" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="card" role="contentinfo">
+      <div class="grid-3">
+        <div>
+          <strong>Data Privacy</strong>
+          <p class="muted">Data is stored locally in your browser unless you export it. Clear your browser storage if needed.</p>
+        </div>
+        <div>
+          <strong>Validation Rules</strong>
+          <ul class="muted">
+            <li>Due date must be on/after calibration date.</li>
+            <li>Missing due date or sticker flags the row.</li>
+            <li>Expired instruments must be quarantined per SOP.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Keyboard Tips</strong>
+          <ul class="muted">
+            <li>Tab/Shift+Tab to move between cells.</li>
+            <li>Enter to toggle checkbox.</li>
+            <li>Space on summary toggles details.</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple state
+    const state = {
+      instruments: [],
+      meta: {
+        siteName: '',
+        auditor: '',
+        auditDate: '',
+        shift: '',
+        sop: {
+          accessMethod: '',
+          accessibilityScore: '',
+          notes: '',
+          evidence: { binder:false, qr:false, dms:false }
+        },
+        signature: { name:'', dataUrl:'', time:'' },
+        finalComments: ''
+      }
+    };
+
+    const rowsEl = document.getElementById('rows');
+    const searchEl = document.getElementById('search');
+    const kpiTotal = document.getElementById('kpi-total');
+    const kpiInDate = document.getElementById('kpi-in-date');
+    const kpiOutDate = document.getElementById('kpi-out-date');
+
+    function uid() {
+      return 'i-' + Math.random().toString(36).slice(2, 9);
+    }
+
+    function addInstrument(data = {}) {
+      const inst = {
+        id: uid(),
+        tag: data.tag || '',
+        location: data.location || '',
+        model: data.model || '',
+        serial: data.serial || '',
+        calDate: data.calDate || '',
+        dueDate: data.dueDate || '',
+        sticker: data.sticker ?? true,
+        notes: data.notes || ''
+      };
+      state.instruments.push(inst);
+      renderTable();
+      return inst.id;
+    }
+
+    function calcStatus(inst) {
+      const today = new Date();
+      const status = { cls: 'status-ok', label: 'OK' };
+      const due = inst.dueDate ? new Date(inst.dueDate + 'T00:00:00') : null;
+      const cal = inst.calDate ? new Date(inst.calDate + 'T00:00:00') : null;
+
+      if (!due || !cal || (due && cal && due < cal)) {
+        status.cls = 'status-danger';
+        status.label = 'Invalid/Unknown';
+        return status;
+      }
+      const diffDays = Math.floor((due - today) / (1000*60*60*24));
+      if (diffDays < 0) {
+        status.cls = 'status-danger';
+        status.label = 'Expired';
+      } else if (diffDays <= 30) {
+        status.cls = 'status-warn';
+        status.label = 'Due soon';
+      }
+      if (!inst.sticker) {
+        if (status.cls === 'status-ok') {
+          status.cls = 'status-warn';
+          status.label = 'No sticker';
+        } else {
+          status.label += ' + No sticker';
+        }
+      }
+      return status;
+    }
+
+    function instrumentRow(inst) {
+      const st = calcStatus(inst);
+      const tr = document.createElement('tr');
+      tr.dataset.id = inst.id;
+      tr.className = st.cls;
+      tr.innerHTML = `
+        <td><input type="text" value="${escapeHtml(inst.tag)}" data-k="tag" aria-label="Tag or ID"></td>
+        <td><input type="text" value="${escapeHtml(inst.location)}" data-k="location" aria-label="Location"></td>
+        <td><input type="text" value="${escapeHtml(inst.model)}" data-k="model" aria-label="Model"></td>
+        <td><input type="text" value="${escapeHtml(inst.serial)}" data-k="serial" aria-label="Serial"></td>
+        <td><input type="date" value="${inst.calDate}" data-k="calDate" aria-label="Calibration date"></td>
+        <td><input type="date" value="${inst.dueDate}" data-k="dueDate" aria-label="Due date"></td>
+        <td style="text-align:center;"><input type="checkbox" ${inst.sticker ? 'checked' : ''} data-k="sticker" aria-label="Sticker present"></td>
+        <td><span class="chip">${st.label}</span></td>
+        <td><input type="text" value="${escapeHtml(inst.notes)}" data-k="notes" aria-label="Notes"></td>
+        <td class="right">
+          <button type="button" class="btn ghost btnDel" aria-label="Delete row">Delete</button>
+        </td>
+      `;
+      return tr;
+    }
+
+    function renderTable() {
+      const q = searchEl.value.trim().toLowerCase();
+      rowsEl.innerHTML = '';
+      let total = 0, inDate = 0, outDate = 0;
+
+      state.instruments.forEach(inst => {
+        const st = calcStatus(inst);
+        const hay = [inst.tag, inst.location, inst.model, inst.serial].join(' ').toLowerCase();
+        if (q && !hay.includes(q)) return;
+        const tr = instrumentRow(inst);
+        rowsEl.appendChild(tr);
+        total++;
+        if (st.cls === 'status-ok') inDate++; else outDate++;
+      });
+
+      kpiTotal.textContent = `Total instruments: ${total}`;
+      kpiInDate.textContent = `In-date: ${inDate}`;
+      kpiOutDate.textContent = `Expired/Unknown: ${outDate}`;
+    }
+
+    function escapeHtml(s='') {
+      return String(s)
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'","&#39;");
+    }
+
+    // Event delegation
+    rowsEl.addEventListener('input', (e) => {
+      const el = e.target;
+      const tr = el.closest('tr');
+      if (!tr) return;
+      const id = tr.dataset.id;
+      const k = el.dataset.k;
+      if (!k) return;
+      const inst = state.instruments.find(x => x.id === id);
+      if (!inst) return;
+      if (el.type === 'checkbox') {
+        inst[k] = el.checked;
+      } else {
+        inst[k] = el.value;
+      }
+      renderTable();
+    });
+
+    rowsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btnDel');
+      if (!btn) return;
+      const tr = btn.closest('tr');
+      const id = tr?.dataset.id;
+      if (!id) return;
+      state.instruments = state.instruments.filter(x => x.id !== id);
+      renderTable();
+    });
+
+    document.getElementById('btnAddRow').addEventListener('click', () => {
+      addInstrument();
+    });
+
+    searchEl.addEventListener('input', renderTable);
+
+    // Scope fields binding
+    const bind = (id, path) => {
+      const el = document.getElementById(id);
+      const set = (val) => {
+        const keys = path.split('.');
+        let ref = state.meta;
+        for (let i = 0; i < keys.length - 1; i++) ref = ref[keys[i]];
+        ref[keys.at(-1)] = val;
+      };
+      el.addEventListener('input', () => set(el.type === 'checkbox' ? el.checked : el.value));
+    };
+
+    bind('siteName', 'siteName');
+    bind('auditor', 'auditor');
+    bind('auditDate', 'auditDate');
+    bind('shift', 'shift');
+    bind('sopAccessMethod', 'sop.accessMethod');
+    bind('sopAccessibilityScore', 'sop.accessibilityScore');
+    bind('sopNotes', 'sop.notes');
+    document.getElementById('evBinder').addEventListener('change', e => state.meta.sop.evidence.binder = e.target.checked);
+    document.getElementById('evQR').addEventListener('change', e => state.meta.sop.evidence.qr = e.target.checked);
+    document.getElementById('evDMS').addEventListener('change', e => state.meta.sop.evidence.dms = e.target.checked);
+    document.getElementById('finalComments').addEventListener('input', e => state.meta.finalComments = e.target.value);
+
+    // Signature pad
+    const canvas = document.getElementById('sigPad');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    let drawing = false, last = null, dirty = false;
+
+    function resizeCanvas() {
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * ratio;
+      canvas.height = rect.height * ratio;
+      ctx.scale(ratio, ratio);
+      // clear background
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, rect.width, rect.height);
+      if (!dirty) {
+        ctx.fillStyle = '#999';
+        ctx.font = '14px system-ui';
+        ctx.fillText('Sign here', 10, 20);
+      }
+    }
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+    resizeCanvas();
+
+    function startDraw(x, y) {
+      drawing = true; last = { x, y };
+    }
+    function moveDraw(x, y) {
+      if (!drawing) return;
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(last.x, last.y);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      last = { x, y };
+      dirty = true;
+    }
+    function endDraw() { drawing = false; last = null; }
+
+    canvas.addEventListener('pointerdown', (e) => {
+      canvas.setPointerCapture(e.pointerId);
+      const rect = canvas.getBoundingClientRect();
+      startDraw(e.clientX - rect.left, e.clientY - rect.top);
+    });
+    canvas.addEventListener('pointermove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      moveDraw(e.clientX - rect.left, e.clientY - rect.top);
+    });
+    canvas.addEventListener('pointerup', endDraw);
+    canvas.addEventListener('pointercancel', endDraw);
+    canvas.addEventListener('pointerleave', endDraw);
+
+    document.getElementById('sigClear').addEventListener('click', () => {
+      dirty = false;
+      resizeCanvas();
+      document.getElementById('sigMeta').textContent = '';
+      state.meta.signature = { name:'', dataUrl:'', time:'' };
+    });
+
+    document.getElementById('sigSave').addEventListener('click', () => {
+      const name = document.getElementById('sigName').value.trim();
+      if (!name) {
+        alert('Type your name before saving signature.');
+        return;
+      }
+      if (!dirty) {
+        alert('Please draw your signature in the pad.');
+        return;
+      }
+      const dataUrl = canvas.toDataURL('image/png');
+      const time = new Date().toISOString();
+      state.meta.signature = { name, dataUrl, time };
+      document.getElementById('sigMeta').textContent = `Signed by ${name} at ${new Date(time).toLocaleString()}`;
+    });
+
+    // Save/Load/Export/Print
+    document.getElementById('btnSave').addEventListener('click', () => {
+      localStorage.setItem('calSopAudit', JSON.stringify(state));
+      alert('Saved locally.');
+    });
+    document.getElementById('btnLoad').addEventListener('click', () => {
+      const raw = localStorage.getItem('calSopAudit');
+      if (!raw) return alert('No saved data found.');
+      const loaded = JSON.parse(raw);
+      Object.assign(state.meta, loaded.meta || {});
+      state.instruments = loaded.instruments || [];
+      hydrateUI();
+      renderTable();
+      alert('Loaded.');
+    });
+    document.getElementById('btnExport').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const name = (state.meta.siteName || 'audit').replace(/\W+/g,'-').toLowerCase();
+      a.download = `${name || 'audit'}-${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      URL.revokeObjectURL(url);
+      a.remove();
+    });
+    document.getElementById('btnPrint').addEventListener('click', () => window.print());
+
+    // Offline (Service Worker)
+    const swCode = `
+      const CACHE = 'cal-sop-audit-v1';
+      self.addEventListener('install', (e) => {
+        e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./'])));
+        self.skipWaiting();
+      });
+      self.addEventListener('activate', (e) => self.clients.claim());
+      self.addEventListener('fetch', (e) => {
+        e.respondWith(
+          caches.match(e.request).then(r => r || fetch(e.request).then(resp => {
+            const copy = resp.clone();
+            caches.open(CACHE).then(c => c.put(e.request, copy));
+            return resp;
+          }).catch(() => caches.match('./')))
+        );
+      });
+    `;
+    document.getElementById('btnInstallSW').addEventListener('click', async () => {
+      if (!('serviceWorker' in navigator)) return alert('Service workers not supported.');
+      const blob = new Blob([swCode], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+      try {
+        await navigator.serviceWorker.register(url, { scope: './' });
+        alert('Offline enabled.');
+      } catch (e) {
+        console.error(e);
+        alert('Failed to register service worker.');
+      } finally {
+        URL.revokeObjectURL(url);
+      }
+    });
+
+    // Hydrate inputs from state.meta on load
+    function hydrateUI() {
+      document.getElementById('siteName').value = state.meta.siteName || '';
+      document.getElementById('auditor').value = state.meta.auditor || '';
+      document.getElementById('auditDate').value = state.meta.auditDate || '';
+      document.getElementById('shift').value = state.meta.shift || '';
+      document.getElementById('sopAccessMethod').value = state.meta.sop.accessMethod || '';
+      document.getElementById('sopAccessibilityScore').value = state.meta.sop.accessibilityScore || '';
+      document.getElementById('sopNotes').value = state.meta.sop.notes || '';
+      document.getElementById('evBinder').checked = !!state.meta.sop.evidence.binder;
+      document.getElementById('evQR').checked = !!state.meta.sop.evidence.qr;
+      document.getElementById('evDMS').checked = !!state.meta.sop.evidence.dms;
+      document.getElementById('finalComments').value = state.meta.finalComments || '';
+      if (state.meta.signature?.name && state.meta.signature?.dataUrl) {
+        document.getElementById('sigName').value = state.meta.signature.name;
+        document.getElementById('sigMeta').textContent =
+          `Signed by ${state.meta.signature.name} at ${new Date(state.meta.signature.time).toLocaleString()}`;
+      }
+    }
+
+    // Finalize validation
+    document.getElementById('btnFinalize').addEventListener('click', () => {
+      const issues = [];
+      // SOP basics
+      if (!state.meta.sop.accessMethod) issues.push('Select SOP access method.');
+      if (!state.meta.sop.accessibilityScore) issues.push('Provide SOP accessibility rating.');
+      // Signature
+      if (!state.meta.signature?.dataUrl) issues.push('Attach digital signature.');
+      // Instruments
+      if (state.instruments.length === 0) issues.push('Add at least one instrument.');
+      state.instruments.forEach((inst, i) => {
+        const st = calcStatus(inst);
+        if (st.cls !== 'status-ok') {
+          issues.push(`Instrument ${inst.tag || i+1} status: ${st.label}.`);
+        }
+      });
+
+      const finalStatus = document.getElementById('finalStatus');
+      if (issues.length) {
+        finalStatus.textContent = 'Open items: ' + issues.length;
+        alert('Please resolve before finalizing:\n- ' + issues.join('\n- '));
+      } else {
+        finalStatus.textContent = 'All good. Audit complete.';
+        alert('Audit finalized. You may now Export or Print.');
+      }
+    });
+
+    // Seed with a few examples
+    addInstrument({ tag: 'SCALE-12', location: 'Weigh Room', model: 'Mettler XS', serial: 'X12345', calDate: iso(-300), dueDate: iso(60), sticker: true });
+    addInstrument({ tag: 'PH-02', location: 'QC Bench 3', model: 'Thermo pH210', serial: 'P9876', calDate: iso(-200), dueDate: iso(-2), sticker: true });
+    addInstrument({ tag: 'THERM-7', location: 'Cold Room', model: 'Fluke 52', serial: 'F52-111', calDate: iso(-100), dueDate: iso(10), sticker: false });
+
+    function iso(offsetDays) {
+      const d = new Date();
+      d.setDate(d.getDate() + offsetDays);
+      return d.toISOString().slice(0,10);
+    }
+
+    function initFromStorage() {
+      try {
+        const raw = localStorage.getItem('calSopAudit');
+        if (!raw) return;
+        const loaded = JSON.parse(raw);
+        Object.assign(state.meta, loaded.meta || {});
+        state.instruments = loaded.instruments || state.instruments;
+        hydrateUI();
+        renderTable();
+      } catch {}
+    }
+
+    initFromStorage();
+    renderTable();
+  </script>
 </body>
 </html>
