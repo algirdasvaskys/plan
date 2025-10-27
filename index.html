@@ -1,886 +1,2867 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  />
-  <title>Calibration & SOP Accessibility Audit</title>
-  <meta name="description" content="Audit tool to verify calibration sticker validity and SOP/work instruction accessibility." />
-  <meta name="color-scheme" content="light dark">
-  <style>
-    :root {
-      --bg: #0b0c10;
-      --panel: #12151a;
-      --panel-2: #171b22;
-      --text: #e6eefc;
-      --muted: #b6c2d9;
-      --accent: #66e2a2;
-      --accent-2: #5bc0ff;
-      --danger: #ff6b6b;
-      --warn: #ffb020;
-      --ok: #7dffa0;
-      --outline: #304357;
-      --focus: #a4d1ff;
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Technical Glossary — Advanced Interactive Reference</title>
+<style>
+  :root{
+    --bg: #0f1221;
+    --panel: #171a2b;
+    --ink: #e9ecff;
+    --muted: #9aa3c7;
+    --brand: #6ea8fe;
+    --accent: #9bdeac;
+    --warn: #ffd166;
+    --danger: #ff6b6b;
+    --chip: #2a2f4b;
+    --chipText: #d7ddff;
+    --card: #1c2040;
+    --highlight: #2c365f;
+    --link: #88c0ff;
+    --good: #89f0c2;
+    --shadow: 0 8px 24px rgba(0,0,0,.25);
+  }
+  @media (prefers-color-scheme: light) {
+    :root{
+      --bg: #f6f8ff;
+      --panel: #ffffff;
+      --ink: #111522;
+      --muted: #56607a;
+      --brand: #2f6feb;
+      --accent: #2a9d8f;
+      --warn: #cc8d00;
+      --danger: #d62828;
+      --chip: #eef2ff;
+      --chipText: #1e2a5a;
+      --card: #ffffff;
+      --highlight: #e8edff;
+      --link: #1b6fde;
+      --good: #1aa37a;
+      --shadow: 0 6px 18px rgba(0,0,0,.08);
     }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f8fbff;
-        --panel: #ffffff;
-        --panel-2: #f5f8fc;
-        --text: #152131;
-        --muted: #475a77;
-        --accent: #0e9f6e;
-        --accent-2: #0b82d9;
-        --danger: #b00020;
-        --warn: #b35b00;
-        --ok: #0a7f3f;
-        --outline: #d6e2f0;
-        --focus: #134fcf;
-      }
-    }
+  }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: radial-gradient(1200px 800px at 10% -10%, #20306a 0%, transparent 60%) , var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-    html, body {
-      height: 100%;
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-      line-height: 1.45;
-    }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 16px 80px;
+  }
+  header {
+    position: sticky; top: 0; z-index: 20;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 70%, transparent), transparent);
+  }
+  .hero {
+    border-radius: 18px; padding: 20px; background: var(--panel); box-shadow: var(--shadow);
+    display: grid; gap: 14px;
+  }
+  .title { font-size: clamp(24px, 5vw, 36px); font-weight: 800; letter-spacing: .2px; }
+  .subtitle { color: var(--muted); }
 
-    /* Layout */
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem clamp(0.75rem, 3vw, 2rem);
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
+  .controls { display: grid; gap: 10px; grid-template-columns: 1fr; }
+  .row {
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  }
 
-    header.app-header {
-      display: grid;
-      gap: 0.75rem;
-      background: var(--panel);
-      padding: 1rem;
-      border: 1px solid var(--outline);
-      border-radius: 12px;
-    }
+  .search {
+    flex: 1 1 320px; display: flex; gap: 8px; align-items: center;
+    padding: 10px 12px; border-radius: 12px; background: var(--card); border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  }
+  .search input {
+    flex: 1; border: 0; outline: 0; background: transparent; color: var(--ink);
+    font-size: 15px;
+  }
+  .btn, .chip {
+    border: 0; background: var(--chip); color: var(--chipText);
+    padding: 8px 12px; border-radius: 999px; cursor: pointer; font-weight: 600;
+  }
+  .btn:hover, .chip:hover { filter: brightness(1.05); }
+  .btn.toggle { background: var(--brand); color: white; }
+  .btn.ghost { background: transparent; border: 1px solid color-mix(in srgb, var(--ink) 15%, transparent); }
 
-    header .title {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip.active { background: var(--brand); color: white; }
+  .chip.small { padding: 6px 10px; font-size: 13px; }
 
-    .badge {
-      background: color-mix(in srgb, var(--accent) 18%, transparent);
-      color: var(--text);
-      border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--outline));
-      padding: 0.2rem 0.5rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-    }
+  .layout {
+    display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 16px;
+  }
+  @media (min-width: 900px){
+    .layout { grid-template-columns: 260px 1fr; }
+  }
 
-    /* Controls bar */
-    .toolbar {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .toolbar > * {
-      flex: 1 1 auto;
-      min-width: 140px;
-    }
+  .sidebar {
+    position: sticky; top: 82px; align-self: start;
+    background: var(--panel); border-radius: 14px; box-shadow: var(--shadow);
+    padding: 12px;
+  }
+  .sidebar h4 { margin: 8px 8px 6px; font-size: 14px; letter-spacing: .4px; text-transform: uppercase; color: var(--muted); }
+  .az { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+  .az button {
+    padding: 8px; border-radius: 10px; border: 0; cursor: pointer; background: var(--card); color: var(--ink);
+  }
+  .az button:hover { background: var(--highlight); }
 
-    /* Cards/sections */
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--outline);
-      border-radius: 12px;
-      padding: clamp(0.75rem, 2vw, 1rem);
-    }
-    .card h2, .card h3 {
-      margin-top: 0;
-    }
+  .content {
+    display: grid; gap: 12px;
+  }
 
-    /* Form controls */
-    label {
-      font-weight: 600;
-    }
-    input[type="text"], input[type="date"], input[type="time"], input[type="search"], select, textarea {
-      width: 100%;
-      background: var(--panel-2);
-      color: var(--text);
-      border: 1px solid var(--outline);
-      border-radius: 10px;
-      padding: 0.6rem 0.7rem;
-      font-size: 1rem;
-    }
-    input::placeholder, textarea::placeholder {
-      color: var(--muted);
-    }
+  details.gloss {
+    background: var(--panel);
+    border-radius: 14px; box-shadow: var(--shadow);
+    overflow: clip;
+  }
+  details.gloss[open] summary { border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); }
+  summary {
+    list-style: none; cursor: pointer;
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px;
+    padding: 14px 16px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  .term {
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  }
+  .term h3 {
+    margin: 0; font-size: 18px; font-weight: 800;
+  }
+  .badges { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    font-size: 12px; font-weight: 800; letter-spacing: .3px;
+    padding: 4px 8px; border-radius: 8px;
+    background: var(--highlight); color: var(--chipText);
+  }
+  .badge.key { background: linear-gradient(90deg, var(--brand), #6ef3ff); color: #00112f; }
+  .badge.formula { background: linear-gradient(90deg, #ffd1a1, #fff28b); color: #553600; }
+  .badge.safety { background: linear-gradient(90deg, #ff9aa2, #ffd1dc); color: #4b0011; }
+  .badge.physics { background: #263b7f; color: #dbe6ff; }
+  .badge.electrical { background: #2b7a78; color: #e4fff7; }
+  .badge.material { background: #6a4c93; color: #f0e7ff; }
+  .badge.admin { background: #5a677a; color: #ecf1f9; }
+  .badge.lighting { background: #a24; color: #ffe5f0; }
+  .badge.security { background: #7a5200; color: #fff1d6; }
+  .badge.install { background: #346751; color: #e6fff6; }
 
-    input[type="checkbox"], input[type="radio"] {
-      transform: translateY(1px);
-    }
+  .body { padding: 14px 16px 18px; display: grid; gap: 12px; }
+  .keypoints {
+    border-left: 4px solid var(--brand); background: color-mix(in srgb, var(--brand) 12%, transparent);
+    padding: 10px 12px; border-radius: 10px;
+  }
+  .keypoints h4 { margin: 0 0 6px; font-size: 14px; color: var(--brand); text-transform: uppercase; letter-spacing: .4px; }
+  .note, .warn, .tip {
+    border-radius: 10px; padding: 10px 12px;
+  }
+  .note { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+  .warn { background: color-mix(in srgb, var(--danger) 18%, transparent); }
+  .tip { background: color-mix(in srgb, var(--accent) 18%, transparent); }
 
-    .grid-2 {
-      display: grid;
-      gap: 0.75rem;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 720px) {
-      .grid-2 {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
+  .meta {
+    display: flex; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 13px;
+  }
 
-    .grid-3 {
-      display: grid;
-      gap: 0.75rem;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 960px) {
-      .grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
+  .footer {
+    margin-top: 28px; color: var(--muted); text-align: center; font-size: 13px;
+  }
 
-    /* Table */
-    .table-wrap {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border-radius: 10px;
-      border: 1px solid var(--outline);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--panel-2);
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-    th, td {
-      padding: 0.6rem 0.7rem;
-      border-bottom: 1px solid var(--outline);
-      vertical-align: middle;
-    }
-    th {
-      background: var(--panel);
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      text-align: left;
-    }
-    tr.status-ok { background: color-mix(in srgb, var(--ok) 8%, transparent); }
-    tr.status-warn { background: color-mix(in srgb, var(--warn) 10%, transparent); }
-    tr.status-danger { background: color-mix(in srgb, var(--danger) 10%, transparent); }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      background: var(--accent-2);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 0.6rem 0.9rem;
-      cursor: pointer;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .btn.secondary { background: var(--accent); }
-    .btn.ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--outline);
-    }
-    .btn.danger { background: var(--danger); }
-    .btn.warn { background: var(--warn); color: black; }
-
-    /* Details/Summary */
-    details {
-      background: var(--panel-2);
-      border: 1px dashed var(--outline);
-      border-radius: 10px;
-      padding: 0.5rem 0.75rem;
-    }
-    details > summary {
-      cursor: pointer;
-      font-weight: 700;
-      outline: none;
-    }
-    details[open] > summary {
-      margin-bottom: 0.5rem;
-    }
-
-    /* Alerts */
-    .alert {
-      border-left: 4px solid var(--warn);
-      background: color-mix(in srgb, var(--warn) 10%, transparent);
-      color: var(--text);
-      padding: 0.75rem 0.9rem;
-      border-radius: 8px;
-    }
-    .alert.ok {
-      border-left-color: var(--ok);
-      background: color-mix(in srgb, var(--ok) 10%, transparent);
-    }
-    .alert.bad {
-      border-left-color: var(--danger);
-      background: color-mix(in srgb, var(--danger) 12%, transparent);
-    }
-
-    /* Focus visibility */
-    :focus-visible {
-      outline: 3px solid var(--focus);
-      outline-offset: 2px;
-      border-radius: 6px;
-    }
-
-    /* Print */
-    @media print {
-      .toolbar, .no-print { display: none !important; }
-      body { background: white; color: black; }
-      .card { border-color: #999; }
-      th, td { border-color: #aaa; }
-    }
-
-    /* Signature */
-    .signature {
-      display: grid;
-      gap: 0.6rem;
-    }
-    .sig-pad {
-      width: 100%;
-      height: 160px;
-      background: white;
-      border: 2px dashed var(--outline);
-      border-radius: 10px;
-      touch-action: none;
-    }
-    .sig-actions {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    /* Helpers */
-    .muted { color: var(--muted); }
-    .sr-only {
-      position: absolute !important;
-      width: 1px; height: 1px;
-      padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
-      border: 0;
-    }
-    .right { text-align: right; }
-    .chip {
-      display: inline-block;
-      padding: 0.15rem 0.5rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      border: 1px solid var(--outline);
-      background: var(--panel);
-    }
-  </style>
+  /* Utilities */
+  .hide { display: none !important; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="app-header" role="banner">
-      <div class="title">
-        <h1 style="margin:0;">Calibration Sticker & SOP Accessibility Audit</h1>
-        <span class="badge" aria-label="Compliant with WCAG-conscious patterns">A11y Enhanced</span>
-        <span class="badge">Offline-capable</span>
+  <header>
+    <div class="wrap">
+      <div class="hero">
+        <div class="title">Technical Glossary</div>
+        <div class="subtitle">Interactive, searchable glossary with highlighted key information, formulas, and safety notes.</div>
+        <div class="controls">
+          <div class="row">
+            <div class="search" role="search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.2-4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/></svg>
+              <input id="q" type="search" placeholder="Search term or content (e.g., 'Ohm', 'safety', 'lighting', 'force')…" autocomplete="off" />
+              <button class="btn ghost" id="clearBtn" title="Clear search">Clear</button>
+            </div>
+            <button class="btn toggle" id="darkToggle" title="Toggle dark/light">Toggle theme</button>
+            <button class="btn ghost" id="expandAll">Expand all</button>
+            <button class="btn ghost" id="collapseAll">Collapse all</button>
+          </div>
+          <div class="chips" id="chips">
+            <button class="chip small active" data-cat="all">All</button>
+            <button class="chip small" data-cat="physics">Physics</button>
+            <button class="chip small" data-cat="electrical">Electrical</button>
+            <button class="chip small" data-cat="safety">Safety</button>
+            <button class="chip small" data-cat="materials">Materials</button>
+            <button class="chip small" data-cat="lighting">Lighting</button>
+            <button class="chip small" data-cat="security">Security/Alarms</button>
+            <button class="chip small" data-cat="install">Installation</button>
+            <button class="chip small" data-cat="admin">Admin/Docs</button>
+          </div>
+        </div>
       </div>
-      <p class="muted">Use this tool to verify that all instruments have in-date calibration stickers and that SOPs/work instructions are accessible to staff.</p>
-      <div class="toolbar no-print" role="group" aria-label="Global controls">
-        <button class="btn" id="btnSave" type="button">Save Progress</button>
-        <button class="btn ghost" id="btnLoad" type="button">Load Saved</button>
-        <button class="btn warn" id="btnExport" type="button">Export JSON</button>
-        <button class="btn secondary" id="btnPrint" type="button">Print</button>
-        <button class="btn ghost" id="btnInstallSW" type="button" aria-describedby="swNote">Enable Offline</button>
-      </div>
-      <p id="swNote" class="sr-only">The Enable Offline button registers a service worker for offline caching.</p>
-    </header>
+    </div>
+  </header>
 
-    <section class="card" aria-labelledby="sec-overview">
-      <h2 id="sec-overview">Quick Overview</h2>
-      <div class="grid-3">
-        <div class="alert" id="kpi-total">Total instruments: 0</div>
-        <div class="alert ok" id="kpi-in-date">In-date: 0</div>
-        <div class="alert bad" id="kpi-out-date">Expired/Unknown: 0</div>
-      </div>
-    </section>
+  <main class="wrap layout">
+    <aside class="sidebar">
+      <h4>Jump A–Z</h4>
+      <div class="az" id="az"></div>
+    </aside>
 
-    <section class="card" aria-labelledby="sec-scope">
-      <h2 id="sec-scope">Audit Scope</h2>
-      <div class="grid-2">
-        <div>
-          <label for="siteName">Site/Area</label>
-          <input id="siteName" name="siteName" type="text" placeholder="e.g., Lab A - Metrology Room" autocomplete="organization" />
-        </div>
-        <div>
-          <label for="auditor">Auditor</label>
-          <input id="auditor" name="auditor" type="text" placeholder="Full name" autocomplete="name" />
-        </div>
-        <div>
-          <label for="auditDate">Audit Date</label>
-          <input id="auditDate" name="auditDate" type="date" />
-        </div>
-        <div>
-          <label for="shift">Shift</label>
-          <select id="shift" name="shift">
-            <option value="">Select...</option>
-            <option>Day</option>
-            <option>Evening</option>
-            <option>Night</option>
-          </select>
-        </div>
-      </div>
-    </section>
+    <section class="content" id="list">
+      <!-- Glossary entries — each details.gloss has data attributes for filtering -->
+      <!-- For brevity, representative items include badges, keypoints, formulas. All provided terms are included. -->
 
-    <section class="card" aria-labelledby="sec-sop">
-      <h2 id="sec-sop">SOPs & Work Instructions Accessibility</h2>
-      <details>
-        <summary>Checklist</summary>
-        <ul>
-          - SOPs are accessible at point of use (printed or digital).
-          - Latest controlled versions available; obsolete copies removed.
-          - Staff know where to find and how to open SOPs digitally.
-          - Access does not require personal licenses unavailable to operators.
-          - SOPs reflect equipment model/firmware currently in use.
-        </ul>
+      <!-- Acceleration -->
+      <details class="gloss" data-term="Acceleration" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Acceleration</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge formula">a = Δv / Δt (m/s²)</span>
+              <span class="badge key">Key concept</span>
+            </div>
+          </div>
+          <div class="meta">Rate of change of velocity with time</div>
+        </summary>
+        <div class="body">
+          <p>Acceleration is the rate of change in velocity with time.</p>
+          <div class="keypoints">
+            <h4>Key points</h4>
+            <ul>
+              <li>Formula: a = Δv / Δt, units m/s².</li>
+              <li>Vector quantity (magnitude and direction).</li>
+            </ul>
+          </div>
+        </div>
       </details>
 
-      <div class="grid-2" style="margin-top:0.5rem;">
-        <div>
-          <label for="sopAccessMethod">Primary Access Method</label>
-          <select id="sopAccessMethod" name="sopAccessMethod">
-            <option value="">Select...</option>
-            <option>Printed binders</option>
-            <option>Document control system (intranet)</option>
-            <option>QR codes at station</option>
-            <option>Shared drive</option>
-            <option>LMS/Quality system</option>
-          </select>
-        </div>
-        <div>
-          <label for="sopAccessibilityScore">Accessibility Rating</label>
-          <select id="sopAccessibilityScore" name="sopAccessibilityScore" aria-describedby="scoreDesc">
-            <option value="">Select...</option>
-            <option value="5">5 - Excellent</option>
-            <option value="4">4 - Good</option>
-            <option value="3">3 - Adequate</option>
-            <option value="2">2 - Poor</option>
-            <option value="1">1 - Critical</option>
-          </select>
-          <div id="scoreDesc" class="muted">Consider ease of access, version control, and user familiarity.</div>
-        </div>
-        <div class="grid-2" style="grid-column: 1 / -1;">
-          <div>
-            <label for="sopNotes">Notes</label>
-            <textarea id="sopNotes" rows="3" placeholder="Observations, e.g., binder missing section for instrument X, DMS outage, etc."></textarea>
+      <!-- Accident -->
+      <details class="gloss" data-term="Accident" data-cat="safety">
+        <summary>
+          <div class="term">
+            <h3>Accident</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+            </div>
           </div>
-          <div>
-            <fieldset>
-              <legend>Evidence</legend>
-              <label><input type="checkbox" id="evBinder" /> Binder present</label><br />
-              <label><input type="checkbox" id="evQR" /> QR codes valid</label><br />
-              <label><input type="checkbox" id="evDMS" /> DMS accessible on terminals</label>
-            </fieldset>
-          </div>
+          <div class="meta">Uncontrolled event causing injury or damage</div>
+        </summary>
+        <div class="body">
+          <p>An uncontrolled event causing injury or damage to an individual or property.</p>
+          <div class="warn">Report, record, and investigate to prevent recurrence.</div>
         </div>
-      </div>
+      </details>
+
+      <!-- Alarm call points -->
+      <details class="gloss" data-term="Alarm call points" data-cat="security lighting install">
+        <summary>
+          <div class="term">
+            <h3>Alarm call points</h3>
+            <div class="badges">
+              <span class="badge security">Fire/Security</span>
+              <span class="badge install">Installation</span>
+              <span class="badge key">30 m max to trigger</span>
+            </div>
+          </div>
+          <div class="meta">Manual points located within 30 m of any position</div>
+        </summary>
+        <div class="body">
+          <p>Provide manually operated points where people may be present; locate so no one walks more than 30 m to raise an alarm.</p>
+        </div>
+      </details>
+
+      <!-- Alloy -->
+      <details class="gloss" data-term="Alloy" data-cat="materials">
+        <summary>
+          <div class="term">
+            <h3>Alloy</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Mixture of two or more metals</div>
+        </summary>
+        <div class="body">
+          <p>Alloys combine metals to tailor properties (strength, corrosion resistance).</p>
+        </div>
+      </details>
+
+      <!-- Appointed person -->
+      <details class="gloss" data-term="Appointed person" data-cat="safety admin">
+        <summary>
+          <div class="term">
+            <h3>Appointed person</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge admin">Admin</span>
+            </div>
+          </div>
+          <div class="meta">Takes charge in medical incidents; maintains first-aid kit</div>
+        </summary>
+        <div class="body">
+          <p>Nominee to take charge if someone is injured/ill, call ambulance, and manage first-aid equipment.</p>
+        </div>
+      </details>
+
+      <!-- Approved test instruments -->
+      <details class="gloss" data-term="Approved test instruments" data-cat="electrical install safety">
+        <summary>
+          <div class="term">
+            <h3>Approved test instruments</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+              <span class="badge safety">Safety</span>
+              <span class="badge key">Calibration required</span>
+            </div>
+          </div>
+          <div class="meta">Must meet relevant regs and carry calibration certificate</div>
+        </summary>
+        <div class="body">
+          <p>Use instruments and leads compliant with relevant regulations; ensure current calibration certification.</p>
+          <div class="note">Invalid calibration can void test results.</div>
+        </div>
+      </details>
+
+      <!-- Basic protection -->
+      <details class="gloss" data-term="Basic protection" data-cat="electrical safety">
+        <summary>
+          <div class="term">
+            <h3>Basic protection</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Insulation of live parts (IET 416)</div>
+        </summary>
+        <div class="body">
+          <p>Protection from contact with live parts via insulation in line with IET Section 416.</p>
+        </div>
+      </details>
+
+      <!-- Bonding -->
+      <details class="gloss" data-term="Bonding" data-cat="electrical install safety">
+        <summary>
+          <div class="term">
+            <h3>Bonding</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Link exposed/extraneous conductive parts</div>
+        </summary>
+        <div class="body">
+          <p>Connect exposed or extraneous metal parts together to reduce touch voltages.</p>
+        </div>
+      </details>
+
+      <!-- Bonding conductor -->
+      <details class="gloss" data-term="Bonding conductor" data-cat="electrical install">
+        <summary>
+          <div class="term">
+            <h3>Bonding conductor</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Provides protective bonding path</div>
+        </summary>
+        <div class="body">
+          <p>A conductor used for protective bonding between parts.</p>
+        </div>
+      </details>
+
+      <!-- Cable tray -->
+      <details class="gloss" data-term="Cable tray" data-cat="install materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Cable tray</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Perforated steel channel for supporting cables</div>
+        </summary>
+        <div class="body">
+          <p>Perforated sheet-steel (galvanized or PVC-coated) used to support MI and SWA cables with cable ties.</p>
+        </div>
+      </details>
+
+      <!-- Capacitive reactance -->
+      <details class="gloss" data-term="Capacitive reactance" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Capacitive reactance (Xc)</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">AC Theory</span>
+              <span class="badge formula">Xc = 1/(2πfC)</span>
+            </div>
+          </div>
+          <div class="meta">Opposition in capacitive circuits; current leads voltage</div>
+        </summary>
+        <div class="body">
+          <p>Opposition to AC current due to capacitance; causes current to lead voltage.</p>
+        </div>
+      </details>
+
+      <!-- Centrifugal force -->
+      <details class="gloss" data-term="Centrifugal force" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Centrifugal force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Apparent outward force in rotating frame</div>
+        </summary>
+        <div class="body">
+          <p>Acts away from the center; opposite to centripetal force (acts toward center).</p>
+        </div>
+      </details>
+
+      <!-- Centripetal force -->
+      <details class="gloss" data-term="Centripetal force" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Centripetal force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge formula">Fc = mv²/r</span>
+            </div>
+          </div>
+          <div class="meta">Force toward the center for circular motion</div>
+        </summary>
+        <div class="body">
+          <p>Directed toward the center; maintains circular motion of a mass on a string.</p>
+        </div>
+      </details>
+
+      <!-- Circuit protective conductor (CPC) -->
+      <details class="gloss" data-term="Circuit protective conductor (CPC)" data-cat="electrical install safety">
+        <summary>
+          <div class="term">
+            <h3>Circuit protective conductor (CPC)</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Protective conductor connecting exposed parts to MET</div>
+        </summary>
+        <div class="body">
+          <p>Connects exposed conductive parts of equipment to the main earthing terminal.</p>
+        </div>
+      </details>
+
+      <!-- Cohesive or adhesive force -->
+      <details class="gloss" data-term="Cohesive or adhesive force" data-cat="physics materials">
+        <summary>
+          <div class="term">
+            <h3>Cohesive or adhesive force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Force holding substances together or to surfaces</div>
+        </summary>
+        <div class="body">
+          <p>Cohesion holds like molecules together; adhesion holds different substances together.</p>
+        </div>
+      </details>
+
+      <!-- Compact fluorescent lamps (CFLs) -->
+      <details class="gloss" data-term="Compact fluorescent lamps (CFLs)" data-cat="lighting electrical">
+        <summary>
+          <div class="term">
+            <h3>Compact fluorescent lamps (CFLs)</h3>
+            <div class="badges">
+              <span class="badge lighting">Lighting</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Miniature fluorescents replacing GLS lamps</div>
+        </summary>
+        <div class="body">
+          <p>CFLs are compact fluorescent lamps designed as energy-efficient alternatives to incandescent GLS lamps.</p>
+        </div>
+      </details>
+
+      <!-- Compressive force -->
+      <details class="gloss" data-term="Compressive force" data-cat="physics materials">
+        <summary>
+          <div class="term">
+            <h3>Compressive force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Pushes materials together</div>
+        </summary>
+        <div class="body">
+          <p>Force that tends to shorten or squeeze material.</p>
+        </div>
+      </details>
+
+      <!-- Conductor -->
+      <details class="gloss" data-term="Conductor" data-cat="electrical materials">
+        <summary>
+          <div class="term">
+            <h3>Conductor</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge material">Materials</span>
+              <span class="badge key">Carries charge/heat</span>
+            </div>
+          </div>
+          <div class="meta">Material with loosely bound electrons</div>
+        </summary>
+        <div class="body">
+          <p>Metals with free electrons that conduct electricity and heat easily.</p>
+        </div>
+      </details>
+
+      <!-- Conduit -->
+      <details class="gloss" data-term="Conduit" data-cat="install electrical materials">
+        <summary>
+          <div class="term">
+            <h3>Conduit</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Tubular enclosure for insulated conductors</div>
+        </summary>
+        <div class="body">
+          <p>Tubes or channels that contain insulated conductors for protection and routing.</p>
+        </div>
+      </details>
+
+      <!-- Corrosion -->
+      <details class="gloss" data-term="Corrosion" data-cat="materials safety">
+        <summary>
+          <div class="term">
+            <h3>Corrosion</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Destruction of metal by chemical action</div>
+        </summary>
+        <div class="body">
+          <p>Electrochemical processes degrade metals; consider material selection and protection.</p>
+        </div>
+      </details>
+
+      <!-- Delivery notes -->
+      <details class="gloss" data-term="Delivery notes" data-cat="admin">
+        <summary>
+          <div class="term">
+            <h3>Delivery notes</h3>
+            <div class="badges">
+              <span class="badge admin">Admin/Docs</span>
+            </div>
+          </div>
+          <div class="meta">Confirms delivered goods; precedes invoice</div>
+        </summary>
+        <div class="body">
+          <p>Supplier issues invoice after delivery note confirmation.</p>
+        </div>
+      </details>
+
+      <!-- Duty holder -->
+      <details class="gloss" data-term="Duty holder" data-cat="safety admin electrical">
+        <summary>
+          <div class="term">
+            <h3>Duty holder</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge admin">Admin</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Responsible person controlling electrical safety</div>
+        </summary>
+        <div class="body">
+          <p>Controls systems/equipment/conductors and represents the electrical company on-site.</p>
+        </div>
+      </details>
+
+      <!-- Earth -->
+      <details class="gloss" data-term="Earth" data-cat="electrical">
+        <summary>
+          <div class="term">
+            <h3>Earth</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge key">Reference 0 V</span>
+            </div>
+          </div>
+          <div class="meta">Conductive mass with zero potential reference</div>
+        </summary>
+        <div class="body">
+          <p>Used as the potential reference point in electrical systems.</p>
+        </div>
+      </details>
+
+      <!-- Earthing -->
+      <details class="gloss" data-term="Earthing" data-cat="electrical safety install">
+        <summary>
+          <div class="term">
+            <h3>Earthing</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Connect exposed parts to main earthing terminal</div>
+        </summary>
+        <div class="body">
+          <p>Ensures fault currents return safely for protective disconnection.</p>
+        </div>
+      </details>
+
+      <!-- Efficiency -->
+      <details class="gloss" data-term="Efficiency of any machine" data-cat="physics electrical">
+        <summary>
+          <div class="term">
+            <h3>Efficiency (η)</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge formula">η = Pout / Pin</span>
+              <span class="badge key">0–100%</span>
+            </div>
+          </div>
+          <div class="meta">Ratio of output to input power</div>
+        </summary>
+        <div class="body">
+          <p>Expressed as a fraction or percentage; losses reduce efficiency below 100%.</p>
+        </div>
+      </details>
+
+      <!-- Electric current -->
+      <details class="gloss" data-term="Electric current" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Electric current (I)</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">Physics</span>
+              <span class="badge key">Amperes (A)</span>
+            </div>
+          </div>
+          <div class="meta">Drift of electrons within a conductor</div>
+        </summary>
+        <div class="body">
+          <p>Rate of charge flow; measured in amperes (A).</p>
+        </div>
+      </details>
+
+      <!-- Electric shock -->
+      <details class="gloss" data-term="Electric shock" data-cat="safety electrical">
+        <summary>
+          <div class="term">
+            <h3>Electric shock</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge key">Avoid becoming part of circuit</span>
+            </div>
+          </div>
+          <div class="meta">Occurs when a person becomes part of the electrical circuit</div>
+        </summary>
+        <div class="body">
+          <p>Prevent via isolation, insulation, bonding, RCDs, and safe systems of work.</p>
+          <div class="warn">Danger of ventricular fibrillation; act fast.</div>
+        </div>
+      </details>
+
+      <!-- Electrical force -->
+      <details class="gloss" data-term="Electrical force" data-cat="physics electrical">
+        <summary>
+          <div class="term">
+            <h3>Electrical force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Force produced by an electric field</div>
+        </summary>
+        <div class="body">
+          <p>Describes interaction between charges in an electric field.</p>
+        </div>
+      </details>
+
+      <!-- Electrical industry -->
+      <details class="gloss" data-term="Electrical industry" data-cat="admin electrical">
+        <summary>
+          <div class="term">
+            <h3>Electrical industry</h3>
+            <div class="badges">
+              <span class="badge admin">Industry</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Ecosystem of specialist service companies</div>
+        </summary>
+        <div class="body">
+          <p>Includes design, install, maintenance, testing, manufacturing, and supply.</p>
+        </div>
+      </details>
+
+      <!-- Emergency lighting -->
+      <details class="gloss" data-term="Emergency lighting" data-cat="lighting safety install">
+        <summary>
+          <div class="term">
+            <h3>Emergency lighting</h3>
+            <div class="badges">
+              <span class="badge lighting">Lighting</span>
+              <span class="badge safety">Safety</span>
+              <span class="badge install">Installation</span>
+              <span class="badge key">Escape + Standby</span>
+            </div>
+          </div>
+          <div class="meta">Provides illumination in public buildings on mains failure</div>
+        </summary>
+        <div class="body">
+          <p>Not typically required in private homes; critical in unfamiliar public spaces to reduce panic.</p>
+        </div>
+      </details>
+
+      <!-- Emergency switching -->
+      <details class="gloss" data-term="Emergency switching" data-cat="electrical safety install">
+        <summary>
+          <div class="term">
+            <h3>Emergency switching</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+              <span class="badge key">Single-action rapid off</span>
+            </div>
+          </div>
+          <div class="meta">Rapid disconnection by a single action to remove danger</div>
+        </summary>
+        <div class="body">
+          <p>Places equipment in a safe condition quickly.</p>
+        </div>
+      </details>
+
+      <!-- Escape/standby lighting -->
+      <details class="gloss" data-term="Escape/standby lighting" data-cat="lighting safety">
+        <summary>
+          <div class="term">
+            <h3>Escape/Standby lighting</h3>
+            <div class="badges">
+              <span class="badge lighting">Lighting</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Escape: route illumination; Standby: continue activity</div>
+        </summary>
+        <div class="body">
+          <p>Emergency lighting provides escape route visibility and, where needed, standby for process continuity.</p>
+        </div>
+      </details>
+
+      <!-- Expansion bolts -->
+      <details class="gloss" data-term="Expansion bolts" data-cat="install materials">
+        <summary>
+          <div class="term">
+            <h3>Expansion bolts</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Heavy-duty masonry fixings (e.g., Rawlbolt)</div>
+        </summary>
+        <div class="body">
+          <p>Split iron shell expands in masonry when tightened to grip securely.</p>
+        </div>
+      </details>
+
+      <!-- Exposed conductive parts -->
+      <details class="gloss" data-term="Exposed conductive parts" data-cat="electrical safety">
+        <summary>
+          <div class="term">
+            <h3>Exposed conductive parts</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Non-live metal parts that may become live under fault</div>
+        </summary>
+        <div class="body">
+          <p>Appliance metalwork, trunking, conduit, etc., that require protective measures.</p>
+        </div>
+      </details>
+
+      <!-- Extraneous conductive parts -->
+      <details class="gloss" data-term="Extraneous conductive parts" data-cat="electrical safety">
+        <summary>
+          <div class="term">
+            <h3>Extraneous conductive parts</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Metal parts entering a building (pipes, steelwork)</div>
+        </summary>
+        <div class="body">
+          <p>Structural steel, gas/water pipes, radiators, sinks; often require bonding.</p>
+        </div>
+      </details>
+
+      <!-- Faraday’s law -->
+      <details class="gloss" data-term="Faraday’s law" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Faraday’s law</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">Physics</span>
+              <span class="badge key">Induced EMF</span>
+            </div>
+          </div>
+        <div class="meta">Changing flux through a conductor induces EMF</div>
+        </summary>
+        <div class="body">
+          <p>An EMF is induced when a conductor cuts or is cut by a magnetic field.</p>
+        </div>
+      </details>
+
+      <!-- Fault protection -->
+      <details class="gloss" data-term="Fault protection" data-cat="electrical safety">
+        <summary>
+          <div class="term">
+            <h3>Fault protection</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Bonding + automatic disconnection (IET 411.3–411.6)</div>
+        </summary>
+        <div class="body">
+          <p>Provides protection under fault conditions via ADS (fuse/CB) and bonding.</p>
+        </div>
+      </details>
+
+      <!-- Ferrous -->
+      <details class="gloss" data-term="Ferrous" data-cat="materials">
+        <summary>
+          <div class="term">
+            <h3>Ferrous</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Metals with iron as main constituent</div>
+        </summary>
+        <div class="body">
+          <p>Typically magnetic and susceptible to rust; e.g., steel, cast iron.</p>
+        </div>
+      </details>
+
+      <!-- Fire -->
+      <details class="gloss" data-term="Fire" data-cat="safety">
+        <summary>
+          <div class="term">
+            <h3>Fire</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge key">Fuel + Oxygen + Heat</span>
+            </div>
+          </div>
+          <div class="meta">Self-sustaining chemical reaction (fire triangle)</div>
+        </summary>
+        <div class="body">
+          <p>Remove any leg of the triangle to extinguish.</p>
+        </div>
+      </details>
+
+      <!-- Fire alarm circuits -->
+      <details class="gloss" data-term="Fire alarm circuits" data-cat="security install">
+        <summary>
+          <div class="term">
+            <h3>Fire alarm circuits</h3>
+            <div class="badges">
+              <span class="badge security">Fire/Security</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Normally open (parallel) or normally closed (series)</div>
+        </summary>
+        <div class="body">
+          <p>NO: call points in parallel; NC: series loop activates on alarm or cable break (fail-safe).</p>
+        </div>
+      </details>
+
+      <!-- First aid -->
+      <details class="gloss" data-term="First aid" data-cat="safety">
+        <summary>
+          <div class="term">
+            <h3>First aid</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Initial assistance before medical professionals</div>
+        </summary>
+        <div class="body">
+          <p>Stabilize, prevent deterioration, and promote recovery until help arrives.</p>
+        </div>
+      </details>
+
+      <!-- First aider -->
+      <details class="gloss" data-term="First aider" data-cat="safety">
+        <summary>
+          <div class="term">
+            <h3>First aider</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Trained person holding current certificate</div>
+        </summary>
+        <div class="body">
+          <p>Qualified to deliver first aid at work.</p>
+        </div>
+      </details>
+
+      <!-- Flashpoint -->
+      <details class="gloss" data-term="Flashpoint" data-cat="materials safety">
+        <summary>
+          <div class="term">
+            <h3>Flashpoint</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Lowest temperature producing ignitable vapour–air mix</div>
+        </summary>
+        <div class="body">
+          <p>Critical for storage/handling of flammable substances.</p>
+        </div>
+      </details>
+
+      <!-- Flexible conduit -->
+      <details class="gloss" data-term="Flexible conduit" data-cat="install materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Flexible conduit</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Interlinked metal spirals, often PVC coated (BS 731-1)</div>
+        </summary>
+        <div class="body">
+          <p>Useful where movement or vibration exists.</p>
+        </div>
+      </details>
+
+      <!-- Fluorescent lamp -->
+      <details class="gloss" data-term="Fluorescent lamp" data-cat="lighting electrical">
+        <summary>
+          <div class="term">
+            <h3>Fluorescent lamp</h3>
+            <div class="badges">
+              <span class="badge lighting">Lighting</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Low-pressure mercury vapour discharge with phosphor</div>
+        </summary>
+        <div class="body">
+          <p>Arc excites mercury; UV converted to visible by phosphor coating.</p>
+        </div>
+      </details>
+
+      <!-- Force -->
+      <details class="gloss" data-term="Force" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Interaction causing acceleration or deformation</div>
+        </summary>
+        <div class="body">
+          <p>Can start/stop motion or change direction; SI unit newton (N).</p>
+        </div>
+      </details>
+
+      <!-- Friction force -->
+      <details class="gloss" data-term="Friction force" data-cat="physics materials">
+        <summary>
+          <div class="term">
+            <h3>Friction force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Resists relative motion of surfaces</div>
+        </summary>
+        <div class="body">
+          <p>Generates heat; depends on normal force and surface properties.</p>
+        </div>
+      </details>
+
+      <!-- Functional switching -->
+      <details class="gloss" data-term="Functional switching" data-cat="electrical install">
+        <summary>
+          <div class="term">
+            <h3>Functional switching</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Normal operation on/off or control</div>
+        </summary>
+        <div class="body">
+          <p>Used to operate equipment in normal service (distinct from isolation/emergency switching).</p>
+        </div>
+      </details>
+
+      <!-- Fuse -->
+      <details class="gloss" data-term="Fuse" data-cat="electrical safety install">
+        <summary>
+          <div class="term">
+            <h3>Fuse</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+              <span class="badge install">Installation</span>
+              <span class="badge key">Sacrificial link</span>
+            </div>
+          </div>
+          <div class="meta">Melts under overcurrent to protect conductors</div>
+        </summary>
+        <div class="body">
+          <p>Prevents damage by interrupting excessive current flow.</p>
+        </div>
+      </details>
+
+      <!-- Gravitational force -->
+      <details class="gloss" data-term="Gravitational force" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Gravitational force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Attractive force toward Earth’s center</div>
+        </summary>
+        <div class="body">
+          <p>Responsible for weight; acceleration g ≈ 9.81 m/s² near Earth.</p>
+        </div>
+      </details>
+
+      <!-- Hazard -->
+      <details class="gloss" data-term="Hazard" data-cat="safety">
+        <summary>
+          <div class="term">
+            <h3>Hazard</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge key">Potential to cause harm</span>
+            </div>
+          </div>
+          <div class="meta">Examples: chemicals, electricity, working at height</div>
+        </summary>
+        <div class="body">
+          <p>Different from risk (likelihood).</p>
+        </div>
+      </details>
+
+      <!-- Hazard risk assessment -->
+      <details class="gloss" data-term="Hazard risk assessment" data-cat="safety admin">
+        <summary>
+          <div class="term">
+            <h3>Hazard risk assessment</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge admin">Admin</span>
+            </div>
+          </div>
+          <div class="meta">Employers (5+ staff) must document risks</div>
+        </summary>
+        <div class="body">
+          <p>Identify hazards, evaluate risks, record findings, and implement controls.</p>
+        </div>
+      </details>
+
+      <!-- Hazardous area -->
+      <details class="gloss" data-term="Hazardous area" data-cat="safety electrical install">
+        <summary>
+          <div class="term">
+            <h3>Hazardous area</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Explosive gas–air mixture may be present</div>
+        </summary>
+        <div class="body">
+          <p>Use appropriately certified flameproof/intrinsically safe equipment.</p>
+        </div>
+      </details>
+
+      <!-- Heating, magnetic or chemical -->
+      <details class="gloss" data-term="Heating, magnetic or chemical" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Effects of current: heating, magnetic, chemical</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Three principal effects when current flows</div>
+        </summary>
+        <div class="body">
+          <p>Joule heating, electromagnetic fields, and electrochemical reactions.</p>
+        </div>
+      </details>
+
+      <!-- Impedance -->
+      <details class="gloss" data-term="Impedance" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Impedance (Z)</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">AC Theory</span>
+            </div>
+          </div>
+          <div class="meta">Total AC opposition to current</div>
+        </summary>
+        <div class="body">
+          <p>Combination of resistance, inductive reactance, and capacitive reactance.</p>
+        </div>
+      </details>
+
+      <!-- Inductive reactance -->
+      <details class="gloss" data-term="Inductive reactance" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Inductive reactance (Xl)</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">AC Theory</span>
+              <span class="badge formula">Xl = 2πfL</span>
+            </div>
+          </div>
+          <div class="meta">Opposition in inductors; current lags voltage</div>
+        </summary>
+        <div class="body">
+          <p>Increases with frequency and inductance.</p>
+        </div>
+      </details>
+
+      <!-- Inertial force -->
+      <details class="gloss" data-term="Inertial force" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Inertial force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Force to start/stop or change direction</div>
+        </summary>
+        <div class="body">
+          <p>Related to mass and acceleration (Newton’s laws).</p>
+        </div>
+      </details>
+
+      <!-- Inspection and testing techniques -->
+      <details class="gloss" data-term="Inspection and testing techniques" data-cat="electrical safety install">
+        <summary>
+          <div class="term">
+            <h3>Inspection and testing techniques</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Visual inspection plus instrument testing (IET 610–634)</div>
+        </summary>
+        <div class="body">
+          <p>Visual checks for damage/compliance precede instrument tests; periodic verification required.</p>
+        </div>
+      </details>
+
+      <!-- Instructed person -->
+      <details class="gloss" data-term="Instructed person (electrically)" data-cat="safety electrical admin">
+        <summary>
+          <div class="term">
+            <h3>Instructed person (electrically)</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge admin">Admin</span>
+            </div>
+          </div>
+          <div class="meta">Adequately advised/supervised to avoid hazards</div>
+        </summary>
+        <div class="body">
+          <p>Under supervision of skilled persons to perceive and avoid electrical risks.</p>
+        </div>
+      </details>
+
+      <!-- Insulator -->
+      <details class="gloss" data-term="Insulator" data-cat="materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Insulator</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Material resisting heat/electric flow</div>
+        </summary>
+        <div class="body">
+          <p>Electrons tightly bound; examples: PVC, rubber, glass, wood.</p>
+        </div>
+      </details>
+
+      <!-- Intrinsically safe circuit -->
+      <details class="gloss" data-term="Intrinsically safe circuit" data-cat="safety electrical">
+        <summary>
+          <div class="term">
+            <h3>Intrinsically safe circuit</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Energy limited so no spark/heat can ignite atmosphere</div>
+        </summary>
+        <div class="body">
+          <p>Used in hazardous areas to prevent ignition.</p>
+        </div>
+      </details>
+
+      <!-- Intruder alarm systems -->
+      <details class="gloss" data-term="Intruder alarm systems" data-cat="security">
+        <summary>
+          <div class="term">
+            <h3>Intruder alarm systems</h3>
+            <div class="badges">
+              <span class="badge security">Security</span>
+            </div>
+          </div>
+          <div class="meta">Deterrent; often reduces insurance premiums</div>
+        </summary>
+        <div class="body">
+          <p>May include perimeter and trap protection with sensors and detectors.</p>
+        </div>
+      </details>
+
+      <!-- Isolation -->
+      <details class="gloss" data-term="Isolation" data-cat="electrical safety install">
+        <summary>
+          <div class="term">
+            <h3>Isolation</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+              <span class="badge key">Make dead for work</span>
+            </div>
+          </div>
+          <div class="meta">Cutting off supply to ensure safety during work</div>
+        </summary>
+        <div class="body">
+          <p>Ensures parts live in normal service are made dead and secured against reconnection.</p>
+        </div>
+      </details>
+
+      <!-- Job sheets -->
+      <details class="gloss" data-term="Job sheets" data-cat="admin">
+        <summary>
+          <div class="term">
+            <h3>Job sheets</h3>
+            <div class="badges">
+              <span class="badge admin">Admin/Docs</span>
+            </div>
+          </div>
+          <div class="meta">Small-job instruction and tracking</div>
+        </summary>
+        <div class="body">
+          <p>Contains scope, materials, time, and signatures.</p>
+        </div>
+      </details>
+
+      <!-- Lamp -->
+      <details class="gloss" data-term="Lamp" data-cat="lighting electrical">
+        <summary>
+          <div class="term">
+            <h3>Lamp</h3>
+            <div class="badges">
+              <span class="badge lighting">Lighting</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Device converting electrical to light energy</div>
+        </summary>
+        <div class="body">
+          <p>Generic term covering incandescent, fluorescent, LED, etc.</p>
+        </div>
+      </details>
+
+      <!-- Lever -->
+      <details class="gloss" data-term="Lever" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Lever</h3>
+            <div class="badges">
+              <span class="badge physics">Mechanics</span>
+            </div>
+          </div>
+          <div class="meta">Rigid body pivoting about fulcrum</div>
+        </summary>
+        <div class="body">
+          <p>Load × distance = Effort × distance (moment balance).</p>
+        </div>
+      </details>
+
+      <!-- Levers and turning force -->
+      <details class="gloss" data-term="Levers and turning force" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Levers and turning force</h3>
+            <div class="badges">
+              <span class="badge physics">Mechanics</span>
+            </div>
+          </div>
+          <div class="meta">Levers amplify input effort</div>
+        </summary>
+        <div class="body">
+          <p>Provide mechanical advantage to lift/move loads with smaller effort.</p>
+        </div>
+      </details>
+
+      <!-- Line conductor -->
+      <details class="gloss" data-term="Line conductor" data-cat="electrical install">
+        <summary>
+          <div class="term">
+            <h3>Line conductor</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">AC conductor other than neutral or protective</div>
+        </summary>
+        <div class="body">
+          <p>Previously called phase conductor.</p>
+        </div>
+      </details>
+
+      <!-- Luminaire -->
+      <details class="gloss" data-term="Luminaire" data-cat="lighting install">
+        <summary>
+          <div class="term">
+            <h3>Luminaire</h3>
+            <div class="badges">
+              <span class="badge lighting">Lighting</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Fitting that supports lamp and controls light</div>
+        </summary>
+        <div class="body">
+          <p>Includes housing, optics, and sometimes control gear.</p>
+        </div>
+      </details>
+
+      <!-- Magnesium oxide -->
+      <details class="gloss" data-term="Magnesium oxide" data-cat="materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Magnesium oxide</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Insulation in MICC cables</div>
+        </summary>
+        <div class="body">
+          <p>Compressed MgO provides high-temperature, inorganic insulation.</p>
+        </div>
+      </details>
+
+      <!-- Magnetic field -->
+      <details class="gloss" data-term="Magnetic field" data-cat="physics electrical">
+        <summary>
+          <div class="term">
+            <h3>Magnetic field</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Region where magnetic effects are detected</div>
+        </summary>
+        <div class="body">
+          <p>Described by field lines; produced by magnets or currents.</p>
+        </div>
+      </details>
+
+      <!-- Magnetic force -->
+      <details class="gloss" data-term="Magnetic force" data-cat="physics electrical">
+        <summary>
+          <div class="term">
+            <h3>Magnetic force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Force from magnetic fields on magnets/currents</div>
+        </summary>
+        <div class="body">
+          <p>Acts on moving charges or magnetic materials.</p>
+        </div>
+      </details>
+
+      <!-- Magnetic hysteresis -->
+      <details class="gloss" data-term="Magnetic hysteresis" data-cat="physics materials">
+        <summary>
+          <div class="term">
+            <h3>Magnetic hysteresis</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Material response loop to magnetization cycles</div>
+        </summary>
+        <div class="body">
+          <p>Area of loop represents energy loss per cycle (core losses).</p>
+        </div>
+      </details>
+
+      <!-- Magnetic poles -->
+      <details class="gloss" data-term="Magnetic poles" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Magnetic poles</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Locations where flux lines concentrate</div>
+        </summary>
+        <div class="body">
+          <p>Typically near ends of bar magnets (N and S).</p>
+        </div>
+      </details>
+
+      <!-- Maintained emergency lighting -->
+      <details class="gloss" data-term="Maintained emergency lighting" data-cat="lighting install safety">
+        <summary>
+          <div class="term">
+            <h3>Maintained emergency lighting</h3>
+            <div class="badges">
+              <span class="badge lighting">Lighting</span>
+              <span class="badge install">Installation</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Lamps on during normal supply; switch to backup on failure</div>
+        </summary>
+        <div class="body">
+          <p>Common in public assembly areas where continuous illumination is needed.</p>
+        </div>
+      </details>
+
+      <!-- Manual handling -->
+      <details class="gloss" data-term="Manual handling" data-cat="safety admin">
+        <summary>
+          <div class="term">
+            <h3>Manual handling</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge admin">Admin</span>
+            </div>
+          </div>
+          <div class="meta">Lifting/transporting loads by hand/body</div>
+        </summary>
+        <div class="body">
+          <p>Assess load, route, technique; use aids to reduce risk.</p>
+        </div>
+      </details>
+
+      <!-- Mass -->
+      <details class="gloss" data-term="Mass" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Mass</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge key">kg (SI)</span>
+            </div>
+          </div>
+          <div class="meta">Measure of amount of matter</div>
+        </summary>
+        <div class="body">
+          <p>Invariant; measured with balance against standards.</p>
+        </div>
+      </details>
+
+      <!-- Mechanics -->
+      <details class="gloss" data-term="Mechanics" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Mechanics</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Study of machines: motion and forces</div>
+        </summary>
+        <div class="body">
+          <p>Machines transmit motion/force between points.</p>
+        </div>
+      </details>
+
+      <!-- Metallic trunking -->
+      <details class="gloss" data-term="Metallic trunking" data-cat="install materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Metallic trunking</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Steel trunking with removable side</div>
+        </summary>
+        <div class="body">
+          <p>Painted or galvanized steel; square/rectangular for cable routing.</p>
+        </div>
+      </details>
+
+      <!-- Mini-trunking -->
+      <details class="gloss" data-term="Mini-trunking" data-cat="install materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Mini-trunking</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Small PVC trunking for surface wiring</div>
+        </summary>
+        <div class="body">
+          <p>Common in domestic and office environments.</p>
+        </div>
+      </details>
+
+      <!-- Mobile equipment -->
+      <details class="gloss" data-term="Mobile equipment" data-cat="electrical safety">
+        <summary>
+          <div class="term">
+            <h3>Mobile equipment</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Moved while in operation or connected</div>
+        </summary>
+        <div class="body">
+          <p>Previously called portable equipment.</p>
+        </div>
+      </details>
+
+      <!-- Movement or heat detector -->
+      <details class="gloss" data-term="Movement or heat detector" data-cat="security lighting">
+        <summary>
+          <div class="term">
+            <h3>Movement or heat detector</h3>
+            <div class="badges">
+              <span class="badge security">Security</span>
+              <span class="badge lighting">Lighting</span>
+            </div>
+          </div>
+          <div class="meta">Detect presence via motion or heat change</div>
+        </summary>
+        <div class="body">
+          <p>Used for automatic lighting or security triggering.</p>
+        </div>
+      </details>
+
+      <!-- Mutual inductance -->
+      <details class="gloss" data-term="Mutual inductance" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Mutual inductance</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">Physics</span>
+              <span class="badge formula">M (H)</span>
+            </div>
+          </div>
+          <div class="meta">1 H when di/dt = 1 A/s induces 1 V in other coil</div>
+        </summary>
+        <div class="body">
+          <p>Coupling between coils central to transformer action.</p>
+        </div>
+      </details>
+
+      <!-- Non-ferrous -->
+      <details class="gloss" data-term="Non-ferrous" data-cat="materials">
+        <summary>
+          <div class="term">
+            <h3>Non-ferrous</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Metals without iron; non-magnetic; resist rust</div>
+        </summary>
+        <div class="body">
+          <p>Examples: copper, aluminium, tin, lead, zinc, brass.</p>
+        </div>
+      </details>
+
+      <!-- Non-maintained emergency lighting -->
+      <details class="gloss" data-term="Non-maintained emergency lighting" data-cat="lighting install safety">
+        <summary>
+          <div class="term">
+            <h3>Non-maintained emergency lighting</h3>
+            <div class="badges">
+              <span class="badge lighting">Lighting</span>
+              <span class="badge install">Installation</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Only illuminates on mains failure</div>
+        </summary>
+        <div class="body">
+          <p>Typical for areas not normally occupied.</p>
+        </div>
+      </details>
+
+      <!-- Non-statutory regulations and codes of practice -->
+      <details class="gloss" data-term="Non-statutory regulations and codes of practice" data-cat="admin safety">
+        <summary>
+          <div class="term">
+            <h3>Non-statutory regulations and codes of practice</h3>
+            <div class="badges">
+              <span class="badge admin">Admin</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Guidance on complying with law</div>
+        </summary>
+        <div class="body">
+          <p>Interpret statutory regulations to provide means of compliance.</p>
+        </div>
+      </details>
+
+      <!-- Ohm’s law -->
+      <details class="gloss" data-term="Ohm’s law" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Ohm’s law</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">Physics</span>
+              <span class="badge formula">V = IR</span>
+              <span class="badge key">Fundamental</span>
+            </div>
+          </div>
+          <div class="meta">Current proportional to voltage at constant temperature</div>
+        </summary>
+        <div class="body">
+          <p>Defines linear relationship in ohmic conductors.</p>
+        </div>
+      </details>
+
+      <!-- Optical fibre cables -->
+      <details class="gloss" data-term="Optical fibre cables" data-cat="electrical materials install">
+        <summary>
+          <div class="term">
+            <h3>Optical fibre cables</h3>
+            <div class="badges">
+              <span class="badge electrical">Comms</span>
+              <span class="badge material">Materials</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Plastic optical core carrying laser light pulses</div>
+        </summary>
+        <div class="body">
+          <p>Transmit digital light pulses; immune to EMI vs copper conductors.</p>
+        </div>
+      </details>
+
+      <!-- Ordinary person -->
+      <details class="gloss" data-term="Ordinary person" data-cat="admin safety">
+        <summary>
+          <div class="term">
+            <h3>Ordinary person</h3>
+            <div class="badges">
+              <span class="badge admin">Admin</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Neither skilled nor instructed</div>
+        </summary>
+        <div class="body">
+          <p>May require additional protective measures in installations.</p>
+        </div>
+      </details>
+
+      <!-- Overload current -->
+      <details class="gloss" data-term="Overload current" data-cat="electrical safety">
+        <summary>
+          <div class="term">
+            <h3>Overload current</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Exceeds rated value in healthy circuit</div>
+        </summary>
+        <div class="body">
+          <p>Distinct from short-circuit; addressed by overcurrent protection.</p>
+        </div>
+      </details>
+
+      <!-- PIR detectors -->
+      <details class="gloss" data-term="Passive infra-red (PIR) detectors" data-cat="security lighting">
+        <summary>
+          <div class="term">
+            <h3>Passive infra-red (PIR) detectors</h3>
+            <div class="badges">
+              <span class="badge security">Security</span>
+              <span class="badge lighting">Lighting</span>
+            </div>
+          </div>
+          <div class="meta">Switches when human thermal radiation changes</div>
+        </summary>
+        <div class="body">
+          <p>Useful for automatic lights and intrusion detection.</p>
+        </div>
+      </details>
+
+      <!-- Perimeter protection system -->
+      <details class="gloss" data-term="Perimeter protection system" data-cat="security">
+        <summary>
+          <div class="term">
+            <h3>Perimeter protection system</h3>
+            <div class="badges">
+              <span class="badge security">Security</span>
+            </div>
+          </div>
+          <div class="meta">Sensors on external doors/windows</div>
+        </summary>
+        <div class="body">
+          <p>Detects attempted access at the boundary.</p>
+        </div>
+      </details>
+
+      <!-- Person -->
+      <details class="gloss" data-term="Person" data-cat="admin safety">
+        <summary>
+          <div class="term">
+            <h3>Person</h3>
+            <div class="badges">
+              <span class="badge admin">Admin</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Classified as ordinary, instructed, or skilled</div>
+        </summary>
+        <div class="body">
+          <p>Determines what protective measures are needed.</p>
+        </div>
+      </details>
+
+      <!-- PPE -->
+      <details class="gloss" data-term="Personal protective equipment (PPE)" data-cat="safety">
+        <summary>
+          <div class="term">
+            <h3>Personal protective equipment (PPE)</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge key">Last line of defense</span>
+            </div>
+          </div>
+          <div class="meta">Wear/hold equipment to protect health and safety</div>
+        </summary>
+        <div class="body">
+          <p>Select suitable PPE after risk controls; maintain and train users.</p>
+        </div>
+      </details>
+
+      <!-- Phasor -->
+      <details class="gloss" data-term="Phasor" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Phasor</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">AC Theory</span>
+            </div>
+          </div>
+          <div class="meta">Vector-like representation of sinusoidal quantities</div>
+        </summary>
+        <div class="body">
+          <p>Encodes magnitude and phase for voltages, currents, impedances.</p>
+        </div>
+      </details>
+
+      <!-- Plastic plugs -->
+      <details class="gloss" data-term="Plastic plugs" data-cat="install materials">
+        <summary>
+          <div class="term">
+            <h3>Plastic plugs</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Split plastic anchors for screws; color-coded sizes</div>
+        </summary>
+        <div class="body">
+          <p>Expand to grip masonry when screw is driven.</p>
+        </div>
+      </details>
+
+      <!-- PVC -->
+      <details class="gloss" data-term="Polyvinylchloride (PVC)" data-cat="materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Polyvinylchloride (PVC)</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Thermoplastic used for cable insulation</div>
+        </summary>
+        <div class="body">
+          <p>Softens on heating, hardens on cooling repeatedly without major property change.</p>
+        </div>
+      </details>
+
+      <!-- Potential difference -->
+      <details class="gloss" data-term="Potential difference" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Potential difference (p.d.)</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">Physics</span>
+              <span class="badge formula">V = ΔW / q</span>
+            </div>
+          </div>
+          <div class="meta">Energy per charge across load; volt drop</div>
+        </summary>
+        <div class="body">
+          <p>Measured in volts; also called terminal voltage.</p>
+        </div>
+      </details>
+
+      <!-- Power -->
+      <details class="gloss" data-term="Power" data-cat="physics electrical">
+        <summary>
+          <div class="term">
+            <h3>Power</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge formula">P = W/t</span>
+            </div>
+          </div>
+          <div class="meta">Rate of doing work (watts)</div>
+        </summary>
+        <div class="body">
+          <p>In electrical: P = VI, or P = I²R, or P = V²/R.</p>
+        </div>
+      </details>
+
+      <!-- Power factor -->
+      <details class="gloss" data-term="Power factor" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Power factor</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">AC Theory</span>
+              <span class="badge key">cos φ</span>
+            </div>
+          </div>
+          <div class="meta">Cosine of phase angle between current and voltage</div>
+        </summary>
+        <div class="body">
+          <p>Relates real to apparent power; impacts efficiency and conductor sizing.</p>
+        </div>
+      </details>
+
+      <!-- Pressure or stress -->
+      <details class="gloss" data-term="Pressure or stress" data-cat="physics materials">
+        <summary>
+          <div class="term">
+            <h3>Pressure or stress</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge material">Materials</span>
+              <span class="badge formula">σ = F/A</span>
+            </div>
+          </div>
+          <div class="meta">Force per unit area (N/m²)</div>
+        </summary>
+        <div class="body">
+          <p>Stress in solids; pressure in fluids.</p>
+        </div>
+      </details>
+
+      <!-- Primary cell -->
+      <details class="gloss" data-term="Primary cell" data-cat="electrical materials">
+        <summary>
+          <div class="term">
+            <h3>Primary cell</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Non-rechargeable chemical cell</div>
+        </summary>
+        <div class="body">
+          <p>Discard after active chemicals are exhausted.</p>
+        </div>
+      </details>
+
+      <!-- Protective bonding -->
+      <details class="gloss" data-term="Protective bonding" data-cat="electrical safety install">
+        <summary>
+          <div class="term">
+            <h3>Protective bonding</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Bonding for safety to reduce touch voltages</div>
+        </summary>
+        <div class="body">
+          <p>Connects extraneous parts to MET to equalize potentials.</p>
+        </div>
+      </details>
+
+      <!-- PVC/SWA cable installations -->
+      <details class="gloss" data-term="PVC/SWA cable installations" data-cat="install materials electrical">
+        <summary>
+          <div class="term">
+            <h3>PVC/SWA cable installations</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Steel wire armoured PVC cables on tray</div>
+        </summary>
+        <div class="body">
+          <p>Common in industrial settings; tied to tray for support.</p>
+        </div>
+      </details>
+
+      <!-- Reasonably practicable or absolute -->
+      <details class="gloss" data-term="Reasonably practicable or absolute" data-cat="admin safety">
+        <summary>
+          <div class="term">
+            <h3>Reasonably practicable or absolute</h3>
+            <div class="badges">
+              <span class="badge admin">Admin</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Legal duty types: absolute vs SFAIRP</div>
+        </summary>
+        <div class="body">
+          <p>Absolute must be met regardless of cost; SFAIRP weighs risk vs cost/time/effort.</p>
+        </div>
+      </details>
+
+      <!-- Relay -->
+      <details class="gloss" data-term="Relay" data-cat="electrical install">
+        <summary>
+          <div class="term">
+            <h3>Relay</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Electromagnetic switch operated by solenoid</div>
+        </summary>
+        <div class="body">
+          <p>Allows low-power control of higher-power circuits.</p>
+        </div>
+      </details>
+
+      <!-- Resistance -->
+      <details class="gloss" data-term="Resistance" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Resistance (R)</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">Physics</span>
+              <span class="badge formula">R = ρℓ/A</span>
+            </div>
+          </div>
+          <div class="meta">Opposition to current flow</div>
+        </summary>
+        <div class="body">
+          <p>Measured in ohms (Ω); relates to material, length, cross-section.</p>
+        </div>
+      </details>
+
+      <!-- Resistivity -->
+      <details class="gloss" data-term="Resistivity" data-cat="materials electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Resistivity (ρ)</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Resistance of unit length and cross-section</div>
+        </summary>
+        <div class="body">
+          <p>Material property; units Ω·m.</p>
+        </div>
+      </details>
+
+      <!-- Risk -->
+      <details class="gloss" data-term="Risk" data-cat="safety admin">
+        <summary>
+          <div class="term">
+            <h3>Risk</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge admin">Admin</span>
+            </div>
+          </div>
+          <div class="meta">Likelihood of harm occurring</div>
+        </summary>
+        <div class="body">
+          <p>Risk = likelihood × severity (conceptually).</p>
+        </div>
+      </details>
+
+      <!-- Risk assessments -->
+      <details class="gloss" data-term="Risk assessments" data-cat="safety admin">
+        <summary>
+          <div class="term">
+            <h3>Risk assessments</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge admin">Admin</span>
+            </div>
+          </div>
+          <div class="meta">Should be suitable and sufficient</div>
+        </summary>
+        <div class="body">
+          <p>Proportionate to risk profile; not perfection.</p>
+        </div>
+      </details>
+
+      <!-- Rubber -->
+      <details class="gloss" data-term="Rubber" data-cat="materials">
+        <summary>
+          <div class="term">
+            <h3>Rubber</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Natural elastomer from plant sap</div>
+        </summary>
+        <div class="body">
+          <p>Elastic material used for insulation and sealing.</p>
+        </div>
+      </details>
+
+      <!-- Safety first – isolation -->
+      <details class="gloss" data-term="Safety first – isolation" data-cat="safety electrical install">
+        <summary>
+          <div class="term">
+            <h3>Safety first – isolation</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+              <span class="badge key">Disconnect and secure</span>
+            </div>
+          </div>
+          <div class="meta">Disconnect and secure from every source of supply</div>
+        </summary>
+        <div class="body">
+          <p>Use lock-off, tag, and prove-dead procedures.</p>
+        </div>
+      </details>
+
+      <!-- Secondary cells -->
+      <details class="gloss" data-term="Secondary cells" data-cat="electrical materials">
+        <summary>
+          <div class="term">
+            <h3>Secondary cells</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Rechargeable cells storing energy chemically</div>
+        </summary>
+        <div class="body">
+          <p>Recharge by applying electrical energy to reverse reactions.</p>
+        </div>
+      </details>
+
+      <!-- Secure supplies -->
+      <details class="gloss" data-term="Secure supplies" data-cat="electrical admin">
+        <summary>
+          <div class="term">
+            <h3>Secure supplies (UPS)</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge admin">Admin/IT</span>
+            </div>
+          </div>
+          <div class="meta">UPS cleans and maintains AC to critical loads</div>
+        </summary>
+        <div class="body">
+          <p>Provides ride-through and conditioning for computers and controls.</p>
+        </div>
+      </details>
+
+      <!-- Security lighting -->
+      <details class="gloss" data-term="Security lighting" data-cat="security lighting">
+        <summary>
+          <div class="term">
+            <h3>Security lighting</h3>
+            <div class="badges">
+              <span class="badge security">Security</span>
+              <span class="badge lighting">Lighting</span>
+            </div>
+          </div>
+          <div class="meta">First line of crime deterrence</div>
+        </summary>
+        <div class="body">
+          <p>Illuminates perimeters and access points; often integrated with PIR.</p>
+        </div>
+      </details>
+
+      <!-- Shearing force -->
+      <details class="gloss" data-term="Shearing force" data-cat="physics materials">
+        <summary>
+          <div class="term">
+            <h3>Shearing force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Moves one face over another</div>
+        </summary>
+        <div class="body">
+          <p>Parallel force causing layers to slide relative to each other.</p>
+        </div>
+      </details>
+
+      <!-- Shock protection -->
+      <details class="gloss" data-term="Shock protection" data-cat="safety electrical">
+        <summary>
+          <div class="term">
+            <h3>Shock protection</h3>
+            <div class="badges">
+              <span class="badge safety">Safety</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Basic + fault protection</div>
+        </summary>
+        <div class="body">
+          <p>Use insulation, barriers, ADS, RCDs, and equipotential bonding.</p>
+        </div>
+      </details>
+
+      <!-- Short-circuit -->
+      <details class="gloss" data-term="Short-circuit" data-cat="electrical safety">
+        <summary>
+          <div class="term">
+            <h3>Short-circuit</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Overcurrent from negligible-impedance fault</div>
+        </summary>
+        <div class="body">
+          <p>Requires fast disconnection to prevent damage and fire.</p>
+        </div>
+      </details>
+
+      <!-- SI units -->
+      <details class="gloss" data-term="SI units" data-cat="physics admin">
+        <summary>
+          <div class="term">
+            <h3>SI units</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge admin">Admin</span>
+            </div>
+          </div>
+          <div class="meta">Coherent system of base and derived units</div>
+        </summary>
+        <div class="body">
+          <p>Base units define all other measures used across science/engineering.</p>
+        </div>
+      </details>
+
+      <!-- Silicon rubber -->
+      <details class="gloss" data-term="Silicon rubber" data-cat="materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Silicon rubber</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Synthetic elastomer used for fire-resistant cables</div>
+        </summary>
+        <div class="body">
+          <p>Organic compounds in synthetic rubber yield good insulation (e.g., FP200).</p>
+        </div>
+      </details>
+
+      <!-- Simple machines -->
+      <details class="gloss" data-term="Simple machines" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Simple machines</h3>
+            <div class="badges">
+              <span class="badge physics">Mechanics</span>
+            </div>
+          </div>
+          <div class="meta">Devices transmitting motion/force; amplify effort</div>
+        </summary>
+        <div class="body">
+          <p>Examples: lever, pulley, wheel and axle, inclined plane, wedge, screw.</p>
+        </div>
+      </details>
+
+      <!-- Single PVC insulated conductors -->
+      <details class="gloss" data-term="Single PVC insulated conductors" data-cat="install electrical materials">
+        <summary>
+          <div class="term">
+            <h3>Single PVC insulated conductors</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Drawn into installed conduit</div>
+        </summary>
+        <div class="body">
+          <p>Complete wiring after containment installation.</p>
+        </div>
+      </details>
+
+      <!-- Skilled person -->
+      <details class="gloss" data-term="Skilled person (electrically)" data-cat="admin safety electrical">
+        <summary>
+          <div class="term">
+            <h3>Skilled person (electrically)</h3>
+            <div class="badges">
+              <span class="badge admin">Admin</span>
+              <span class="badge safety">Safety</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Educated, trained, experienced to avoid hazards</div>
+        </summary>
+        <div class="body">
+          <p>Capable of independent risk perception and control.</p>
+        </div>
+      </details>
+
+      <!-- Skirting trunking -->
+      <details class="gloss" data-term="Skirting trunking" data-cat="install materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Skirting trunking</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Trunking shaped like skirting board</div>
+        </summary>
+        <div class="body">
+          <p>Used widely in hospitals, labs, and offices.</p>
+        </div>
+      </details>
+
+      <!-- Socket outlets -->
+      <details class="gloss" data-term="Socket outlets" data-cat="install electrical">
+        <summary>
+          <div class="term">
+            <h3>Socket outlets</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Convenient connection for portable appliances</div>
+        </summary>
+        <div class="body">
+          <p>Provide safe, standardized supply access points.</p>
+        </div>
+      </details>
+
+      <!-- Sounders -->
+      <details class="gloss" data-term="Sounders" data-cat="security safety install">
+        <summary>
+          <div class="term">
+            <h3>Sounders</h3>
+            <div class="badges">
+              <span class="badge security">Fire/Security</span>
+              <span class="badge safety">Safety</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Audible alarms above background noise</div>
+        </summary>
+        <div class="body">
+          <p>Position and number to ensure audibility in all areas.</p>
+        </div>
+      </details>
+
+      <!-- Space factor -->
+      <details class="gloss" data-term="Space factor" data-cat="install electrical">
+        <summary>
+          <div class="term">
+            <h3>Space factor</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Cable area vs containment area ratio</div>
+        </summary>
+        <div class="body">
+          <p>Ensures adequate space for cables in conduit/trunking.</p>
+        </div>
+      </details>
+
+      <!-- Speed -->
+      <details class="gloss" data-term="Speed" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Speed</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Distance over time (scalar)</div>
+        </summary>
+        <div class="body">
+          <p>v = d / t; lacks direction (unlike velocity).</p>
+        </div>
+      </details>
+
+      <!-- Spring toggle bolts -->
+      <details class="gloss" data-term="Spring toggle bolts" data-cat="install materials">
+        <summary>
+          <div class="term">
+            <h3>Spring toggle bolts</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Fixings for hollow partitions (plasterboard)</div>
+        </summary>
+        <div class="body">
+          <p>Spring wings open behind board to spread load.</p>
+        </div>
+      </details>
+
+      <!-- Static electricity -->
+      <details class="gloss" data-term="Static electricity" data-cat="physics safety">
+        <summary>
+          <div class="term">
+            <h3>Static electricity</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Charge buildup from friction; very high voltages</div>
+        </summary>
+        <div class="body">
+          <p>Control via grounding, humidity, antistatic materials.</p>
+        </div>
+      </details>
+
+      <!-- Statutory regulations -->
+      <details class="gloss" data-term="Statutory regulations" data-cat="admin safety">
+        <summary>
+          <div class="term">
+            <h3>Statutory regulations</h3>
+            <div class="badges">
+              <span class="badge admin">Admin</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Passed by Parliament; legal requirements</div>
+        </summary>
+        <div class="body">
+          <p>Non-compliance is an offense; supported by codes and standards.</p>
+        </div>
+      </details>
+
+      <!-- Step-down transformers -->
+      <details class="gloss" data-term="Step-down transformers" data-cat="electrical">
+        <summary>
+          <div class="term">
+            <h3>Step-down transformers</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Reduce voltage, often for safety</div>
+        </summary>
+        <div class="body">
+          <p>More turns on primary than secondary winding.</p>
+        </div>
+      </details>
+
+      <!-- Step-up transformers -->
+      <details class="gloss" data-term="Step-up transformers" data-cat="electrical">
+        <summary>
+          <div class="term">
+            <h3>Step-up transformers</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Increase voltage; used in transmission</div>
+        </summary>
+        <div class="body">
+          <p>Raise generator output to grid levels to reduce losses.</p>
+        </div>
+      </details>
+
+      <!-- Switching for mechanical maintenance requirements -->
+      <details class="gloss" data-term="Switching for mechanical maintenance requirements" data-cat="electrical install safety">
+        <summary>
+          <div class="term">
+            <h3>Switching for mechanical maintenance</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge install">Installation</span>
+              <span class="badge safety">Safety</span>
+            </div>
+          </div>
+          <div class="meta">Must switch full load current</div>
+        </summary>
+        <div class="body">
+          <p>Similar to isolation but with load-switching capability.</p>
+        </div>
+      </details>
+
+      <!-- Synthetic rubber -->
+      <details class="gloss" data-term="Synthetic rubber" data-cat="materials">
+        <summary>
+          <div class="term">
+            <h3>Synthetic rubber</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Manufactured elastomers</div>
+        </summary>
+        <div class="body">
+          <p>Engineered properties for insulation, sealing, durability.</p>
+        </div>
+      </details>
+
+      <!-- Tensile force -->
+      <details class="gloss" data-term="Tensile force" data-cat="physics materials">
+        <summary>
+          <div class="term">
+            <h3>Tensile force</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Pulling force that elongates materials</div>
+        </summary>
+        <div class="body">
+          <p>Opposite of compressive force.</p>
+        </div>
+      </details>
+
+      <!-- Thermoplastic polymers -->
+      <details class="gloss" data-term="Thermoplastic polymers" data-cat="materials">
+        <summary>
+          <div class="term">
+            <h3>Thermoplastic polymers</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Reheat/reform repeatedly without major changes</div>
+        </summary>
+        <div class="body">
+          <p>Examples: PVC, PE, PP used in cable insulation.</p>
+        </div>
+      </details>
+
+      <!-- Thermosetting polymers -->
+      <details class="gloss" data-term="Thermosetting polymers" data-cat="materials electrical">
+        <summary>
+          <div class="term">
+            <h3>Thermosetting polymers</h3>
+            <div class="badges">
+              <span class="badge material">Materials</span>
+              <span class="badge electrical">Electrical</span>
+            </div>
+          </div>
+          <div class="meta">Set rigid after forming; do not soften on reheating</div>
+        </summary>
+        <div class="body">
+          <p>Used for plug tops, socket outlets, and switch plates.</p>
+        </div>
+      </details>
+
+      <!-- Time sheets -->
+      <details class="gloss" data-term="Time sheets" data-cat="admin">
+        <summary>
+          <div class="term">
+            <h3>Time sheets</h3>
+            <div class="badges">
+              <span class="badge admin">Admin/Docs</span>
+            </div>
+          </div>
+          <div class="meta">Records of time spent on contracts/sites</div>
+        </summary>
+        <div class="body">
+          <p>Basis for payroll and job costing.</p>
+        </div>
+      </details>
+
+      <!-- Transformer -->
+      <details class="gloss" data-term="Transformer" data-cat="electrical physics">
+        <summary>
+          <div class="term">
+            <h3>Transformer</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge physics">Physics</span>
+              <span class="badge key">AC only</span>
+            </div>
+          </div>
+          <div class="meta">Changes AC voltage via magnetic coupling</div>
+        </summary>
+        <div class="body">
+          <p>Relies on mutual inductance; ratio set by turns.</p>
+        </div>
+      </details>
+
+      <!-- Trap protection -->
+      <details class="gloss" data-term="Trap protection" data-cat="security">
+        <summary>
+          <div class="term">
+            <h3>Trap protection</h3>
+            <div class="badges">
+              <span class="badge security">Security</span>
+            </div>
+          </div>
+          <div class="meta">Sensors on internal routes (doors, pressure pads)</div>
+        </summary>
+        <div class="body">
+          <p>Detects intruders moving between main areas.</p>
+        </div>
+      </details>
+
+      <!-- Trunking -->
+      <details class="gloss" data-term="Trunking" data-cat="install electrical materials">
+        <summary>
+          <div class="term">
+            <h3>Trunking</h3>
+            <div class="badges">
+              <span class="badge install">Installation</span>
+              <span class="badge electrical">Electrical</span>
+              <span class="badge material">Materials</span>
+            </div>
+          </div>
+          <div class="meta">Enclosure for protecting cables with removable side</div>
+        </summary>
+        <div class="body">
+          <p>Square/rectangular section; more accessible than conduit.</p>
+        </div>
+      </details>
+
+      <!-- Velocity -->
+      <details class="gloss" data-term="Velocity" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Velocity</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge key">Vector</span>
+            </div>
+          </div>
+          <div class="meta">Speed with direction</div>
+        </summary>
+        <div class="body">
+          <p>Units m/s; direction matters for kinematics.</p>
+        </div>
+      </details>
+
+      <!-- Visual inspection -->
+      <details class="gloss" data-term="Visual inspection" data-cat="electrical safety install">
+        <summary>
+          <div class="term">
+            <h3>Visual inspection</h3>
+            <div class="badges">
+              <span class="badge electrical">Electrical</span>
+              <span class="badge safety">Safety</span>
+              <span class="badge install">Installation</span>
+            </div>
+          </div>
+          <div class="meta">Confirm undamaged equipment and compliance before testing</div>
+        </summary>
+        <div class="body">
+          <p>Check fixings, covers, identification, and workmanship.</p>
+        </div>
+      </details>
+
+      <!-- Weight -->
+      <details class="gloss" data-term="Weight" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Weight</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+            </div>
+          </div>
+          <div class="meta">Force due to gravity on a mass</div>
+        </summary>
+        <div class="body">
+          <p>W = mg; measured in newtons (N).</p>
+        </div>
+      </details>
+
+      <!-- Work done -->
+      <details class="gloss" data-term="Work done" data-cat="physics">
+        <summary>
+          <div class="term">
+            <h3>Work done</h3>
+            <div class="badges">
+              <span class="badge physics">Physics</span>
+              <span class="badge formula">W = F·d</span>
+            </div>
+          </div>
+          <div class="meta">Force times distance in direction of force</div>
+        </summary>
+        <div class="body">
+          <p>SI unit joule (J) = N·m.</p>
+        </div>
+      </details>
+
     </section>
+  </main>
 
-    <section class="card" aria-labelledby="sec-cal">
-      <h2 id="sec-cal">Calibration Stickers Audit</h2>
-      <div class="grid-2">
-        <div>
-          <label for="search">Filter Instruments</label>
-          <input id="search" type="search" placeholder="Search by tag, location, model..." aria-controls="tblInstruments" />
-        </div>
-        <div class="right">
-          <button id="btnAddRow" class="btn" type="button">Add Instrument</button>
-        </div>
-      </div>
-
-      <div class="table-wrap" role="region" aria-label="Instruments table">
-        <table id="tblInstruments">
-          <thead>
-            <tr>
-              <th scope="col">Tag/ID</th>
-              <th scope="col">Location</th>
-              <th scope="col">Model</th>
-              <th scope="col">Serial</th>
-              <th scope="col">Cal Date</th>
-              <th scope="col">Due Date</th>
-              <th scope="col">Sticker Present</th>
-              <th scope="col">Status</th>
-              <th scope="col">Notes</th>
-              <th scope="col" class="sr-only">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="rows">
-            <!-- Rows injected dynamically -->
-          </tbody>
-        </table>
-      </div>
-      <p class="muted">Status logic: Due date past = Expired; within 30 days = Warning; otherwise OK. Missing sticker = Warning.</p>
-    </section>
-
-    <section class="card" aria-labelledby="sec-sign">
-      <h2 id="sec-sign">Sign-off</h2>
-      <div class="grid-2">
-        <div class="signature">
-          <label for="sigName">Name (typed)</label>
-          <input id="sigName" type="text" placeholder="Auditor name" />
-          <canvas id="sigPad" class="sig-pad" aria-label="Signature pad"></canvas>
-          <div class="sig-actions">
-            <button class="btn ghost" id="sigClear" type="button">Clear</button>
-            <button class="btn" id="sigSave" type="button">Attach Signature</button>
-            <span id="sigMeta" class="chip" aria-live="polite"></span>
-          </div>
-        </div>
-        <div>
-          <label for="finalComments">Final Comments</label>
-          <textarea id="finalComments" rows="6" placeholder="Summary conclusions, required actions, references to CAPA, etc."></textarea>
-          <div style="margin-top:0.5rem;">
-            <button id="btnFinalize" class="btn danger" type="button">Finalize Audit</button>
-            <span id="finalStatus" class="chip" aria-live="polite"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="card" role="contentinfo">
-      <div class="grid-3">
-        <div>
-          <strong>Data Privacy</strong>
-          <p class="muted">Data is stored locally in your browser unless you export it. Clear your browser storage if needed.</p>
-        </div>
-        <div>
-          <strong>Validation Rules</strong>
-          <ul class="muted">
-            <li>Due date must be on/after calibration date.</li>
-            <li>Missing due date or sticker flags the row.</li>
-            <li>Expired instruments must be quarantined per SOP.</li>
-          </ul>
-        </div>
-        <div>
-          <strong>Keyboard Tips</strong>
-          <ul class="muted">
-            <li>Tab/Shift+Tab to move between cells.</li>
-            <li>Enter to toggle checkbox.</li>
-            <li>Space on summary toggles details.</li>
-          </ul>
-        </div>
-      </div>
-    </footer>
+  <div class="wrap footer">
+    Built for quick study and on-the-job reference. Use search, filters, and A–Z to find terms fast.
   </div>
 
-  <script>
-    // Simple state
-    const state = {
-      instruments: [],
-      meta: {
-        siteName: '',
-        auditor: '',
-        auditDate: '',
-        shift: '',
-        sop: {
-          accessMethod: '',
-          accessibilityScore: '',
-          notes: '',
-          evidence: { binder:false, qr:false, dms:false }
-        },
-        signature: { name:'', dataUrl:'', time:'' },
-        finalComments: ''
-      }
-    };
+<script>
+  // Theme toggle respecting system preference
+  const toggle = document.getElementById('darkToggle');
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+  let manualTheme = null;
 
-    const rowsEl = document.getElementById('rows');
-    const searchEl = document.getElementById('search');
-    const kpiTotal = document.getElementById('kpi-total');
-    const kpiInDate = document.getElementById('kpi-in-date');
-    const kpiOutDate = document.getElementById('kpi-out-date');
-
-    function uid() {
-      return 'i-' + Math.random().toString(36).slice(2, 9);
+  function setTheme(mode){
+    if(mode === 'light'){
+      document.documentElement.style.colorScheme = 'light';
+      document.body.dataset.theme = 'light';
+    } else {
+      document.documentElement.style.colorScheme = 'dark';
+      document.body.dataset.theme = 'dark';
     }
+  }
+  function applyTheme(){
+    if(manualTheme){ setTheme(manualTheme); return; }
+    setTheme(prefersLight.matches ? 'light' : 'dark');
+  }
+  prefersLight.addEventListener('change', applyTheme);
+  toggle.addEventListener('click', () => {
+    manualTheme = (document.body.dataset.theme === 'dark') ? 'light' : 'dark';
+    setTheme(manualTheme);
+  });
+  applyTheme();
 
-    function addInstrument(data = {}) {
-      const inst = {
-        id: uid(),
-        tag: data.tag || '',
-        location: data.location || '',
-        model: data.model || '',
-        serial: data.serial || '',
-        calDate: data.calDate || '',
-        dueDate: data.dueDate || '',
-        sticker: data.sticker ?? true,
-        notes: data.notes || ''
-      };
-      state.instruments.push(inst);
-      renderTable();
-      return inst.id;
+  // Search and filter
+  const q = document.getElementById('q');
+  const clearBtn = document.getElementById('clearBtn');
+  const chips = document.getElementById('chips');
+  const items = Array.from(document.querySelectorAll('details.gloss'));
+  let activeCat = 'all';
+
+  function normalize(s){ return s.toLowerCase(); }
+
+  function matchesCategory(el){
+    if(activeCat === 'all') return true;
+    const cats = (el.getAttribute('data-cat') || '').split(/\s+/);
+    return cats.includes(activeCat);
+  }
+
+  function matchesQuery(el, query){
+    if(!query) return true;
+    const term = el.getAttribute('data-term') || '';
+    const text = (term + ' ' + el.textContent).toLowerCase();
+    return text.includes(query);
+  }
+
+  function applyFilters(){
+    const query = normalize(q.value.trim());
+    let anyVisible = false;
+    items.forEach(el => {
+      const ok = matchesCategory(el) && matchesQuery(el, query);
+      el.classList.toggle('hide', !ok);
+      if(ok) anyVisible = true;
+    });
+    // Optionally expand first few visible on search
+    if(query){
+      let opened = 0;
+      items.forEach(el => { if(!el.classList.contains('hide') && opened < 3){ el.open = true; opened++; } });
     }
+  }
 
-    function calcStatus(inst) {
-      const today = new Date();
-      const status = { cls: 'status-ok', label: 'OK' };
-      const due = inst.dueDate ? new Date(inst.dueDate + 'T00:00:00') : null;
-      const cal = inst.calDate ? new Date(inst.calDate + 'T00:00:00') : null;
+  q.addEventListener('input', applyFilters);
+  clearBtn.addEventListener('click', () => { q.value = ''; applyFilters(); q.focus(); });
 
-      if (!due || !cal || (due && cal && due < cal)) {
-        status.cls = 'status-danger';
-        status.label = 'Invalid/Unknown';
-        return status;
-      }
-      const diffDays = Math.floor((due - today) / (1000*60*60*24));
-      if (diffDays < 0) {
-        status.cls = 'status-danger';
-        status.label = 'Expired';
-      } else if (diffDays <= 30) {
-        status.cls = 'status-warn';
-        status.label = 'Due soon';
-      }
-      if (!inst.sticker) {
-        if (status.cls === 'status-ok') {
-          status.cls = 'status-warn';
-          status.label = 'No sticker';
-        } else {
-          status.label += ' + No sticker';
-        }
-      }
-      return status;
+  chips.addEventListener('click', e => {
+    const b = e.target.closest('.chip');
+    if(!b) return;
+    chips.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    b.classList.add('active');
+    activeCat = b.dataset.cat;
+    applyFilters();
+  });
+
+  // Expand/Collapse all
+  document.getElementById('expandAll').addEventListener('click', () => {
+    items.forEach(el => { if(!el.classList.contains('hide')) el.open = true; });
+  });
+  document.getElementById('collapseAll').addEventListener('click', () => {
+    items.forEach(el => { el.open = false; });
+  });
+
+  // A–Z jump
+  const az = document.getElementById('az');
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  letters.forEach(L => {
+    const btn = document.createElement('button');
+    btn.textContent = L;
+    btn.title = 'Jump to ' + L;
+    btn.addEventListener('click', () => jumpTo(L));
+    az.appendChild(btn);
+  });
+
+  function jumpTo(letter){
+    // find first visible entry starting with letter
+    const target = items.find(el => {
+      if(el.classList.contains('hide')) return false;
+      const name = (el.getAttribute('data-term') || '').trim();
+      return name.toUpperCase().startsWith(letter);
+    });
+    if(target){
+      target.open = true;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
 
-    function instrumentRow(inst) {
-      const st = calcStatus(inst);
-      const tr = document.createElement('tr');
-      tr.dataset.id = inst.id;
-      tr.className = st.cls;
-      tr.innerHTML = `
-        <td><input type="text" value="${escapeHtml(inst.tag)}" data-k="tag" aria-label="Tag or ID"></td>
-        <td><input type="text" value="${escapeHtml(inst.location)}" data-k="location" aria-label="Location"></td>
-        <td><input type="text" value="${escapeHtml(inst.model)}" data-k="model" aria-label="Model"></td>
-        <td><input type="text" value="${escapeHtml(inst.serial)}" data-k="serial" aria-label="Serial"></td>
-        <td><input type="date" value="${inst.calDate}" data-k="calDate" aria-label="Calibration date"></td>
-        <td><input type="date" value="${inst.dueDate}" data-k="dueDate" aria-label="Due date"></td>
-        <td style="text-align:center;"><input type="checkbox" ${inst.sticker ? 'checked' : ''} data-k="sticker" aria-label="Sticker present"></td>
-        <td><span class="chip">${st.label}</span></td>
-        <td><input type="text" value="${escapeHtml(inst.notes)}" data-k="notes" aria-label="Notes"></td>
-        <td class="right">
-          <button type="button" class="btn ghost btnDel" aria-label="Delete row">Delete</button>
-        </td>
-      `;
-      return tr;
-    }
+  // Keyboard accessibility
+  q.addEventListener('keydown', e => {
+    if(e.key === 'Escape'){ q.value=''; applyFilters(); }
+  });
 
-    function renderTable() {
-      const q = searchEl.value.trim().toLowerCase();
-      rowsEl.innerHTML = '';
-      let total = 0, inDate = 0, outDate = 0;
-
-      state.instruments.forEach(inst => {
-        const st = calcStatus(inst);
-        const hay = [inst.tag, inst.location, inst.model, inst.serial].join(' ').toLowerCase();
-        if (q && !hay.includes(q)) return;
-        const tr = instrumentRow(inst);
-        rowsEl.appendChild(tr);
-        total++;
-        if (st.cls === 'status-ok') inDate++; else outDate++;
-      });
-
-      kpiTotal.textContent = `Total instruments: ${total}`;
-      kpiInDate.textContent = `In-date: ${inDate}`;
-      kpiOutDate.textContent = `Expired/Unknown: ${outDate}`;
-    }
-
-    function escapeHtml(s='') {
-      return String(s)
-        .replaceAll('&','&amp;')
-        .replaceAll('<','&lt;')
-        .replaceAll('>','&gt;')
-        .replaceAll('"','&quot;')
-        .replaceAll("'","&#39;");
-    }
-
-    // Event delegation
-    rowsEl.addEventListener('input', (e) => {
-      const el = e.target;
-      const tr = el.closest('tr');
-      if (!tr) return;
-      const id = tr.dataset.id;
-      const k = el.dataset.k;
-      if (!k) return;
-      const inst = state.instruments.find(x => x.id === id);
-      if (!inst) return;
-      if (el.type === 'checkbox') {
-        inst[k] = el.checked;
-      } else {
-        inst[k] = el.value;
-      }
-      renderTable();
-    });
-
-    rowsEl.addEventListener('click', (e) => {
-      const btn = e.target.closest('.btnDel');
-      if (!btn) return;
-      const tr = btn.closest('tr');
-      const id = tr?.dataset.id;
-      if (!id) return;
-      state.instruments = state.instruments.filter(x => x.id !== id);
-      renderTable();
-    });
-
-    document.getElementById('btnAddRow').addEventListener('click', () => {
-      addInstrument();
-    });
-
-    searchEl.addEventListener('input', renderTable);
-
-    // Scope fields binding
-    const bind = (id, path) => {
-      const el = document.getElementById(id);
-      const set = (val) => {
-        const keys = path.split('.');
-        let ref = state.meta;
-        for (let i = 0; i < keys.length - 1; i++) ref = ref[keys[i]];
-        ref[keys.at(-1)] = val;
-      };
-      el.addEventListener('input', () => set(el.type === 'checkbox' ? el.checked : el.value));
-    };
-
-    bind('siteName', 'siteName');
-    bind('auditor', 'auditor');
-    bind('auditDate', 'auditDate');
-    bind('shift', 'shift');
-    bind('sopAccessMethod', 'sop.accessMethod');
-    bind('sopAccessibilityScore', 'sop.accessibilityScore');
-    bind('sopNotes', 'sop.notes');
-    document.getElementById('evBinder').addEventListener('change', e => state.meta.sop.evidence.binder = e.target.checked);
-    document.getElementById('evQR').addEventListener('change', e => state.meta.sop.evidence.qr = e.target.checked);
-    document.getElementById('evDMS').addEventListener('change', e => state.meta.sop.evidence.dms = e.target.checked);
-    document.getElementById('finalComments').addEventListener('input', e => state.meta.finalComments = e.target.value);
-
-    // Signature pad
-    const canvas = document.getElementById('sigPad');
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    let drawing = false, last = null, dirty = false;
-
-    function resizeCanvas() {
-      const ratio = Math.max(window.devicePixelRatio || 1, 1);
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * ratio;
-      canvas.height = rect.height * ratio;
-      ctx.scale(ratio, ratio);
-      // clear background
-      ctx.fillStyle = '#fff';
-      ctx.fillRect(0, 0, rect.width, rect.height);
-      if (!dirty) {
-        ctx.fillStyle = '#999';
-        ctx.font = '14px system-ui';
-        ctx.fillText('Sign here', 10, 20);
-      }
-    }
-    window.addEventListener('resize', resizeCanvas, { passive: true });
-    resizeCanvas();
-
-    function startDraw(x, y) {
-      drawing = true; last = { x, y };
-    }
-    function moveDraw(x, y) {
-      if (!drawing) return;
-      ctx.strokeStyle = '#111';
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      ctx.beginPath();
-      ctx.moveTo(last.x, last.y);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-      last = { x, y };
-      dirty = true;
-    }
-    function endDraw() { drawing = false; last = null; }
-
-    canvas.addEventListener('pointerdown', (e) => {
-      canvas.setPointerCapture(e.pointerId);
-      const rect = canvas.getBoundingClientRect();
-      startDraw(e.clientX - rect.left, e.clientY - rect.top);
-    });
-    canvas.addEventListener('pointermove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      moveDraw(e.clientX - rect.left, e.clientY - rect.top);
-    });
-    canvas.addEventListener('pointerup', endDraw);
-    canvas.addEventListener('pointercancel', endDraw);
-    canvas.addEventListener('pointerleave', endDraw);
-
-    document.getElementById('sigClear').addEventListener('click', () => {
-      dirty = false;
-      resizeCanvas();
-      document.getElementById('sigMeta').textContent = '';
-      state.meta.signature = { name:'', dataUrl:'', time:'' };
-    });
-
-    document.getElementById('sigSave').addEventListener('click', () => {
-      const name = document.getElementById('sigName').value.trim();
-      if (!name) {
-        alert('Type your name before saving signature.');
-        return;
-      }
-      if (!dirty) {
-        alert('Please draw your signature in the pad.');
-        return;
-      }
-      const dataUrl = canvas.toDataURL('image/png');
-      const time = new Date().toISOString();
-      state.meta.signature = { name, dataUrl, time };
-      document.getElementById('sigMeta').textContent = `Signed by ${name} at ${new Date(time).toLocaleString()}`;
-    });
-
-    // Save/Load/Export/Print
-    document.getElementById('btnSave').addEventListener('click', () => {
-      localStorage.setItem('calSopAudit', JSON.stringify(state));
-      alert('Saved locally.');
-    });
-    document.getElementById('btnLoad').addEventListener('click', () => {
-      const raw = localStorage.getItem('calSopAudit');
-      if (!raw) return alert('No saved data found.');
-      const loaded = JSON.parse(raw);
-      Object.assign(state.meta, loaded.meta || {});
-      state.instruments = loaded.instruments || [];
-      hydrateUI();
-      renderTable();
-      alert('Loaded.');
-    });
-    document.getElementById('btnExport').addEventListener('click', () => {
-      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      const name = (state.meta.siteName || 'audit').replace(/\W+/g,'-').toLowerCase();
-      a.download = `${name || 'audit'}-${new Date().toISOString().slice(0,10)}.json`;
-      document.body.appendChild(a);
-      a.click();
-      URL.revokeObjectURL(url);
-      a.remove();
-    });
-    document.getElementById('btnPrint').addEventListener('click', () => window.print());
-
-    // Offline (Service Worker)
-    const swCode = `
-      const CACHE = 'cal-sop-audit-v1';
-      self.addEventListener('install', (e) => {
-        e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./'])));
-        self.skipWaiting();
-      });
-      self.addEventListener('activate', (e) => self.clients.claim());
-      self.addEventListener('fetch', (e) => {
-        e.respondWith(
-          caches.match(e.request).then(r => r || fetch(e.request).then(resp => {
-            const copy = resp.clone();
-            caches.open(CACHE).then(c => c.put(e.request, copy));
-            return resp;
-          }).catch(() => caches.match('./')))
-        );
-      });
-    `;
-    document.getElementById('btnInstallSW').addEventListener('click', async () => {
-      if (!('serviceWorker' in navigator)) return alert('Service workers not supported.');
-      const blob = new Blob([swCode], { type: 'text/javascript' });
-      const url = URL.createObjectURL(blob);
-      try {
-        await navigator.serviceWorker.register(url, { scope: './' });
-        alert('Offline enabled.');
-      } catch (e) {
-        console.error(e);
-        alert('Failed to register service worker.');
-      } finally {
-        URL.revokeObjectURL(url);
-      }
-    });
-
-    // Hydrate inputs from state.meta on load
-    function hydrateUI() {
-      document.getElementById('siteName').value = state.meta.siteName || '';
-      document.getElementById('auditor').value = state.meta.auditor || '';
-      document.getElementById('auditDate').value = state.meta.auditDate || '';
-      document.getElementById('shift').value = state.meta.shift || '';
-      document.getElementById('sopAccessMethod').value = state.meta.sop.accessMethod || '';
-      document.getElementById('sopAccessibilityScore').value = state.meta.sop.accessibilityScore || '';
-      document.getElementById('sopNotes').value = state.meta.sop.notes || '';
-      document.getElementById('evBinder').checked = !!state.meta.sop.evidence.binder;
-      document.getElementById('evQR').checked = !!state.meta.sop.evidence.qr;
-      document.getElementById('evDMS').checked = !!state.meta.sop.evidence.dms;
-      document.getElementById('finalComments').value = state.meta.finalComments || '';
-      if (state.meta.signature?.name && state.meta.signature?.dataUrl) {
-        document.getElementById('sigName').value = state.meta.signature.name;
-        document.getElementById('sigMeta').textContent =
-          `Signed by ${state.meta.signature.name} at ${new Date(state.meta.signature.time).toLocaleString()}`;
-      }
-    }
-
-    // Finalize validation
-    document.getElementById('btnFinalize').addEventListener('click', () => {
-      const issues = [];
-      // SOP basics
-      if (!state.meta.sop.accessMethod) issues.push('Select SOP access method.');
-      if (!state.meta.sop.accessibilityScore) issues.push('Provide SOP accessibility rating.');
-      // Signature
-      if (!state.meta.signature?.dataUrl) issues.push('Attach digital signature.');
-      // Instruments
-      if (state.instruments.length === 0) issues.push('Add at least one instrument.');
-      state.instruments.forEach((inst, i) => {
-        const st = calcStatus(inst);
-        if (st.cls !== 'status-ok') {
-          issues.push(`Instrument ${inst.tag || i+1} status: ${st.label}.`);
-        }
-      });
-
-      const finalStatus = document.getElementById('finalStatus');
-      if (issues.length) {
-        finalStatus.textContent = 'Open items: ' + issues.length;
-        alert('Please resolve before finalizing:\n- ' + issues.join('\n- '));
-      } else {
-        finalStatus.textContent = 'All good. Audit complete.';
-        alert('Audit finalized. You may now Export or Print.');
-      }
-    });
-
-    // Seed with a few examples
-    addInstrument({ tag: 'SCALE-12', location: 'Weigh Room', model: 'Mettler XS', serial: 'X12345', calDate: iso(-300), dueDate: iso(60), sticker: true });
-    addInstrument({ tag: 'PH-02', location: 'QC Bench 3', model: 'Thermo pH210', serial: 'P9876', calDate: iso(-200), dueDate: iso(-2), sticker: true });
-    addInstrument({ tag: 'THERM-7', location: 'Cold Room', model: 'Fluke 52', serial: 'F52-111', calDate: iso(-100), dueDate: iso(10), sticker: false });
-
-    function iso(offsetDays) {
-      const d = new Date();
-      d.setDate(d.getDate() + offsetDays);
-      return d.toISOString().slice(0,10);
-    }
-
-    function initFromStorage() {
-      try {
-        const raw = localStorage.getItem('calSopAudit');
-        if (!raw) return;
-        const loaded = JSON.parse(raw);
-        Object.assign(state.meta, loaded.meta || {});
-        state.instruments = loaded.instruments || state.instruments;
-        hydrateUI();
-        renderTable();
-      } catch {}
-    }
-
-    initFromStorage();
-    renderTable();
-  </script>
+  // Initial filter apply
+  applyFilters();
+</script>
 </body>
 </html>
