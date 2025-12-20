@@ -153,29 +153,14 @@
     .contact p {
       margin-bottom: 1.5rem;
     }
-    .contact form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .contact input,
-    .contact textarea {
+    iframe.contact-frame {
       width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.8rem;
+      max-width: 800px;
+      height: 600px;
       border: none;
-      border-radius: 6px;
-    }
-    .contact button {
-      background: #3b82f6;
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .contact button:hover {
-      background: #2563eb;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
 
     /* ===== FOOTER ===== */
@@ -237,13 +222,15 @@
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <p>We’d love to hear from you! Reach out to discuss your project or any inquiries.</p>
-    <form onsubmit="event.preventDefault(); alert('Message sent successfully!');">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <p>We’d love to hear from you! Please fill out the form below.</p>
+
+    <!-- Embedded external contact form -->
+    <iframe
+      src="https://algirdasvaskys.github.io/plan/contact%20us.html"
+      class="contact-frame"
+      title="Gobbleup Contact Form"
+      loading="lazy">
+    </iframe>
   </section>
 
   <footer>
@@ -251,12 +238,12 @@
   </footer>
 
   <script>
-    // Set current year
-    document.getElementById('year').innerText = new Date().getFullYear();
+    // Set current year dynamically
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Smooth scroll
+    // Smooth section scroll on buttons/links
     function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     }
   </script>
 </body>
