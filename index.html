@@ -1,252 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gobbleup & Goodman System Solutions Ltd</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlie Munger on Fossil Fuels</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  <style>
-    /* ===== GLOBAL STYLES ===== */
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #f9fafb;
-      color: #1f2937;
-      line-height: 1.6;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    img {
-      max-width: 100%;
-      display: block;
-    }
+        body {
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    /* ===== HEADER & NAV ===== */
-    header {
-      position: sticky;
-      top: 0;
-      background: #111827;
-      color: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-      color: #3b82f6;
-    }
-    nav a {
-      margin-left: 1.5rem;
-      font-weight: 500;
-    }
-    nav a:hover {
-      color: #3b82f6;
-      transition: 0.3s;
-    }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    /* ===== HERO SECTION ===== */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 90vh;
-      background: linear-gradient(to right, #3b82f6, #1e3a8a);
-      color: white;
-      text-align: center;
-      padding: 2rem;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      max-width: 650px;
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .hero button {
-      background: #fff;
-      color: #1e3a8a;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .hero button:hover {
-      background: #dbeafe;
-    }
+        .header {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-    /* ===== SERVICES SECTION ===== */
-    .services {
-      padding: 4rem 2rem;
-      background: #fff;
-      text-align: center;
-    }
-    .services h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .service {
-      background: #f3f4f6;
-      padding: 2rem;
-      border-radius: 10px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .service:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .service h3 {
-      margin-bottom: 1rem;
-      color: #3b82f6;
-    }
+        .quote-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
 
-    /* ===== ABOUT SECTION ===== */
-    .about {
-      background: #e5e7eb;
-      padding: 4rem 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
-    }
-    .about img {
-      flex: 1;
-      border-radius: 10px;
-    }
-    .about-content {
-      flex: 1;
-      min-width: 300px;
-    }
-    .about-content h2 {
-      color: #1e3a8a;
-      margin-bottom: 1rem;
-    }
+        .quote-card:hover {
+            transform: translateY(-5px);
+        }
 
-    /* ===== CONTACT SECTION ===== */
-    .contact {
-      background: #1f2937;
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    .contact h2 {
-      margin-bottom: 1rem;
-      color: #3b82f6;
-    }
-    .contact p {
-      margin-bottom: 1.5rem;
-    }
-    iframe.contact-frame {
-      width: 100%;
-      max-width: 800px;
-      height: 600px;
-      border: none;
-      border-radius: 10px;
-      background-color: white;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    }
+        .quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+            position: relative;
+        }
 
-    /* ===== FOOTER ===== */
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-  </style>
+        .quote::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            left: -1rem;
+            top: -1rem;
+            color: #ddd;
+            z-index: 0;
+        }
+
+        .explanation {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        .key-point {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .quote {
+                font-size: 1rem;
+            }
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: #007bff;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            width: calc(50% - 30px);
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #007bff;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            left: -40px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            right: -40px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Gobbleup & Goodman System Solutions</div>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <div class="container">
+        <div class="header">
+            <h1>Charlie Munger's Perspective on Fossil Fuels</h1>
+            <p>Key Insights from Berkshire Hathaway's Vice Chairman</p>
+        </div>
 
-  <section class="hero">
-    <h1>Innovative Tech Solutions for a Smarter Future</h1>
-    <p>At Gobbleup & Goodman System Solutions Ltd, we empower businesses with cutting-edge technology, efficient systems, and scalable software designed to accelerate growth and innovation.</p>
-    <button onclick="scrollToSection('services')">Explore Our Services</button>
-  </section>
+        <div class="quote-card">
+            <div class="quote">
+                "The world is not going to get rid of fossil fuels. We're going to have to learn to use them more responsibly."
+            </div>
+            <div class="explanation">
+                Charlie Munger emphasized the practical reality that fossil fuels will remain a crucial part of the global energy mix for the foreseeable future.
+            </div>
+        </div>
 
-  <section id="services" class="services">
-    <h2>Our Core Services</h2>
-    <div class="service-grid">
-      <div class="service">
-        <h3>Custom Software Development</h3>
-        <p>Tailored applications built for performance, reliability, and business impact — from concept to deployment.</p>
-      </div>
-      <div class="service">
-        <h3>System Integration</h3>
-        <p>Seamlessly connect your business systems to enable automation, communication, and real-time data insight.</p>
-      </div>
-      <div class="service">
-        <h3>Cloud Solutions</h3>
-        <p>Optimize your infrastructure with secure and scalable cloud-based platforms and services.</p>
-      </div>
-      <div class="service">
-        <h3>IT Consulting</h3>
-        <p>Expert strategic guidance to help you make technology decisions that fuel your organization’s success.</p>
-      </div>
+        <div class="key-point">
+            <h3>Key Understanding Points:</h3>
+            <ul>
+                <li>Energy infrastructure dependency</li>
+                <li>Economic development needs</li>
+                <li>Technological transition timeline</li>
+                <li>Balance between environmental concerns and practical needs</li>
+            </ul>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Current Reality</h3>
+                <p>Fossil fuels still provide approximately 80% of global energy needs</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Infrastructure</h3>
+                <p>Trillions of dollars invested in existing fossil fuel infrastructure</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Transition Challenge</h3>
+                <p>Complex process of transitioning to renewable energy while maintaining economic growth</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Future Outlook</h3>
+                <p>Need for balanced approach combining fossil fuels with renewable energy solutions</p>
+            </div>
+        </div>
+
+        <div class="quote-card">
+            <div class="quote">
+                "The solution is not to eliminate fossil fuels overnight, but to use them wisely while developing alternatives."
+            </div>
+            <div class="explanation">
+                Munger advocates for a pragmatic approach that acknowledges both environmental concerns and economic realities.
+            </div>
+        </div>
     </div>
-  </section>
-
-  <section id="about" class="about">
-    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80" alt="Team collaboration">
-    <div class="about-content">
-      <h2>About Us</h2>
-      <p>Gobbleup & Goodman System Solutions Ltd is a technology-driven company specializing in advanced IT solutions, system automation, and enterprise-grade software. We combine innovation with technical expertise to deliver measurable business results and future-ready systems for our clients worldwide.</p>
-      <p>Our mission is to help organizations "gobble up" complex challenges through smart, efficient technology — transforming ideas into sustainable solutions.</p>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>We’d love to hear from you! Please fill out the form below.</p>
-
-    <!-- Embedded external contact form -->
-    <iframe
-      src="https://algirdasvaskys.github.io/plan/contact%20us.html"
-      class="contact-frame"
-      title="Gobbleup Contact Form"
-      loading="lazy">
-    </iframe>
-  </section>
-
-  <footer>
-    &copy; <span id="year"></span> Gobbleup System & Goodman Solutions Ltd. All rights reserved.
-  </footer>
-
-  <script>
-    // Set current year dynamically
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Smooth section scroll on buttons/links
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-    }
-  </script>
 </body>
 </html>
-
-
