@@ -1,202 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charlie Munger on Fossil Fuels</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <title>YouTube Redirect (id1)</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
 
-        body {
-            background: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
+    h2 {
+      margin-bottom: 1rem;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    #redirectBtn {
+      display: none;
+      background-color: #ff0000;
+      border: none;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-        .header {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+    #redirectBtn:hover {
+      background-color: #cc0000;
+    }
 
-        .quote-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
+    .loading-dot {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      animation: blink 1.2s infinite;
+    }
 
-        .quote-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: #555;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .quote::before {
-            content: '"';
-            font-size: 4rem;
-            position: absolute;
-            left: -1rem;
-            top: -1rem;
-            color: #ddd;
-            z-index: 0;
-        }
-
-        .explanation {
-            font-size: 1rem;
-            color: #666;
-            margin-top: 1rem;
-        }
-
-        .key-point {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-left: 4px solid #007bff;
-            margin: 1rem 0;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
-            }
-
-            .header {
-                padding: 1rem;
-            }
-
-            .quote {
-                font-size: 1rem;
-            }
-        }
-
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background: #007bff;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
-        }
-
-        .timeline-item {
-            padding: 1rem;
-            background: #fff;
-            border-radius: 8px;
-            width: calc(50% - 30px);
-            margin: 1rem 0;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            margin-left: auto;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #007bff;
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .timeline-item:nth-child(odd)::before {
-            left: -40px;
-        }
-
-        .timeline-item:nth-child(even)::before {
-            right: -40px;
-        }
-    </style>
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Charlie Munger's Perspective on Fossil Fuels</h1>
-            <p>Key Insights from Berkshire Hathaway's Vice Chairman</p>
-        </div>
 
-        <div class="quote-card">
-            <div class="quote">
-                "The world is not going to get rid of fossil fuels. We're going to have to learn to use them more responsibly."
-            </div>
-            <div class="explanation">
-                Charlie Munger emphasized the practical reality that fossil fuels will remain a crucial part of the global energy mix for the foreseeable future.
-            </div>
-        </div>
+  <h2>Watch video on YouTube</h2>
+  <p>Error 153 — Video player configuration error</p>
+  <button id="redirectBtn">Open YouTube Video ▶</button>
+  <div class="loading-dot">• • •</div>
 
-        <div class="key-point">
-            <h3>Key Understanding Points:</h3>
-            <ul>
-                <li>Energy infrastructure dependency</li>
-                <li>Economic development needs</li>
-                <li>Technological transition timeline</li>
-                <li>Balance between environmental concerns and practical needs</li>
-            </ul>
-        </div>
+  <script>
+    const youtubeURL = "https://www.youtube.com/watch?v=_xJcE9tnY6E&t=2s";
+    const redirectButton = document.getElementById("redirectBtn");
 
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Current Reality</h3>
-                <p>Fossil fuels still provide approximately 80% of global energy needs</p>
-            </div>
+    // After 1 second → attempt auto‑redirect
+    setTimeout(() => {
+      try {
+        window.location.href = youtubeURL;
+      } catch (e) {
+        // if redirect blocked, show manual button
+        redirectButton.style.display = "inline-block";
+      }
+    }, 1000);
 
-            <div class="timeline-item">
-                <h3>Infrastructure</h3>
-                <p>Trillions of dollars invested in existing fossil fuel infrastructure</p>
-            </div>
+    // Also reveal button after 1 s (so if auto‑redirect fails, user can click)
+    setTimeout(() => {
+      redirectButton.style.display = "inline-block";
+    }, 1000);
 
-            <div class="timeline-item">
-                <h3>Transition Challenge</h3>
-                <p>Complex process of transitioning to renewable energy while maintaining economic growth</p>
-            </div>
+    redirectButton.addEventListener("click", () => {
+      window.open(youtubeURL, "_blank");
+    });
+  </script>
 
-            <div class="timeline-item">
-                <h3>Future Outlook</h3>
-                <p>Need for balanced approach combining fossil fuels with renewable energy solutions</p>
-            </div>
-        </div>
-
-        <div class="quote-card">
-            <div class="quote">
-                "The solution is not to eliminate fossil fuels overnight, but to use them wisely while developing alternatives."
-            </div>
-            <div class="explanation">
-                Munger advocates for a pragmatic approach that acknowledges both environmental concerns and economic realities.
-            </div>
-        </div>
-    </div>
 </body>
 </html>
+
