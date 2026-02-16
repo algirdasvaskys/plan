@@ -1,267 +1,957 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BENNETT - Vois sur ton chemin - DJ Holanda MONTAGEM CORAL Remix - source - YouTube</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Advanced HTML — All-in-One Demo (Sandbox-Safe)</title>
+  <meta name="description" content="Single-file advanced HTML/CSS/JS with responsive layout, dark mode, forms, tables, charts, and UI components. Sandbox-safe storage." />
   <style>
-    body, html {
+    /* =========================================
+       CSS VARIABLES + THEME
+       IMPORTANT: Centralize design tokens here
+       ========================================= */
+    :root {
+      --bg: #0b0f19;
+      --surface: #11162a;
+      --surface-2: #0e1426;
+      --text: #e6eefc;
+      --muted: #a9b4ce;
+      --primary: #4c8dff;
+      --primary-contrast: #0b1220;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --border: #1e2a4a;
+      --ring: #6aa3ff;
+      --shadow: 0 10px 30px rgba(10, 20, 40, 0.35);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --radius-lg: 16px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+    /* Light theme */
+    [data-theme="light"] {
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --surface-2: #f0f3fa;
+      --text: #0b1220;
+      --muted: #465271;
+      --primary: #2563eb;
+      --primary-contrast: #ffffff;
+      --success: #16a34a;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --border: #e0e6f5;
+      --ring: #93c5fd;
+      --shadow: 0 10px 30px rgba(10, 20, 40, 0.08);
+    }
+    /* Base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      flex-direction: column;
+      font-family: var(--font);
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 70% -20%, rgba(80,130,255,0.15), transparent 60%) no-repeat, var(--bg);
+      line-height: 1.5;
+    }
+    img, svg, video, canvas { max-width: 100%; display: block; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code, pre { font-family: var(--mono); }
+
+    /* Layout */
+    .app { min-height: 100dvh; display: grid; grid-template-rows: auto 1fr; }
+    .header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: color-mix(in srgb, var(--surface) 80%, transparent);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; gap: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+    }
+    .brand { display: flex; align-items: center; gap: var(--space-3); font-weight: 800; letter-spacing: 0.2px; }
+    .brand .logo {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), #7aa7ff);
+      box-shadow: 0 6px 18px rgba(65,120,255,0.5);
+    }
+    .header-actions { margin-left: auto; display: flex; gap: var(--space-3); align-items: center; }
+
+    .shell {
+      max-width: 1200px; margin: var(--space-6) auto;
+      display: grid; gap: var(--space-6);
+      grid-template-columns: 280px 1fr;
+      padding: 0 var(--space-4);
+    }
+    @media (max-width: 980px) {
+      .shell { grid-template-columns: 1fr; }
+      .sidebar { order: 2; }
+      .main { order: 1; }
     }
 
-    #player {
-      display: none;
+    .sidebar { position: sticky; top: calc(60px + var(--space-6)); align-self: start; display: grid; gap: var(--space-4); height: min-content; }
+    .card {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, transparent), color-mix(in srgb, var(--surface-2) 96%, transparent));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: var(--space-4);
     }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
+    .muted { color: var(--muted); font-size: 0.95rem; }
 
-    .container {
-      text-align: center;
-      width: 100%;
+    /* Buttons */
+    .btn {
+      appearance: none; border: 0; cursor: pointer;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: color-mix(in srgb, var(--surface-2) 85%, transparent);
+      color: var(--text);
+      border: 1px solid var(--border);
     }
+    .btn:hover { outline: 2px solid color-mix(in srgb, var(--ring) 40%, transparent); }
+    .btn.primary {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 80%, transparent), color-mix(in srgb, var(--primary) 60%, transparent));
+      color: var(--primary-contrast);
+      border-color: color-mix(in srgb, var(--primary) 70%, var(--border));
+      box-shadow: 0 10px 20px rgba(76,141,255,0.25);
+    }
+    .btn.ghost { background: transparent; }
+    .btn.icon { padding: 10px; border-radius: 10px; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 
-    .controls {
-      margin-top: 20px;
+    /* Toggle switch (theme) */
+    .switch { --h: 28px; --w: 54px; inline-size: var(--w); block-size: var(--h); border-radius: 100px; position: relative; background: color-mix(in srgb, var(--surface-2) 85%, transparent); border: 1px solid var(--border); }
+    .switch input { appearance: none; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+    .switch .dot {
+      position: absolute; inset: 3px auto 3px 3px; width: calc(var(--h) - 6px); height: calc(var(--h) - 6px);
+      border-radius: 999px; background: var(--primary); transition: transform 250ms; box-shadow: 0 6px 16px rgba(76,141,255,0.4);
     }
+    .switch input:checked + .dot { transform: translateX(calc(var(--w) - var(--h))); }
 
-    .controls button {
-      background-color: #444;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 1em;
-    }
+    /* Tabs */
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tab { padding: 8px 12px; border-radius: 999px; cursor: pointer; user-select: none; border: 1px solid var(--border); background: color-mix(in srgb, var(--surface-2) 85%, transparent); }
+    .tab[aria-selected="true"] { background: color-mix(in srgb, var(--primary) 30%, transparent); outline: 2px solid color-mix(in srgb, var(--primary) 35%, transparent); }
 
-    .controls button:hover {
-      background-color: #666;
+    /* Table */
+    .table-wrap { overflow: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    thead th {
+      position: sticky; top: 0; z-index: 1; background: color-mix(in srgb, var(--surface) 96%, transparent);
+      text-align: left; padding: 12px; border-bottom: 1px solid var(--border); white-space: nowrap; cursor: pointer;
     }
+    tbody td { padding: 12px; border-bottom: 1px solid var(--border); }
+    tbody tr:hover { background: color-mix(in srgb, var(--surface-2) 75%, transparent); }
 
-    .controls input[type="range"] {
-      width: 300px;
+    .controls { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; }
+    .input, .select {
+      width: 100%; max-width: 260px; background: color-mix(in srgb, var(--surface-2) 85%, transparent);
+      color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px;
     }
+    .input::placeholder { color: color-mix(in srgb, var(--muted) 70%, transparent); }
 
-    .burst-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin-top: 50px;
-    }
+    .pagination { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+    .page-btn { padding: 6px 10px; border: 1px solid var(--border); background: transparent; color: var(--text); border-radius: 8px; }
+    .page-btn[aria-current="page"] { background: color-mix(in srgb, var(--primary) 25%, transparent); }
 
-    .burst {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
-      background-color: #3498db;
-      border-radius: 50%;
-      transition: transform 0.5s ease, background-color 0.5s ease;
-    }
+    /* Toasts */
+    .toast-area { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: grid; gap: 10px; width: min(92vw, 360px); }
+    .toast { border-radius: var(--radius); border: 1px solid var(--border); padding: 12px 14px; background: color-mix(in srgb, var(--surface) 95%, transparent); box-shadow: var(--shadow); display: grid; gap: 6px; }
+    .toast.success { border-left: 4px solid var(--success); }
+    .toast.warn { border-left: 4px solid var(--warning); }
+    .toast.danger { border-left: 4px solid var(--danger); }
 
-    .burst.inflated {
-      transform: translate(-50%, -50%) scale(1.5);
-      background-color: #e74c3c;
-    }
+    /* Modal/Dialog */
+    .backdrop { position: fixed; inset: 0; background: rgba(6,10,22,0.6); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 40; }
+    .backdrop[data-open="true"] { display: flex; }
+    .modal { width: min(720px, 92vw); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow); }
+    .modal .title { font-weight: 800; margin: 0 0 8px; }
+    .modal .actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+
+    /* Accordion */
+    .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .accordion details { border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--surface-2) 88%, transparent); }
+    .accordion details:last-child { border-bottom: 0; }
+    .accordion summary { cursor: pointer; padding: 12px 14px; font-weight: 600; }
+    .accordion .panel { padding: 0 14px 14px; }
+
+    /* Charts */
+    .chart { background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, transparent), color-mix(in srgb, var(--surface-2) 92%, transparent)); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); }
+
+    /* Utilities */
+    .row { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space-4); }
+    .col-4 { grid-column: span 4; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+    @media (max-width: 980px) { .col-4, .col-8 { grid-column: span 12; } }
+
+    .kbd { font-family: var(--mono); font-size: 0.85em; padding: 2px 6px; border: 1px solid var(--border); border-radius: 6px; background: color-mix(in srgb, var(--surface-2) 85%, transparent); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
   </style>
-  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
-
 <body>
-  <div class="container">
-    <div class="controls">
-      <button id="play">Play</button>
-      <button id="pause">Pause</button>
-      <label for="volume">Volume: </label>
-      <input type="range" id="volume" min="0" max="100" value="50">
+  <div class="app" id="app" data-theme="dark">
+    <!-- HEADER -->
+    <header class="header" role="banner">
+      <div class="header-inner" aria-label="Top navigation">
+        <div class="brand" aria-label="Brand">
+          <div class="logo" aria-hidden="true"></div>
+          <span>Advanced HTML</span>
+        </div>
+        <nav aria-label="Primary" class="btn-group">
+          <a class="btn ghost" href="#overview">Overview</a>
+          <a class="btn ghost" href="#data">Data</a>
+          <a class="btn ghost" href="#forms">Forms</a>
+          <a class="btn ghost" href="#components">Components</a>
+        </nav>
+
+        <div class="header-actions">
+          <!-- IMPORTANT: Command palette (Ctrl/Cmd + K) -->
+          <button id="cmdBtn" class="btn icon" title="Command palette (Ctrl/Cmd + K)" aria-haspopup="dialog" aria-controls="cmdDialog">⌘K</button>
+
+          <!-- Theme switch -->
+          <label class="switch" title="Toggle theme">
+            <!-- IMPORTANT: data-theme toggled via JS + SafeStorage -->
+            <input id="themeToggle" type="checkbox" aria-label="Dark mode" />
+            <span class="dot" aria-hidden="true"></span>
+          </label>
+
+          <button id="openModalBtn" class="btn primary">Open Modal</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- SHELL -->
+    <div class="shell">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" aria-label="Sidebar">
+        <section class="card">
+          <div class="card-header">
+            <strong>Quick Actions</strong>
+          </div>
+          <div class="btn-group">
+            <button class="btn">Refresh</button>
+            <button class="btn">Export</button>
+            <button class="btn">Share</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header"><strong>Tips</strong></div>
+          <ul class="muted" style="padding-left: 18px; margin: 0;">
+            <li><strong>IMPORTANT:</strong> Centralize tokens in CSS variables.</li>
+            <li><strong>IMPORTANT:</strong> Keep components accessible (labels, roles).</li>
+            <li>Use Grid for page layout and Flex for component layout.</li>
+            <li>Persist user prefs (theme) with a storage shim for sandbox safety.</li>
+            <li>Defer expensive JS until DOMContentLoaded.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="card-header"><strong>Accordion</strong></div>
+          <div class="accordion" id="faq">
+            <details>
+              <summary>What is this?</summary>
+              <div class="panel">A single-file, advanced HTML/CSS/JS demo.</div>
+            </details>
+            <details>
+              <summary>Can I reuse it?</summary>
+              <div class="panel">Yes. Copy-paste and adapt tokens/components.</div>
+            </details>
+            <details>
+              <summary>Does it need a build tool?</summary>
+              <div class="panel">No. It’s pure HTML/CSS/JS.</div>
+            </details>
+          </div>
+        </section>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main" id="overview">
+        <section class="card">
+          <div class="card-header">
+            <h2 style="margin: 0;">Overview</h2>
+            <div class="tabs" role="tablist" aria-label="Overview tabs">
+              <button class="tab" role="tab" aria-selected="true" data-tab="metrics">Metrics</button>
+              <button class="tab" role="tab" aria-selected="false" data-tab="activity">Activity</button>
+              <button class="tab" role="tab" aria-selected="false" data-tab="insights">Insights</button>
+            </div>
+          </div>
+
+          <div id="tab-panels">
+            <div role="tabpanel" data-panel="metrics">
+              <div class="row">
+                <div class="col-4">
+                  <div class="card">
+                    <div class="muted">Active Users</div>
+                    <div style="font-size: 32px; font-weight: 800;">12,482</div>
+                    <div style="color: var(--success);">+3.2% WoW</div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="card">
+                    <div class="muted">Conversion</div>
+                    <div style="font-size: 32px; font-weight: 800;">4.7%</div>
+                    <div style="color: var(--warning);">-0.4% WoW</div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="card">
+                    <div class="muted">Errors</div>
+                    <div style="font-size: 32px; font-weight: 800;">94</div>
+                    <div style="color: var(--danger);">+12.0% WoW</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: var(--space-4);">
+                <div class="col-8">
+                  <div class="chart">
+                    <canvas id="lineChart" width="600" height="260" aria-label="Traffic over time"></canvas>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="chart">
+                    <canvas id="barChart" width="300" height="260" aria-label="Signups by channel"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div role="tabpanel" data-panel="activity" hidden>
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <li class="card" style="margin-bottom: 12px;">
+                  <strong>Deploy succeeded</strong>
+                  <div class="muted">2 min ago • by Alice</div>
+                </li>
+                <li class="card" style="margin-bottom: 12px;">
+                  <strong>PR #248 merged</strong>
+                  <div class="muted">34 min ago • by Bob</div>
+                </li>
+                <li class="card">
+                  <strong>Incident resolved</strong>
+                  <div class="muted">1 hr ago • by Carol</div>
+                </li>
+              </ul>
+            </div>
+
+            <div role="tabpanel" data-panel="insights" hidden>
+              <p class="muted">Add custom insights, notes, or KPI breakdowns here.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- DATA TABLE -->
+        <section id="data" class="card">
+          <div class="card-header">
+            <h2 style="margin: 0;">Data Table</h2>
+            <div class="controls">
+              <input id="searchInput" class="input" type="search" placeholder="Search name/owner/status..." />
+              <select id="statusFilter" class="select" aria-label="Status filter">
+                <option value="">All statuses</option>
+                <option>Active</option>
+                <option>Paused</option>
+                <option>Archived</option>
+              </select>
+              <button id="addRowBtn" class="btn primary">Add Row</button>
+              <button id="exportBtn" class="btn">Export CSV</button>
+            </div>
+          </div>
+
+          <div class="table-wrap" role="region" aria-label="Projects table">
+            <table id="table" aria-describedby="tableCaption">
+              <caption id="tableCaption" class="sr-only">Sortable, filterable projects</caption>
+              <thead>
+                <tr>
+                  <!-- IMPORTANT: data-sort keys control sort behavior -->
+                  <th data-key="name" aria-sort="none">Name</th>
+                  <th data-key="owner" aria-sort="none">Owner</th>
+                  <th data-key="created" aria-sort="none">Created</th>
+                  <th data-key="progress" aria-sort="none">Progress</th>
+                  <th data-key="status" aria-sort="none">Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+
+          <div class="card-header" style="margin-top: var(--space-3);">
+            <div class="pagination" id="pagination" role="navigation" aria-label="Pagination"></div>
+            <div class="muted" id="summary" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- FORM -->
+        <section id="forms" class="card">
+          <div class="card-header">
+            <h2 style="margin: 0;">Create Project</h2>
+          </div>
+          <form id="projectForm" novalidate>
+            <div class="row">
+              <div class="col-8">
+                <label>Project Name
+                  <input class="input" name="name" required placeholder="E.g., Atlas Revamp" />
+                </label>
+              </div>
+              <div class="col-4">
+                <label>Owner
+                  <select class="select" name="owner" required>
+                    <option value="" disabled selected>Select owner</option>
+                    <option>Alice</option>
+                    <option>Bob</option>
+                    <option>Carol</option>
+                  </select>
+                </label>
+              </div>
+              <div class="col-4">
+                <label>Start
+                  <input class="input" type="date" name="start" required />
+                </label>
+              </div>
+              <div class="col-4">
+                <label>End
+                  <input class="input" type="date" name="end" required />
+                </label>
+              </div>
+              <div class="col-4">
+                <label>Status
+                  <select class="select" name="status" required>
+                    <option>Active</option>
+                    <option>Paused</option>
+                    <option>Archived</option>
+                  </select>
+                </label>
+              </div>
+              <div class="col-12">
+                <label>Description
+                  <textarea class="input" name="desc" rows="4" placeholder="Optional details"></textarea>
+                </label>
+              </div>
+            </div>
+            <div style="display:flex; gap: 8px; margin-top: var(--space-4);">
+              <button class="btn primary" type="submit">Create</button>
+              <button class="btn" type="reset">Reset</button>
+            </div>
+            <p class="muted" style="margin-top: 8px;">
+              <strong>IMPORTANT:</strong> The form uses constraint validation API with custom messages.
+            </p>
+          </form>
+        </section>
+
+        <!-- COMPONENTS -->
+        <section id="components" class="card">
+          <div class="card-header">
+            <h2 style="margin: 0;">Components</h2>
+          </div>
+          <div class="btn-group" style="margin-bottom: 12px;">
+            <button class="btn" id="notifyOk">Show Success</button>
+            <button class="btn" id="notifyWarn">Show Warning</button>
+            <button class="btn" id="notifyDanger">Show Error</button>
+          </div>
+
+          <div class="accordion">
+            <details open>
+              <summary>Keyboard Shortcuts</summary>
+              <div class="panel">
+                <p>Open command palette: <span class="kbd">Ctrl/⌘</span> + <span class="kbd">K</span></p>
+                <p>Toggle theme: <span class="kbd">T</span></p>
+              </div>
+            </details>
+            <details>
+              <summary>Performance Tips</summary>
+              <div class="panel">
+                <ul>
+                  <li><strong>IMPORTANT:</strong> Batch DOM updates and use requestAnimationFrame for visuals.</li>
+                  <li>Use passive listeners for scroll/touch.</li>
+                  <li>Prefer CSS for animations; keep them GPU-friendly (transform/opacity).</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </section>
+      </main>
     </div>
-    <h1>BENNETT - Vois sur ton chemin - DJ Holanda MONTAGEM CORAL Remix - source - YouTube</h1>
-    <div id="player"></div>
   </div>
-  <div class="burst-container">
-    <div id="burst" class="burst"></div>
+
+  <!-- Command Palette Dialog -->
+  <div class="backdrop" id="cmdDialog" role="dialog" aria-modal="true" aria-labelledby="cmdTitle">
+    <div class="modal">
+      <h3 class="title" id="cmdTitle">Command Palette</h3>
+      <input id="cmdInput" class="input" placeholder="Type a command (e.g., 'toggle theme', 'new project')" />
+      <div id="cmdResults" style="margin-top: 8px;" class="muted">Try: "toggle theme"</div>
+      <div class="actions">
+        <button class="btn" id="cmdClose">Close</button>
+      </div>
+    </div>
   </div>
+
+  <!-- Generic Modal -->
+  <div class="backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <h3 class="title" id="modalTitle">Modal Title</h3>
+      <p>This is a no-library modal. It traps focus and restores it on close.</p>
+      <div class="actions">
+        <button class="btn" id="modalCancel">Cancel</button>
+        <button class="btn primary" id="modalOk">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast area -->
+  <div class="toast-area" id="toasts" aria-live="polite" aria-atomic="true"></div>
 
   <script>
-    var player;
-    var videoId = 'watch?v=_62fkEv8Kio'; // Video ID 
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '0',
-        width: '0',
-        videoId: videoId,
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          showinfo: 0,
-          modestbranding: 1,
-          loop: 1,
-          playlist: videoId
-        },
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    function onPlayerReady(event) {
-      event.target.playVideo();
-      document.getElementById('player').style.display = 'block';
-    }
-
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
-        player.playVideo();
+    // =========================================
+    // SafeStorage shim (sandbox-safe localStorage)
+    // IMPORTANT: Avoids SecurityError in sandboxed iframes
+    // =========================================
+    const SafeStorage = (() => {
+      try {
+        const k = '__test__';
+        window.localStorage.setItem(k, '1');
+        window.localStorage.removeItem(k);
+        return {
+          get: (key) => window.localStorage.getItem(key),
+          set: (key, val) => window.localStorage.setItem(key, val),
+          remove: (key) => window.localStorage.removeItem(key),
+        };
+      } catch {
+        const mem = new Map();
+        return {
+          get: (key) => (mem.has(key) ? mem.get(key) : null),
+          set: (key, val) => mem.set(key, String(val)),
+          remove: (key) => mem.delete(key),
+        };
       }
+    })();
+
+    // =========================================
+    // Helpers, Theme persistence, and Shortcuts
+    // =========================================
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+    const app = $('#app');
+    const THEME_KEY = 'advanced-html-theme';
+    const savedTheme = SafeStorage.get(THEME_KEY);
+    if (savedTheme) app.setAttribute('data-theme', savedTheme);
+
+    const themeToggle = $('#themeToggle');
+    themeToggle.checked = app.getAttribute('data-theme') !== 'light';
+
+    function toast(message, type = 'success', timeout = 3200) {
+      const toasts = $('#toasts');
+      const el = document.createElement('div');
+      el.className = `toast ${type}`;
+      el.innerHTML = `<strong>${message}</strong><div class="muted">${new Date().toLocaleTimeString()}</div>`;
+      toasts.appendChild(el);
+      setTimeout(() => {
+        el.style.transition = 'opacity 250ms, transform 250ms';
+        el.style.opacity = '0'; el.style.transform = 'translateY(6px)';
+        setTimeout(() => el.remove(), 260);
+      }, timeout);
+    }
+    function announce(text) { toast(text, 'success', 1800); }
+
+    function setTheme(mode) {
+      app.setAttribute('data-theme', mode);
+      SafeStorage.set(THEME_KEY, mode);
+      announce(`Theme set to ${mode}`);
     }
 
-    document.getElementById('play').addEventListener('click', function() {
-      player.playVideo();
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openCmd(); }
+      if (e.key.toLowerCase() === 't') { setTheme(app.getAttribute('data-theme') === 'light' ? 'dark' : 'light'); themeToggle.checked = app.getAttribute('data-theme') !== 'light'; }
+      if (e.key === 'Escape') { closeCmd(); closeModal(); }
     });
+    themeToggle.addEventListener('change', () => setTheme(themeToggle.checked ? 'dark' : 'light'));
 
-    document.getElementById('pause').addEventListener('click', function() {
-      player.pauseVideo();
-    });
+    // =========================================
+    // Modal
+    // =========================================
+    const modal = $('#modal'); const openModalBtn = $('#openModalBtn');
+    const modalCancel = $('#modalCancel'); const modalOk = $('#modalOk');
+    let modalLastFocus = null;
+    function openModal() {
+      modalLastFocus = document.activeElement;
+      modal.dataset.open = 'true';
+      trapFocus(modal);
+      modal.querySelector('.actions .btn')?.focus();
+    }
+    function closeModal() {
+      if (!modal.dataset.open) return;
+      modal.removeAttribute('data-open');
+      releaseFocus(modal);
+      modalLastFocus?.focus();
+    }
+    openModalBtn.addEventListener('click', openModal);
+    modalCancel.addEventListener('click', closeModal);
+    modalOk.addEventListener('click', () => { toast('Confirmed!', 'success'); closeModal(); });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-    document.getElementById('volume').addEventListener('input', function() {
-      player.setVolume(this.value);
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const burstElement = document.getElementById('burst');
-      let isInflated = false;
-
-      burstElement.addEventListener('click', () => {
-        isInflated = !isInflated;
-        if (isInflated) {
-          burstElement.classList.add('inflated');
-          setTimeout(() => {
-            window.open('https://algirdasvaskys.github.io/plan/step');  // Replace with the actual URL
-          }, 1250);
+    // =========================================
+    // Command Palette
+    // =========================================
+    const cmdDialog = $('#cmdDialog'); const cmdInput = $('#cmdInput');
+    const cmdResults = $('#cmdResults'); const cmdBtn = $('#cmdBtn'); const cmdClose = $('#cmdClose');
+    let cmdLastFocus = null;
+    function openCmd() {
+      cmdLastFocus = document.activeElement;
+      cmdDialog.dataset.open = 'true';
+      trapFocus(cmdDialog);
+      cmdInput.focus();
+      cmdResults.textContent = 'Commands: "toggle theme", "new project", "export"';
+    }
+    function closeCmd() {
+      if (!cmdDialog.dataset.open) return;
+      cmdDialog.removeAttribute('data-open');
+      releaseFocus(cmdDialog);
+      cmdLastFocus?.focus();
+    }
+    cmdBtn.addEventListener('click', openCmd);
+    cmdClose.addEventListener('click', closeCmd);
+    cmdDialog.addEventListener('click', (e) => { if (e.target === cmdDialog) closeCmd(); });
+    cmdInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const q = cmdInput.value.trim().toLowerCase();
+        if (q.includes('toggle')) {
+          setTheme(app.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+          themeToggle.checked = app.getAttribute('data-theme') !== 'light';
+          closeCmd();
+        } else if (q.includes('new')) {
+          closeCmd(); openModal();
+        } else if (q.includes('export')) {
+          exportCSV(); closeCmd();
         } else {
-          burstElement.classList.remove('inflated');
+          cmdResults.textContent = 'Unknown command';
         }
+      }
+    });
+
+    // =========================================
+    // Focus Trap (accessibility)
+    // =========================================
+    function trapFocus(container) {
+      const focusable = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      function handler(e) {
+        if (e.key !== 'Tab') return;
+        const nodes = $$(focusable, container);
+        if (!nodes.length) return;
+        const first = nodes[0], last = nodes[nodes.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+      container._trap = handler;
+      container.addEventListener('keydown', handler);
+    }
+    function releaseFocus(container) { if (container._trap) container.removeEventListener('keydown', container._trap); }
+
+    // =========================================
+    // Table: Data, Sorting, Filtering, Pagination
+    // =========================================
+    const tbody = $('#tbody'); const searchInput = $('#searchInput');
+    const statusFilter = $('#statusFilter'); const pagination = $('#pagination');
+    const summary = $('#summary'); const addRowBtn = $('#addRowBtn'); const exportBtn = $('#exportBtn');
+
+    const statuses = ['Active', 'Paused', 'Archived'];
+    const owners = ['Alice', 'Bob', 'Carol'];
+    let data = Array.from({ length: 53 }).map((_, i) => ({
+      id: i + 1,
+      name: `Project ${i + 1}`,
+      owner: owners[i % owners.length],
+      created: new Date(Date.now() - i * 86400000).toISOString().slice(0, 10),
+      progress: Math.max(3, Math.min(100, Math.round(Math.random() * 100))),
+      status: statuses[i % statuses.length]
+    }));
+
+    let state = { sortKey: 'name', sortDir: 'asc', page: 1, pageSize: 8, q: '', status: '' };
+
+    function getFiltered() {
+      const q = state.q.trim().toLowerCase();
+      return data.filter(d => {
+        const textMatch = !q || d.name.toLowerCase().includes(q) || d.owner.toLowerCase().includes(q) || d.status.toLowerCase().includes(q);
+        const statusMatch = !state.status || d.status === state.status;
+        return textMatch && statusMatch;
       });
+    }
+    function getSorted(rows) {
+      const r = [...rows];
+      r.sort((a, b) => {
+        const vA = a[state.sortKey]; const vB = b[state.sortKey];
+        if (typeof vA === 'number' && typeof vB === 'number') return state.sortDir === 'asc' ? vA - vB : vB - vA;
+        return state.sortDir === 'asc' ? String(vA).localeCompare(String(vB)) : String(vB).localeCompare(String(vA));
+      });
+      return r;
+    }
+    function getPaged(rows) { const start = (state.page - 1) * state.pageSize; return rows.slice(start, start + state.pageSize); }
+
+    function render() {
+      const filtered = getFiltered();
+      const sorted = getSorted(filtered);
+      const paged = getPaged(sorted);
+      tbody.innerHTML = paged.map(row => `
+        <tr>
+          <td>${row.name}</td>
+          <td>${row.owner}</td>
+          <td>${row.created}</td>
+          <td>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="flex:1; height:8px; background: color-mix(in srgb, var(--surface-2) 85%, transparent); border:1px solid var(--border); border-radius: 999px; overflow: hidden;">
+                <div style="height:100%; width:${row.progress}%; background:${row.progress===100 ? 'var(--success)' : 'var(--primary)'};"></div>
+              </div>
+              <span style="min-width: 34px; text-align:right;">${row.progress}%</span>
+            </div>
+          </td>
+          <td><span style="padding:4px 8px; border:1px solid var(--border); border-radius:999px; background:${row.status==='Active'?'rgba(34,197,94,0.15)':row.status==='Paused'?'rgba(245,158,11,0.15)':'rgba(239,68,68,0.15)'}">${row.status}</span></td>
+          <td>
+            <div class="btn-group">
+              <button class="btn" data-act="edit" data-id="${row.id}">Edit</button>
+              <button class="btn" data-act="del" data-id="${row.id}">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+
+      // Row actions
+      tbody.querySelectorAll('[data-act="del"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = Number(btn.dataset.id);
+          data = data.filter(d => d.id !== id);
+          toast('Row deleted', 'warn');
+          if ((state.page - 1) * state.pageSize >= getFiltered().length) state.page = Math.max(1, state.page - 1);
+          render();
+        });
+      });
+      tbody.querySelectorAll('[data-act="edit"]').forEach(btn => {
+        btn.addEventListener('click', () => { toast('Edit clicked (stub)', 'success'); });
+      });
+
+      // Pagination
+      const pages = Math.max(1, Math.ceil(getFiltered().length / state.pageSize));
+      pagination.innerHTML = `
+        <button class="page-btn" ${state.page===1?'disabled':''} data-p="prev" aria-label="Previous page">Prev</button>
+        ${Array.from({length: pages}).map((_,i)=>`<button class="page-btn" data-p="${i+1}" ${i+1===state.page?'aria-current="page"':''}>${i+1}</button>`).join('')}
+        <button class="page-btn" ${state.page===pages?'disabled':''} data-p="next" aria-label="Next page">Next</button>
+      `;
+      pagination.querySelectorAll('button').forEach(b=>{
+        b.addEventListener('click', ()=>{
+          const p = b.dataset.p;
+          if (p==='prev') state.page = Math.max(1, state.page - 1);
+          else if (p==='next') state.page = Math.min(pages, state.page + 1);
+          else state.page = Number(p);
+          render();
+        });
+      });
+      summary.textContent = `Showing ${paged.length} of ${filtered.length} results • Page ${state.page}/${pages}`;
+    }
+
+    // Sort handlers
+    $$('#table thead th[data-key]').forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.key;
+        const dir = th.getAttribute('aria-sort');
+        const next = dir === 'asc' ? 'desc' : 'asc';
+        $$('#table thead th[data-key]').forEach(h => h.setAttribute('aria-sort', 'none'));
+        th.setAttribute('aria-sort', next);
+        state.sortKey = key; state.sortDir = next; state.page = 1;
+        render();
+      });
+    });
+
+    // Filters
+    searchInput.addEventListener('input', () => { state.q = searchInput.value; state.page = 1; render(); });
+    statusFilter.addEventListener('change', () => { state.status = statusFilter.value; state.page = 1; render(); });
+
+    // Add row + Export
+    addRowBtn.addEventListener('click', () => {
+      const id = Math.max(...data.map(d => d.id)) + 1;
+      data.unshift({
+        id,
+        name: `Project ${id}`,
+        owner: owners[Math.floor(Math.random() * owners.length)],
+        created: new Date().toISOString().slice(0, 10),
+        progress: Math.floor(Math.random() * 100),
+        status: statuses[Math.floor(Math.random() * statuses.length)]
+      });
+      toast('New row added', 'success');
+      state.page = 1; render();
+    });
+
+    function exportCSV() {
+      const rows = [['Name','Owner','Created','Progress','Status']].concat(
+        getSorted(getFiltered()).map(r => [r.name, r.owner, r.created, r.progress, r.status])
+      );
+      const csv = rows.map(r => r.map(v => `"${String(v).replaceAll('"','""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'projects.csv';
+      document.body.appendChild(a); a.click();
+      a.remove(); URL.revokeObjectURL(url);
+      toast('Exported CSV', 'success');
+    }
+    exportBtn.addEventListener('click', exportCSV);
+
+    // =========================================
+    // Form handling (constraint validation + custom checks)
+    // =========================================
+    const form = $('#projectForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const name = fd.get('name')?.toString().trim();
+      const owner = fd.get('owner')?.toString();
+      const start = fd.get('start')?.toString();
+      const end = fd.get('end')?.toString();
+      const status = fd.get('status')?.toString();
+
+      const errors = [];
+      if (!name) errors.push('Name is required.');
+      if (!owner) errors.push('Owner is required.');
+      if (!start || !end) errors.push('Start and End are required.');
+      if (start && end && new Date(end) < new Date(start)) errors.push('End must be after Start.');
+      if (errors.length) { toast(errors.join(' '), 'danger', 4000); return; }
+
+      const id = Math.max(...data.map(d => d.id)) + 1;
+      data.unshift({ id, name, owner, created: new Date().toISOString().slice(0,10), progress: 10, status });
+      toast('Project created', 'success');
+      form.reset();
+      state.page = 1; render();
+    });
+
+    // =========================================
+    // Tabs behavior
+    // =========================================
+    const tabs = $$('.tab'); const panels = $$('[role="tabpanel"]');
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+      tab.setAttribute('aria-selected', 'true');
+      const id = tab.dataset.tab;
+      panels.forEach(p => p.hidden = p.dataset.panel !== id);
+    }));
+
+    // =========================================
+    // Charts (Canvas 2D, zero deps)
+    // =========================================
+    function drawLineChart(canvas, points) {
+      const ctx = canvas.getContext('2d');
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const cssW = canvas.clientWidth || canvas.width;
+      const cssH = canvas.clientHeight || canvas.height;
+      canvas.width = cssW * dpr; canvas.height = cssH * dpr; ctx.scale(dpr, dpr);
+
+      const w = cssW, h = cssH;
+      ctx.clearRect(0,0,w,h);
+      const pad = 28;
+      const minY = Math.min(...points.map(p => p.y));
+      const maxY = Math.max(...points.map(p => p.y));
+      const minX = Math.min(...points.map(p => p.x));
+      const maxX = Math.max(...points.map(p => p.x));
+      const xTo = (px) => pad + (px - minX) / (maxX - minX) * (w - pad * 2);
+      const yTo = (py) => h - pad - (py - minY) / (maxY - minY) * (h - pad * 2);
+
+      // Grid
+      const cs = getComputedStyle(document.body);
+      ctx.strokeStyle = cs.getPropertyValue('--border').trim();
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      for (let i = 0; i < 5; i++) {
+        const y = pad + i * (h - pad * 2) / 4;
+        ctx.beginPath(); ctx.moveTo(pad, y); ctx.lineTo(w - pad, y); ctx.stroke();
+      }
+      ctx.setLineDash([]);
+
+      // Line
+      ctx.strokeStyle = cs.getPropertyValue('--primary').trim();
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      points.forEach((p, i) => {
+        const X = xTo(p.x), Y = yTo(p.y);
+        if (i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y);
+      });
+      ctx.stroke();
+
+      // Fill
+      const grad = ctx.createLinearGradient(0, pad, 0, h - pad);
+      grad.addColorStop(0, 'rgba(76,141,255,0.35)');
+      grad.addColorStop(1, 'rgba(76,141,255,0.02)');
+      ctx.fillStyle = grad;
+      ctx.lineTo(xTo(points.at(-1).x), h - pad);
+      ctx.lineTo(xTo(points[0].x), h - pad);
+      ctx.closePath(); ctx.fill();
+    }
+
+    function drawBarChart(canvas, bars) {
+      const ctx = canvas.getContext('2d');
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const cssW = canvas.clientWidth || canvas.width;
+      const cssH = canvas.clientHeight || canvas.height;
+      canvas.width = cssW * dpr; canvas.height = cssH * dpr; ctx.scale(dpr, dpr);
+
+      const w = cssW, h = cssH;
+      ctx.clearRect(0,0,w,h);
+      const pad = 28;
+      const maxVal = Math.max(...bars.map(b => b.v)) * 1.1;
+      const colW = (w - pad * 2) / bars.length;
+
+      const cs = getComputedStyle(document.body);
+      ctx.strokeStyle = cs.getPropertyValue('--border').trim();
+      ctx.beginPath(); ctx.moveTo(pad, pad); ctx.lineTo(pad, h - pad); ctx.lineTo(w - pad, h - pad); ctx.stroke();
+
+      bars.forEach((b, i) => {
+        const x = pad + i * colW + 8;
+        const y = h - pad;
+        const bh = (b.v / maxVal) * (h - pad * 2);
+        ctx.fillStyle = 'rgba(76,141,255,0.7)';
+        ctx.fillRect(x, y - bh, colW - 16, bh);
+        ctx.fillStyle = cs.getPropertyValue('--muted').trim();
+        ctx.fillText(b.k, x, y + 14);
+      });
+    }
+
+    // Initial render
+    window.addEventListener('DOMContentLoaded', () => {
+      const lc = $('#lineChart'); const bc = $('#barChart');
+      const pts = Array.from({length: 24}).map((_,i)=>({ x: i, y: Math.round(40 + Math.sin(i/2)*20 + Math.random()*10) }));
+      drawLineChart(lc, pts);
+      drawBarChart(bc, [
+        { k: 'Web', v: 420 }, { k: 'Ads', v: 260 }, { k: 'SEO', v: 330 }, { k: 'Ref', v: 190 }
+      ]);
+      render();
+    });
+
+    // Redraw charts on resize
+    let resizeTimer = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const lc = $('#lineChart'); const bc = $('#barChart');
+        const pts = Array.from({length: 24}).map((_,i)=>({ x: i, y: Math.round(40 + Math.sin(i/2)*20 + Math.random()*10) }));
+        drawLineChart(lc, pts);
+        drawBarChart(bc, [
+          { k: 'Web', v: 420 }, { k: 'Ads', v: 260 }, { k: 'SEO', v: 330 }, { k: 'Ref', v: 190 }
+        ]);
+      }, 150);
     });
   </script>
 </body>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide In Screens</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-        }
-
-        .menu {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            color: white;
-            transition: left 0.3s;
-            padding: 15px;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin: 15px 0;
-        }
-
-        .menu a:hover {
-            background-color: #575757;
-        }
-
-        .content {
-            padding: 20px;
-        }
-
-        .open-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        .close-btn {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        .close-btn:hover {
-            background-color: #575757;
-        }
-    </style>
-</head>
-<body>
-
-   <button class="open-btn" onclick="openMenu()">☰ Open Menu</button>
-
-    <div class="menu" id="menu">
-        <button class="close-btn" onclick="closeMenu()">✕ Close Menu</button>
-        <h2>Menu</h2>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#" onclick="openServices()">Services</a>
-        <a href="#" onclick="openContact()">Contact</a>
-    </div>
-
-    <div class="content">
-        <h1>Welcome</h1>
-        <p></p>
-    </div>
-
-    <script>
-        function openMenu() {
-            document.getElementById("menu").style.left = "0";
-        }
-
-        function closeMenu() {
-            document.getElementById("menu").style.left = "-250px";
-        }
-
-      function openContact() {
-      window.open('https://algirdasvaskys.github.io/plan/contact us.html', '_blank');
-    }
-
-  
-
-
-    </script>
-
-</body>
 </html>
-
-
-
-
-
-
-
