@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Redirect (Delay + Button Fallback)</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    #redirectBtn {
+      display: none;
+      background-color: #ff0000;
+      border: none;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #redirectBtn:hover {
+      background-color: #cc0000;
+    }
+
+    .loading-dot {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Watch video on YouTube</h2>
+  <p>Error 153 — Video player configuration error</p>
+  <button id="redirectBtn">Open YouTube Video ▶</button>
+  <div class="loading-dot">• • •</div>
+
+  <script>
+    const youtubeURL = "https://www.youtube.com/watch?v=X84r4Op-hQ4";
+    const redirectButton = document.getElementById("redirectBtn");
+
+    // After 1 second → attempt auto‑redirect
+    setTimeout(() => {
+      try {
+        window.location.href = youtubeURL;
+      } catch (e) {
+        // if redirect blocked, show manual button
+        redirectButton.style.display = "inline-block";
+      }
+    }, 1000);
+
+    // Also reveal button after 1 s (so if auto‑redirect fails, user can click)
+    setTimeout(() => {
+      redirectButton.style.display = "inline-block";
+    }, 1000);
+
+    redirectButton.addEventListener("click", () => {
+      window.open(youtubeURL, "_blank");
+    });
+  </script>
+
+</body>
+</html>
 
