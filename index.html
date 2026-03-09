@@ -1,591 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Advanced Accessible Carousel (Ant Design-inspired)</title>
+  <meta charset="UTF-8">
+  <title>YouTube Redirect (Delay + Button Fallback)</title>
   <style>
-    :root {
-      --bg: #0b1324;
-      --panel: #111a2c;
-      --panel-2: #0f172a;
-      --text: #e6f4ff;
-      --muted: #9bb4d1;
-      --primary: #1677ff;  /* Ant Design primary blue */
-      --primary-600: #0958d9;
-      --ring: rgba(22, 119, 255, 0.35);
-      --success: #52c41a;
-      --warning: #faad14;
-      --danger: #ff4d4f;
-      --radius: 12px;
-      --shadow: 0 10px 30px rgba(0,0,0,0.25);
-      --focus: 0 0 0 3px var(--ring);
-      --slide-w: min(920px, 92vw);
-      --slide-h: clamp(220px, 48vw, 480px);
-      --control-size: 44px;
-      --thumb-size: 8px;
-    }
-
     html, body {
-      background: linear-gradient(180deg, var(--bg), #070c1a);
-      color: var(--text);
+      height: 100%;
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .container {
-      display: grid;
-      place-items: center;
-      min-height: 100svh;
-      padding: 24px;
-    }
-
-    .card {
-      background: linear-gradient(180deg, var(--panel), var(--panel-2));
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      width: 100%;
-      max-width: calc(var(--slide-w) + 2rem);
-      padding: 18px 16px 8px;
-    }
-
-    .header {
+      background-color: #000;
+      color: #fff;
       display: flex;
-      gap: 12px;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
-      margin: 2px 6px 12px;
+      font-family: Arial, sans-serif;
+      text-align: center;
     }
 
-    .title {
-      font-size: clamp(18px, 2.4vw, 22px);
-      font-weight: 700;
-      letter-spacing: 0.2px;
+    h2 {
+      margin-bottom: 1rem;
     }
 
-    .meta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 13px;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-weight: 600;
-      background: rgba(82, 196, 26, 0.1);
-      color: var(--success);
-      border: 1px solid rgba(82,196,26,0.2);
-    }
-
-    .carousel {
-      position: relative;
-      width: var(--slide-w);
-      height: var(--slide-h);
-      margin-inline: auto;
-      border-radius: calc(var(--radius) - 2px);
-      overflow: clip;
-      user-select: none;
-      background: #0a1222;
-      isolation: isolate;
-    }
-
-    .track {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 100%;
-      width: 100%;
-      height: 100%;
-      transform: translateX(0%);
-      transition: transform 500ms ease;
-      will-change: transform;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .track { transition: none; }
-    }
-
-    .slide {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #0e1a33;
-    }
-
-    .slide picture,
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .caption {
-      position: absolute;
-      inset: auto 0 0 0;
-      padding: 14px 16px;
-      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.72) 100%);
-      color: #e6f7ff;
-      font-size: clamp(13px, 2.2vw, 15px);
-      line-height: 1.35;
-    }
-
-    .caption .headline {
-      font-weight: 700;
-      font-size: clamp(16px, 2.6vw, 20px);
-      letter-spacing: 0.2px;
-      margin-bottom: 2px;
-    }
-
-    .controls {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 6px;
-      pointer-events: none;
-    }
-
-    .btn {
-      pointer-events: auto;
-      width: var(--control-size);
-      height: var(--control-size);
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(12,20,38,0.6);
-      color: #e6f4ff;
-      border-radius: 10px;
-      backdrop-filter: blur(6px);
+    #redirectBtn {
+      display: none;
+      background-color: #ff0000;
+      border: none;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 4px;
       cursor: pointer;
-      transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
-      outline: none;
+      transition: background 0.3s;
     }
 
-    .btn:hover { background: rgba(12,20,38,0.8); }
-    .btn:active { transform: scale(0.97); }
-    .btn:focus-visible { box-shadow: var(--focus); border-color: var(--primary); }
-
-    .btn svg {
-      width: 20px;
-      height: 20px;
+    #redirectBtn:hover {
+      background-color: #cc0000;
     }
 
-    .indicators {
-      position: absolute;
-      left: 50%;
-      bottom: 10px;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(9, 16, 32, 0.55);
-      border: 1px solid rgba(255,255,255,0.16);
-      padding: 6px 8px;
-      border-radius: 999px;
-      backdrop-filter: blur(6px);
+    .loading-dot {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      animation: blink 1.2s infinite;
     }
 
-    .dot {
-      width: var(--thumb-size);
-      height: var(--thumb-size);
-      border-radius: 999px;
-      background: rgba(230,244,255,0.45);
-      border: 1px solid rgba(230,244,255,0.6);
-      cursor: pointer;
-      padding: 0;
-      display: inline-block;
-      outline: none;
-      transition: transform 140ms ease, background 160ms ease, border-color 160ms ease;
-    }
-
-    .dot[aria-current="true"] {
-      background: var(--primary);
-      border-color: var(--primary-600);
-      transform: scale(1.35);
-    }
-
-    .dot:focus-visible { box-shadow: var(--focus); }
-
-    .toolbar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: space-between;
-      margin: 10px 8px 2px;
-      color: var(--muted);
-      font-size: 13px;
-      flex-wrap: wrap;
-    }
-
-    .toolbar .left,
-    .toolbar .right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .switch {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .switch input {
-      appearance: none;
-      width: 40px;
-      height: 22px;
-      background: #1b2a45;
-      border-radius: 999px;
-      position: relative;
-      outline: none;
-      border: 1px solid rgba(255,255,255,0.15);
-      transition: background 160ms ease, border-color 160ms ease;
-    }
-    .switch input::after {
-      content: "";
-      position: absolute;
-      top: 2px; left: 2px;
-      width: 18px; height: 18px;
-      border-radius: 999px;
-      background: #e6f4ff;
-      transition: transform 160ms ease;
-    }
-    .switch input:checked {
-      background: rgba(22, 119, 255, 0.2);
-      border-color: rgba(22,119,255,0.35);
-    }
-    .switch input:checked::after { transform: translateX(18px); }
-
-    .sr-only {
-      position: absolute !important;
-      width: 1px; height: 1px;
-      padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0, 0, 0, 0);
-      white-space: nowrap; border: 0;
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <section class="card" aria-labelledby="carousel-title">
-      <div class="header">
-        <h1 id="carousel-title" class="title">Showcase Carousel</h1>
-        <div class="meta">
-          <span class="badge" title="A11y compliant">● A11y</span>
-          <span>Keyboard-friendly</span>
-          <span>Touch & Drag</span>
-          <span>Autoplay</span>
-        </div>
-      </div>
 
-      <div
-        class="carousel"
-        role="region"
-        aria-roledescription="carousel"
-        aria-label="Featured destinations"
-        data-autoplay="true"
-        data-interval="4000"
-      >
-        <div class="track" id="carousel-track">
-          <!-- Slide 1 -->
-          <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
-            <picture>
-              <source type="image/webp" srcset="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop" />
-              <img
-                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop"
-                alt="Sunlit ocean waves along a sandy coastline"
-                loading="eager"
-                fetchpriority="high"
-              />
-            </picture>
-            <figcaption class="caption">
-              <div class="headline">Coastal Escape</div>
-              Explore serene beaches and golden sunsets.
-            </figcaption>
-          </figure>
-
-          <!-- Slide 2 -->
-          <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
-            <picture>
-              <source type="image/webp" srcset="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1600&auto=format&fit=crop" />
-              <img
-                src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1600&auto=format&fit=crop"
-                alt="Fog rolling through a pine forest at sunrise"
-                loading="lazy"
-              />
-            </picture>
-            <figcaption class="caption">
-              <div class="headline">Misty Pines</div>
-              Wake up to tranquil trails and crisp air.
-            </figcaption>
-          </figure>
-
-          <!-- Slide 3 -->
-          <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
-            <picture>
-              <source type="image/webp" srcset="https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1600&auto=format&fit=crop" />
-              <img
-                src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1600&auto=format&fit=crop"
-                alt="City skyline at dusk with glowing lights"
-                loading="lazy"
-              />
-            </picture>
-            <figcaption class="caption">
-              <div class="headline">Urban Glow</div>
-              Discover vibrant city life after dark.
-            </figcaption>
-          </figure>
-
-          <!-- Slide 4 -->
-          <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
-            <picture>
-              <source type="image/webp" srcset="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop" />
-              <img
-                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop"
-                alt="Snow-capped mountains under starry night skies"
-                loading="lazy"
-              />
-            </picture>
-            <figcaption class="caption">
-              <div class="headline">Starlit Peaks</div>
-              Camp beneath a sky full of constellations.
-            </figcaption>
-          </figure>
-        </div>
-
-        <!-- Previous / Next -->
-        <div class="controls" aria-hidden="false">
-          <button class="btn prev" type="button" aria-controls="carousel-track" aria-label="Previous slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </button>
-          <button class="btn next" type="button" aria-controls="carousel-track" aria-label="Next slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Indicators -->
-        <div class="indicators" role="tablist" aria-label="Slide indicators">
-          <button class="dot" role="tab" aria-label="Go to slide 1" aria-controls="carousel-track" aria-selected="true" aria-current="true"></button>
-          <button class="dot" role="tab" aria-label="Go to slide 2" aria-controls="carousel-track" aria-selected="false"></button>
-          <button class="dot" role="tab" aria-label="Go to slide 3" aria-controls="carousel-track" aria-selected="false"></button>
-          <button class="dot" role="tab" aria-label="Go to slide 4" aria-controls="carousel-track" aria-selected="false"></button>
-        </div>
-      </div>
-
-      <div class="toolbar" aria-live="polite">
-        <div class="left">
-          <label class="switch" for="toggle-autoplay">
-            <input id="toggle-autoplay" type="checkbox" aria-label="Toggle autoplay" checked />
-            <span>Autoplay</span>
-          </label>
-          <label class="switch" for="toggle-pause-hover">
-            <input id="toggle-pause-hover" type="checkbox" aria-label="Pause on hover" checked />
-            <span>Pause on hover</span>
-          </label>
-        </div>
-        <div class="right">
-          <span>Slide <strong id="current-index">1</strong> / <strong id="total-count">4</strong></span>
-        </div>
-      </div>
-    </section>
-  </div>
+  <h2>Watch video on YouTube</h2>
+  <p>Error 153 — Video player configuration error</p>
+  <button id="redirectBtn">Open YouTube Video ▶</button>
+  <div class="loading-dot">• • •</div>
 
   <script>
-    (() => {
-      const carousel = document.querySelector(".carousel");
-      const track = document.getElementById("carousel-track");
-      const slides = Array.from(track.querySelectorAll(".slide"));
-      const prevBtn = document.querySelector(".btn.prev");
-      const nextBtn = document.querySelector(".btn.next");
-      const dots = Array.from(document.querySelectorAll(".dot"));
-      const currentIndexEl = document.getElementById("current-index");
-      const totalCountEl = document.getElementById("total-count");
-      const autoplayToggle = document.getElementById("toggle-autoplay");
-      const pauseOnHoverToggle = document.getElementById("toggle-pause-hover");
+    const youtubeURL = "https://www.youtube.com/watch?v=4NO-h9PFum4&t=5s";
+    const redirectButton = document.getElementById("redirectBtn");
 
-      let index = 0;
-      const total = slides.length;
-      let autoplay = carousel.dataset.autoplay === "true";
-      let interval = Number(carousel.dataset.interval || 5000);
-      let timer = null;
-
-      totalCountEl.textContent = total;
-
-      function goTo(i, { animated = true } = {}) {
-        index = (i + total) % total;
-        const percent = -(index * 100);
-        if (!animated) track.style.transition = "none";
-        requestAnimationFrame(() => {
-          track.style.transform = `translateX(${percent}%)`;
-        });
-        if (!animated) {
-          // restore transition for next moves
-          requestAnimationFrame(() => {
-            track.style.transition = "";
-          });
-        }
-        updateA11y();
+    // After 1 second → attempt auto‑redirect
+    setTimeout(() => {
+      try {
+        window.location.href = youtubeURL;
+      } catch (e) {
+        // if redirect blocked, show manual button
+        redirectButton.style.display = "inline-block";
       }
+    }, 1000);
 
-      function next() { goTo(index + 1); }
-      function prev() { goTo(index - 1); }
+    // Also reveal button after 1 s (so if auto‑redirect fails, user can click)
+    setTimeout(() => {
+      redirectButton.style.display = "inline-block";
+    }, 1000);
 
-      function updateA11y() {
-        currentIndexEl.textContent = index + 1;
-        slides.forEach((slide, i) => {
-          const active = i === index;
-          slide.inert = !active; // prevents tabbing into offscreen content (supported in modern browsers)
-          slide.setAttribute("aria-hidden", String(!active));
-          slide.setAttribute("aria-label", `${i + 1} of ${total}`);
-        });
-        dots.forEach((dot, i) => {
-          const active = i === index;
-          dot.setAttribute("aria-current", String(active));
-          dot.setAttribute("aria-selected", String(active));
-          dot.tabIndex = active ? 0 : -1;
-        });
-      }
-
-      function startAutoplay() {
-        stopAutoplay();
-        if (!autoplay) return;
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        timer = setInterval(next, interval);
-      }
-      function stopAutoplay() {
-        if (timer) {
-          clearInterval(timer);
-          timer = null;
-        }
-      }
-
-      // Buttons
-      prevBtn.addEventListener("click", prev);
-      nextBtn.addEventListener("click", next);
-
-      // Indicators
-      dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => goTo(i));
-        dot.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            goTo(i);
-          }
-        });
-      });
-
-      // Keyboard navigation on carousel region
-      carousel.addEventListener("keydown", (e) => {
-        switch (e.key) {
-          case "ArrowLeft": prev(); break;
-          case "ArrowRight": next(); break;
-          case "Home": goTo(0); break;
-          case "End": goTo(total - 1); break;
-        }
-      });
-      carousel.tabIndex = 0; // make region focusable
-
-      // Touch / Drag support
-      let startX = 0, deltaX = 0, dragging = false;
-
-      const onPointerDown = (e) => {
-        dragging = true;
-        startX = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
-        deltaX = 0;
-        track.style.transition = "none";
-      };
-      const onPointerMove = (e) => {
-        if (!dragging) return;
-        const x = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
-        deltaX = x - startX;
-        const percent = (-index * 100) + (deltaX / track.clientWidth) * 100;
-        track.style.transform = `translateX(${percent}%)`;
-      };
-      const onPointerUp = () => {
-        if (!dragging) return;
-        dragging = false;
-        track.style.transition = "";
-        const threshold = track.clientWidth * 0.18;
-        if (deltaX > threshold) prev();
-        else if (deltaX < -threshold) next();
-        else goTo(index); // snap back
-      };
-
-      track.addEventListener("pointerdown", onPointerDown);
-      window.addEventListener("pointermove", onPointerMove);
-      window.addEventListener("pointerup", onPointerUp);
-      track.addEventListener("touchstart", onPointerDown, { passive: true });
-      window.addEventListener("touchmove", onPointerMove, { passive: true });
-      window.addEventListener("touchend", onPointerUp);
-
-      // Autoplay toggles
-      autoplayToggle.addEventListener("change", (e) => {
-        autoplay = e.target.checked;
-        carousel.dataset.autoplay = String(autoplay);
-        autoplay ? startAutoplay() : stopAutoplay();
-      });
-
-      // Pause on hover
-      let hoverPaused = false;
-      const setHoverHandlers = () => {
-        carousel.addEventListener("mouseenter", () => {
-          if (pauseOnHoverToggle.checked) {
-            hoverPaused = true;
-            stopAutoplay();
-          }
-        });
-        carousel.addEventListener("mouseleave", () => {
-          if (pauseOnHoverToggle.checked) {
-            hoverPaused = false;
-            startAutoplay();
-          }
-        });
-      };
-      pauseOnHoverToggle.addEventListener("change", () => {
-        if (!pauseOnHoverToggle.checked && !hoverPaused) {
-          startAutoplay();
-        }
-      });
-      setHoverHandlers();
-
-      // Pause autoplay during user interaction
-      [prevBtn, nextBtn, ...dots, track].forEach(el => {
-        el.addEventListener("pointerdown", stopAutoplay);
-        el.addEventListener("keydown", (e) => {
-          if (["ArrowLeft","ArrowRight","Home","End","Enter"," "].includes(e.key)) stopAutoplay();
-        });
-      });
-
-      // Initialize
-      goTo(0, { animated: false });
-      startAutoplay();
-
-      // Resize snapping safety
-      let resizeTimer;
-      window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => goTo(index, { animated: false }), 120);
-      });
-    })();
+    redirectButton.addEventListener("click", () => {
+      window.open(youtubeURL, "_blank");
+    });
   </script>
+
 </body>
 </html>
+
