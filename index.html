@@ -1,1 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sun Spectrum</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      overflow: hidden;
+      background: #02030a;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      font-family: system-ui, sans-serif;
+    }
+
+    .space {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.14), transparent 18%),
+        radial-gradient(circle at 50% 50%, rgba(255, 70, 0, 0.12), transparent 30%),
+        radial-gradient(circle at 30% 20%, rgba(86, 120, 255, 0.18), transparent 32%),
+        radial-gradient(circle at 75% 70%, rgba(255, 64, 129, 0.12), transparent 34%),
+        radial-gradient(circle at center, #11142d 0%, #050714 48%, #010208 100%);
+      animation: skyShift 16s ease-in-out infinite alternate;
+    }
+
+    .space::before,
+    .space::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .space::before {
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.95) 1px, transparent 1.4px),
+        radial-gradient(circle, rgba(255,255,255,0.65) 1px, transparent 1.3px),
+        radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1.2px);
+      background-size: 90px 90px, 150px 150px, 230px 230px;
+      background-position: 10px 20px, 80px 40px, 160px 120px;
+      animation: stars 80s linear infinite;
+      opacity: 0.7;
+    }
+
+    .space::after {
+      background:
+        radial-gradient(circle at 50% 50%, transparent 0%, transparent 40%, rgba(0,0,0,0.52) 100%);
+    }
+
+    @keyframes stars {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+      to {
+        transform: translate3d(-90px, 90px, 0);
+      }
+    }
+
+    @keyframes skyShift {
+      0% {
+        filter: hue-rotate(0deg) saturate(1.1);
+      }
+      100% {
+        filter: hue-rotate(25deg) saturate(1.35);
+      }
+    }
+
+    .sun-system {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      perspective: 900px;
+    }
+
+    .sun-field {
+      position: relative;
+      width: min(78vw, 520px);
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      transform-style: preserve-3d;
+      animation: drift 8s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-14px);
+      }
+    }
+
+    .spectrum-aura {
+      position: absolute;
+      inset: -30%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12), transparent 18%),
+        conic-gradient(
+          from 0deg,
+          #ff004c,
+          #ff7a00,
+          #ffe600,
+          #38ff00,
+          #00ffd5,
+          #006eff,
+          #8f00ff,
+          #ff004c
+        );
+      filter: blur(34px);
+      opacity: 0.72;
+      mix-blend-mode: screen;
+      animation:
+        spectrumShift 9s ease-in-out infinite,
+        auraPulse 4.5s ease-in-out infinite;
+    }
+
+    .spectrum-aura.two {
+      inset: -48%;
+      opacity: 0.3;
+      filter: blur(58px);
+      animation-duration: 13s, 5.5s;
+    }
+
+    @keyframes spectrumShift {
+      0% {
+        filter: blur(34px) hue-rotate(0deg) saturate(1.1);
+        transform: scale(1);
+      }
+      33% {
+        filter: blur(38px) hue-rotate(55deg) saturate(1.35);
+        transform: scale(1.03);
+      }
+      66% {
+        filter: blur(36px) hue-rotate(120deg) saturate(1.5);
+        transform: scale(0.98);
+      }
+      100% {
+        filter: blur(34px) hue-rotate(360deg) saturate(1.1);
+        transform: scale(1);
+      }
+    }
+
+    @keyframes auraPulse {
+      0%, 100% {
+        opacity: 0.55;
+      }
+      50% {
+        opacity: 0.9;
+      }
+    }
+
+    .rays {
+      position: absolute;
+      inset: -20%;
+      border-radius: 50%;
+      background:
+        repeating-conic-gradient(
+          from 0deg,
+          rgba(255,255,255,0.85) 0deg 1.5deg,
+          rgba(255,196,0,0.5) 1.5deg 4deg,
+          transparent 4deg 9deg,
+          rgba(255,60,0,0.45) 9deg 11deg,
+          transparent 11deg 18deg
+        );
+      mask-image: radial-gradient(circle, transparent 0 34%, black 36% 100%);
+      -webkit-mask-image: radial-gradient(circle, transparent 0 34%, black 36% 100%);
+      filter: blur(4px);
+      opacity: 0.68;
+      animation: raysPulse 5s ease-in-out infinite;
+    }
+
+    .rays.second {
+      inset: -33%;
+      opacity: 0.32;
+      filter: blur(9px);
+      animation-duration: 7s;
+    }
+
+    @keyframes raysPulse {
+      0%, 100% {
+        transform: scale(0.96);
+        opacity: 0.35;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 0.78;
+      }
+    }
+
+    .sun {
+      position: relative;
+      width: 48%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 33% 27%, #fffbd1 0%, #fff176 13%, transparent 22%),
+        radial-gradient(circle at 62% 70%, rgba(255, 44, 0, 0.75), transparent 25%),
+        radial-gradient(circle at 30% 78%, rgba(255, 170, 0, 0.72), transparent 27%),
+        radial-gradient(circle at center, #fff06a 0%, #ffb000 28%, #ff5d00 58%, #a31300 100%);
+      box-shadow:
+        0 0 18px #fff7a0,
+        0 0 45px #ffd000,
+        0 0 95px #ff7a00,
+        0 0 170px rgba(255, 48, 0, 0.95),
+        inset -28px -36px 55px rgba(100, 0, 0, 0.35),
+        inset 18px 15px 45px rgba(255, 255, 220, 0.38);
+      animation: sunPulse 3.8s ease-in-out infinite;
+      z-index: 5;
+    }
+
+    @keyframes sunPulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: hue-rotate(0deg) brightness(1.12) saturate(1.3);
+      }
+      25% {
+        filter: hue-rotate(10deg) brightness(1.2) saturate(1.45);
+      }
+      50% {
+        transform: scale(1.035);
+        filter: hue-rotate(-10deg) brightness(1.32) saturate(1.65);
+      }
+      75% {
+        filter: hue-rotate(16deg) brightness(1.2) saturate(1.45);
+      }
+    }
+
+    .sun::before {
+      content: "";
+      position: absolute;
+      inset: -18%;
+      border-radius: 50%;
+      background:
+        repeating-conic-gradient(
+          from 20deg,
+          rgba(255,255,255,0.2) 0deg 7deg,
+          rgba(255,102,0,0.12) 7deg 15deg,
+          rgba(120,0,0,0.16) 15deg 24deg
+        ),
+        radial-gradient(circle at 25% 35%, rgba(255,255,255,0.44), transparent 11%),
+        radial-gradient(circle at 74% 42%, rgba(255,255,120,0.28), transparent 14%),
+        radial-gradient(circle at 48% 72%, rgba(190,0,0,0.26), transparent 19%);
+      mix-blend-mode: overlay;
+      animation: surfaceAlive 4s ease-in-out infinite alternate;
+    }
+
+    .sun::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.38), transparent 19%),
+        linear-gradient(135deg, rgba(255,255,255,0.2), transparent 38%, rgba(70,0,0,0.22));
+      mix-blend-mode: screen;
+    }
+
+    @keyframes surfaceAlive {
+      0% {
+        opacity: 0.55;
+        transform: scale(1);
+        filter: contrast(1.05);
+      }
+      100% {
+        opacity: 0.9;
+        transform: scale(1.08);
+        filter: contrast(1.3);
+      }
+    }
+
+    .plasma {
+      position: absolute;
+      inset: 7%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(255,255,255,0.28), transparent 18%),
+        radial-gradient(circle at 75% 45%, rgba(255,230,0,0.2), transparent 19%),
+        radial-gradient(circle at 50% 75%, rgba(255,45,0,0.22), transparent 22%),
+        conic-gradient(
+          from 180deg,
+          transparent,
+          rgba(255,255,255,0.22),
+          rgba(255,0,64,0.14),
+          rgba(255,255,0,0.2),
+          transparent,
+          rgba(255,90,0,0.18),
+          rgba(255,255,255,0.2),
+          transparent
+        );
+      filter: blur(8px);
+      opacity: 0.88;
+      mix-blend-mode: screen;
+      animation: plasmaGlow 4.5s ease-in-out infinite alternate;
+      z-index: 6;
+    }
+
+    @keyframes plasmaGlow {
+      from {
+        opacity: 0.55;
+        transform: scale(0.98);
+      }
+      to {
+        opacity: 0.95;
+        transform: scale(1.08);
+      }
+    }
+
+    .flare {
+      position: absolute;
+      width: 34%;
+      height: 12%;
+      border-radius: 999px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,219,60,0.9), rgba(255,69,0,0.5), transparent);
+      filter: blur(3px);
+      transform-origin: left center;
+      z-index: 4;
+      opacity: 0;
+      animation: flare 4s ease-in-out infinite;
+    }
+
+    .flare.one {
+      top: 24%;
+      left: 68%;
+      transform: rotate(-25deg);
+    }
+
+    .flare.two {
+      bottom: 20%;
+      right: 68%;
+      transform: rotate(155deg);
+      animation-delay: 1.2s;
+    }
+
+    .flare.three {
+      top: 62%;
+      left: 73%;
+      transform: rotate(25deg);
+      animation-delay: 2.1s;
+    }
+
+    @keyframes flare {
+      0%, 100% {
+        opacity: 0;
+        scale: 0.5 0.8;
+      }
+      35% {
+        opacity: 0.95;
+        scale: 1.25 1;
+      }
+      60% {
+        opacity: 0.35;
+        scale: 0.9 0.9;
+      }
+    }
+
+    .spark {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      pointer-events: none;
+      opacity: 0;
+      box-shadow:
+        0 0 10px white,
+        0 0 20px #ffd000,
+        0 0 36px #ff4c00;
+      animation: sparkRise 3.2s ease-out infinite;
+    }
+
+    .spark.s1 {
+      width: 8px;
+      height: 8px;
+      left: 50%;
+      top: 21%;
+    }
+
+    .spark.s2 {
+      width: 6px;
+      height: 6px;
+      left: 64%;
+      top: 28%;
+      animation-delay: 0.7s;
+    }
+
+    .spark.s3 {
+      width: 7px;
+      height: 7px;
+      left: 37%;
+      top: 30%;
+      animation-delay: 1.4s;
+    }
+
+    .spark.s4 {
+      width: 5px;
+      height: 5px;
+      left: 57%;
+      top: 72%;
+      animation-delay: 2.1s;
+      box-shadow:
+        0 0 10px #00eaff,
+        0 0 25px #006eff,
+        0 0 42px #8f00ff;
+    }
+
+    @keyframes sparkRise {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.4);
+      }
+      25% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-90px) scale(1.3);
+      }
+    }
+
+    .lens {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 44% 48%, transparent 0%, transparent 22%, rgba(255,255,255,0.05) 23%, transparent 27%),
+        linear-gradient(115deg, transparent 0%, transparent 44%, rgba(255,255,255,0.08) 48%, transparent 54%, transparent 100%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 20;
+      animation: lensMove 8s ease-in-out infinite;
+    }
+
+    @keyframes lensMove {
+      0%, 100% {
+        opacity: 0.2;
+        transform: translateX(-3%);
+      }
+      50% {
+        opacity: 0.55;
+        transform: translateX(3%);
+      }
+    }
+
+    .nebula {
+      position: absolute;
+      width: 80vmax;
+      height: 80vmax;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          from 130deg,
+          transparent,
+          rgba(255,0,100,0.08),
+          rgba(0,200,255,0.09),
+          transparent,
+          rgba(255,200,0,0.07),
+          transparent
+        );
+      filter: blur(30px);
+      opacity: 0.8;
+      animation: nebulaGlow 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes nebulaGlow {
+      from {
+        opacity: 0.45;
+        transform: scale(0.96);
+      }
+      to {
+        opacity: 0.85;
+        transform: scale(1.06);
+      }
+    }
+
+    .redirect-text {
+      position: fixed;
+      left: 50%;
+      bottom: 2rem;
+      transform: translateX(-50%);
+      z-index: 50;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+      letter-spacing: 0.04em;
+      text-shadow:
+        0 0 10px rgba(255, 180, 0, 0.9),
+        0 0 20px rgba(255, 60, 0, 0.7);
+      animation: textPulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes textPulse {
+      0%, 100% {
+        opacity: 0.55;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .sun-field {
+        width: 95vw;
+      }
+
+      .sun {
+        width: 54%;
+      }
+
+      .spectrum-aura {
+        inset: -22%;
+      }
+
+      .spectrum-aura.two {
+        inset: -36%;
+      }
+
+      .redirect-text {
+        bottom: 1.25rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="space">
+    <div class="nebula"></div>
+
+    <main class="sun-system" aria-label="Animated sun with changing spectrum">
+      <div class="sun-field">
+        <div class="spectrum-aura"></div>
+        <div class="spectrum-aura two"></div>
+
+        <div class="rays"></div>
+        <div class="rays second"></div>
+
+        <div class="flare one"></div>
+        <div class="flare two"></div>
+        <div class="flare three"></div>
+
+        <div class="spark s1"></div>
+        <div class="spark s2"></div>
+        <div class="spark s3"></div>
+        <div class="spark s4"></div>
+
+        <div class="sun">
+          <div class="plasma"></div>
+        </div>
+      </div>
+    </main>
+
+    <div class="lens"></div>
+
+    <div class="redirect-text"></div>
+  </div>
+
+  <script>
+    const youtubeURL = "https://www.youtube.com/watch?v=OCGf81om2NM";
+
+    setTimeout(() => {
+      window.location.href = youtubeURL;
+    }, 5000);
+  </script>
+</body>
+</html>
+
 
