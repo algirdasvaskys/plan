@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High/Low Signal Select with Visualization</title>
+    <style>
+        body {index.html
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .slider {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .value-display {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        canvas {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>High/Low Signal Select with Visualization</h2>
+        <label for="signal1">Signal 1:</label>
+        <input type="range" id="signal1" class="slider" min="0" max="100" value="50">
+        <label for="signal2">Signal 2:</label>
+        <input type="range" id="signal2" class="slider" min="0" max="100" value="50">
+        <div class="value-display">Selected Value: <span id="selectedValue">50</span></div>
+        <canvas id="signalChart"></canvas>
+    </div>
 
+    <script>
+        const signal1Slider = document.getElementById('signal1');
+        const signal2Slider = document.getElementById('signal2');
+        const selectedValueDisplay = document.getElementById('selectedValue');
+        const ctx = document.getElementById('signalChart').getContext('2d');
+        let time = 0;
+
+        const signalData = {
+            labels: [],
+            datasets: [{
+                label: 'Signal 1',
+                data: [],
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                fill: false
+            }, {
+                label: 'Signal 2',
+                data: [],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                fill: false
+            }, {
+                label: 'Selected Signal',
+                data: [],
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                fill: false
+            }]
+        };
+
+        const signalChart = new Chart(ctx, {
+            type: 'line',
+            data: signalData,
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        function updateChart() {
+            const signal1 = parseInt(signal1Slider.value);
+            const signal2 = parseInt(signal2Slider.value);
+            const selectedSignal = Math.max(signal1, signal2);
+
+            selectedValueDisplay.textContent = selectedSignal;
+
+            signalData.labels.push(time);
+            signalData.datasets[0].data.push(signal1);
+            signalData.datasets[1].data.push(signal2);
+            signalData.datasets[2].data.push(selectedSignal);
+            signalChart.update();
+            time++;
+        }
+
+        signal1Slider.addEventListener('input', updateChart);
+        signal2Slider.addEventListener('input', updateChart);
+
+        setInterval(updateChart, 1000);
+    </script>
+</body>
+</html>
