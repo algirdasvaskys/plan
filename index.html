@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gobbleup System Solutions Ltd</title>
+
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== HEADER & NAV ===== */
+    header {
+      position: sticky;
+      top: 0;
+      background: #111827;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #3b82f6;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #3b82f6;
+      transition: 0.3s;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      background: linear-gradient(to right, #3b82f6, #1e3a8a);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      max-width: 650px;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .hero button {
+      background: #fff;
+      color: #1e3a8a;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .hero button:hover {
+      background: #dbeafe;
+    }
+
+    /* ===== SERVICES SECTION ===== */
+    .services {
+      padding: 4rem 2rem;
+      background: #fff;
+      text-align: center;
+    }
+    .services h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service {
+      background: #f3f4f6;
+      padding: 2rem;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .service h3 {
+      margin-bottom: 1rem;
+      color: #3b82f6;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      background: #e5e7eb;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+    .about img {
+      flex: 1;
+      border-radius: 10px;
+    }
+    .about-content {
+      flex: 1;
+      min-width: 300px;
+    }
+    .about-content h2 {
+      color: #1e3a8a;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact {
+      background: #1f2937;
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .contact h2 {
+      margin-bottom: 1rem;
+      color: #3b82f6;
+    }
+    .contact p {
+      margin-bottom: 1.5rem;
+    }
+    iframe.contact-frame {
+      width: 100%;
+      max-width: 800px;
+      height: 600px;
+      border: none;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Gobbleup System Solutions</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Innovative Tech Solutions for a Smarter Future</h1>
+    <p>At Gobbleup System Solutions Ltd, we empower businesses with cutting-edge technology, efficient systems, and scalable software designed to accelerate growth and innovation.</p>
+    <button onclick="scrollToSection('services')">Explore Our Services</button>
+  </section>
+
+  <section id="services" class="services">
+    <h2>Our Core Services</h2>
+    <div class="service-grid">
+      <div class="service">
+        <h3>Custom Software Development</h3>
+        <p>Tailored applications built for performance, reliability, and business impact — from concept to deployment.</p>
+      </div>
+      <div class="service">
+        <h3>System Integration</h3>
+        <p>Seamlessly connect your business systems to enable automation, communication, and real-time data insight.</p>
+      </div>
+      <div class="service">
+        <h3>Cloud Solutions</h3>
+        <p>Optimize your infrastructure with secure and scalable cloud-based platforms and services.</p>
+      </div>
+      <div class="service">
+        <h3>IT Consulting</h3>
+        <p>Expert strategic guidance to help you make technology decisions that fuel your organization’s success.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80" alt="Team collaboration">
+    <div class="about-content">
+      <h2>About Us</h2>
+      <p>Gobbleup System Solutions Ltd is a technology-driven company specializing in advanced IT solutions, system automation, and enterprise-grade software. We combine innovation with technical expertise to deliver measurable business results and future-ready systems for our clients worldwide.</p>
+      <p>Our mission is to help organizations "gobble up" complex challenges through smart, efficient technology — transforming ideas into sustainable solutions.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you! Please fill out the form below.</p>
+
+    <!-- Embedded external contact form -->
+    <iframe
+      src="https://algirdasvaskys.github.io/plan/contact%20us.html"
+      class="contact-frame"
+      title="Gobbleup Contact Form"
+      loading="lazy">
+    </iframe>
+  </section>
+
+  <footer>
+    &copy; <span id="year"></span> Gobbleup System Solutions Ltd. All rights reserved.
+  </footer>
+
+  <script>
+    // Set current year dynamically
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Smooth section scroll on buttons/links
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
+
 
